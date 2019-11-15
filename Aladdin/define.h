@@ -6,7 +6,8 @@
 
 #define SCREEN_WIDTH 320
 #define SCREEN_HEIGHT 240
-#define SCREEN_ACTUAL_HEIGHT 202
+#define SCREEN_ACTUAL_WIDTH 306     //320 - 14    
+#define SCREEN_ACTUAL_HEIGHT 202    //240 - 38
 #define MAP_WIDTH 2271
 #define MAP_HEIGHT 1138
 
@@ -17,6 +18,7 @@
 //Object ID from text
 #define GROUND0_ID "Ground0"
 #define GOOMBA_ID "goomba_0"
+#define BRICK_ID "brick_0"
 
 //Aladdin animation
 enum AladdinAnimation
@@ -38,7 +40,6 @@ enum TEX_ID
     ID_TEX_MARIO = -1111,
     ID_TEX_ENEMY = -2222,
     ID_TEX_MISC = -3333,
-    ID_TEX_MAP = -4444,
 	TEX_BBOX = -100,
 	TEX_GROUND = -10,
 	TEX_ALADDIN = 0,

@@ -49,6 +49,8 @@ public:
 	{
 		level = MARIO_LEVEL_BIG;
 		untouchable = 0;
+        width = MARIO_BIG_BBOX_WIDTH;
+        height = MARIO_BIG_BBOX_HEIGHT;
 	}
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
 	virtual void Render();

@@ -150,7 +150,6 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
-    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SpatialGrid.cpp" />
     <ClCompile Include="Sprites.cpp" />
     <ClCompile Include="SultansDungeon_Scene.cpp" />

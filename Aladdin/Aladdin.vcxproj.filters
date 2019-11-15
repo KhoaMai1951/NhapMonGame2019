@@ -137,9 +137,6 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="SultansDungeon_Scene.cpp">
       <Filter>Source Files\Scene</Filter>
     </ClCompile>

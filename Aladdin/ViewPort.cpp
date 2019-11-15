@@ -27,8 +27,11 @@ ViewPort::~ViewPort(void)
 
 ViewPort* ViewPort::getInstance()
 {
-	if (_instance == NULL)
-		_instance = new ViewPort(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+    if (_instance == NULL)
+    {
+        _instance = new ViewPort(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+    }
+		
 	return _instance;
 }
 

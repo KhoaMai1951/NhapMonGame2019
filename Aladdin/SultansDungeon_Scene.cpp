@@ -2,7 +2,7 @@
 
 SultansDungeon_Scene::SultansDungeon_Scene()
 {
-    ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(ID_TEX_MAP), map_vector);
+    ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
 
     mario = new CMario();
     mario->AddAnimation(400);		// idle right big
@@ -58,31 +58,39 @@ void SultansDungeon_Scene::Update(DWORD dt)
 
     //Camera follow player (use distance bettween player and camera right-side)
     //Horizontally
-    if (mario->x - camera->getPositionWorld().x > SCREEN_WIDTH / 2)
+    if (mario->x - camera->getPositionWorld().x > SCREEN_ACTUAL_WIDTH / 2)
     {
-    	/*camera->setPositionWorld(D3DXVECTOR2((int)(this->x - SCREEN_WIDTH / 2),
-    		camera->getPositionWorld().y));*/
-    	camera->setPositionWorld(D3DXVECTOR2((int)(mario->x - SCREEN_WIDTH / 2), 
-            camera->getPositionWorld().y));
+    	camera->setPositionWorld(D3DXVECTOR2((int)(mario->x - SCREEN_ACTUAL_WIDTH / 2),  camera->getPositionWorld().y));
+
+        //Check right-most of the map
+        if (camera->getPositionWorld().x > MAP_WIDTH - SCREEN_ACTUAL_WIDTH)
+            camera->setPositionWorld(D3DXVECTOR2(MAP_WIDTH - SCREEN_ACTUAL_WIDTH, camera->getPositionWorld().y));
     }
     else if (mario->x - camera->getPositionWorld().x < 50) //50 is min distance between player and left side of camera
     {
-    	/*camera->setPositionWorld(D3DXVECTOR2((int)(this->x - 50),
-    		camera->getPositionWorld().y));*/
     	camera->setPositionWorld(D3DXVECTOR2((int)(mario->x - 50),
             camera->getPositionWorld().y));
+
+        //Check left-most of the map
+        if(camera->getPositionWorld().x < 0)
+            camera->setPositionWorld(D3DXVECTOR2(0, camera->getPositionWorld().y));
     }
     //Vertically
-   /* if (camera->getPositionWorld().y - mario->y > SCREEN_ACTUAL_HEIGHT * 3/4)
+    if (camera->getPositionWorld().y - mario->y < SCREEN_ACTUAL_HEIGHT * 1 / 4)
     {
-        camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x),
-            mario->y + (SCREEN_ACTUAL_HEIGHT * 3 / 4)));
-    }*/
-    //else if (mario->y - camera->getPositionWorld().y - SCREEN_HEIGHT < 5) //5 is min distance between player and bottom side of camera
-    //{
-    //    camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x),
-    //        mario->y - 5));
-    //}
+         camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, mario->y + (SCREEN_ACTUAL_HEIGHT * 1 / 4)));
+
+        //Check top-most of the map
+         if (camera->getPositionWorld().y > MAP_HEIGHT)
+              camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, MAP_HEIGHT));
+    }
+    else if (mario->y - (camera->getPositionWorld().y - SCREEN_ACTUAL_HEIGHT) < 5 + mario->height) //5 is min distance between player and bottom side of camera
+    {
+        camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x), mario->y + SCREEN_ACTUAL_HEIGHT - (5 + mario->height)));
+        //Check top-most of the map
+         if (camera->getPositionWorld().y < SCREEN_HEIGHT)
+              camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, SCREEN_HEIGHT));
+    }
 
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;

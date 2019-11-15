@@ -151,7 +151,6 @@ void ResourceLoader::LoadSprite()
     textures->Add(ID_TEX_MARIO, L"textures\\mario.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
     textures->Add(ID_TEX_ENEMY, L"textures\\enemies.png", D3DCOLOR_XRGB(3, 26, 110));
-    textures->Add(ID_TEX_MAP, L"textures\\Sultans Dungeon_Back - Copy.png", D3DCOLOR_XRGB(255, 255, 255));
 
 
 
@@ -251,7 +250,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 		//Chuyen toa do y theo goc toa do cua file txt thanh toa do decart
 		ChangeYtoDecart(y);
 
-		if (name == "brick_0")
+		if (name == BRICK_ID)
 		{
 			CBrick* brick = new CBrick();
 			brick->AddAnimation(601);
@@ -261,13 +260,16 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             brick->height = h;
 			objects.push_back(brick);
 		}
-		if (name == "goomba_0 ")
+		if (name == GOOMBA_ID)
 		{
 			CGoomba* goomba = new CGoomba();
 			goomba->AddAnimation(701);
 			goomba->AddAnimation(702);
 			goomba->SetPosition(x, y);
             goomba->SetName(name);
+            goomba->width = w;
+            goomba->height = h;
+            goomba->SetState(GOOMBA_STATE_WALKING);
 			objects.push_back(goomba);
 		}
 	}
