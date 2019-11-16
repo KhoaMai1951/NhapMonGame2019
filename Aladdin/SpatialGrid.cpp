@@ -31,10 +31,16 @@ void SpatialGrid::SetCell(int cell_size)
 void SpatialGrid::Index(CGameObject* object, float& x1, float& y1, float& x2, float& y2)
 {
 	object->GetBoundingBox(x1, y1, x2, y2);
-	x1 = floor(x1 / CellSize);
+	RECT temp = ViewPort::getInstance()->InvertY(x1, y1, x2, y2, object->width, object->height);
+	/*x1 = floor(x1 / CellSize);
 	y1 = floor(y1 / CellSize);
 	x2 = ceil(x2 / CellSize);
-	y2 = ceil(y2 / CellSize);
+	y2 = ceil(y2 / CellSize);*/
+	
+	x1 = floor(temp.left / CellSize);
+	y1 = floor(temp.top / CellSize);
+	x2 = ceil(temp.right / CellSize);
+	y2 = ceil(temp.bottom / CellSize);
 };
 
 //Insert 1 vật thể vào các Cell có chứa vật thể đó
@@ -47,7 +53,7 @@ void SpatialGrid::Insert(CGameObject* object)
 	for (i = x1; i < x2; ++i)
 		for (j = y1; j < y2; ++j)
 			Grid[IndexMakeKey(ss, i, j)].push_back(object);
-};
+}
 
 /* lấy danh sách các vật thể thuộc tọa độ của lưới
 ( dùng cho nhân vật chính của game, để lấy danh sách các vật thể còn lại thuộc
@@ -56,21 +62,36 @@ các Cell có chứa nhân vật chính, để xét va chạm của lưới */
 set<CGameObject*> SpatialGrid::Get(float x1, float y1, float x2, float y2)
 {
 	// Determine which grid cell it's in.
+
 	x1 = floor(x1 / CellSize);
 	y1 = floor(y1 / CellSize);
 	x2 = ceil(x2 / CellSize);
 	y2 = ceil(y2 / CellSize);
+	
+	//RECT temp = ViewPort::getInstance()->InvertY(x1, x2, y1, y2, SCREEN_WIDTH, SCREEN_HEIGHT);
+	//x1 = floor(temp.left / CellSize);
+	//y1 = floor(temp.top / CellSize);
+	//x2 = ceil(temp.right / CellSize);
+	//y2 = ceil(temp.bottom / CellSize);
+	
 	set<CGameObject*> result;
 	stringstream ss;
 	string key;
-	for (float i = x1; i < x2; ++i)
-		for (float j = y1; j < y2; ++j)
+	//for (float i = x1; i < x2; ++i)
+	//	for (float j = y1; j < y2; ++j)
+	//	{
+	//		key = IndexMakeKey(ss, i, j);
+	//		vector<CGameObject*> v_cell = Grid[key];
+	//		result.insert(v_cell.begin(), v_cell.end());
+	//	}
+
+	for (float i = x1; i < x2; i++)
+		for (float j = y1; j < y2; j++)
 		{
 			key = IndexMakeKey(ss, i, j);
 			vector<CGameObject*> v_cell = Grid[key];
 			result.insert(v_cell.begin(), v_cell.end());
 		}
-	//test
 	
 	return result;
 };

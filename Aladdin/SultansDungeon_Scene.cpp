@@ -44,13 +44,31 @@ void SultansDungeon_Scene::Update(DWORD dt)
     
     RECT cam_rect = camera->getBounding();
 
-    set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(cam_rect.left, cam_rect.top, cam_rect.right, cam_rect.bottom);
+   /* set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(cam_rect.left, 
+		cam_rect.top, cam_rect.right, cam_rect.bottom);*/
+
+	//set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(mario->x,
+	//	mario->y, mario->x + mario->width, mario->y - mario->height);
+
+	//set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(200,150,3000,10);
+	RECT temp = camera->InvertY(cam_rect.left, cam_rect.top, cam_rect.right, 
+		cam_rect.bottom, SCREEN_WIDTH, SCREEN_HEIGHT);
+	set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(temp.left, 
+		temp.top, temp.right, temp.bottom);
 
     //Truyền set các obj thuộc các lưới có player vào vector
-    vector<LPGAMEOBJECT> coObjects(set_gameobject.begin(), set_gameobject.end()); //Vector chứa các Object va chạm (trừ index 0 vì là Mario)
+    vector<LPGAMEOBJECT> coObjects(set_gameobject.begin(), 
+		set_gameobject.end()); //Vector chứa các Object va chạm (trừ index 0 vì là Mario)
 
     //Update objects
     objects[0]->Update(dt, &coObjects); //player
+
+	////test
+	//for (int i = 0; i < objects.size(); i++)
+	//{
+	//	objects[i]->Update(dt, &coObjects);
+	//}
+
     for (int i = 0; i < coObjects.size(); i++)
     {
         coObjects[i]->Update(dt, &coObjects);

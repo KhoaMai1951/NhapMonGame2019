@@ -36,6 +36,7 @@ public:
 	*/
 	RECT getBounding();
 	bool checkOverlap(RECT r1, RECT r2);
+	RECT InvertY(float left, float top, float right, float bottom, float width, float height);
 
 private:
 	static ViewPort* _instance;

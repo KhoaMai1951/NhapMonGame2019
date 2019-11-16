@@ -13,7 +13,7 @@
 
 #define CELL_SIZE 240
 
-#define MAX_FRAME_RATE 120
+#define MAX_FRAME_RATE 60
 
 //Object ID from text
 #define GROUND0_ID "Ground0"

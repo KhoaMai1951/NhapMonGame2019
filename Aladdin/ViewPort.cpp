@@ -29,7 +29,8 @@ ViewPort* ViewPort::getInstance()
 {
     if (_instance == NULL)
     {
-        _instance = new ViewPort(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+		_instance = new ViewPort(0, SCREEN_HEIGHT, SCREEN_WIDTH, SCREEN_HEIGHT);
+		//_instance = new ViewPort(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT);
     }
 		
 	return _instance;
@@ -121,5 +122,15 @@ bool ViewPort::checkOverlap(RECT r1, RECT r2)
 		return false;
 
 	return true;
+}
+
+RECT ViewPort::InvertY(float left, float top, float right, float bottom, float width, float height)
+{
+	RECT result;
+	result.left = left;
+	result.top = top - height;
+	result.right = right;
+	result.bottom = bottom + height;
+	return result;
 }
 

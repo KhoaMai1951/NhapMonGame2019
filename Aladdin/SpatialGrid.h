@@ -4,6 +4,7 @@
 #include "GameObject.h"
 #include <map>
 #include "define.h"
+#include "ViewPort.h"
 
 class SpatialGrid
 {
