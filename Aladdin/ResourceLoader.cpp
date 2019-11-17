@@ -27,110 +27,115 @@ void ResourceLoader::CreateAnimation()
     LPANIMATION ani;
     CAnimations* animations = CAnimations::GetInstance();
 
-    ////Aladdin animation
-    //int aladdin_sprite_id = 10000;
-    ////idle right
-    //ani = new CAnimation(100);
-    //ani->Add(aladdin_sprite_id + 1);
-    //animations->Add(AladdinAnimation::ALADDIN + 1, ani);
+#pragma region
+    int aladdin_sprite_id = 10000;
+    //idle right
+    ani = new CAnimation(75);
+    ani->Add(aladdin_sprite_id + 1);
+    animations->Add(101, ani);
 
-    ////idle right
-    //ani = new CAnimation(100);
-    //ani->Add(-(aladdin_sprite_id + 1));
-    //animations->Add(-(AladdinAnimation::ALADDIN + 1), ani);
+    //idle left
+    ani = new CAnimation(75);
+    ani->Add(-10001);
+    animations->Add(-101, ani);
 
-    ////running right
-    //ani = new CAnimation(100);
-    //for (int i = 1; i <= 13; i++)
-    //{
-    //	ani->Add(aladdin_sprite_id + i);
-    //}
-    //animations->Add(AladdinAnimation::ALADDIN + 2, ani);
+    //running right
+    ani = new CAnimation(75);
+    for (int i = 2; i <= 13; i++)
+    {
+    	ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(102, ani);
 
-    ////running left
-    //ani = new CAnimation(100);
-    //for (int i = 1; i <= 13; i++)
-    //{
-    //	ani->Add(-((aladdin_sprite_id + i));
-    //}
-    //animations->Add(-(AladdinAnimation::ALADDIN + 2), ani);
+    //running left
+    ani = new CAnimation(75);
+    for (int i = 2; i <= 13; i++)
+    {
+    	ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-102, ani);
 
-    ////Animation ground
-    //ani = new CAnimation(100);
-    //ani->Add(30001);
-    //animations->Add(301, ani);
+    //jump right
+    ani = new CAnimation(75);
+    for (int i = 14; i <= 23; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(103, ani);
 
-    //////-------Load Map from file
-    //LPDIRECT3DTEXTURE9 texMap = textures->Get(TEX_MAP_DUNGEON);
-    ///*ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt",
-    //	texMap, objects);*/
-    //LoadMapFromFile("Map_Background.txt",texMap);
-    ///*ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt",
-    //	texMap, objects);*/
+    //jump left
+    ani = new CAnimation(75);
+    for (int i = 14; i <= 23; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-103, ani);
 
+#pragma endregion Aladdin
 
-    ////Load Object From File
-    //string FileName = "test2.txt";
-    //ResourceLoader::GetInstance()->LoadObjectFromFile(FileName);
-
-    ani = new CAnimation(100);	// idle big right
-    ani->Add(10001);
-    animations->Add(400, ani);
-
-    ani = new CAnimation(100);	// idle big left
-    ani->Add(10011);
-    animations->Add(401, ani);
-
-    ani = new CAnimation(100);	// idle small right
-    ani->Add(10021);
-    animations->Add(402, ani);
-
-    ani = new CAnimation(100);	// idle small left
-    ani->Add(10031);
-    animations->Add(403, ani);
-
-    ani = new CAnimation(100);	// walk right big
-    ani->Add(10001);
-    ani->Add(10002);
-    ani->Add(10003);
-    animations->Add(500, ani);
-
-    ani = new CAnimation(100);	// // walk left big
-    ani->Add(10011);
-    ani->Add(10012);
-    ani->Add(10013);
-    animations->Add(501, ani);
-
-    ani = new CAnimation(100);	// walk right small
-    ani->Add(10021);
-    ani->Add(10022);
-    ani->Add(10023);
-    animations->Add(502, ani);
-
-    ani = new CAnimation(100);	// walk left small
-    ani->Add(10031);
-    ani->Add(10032);
-    ani->Add(10033);
-    animations->Add(503, ani);
-
-
-    ani = new CAnimation(100);		// Mario die
-    ani->Add(10099);
-    animations->Add(599, ani);
-
-
-    ani = new CAnimation(100);		// brick
-    ani->Add(20001);
-    animations->Add(601, ani);
-
-    ani = new CAnimation(300);		// Goomba walk
+    //Animation ground
+    ani = new CAnimation(75);
     ani->Add(30001);
-    ani->Add(30002);
-    animations->Add(701, ani);
+    animations->Add(301, ani);
 
-    ani = new CAnimation(1000);		// Goomba dead
-    ani->Add(30003);
-    animations->Add(702, ani);
+    //ani = new CAnimation(100);	// idle big right
+    //ani->Add(10001);
+    //animations->Add(400, ani);
+
+    //ani = new CAnimation(100);	// idle big left
+    //ani->Add(10011);
+    //animations->Add(401, ani);
+
+    //ani = new CAnimation(100);	// idle small right
+    //ani->Add(10021);
+    //animations->Add(402, ani);
+
+    //ani = new CAnimation(100);	// idle small left
+    //ani->Add(10031);
+    //animations->Add(403, ani);
+
+    //ani = new CAnimation(100);	// walk right big
+    //ani->Add(10001);
+    //ani->Add(10002);
+    //ani->Add(10003);
+    //animations->Add(500, ani);
+
+    //ani = new CAnimation(100);	// // walk left big
+    //ani->Add(10011);
+    //ani->Add(10012);
+    //ani->Add(10013);
+    //animations->Add(501, ani);
+
+    //ani = new CAnimation(100);	// walk right small
+    //ani->Add(10021);
+    //ani->Add(10022);
+    //ani->Add(10023);
+    //animations->Add(502, ani);
+
+    //ani = new CAnimation(100);	// walk left small
+    //ani->Add(10031);
+    //ani->Add(10032);
+    //ani->Add(10033);
+    //animations->Add(503, ani);
+
+
+    //ani = new CAnimation(100);		// Mario die
+    //ani->Add(10099);
+    //animations->Add(599, ani);
+
+
+    //ani = new CAnimation(100);		// brick
+    //ani->Add(20001);
+    //animations->Add(601, ani);
+
+    //ani = new CAnimation(300);		// Goomba walk
+    //ani->Add(30001);
+    //ani->Add(30002);
+    //animations->Add(701, ani);
+
+    //ani = new CAnimation(1000);		// Goomba dead
+    //ani->Add(30003);
+    //animations->Add(702, ani);
 }
 
 void ResourceLoader::LoadSprite()
@@ -147,48 +152,71 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_APPLE, L"textures\\Apple.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_GROUND, L"textures\\Ground.png", D3DCOLOR_XRGB(255, 255, 255));
 	
-    //temp
-    textures->Add(ID_TEX_MARIO, L"textures\\mario.png", D3DCOLOR_XRGB(255, 255, 255));
-    textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
-    textures->Add(ID_TEX_ENEMY, L"textures\\enemies.png", D3DCOLOR_XRGB(3, 26, 110));
+    ////temp
+    //textures->Add(ID_TEX_MARIO, L"textures\\mario.png", D3DCOLOR_XRGB(255, 255, 255));
+    //textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
+    //textures->Add(ID_TEX_ENEMY, L"textures\\enemies.png", D3DCOLOR_XRGB(3, 26, 110));
 
 
 
     CSprites* sprites = CSprites::GetInstance();
 
+#pragma region
     LPDIRECT3DTEXTURE9 texAladdin = textures->Get(TEX_ALADDIN);
     LPDIRECT3DTEXTURE9 texAladdin_Left = textures->Get(TEX_ALADDIN_LEFT);
 
-    ////Aladdin
-    //sprites->Add(10001, 14, 1225, 54, 1273, texAladdin);		// idle right
-    //sprites->Add(10002, 66, 1222, 109, 1273, texAladdin);
-    //sprites->Add(10003, 120, 1220, 161, 1273, texAladdin);
-    //sprites->Add(10004, 171, 1216, 212, 1273, texAladdin);
-    //sprites->Add(10005, 220, 1216, 272, 1273, texAladdin);
-    //sprites->Add(10006, 279, 1219, 325, 1273, texAladdin);
-    //sprites->Add(10007, 334, 1215, 376, 1273, texAladdin);
-    //sprites->Add(10008, 386, 1221, 427, 1273, texAladdin);
-    //sprites->Add(10009, 440, 1219, 475, 1273, texAladdin);
-    //sprites->Add(10010, 488, 1216, 537, 1273, texAladdin);
-    //sprites->Add(10011, 547, 1215, 602, 1273, texAladdin);
-    //sprites->Add(10012, 611, 1219, 666, 1273, texAladdin);
-    //sprites->Add(10013, 679, 1218, 723, 1273, texAladdin);
+    sprites->Add(10001, 14, 1225, 54, 1273, texAladdin);		// idle right
+    sprites->Add(10002, 66, 1222, 109, 1273, texAladdin);       //running right
+    sprites->Add(10003, 120, 1220, 161, 1273, texAladdin);
+    sprites->Add(10004, 171, 1216, 212, 1273, texAladdin);
+    sprites->Add(10005, 220, 1216, 272, 1273, texAladdin);
+    sprites->Add(10006, 279, 1219, 325, 1273, texAladdin);
+    sprites->Add(10007, 334, 1215, 376, 1273, texAladdin);
+    sprites->Add(10008, 386, 1221, 427, 1273, texAladdin);
+    sprites->Add(10009, 440, 1219, 475, 1273, texAladdin);
+    sprites->Add(10010, 488, 1216, 537, 1273, texAladdin);
+    sprites->Add(10011, 547, 1215, 602, 1273, texAladdin);
+    sprites->Add(10012, 611, 1219, 666, 1273, texAladdin);
+    sprites->Add(10013, 679, 1218, 723, 1273, texAladdin);
 
-    //sprites->Add(-10001, 1067, 1225, 1107, 1273, texAladdin_Left); //left
-    //sprites->Add(-10002, 1012, 1222, 1055, 1273, texAladdin_Left);
-    //sprites->Add(-10003, 960, 1220, 1001, 1273, texAladdin_Left);
-    //sprites->Add(-10004, 909, 1216, 950, 1273, texAladdin_Left);
-    //sprites->Add(-10005, 849, 1216, 901, 1273, texAladdin_Left);
-    //sprites->Add(-10006, 796, 1219, 842, 1273, texAladdin_Left);
-    //sprites->Add(-10007, 745, 1215, 787, 1273, texAladdin_Left);
-    //sprites->Add(-10008, 694, 1221, 690, 1273, texAladdin_Left);
-    //sprites->Add(-10009, 646, 1219, 681, 1273, texAladdin_Left);
-    //sprites->Add(-10010, 584, 1216, 633, 1273, texAladdin_Left);
-    //sprites->Add(-10011, 519, 1215, 574, 1273, texAladdin_Left);
-    //sprites->Add(-10012, 455, 1219, 510, 1273, texAladdin_Left);
-    //sprites->Add(-10013, 398, 1218, 442, 1273, texAladdin_Left);
+    sprites->Add(-10001, 1067, 1225, 1107, 1273, texAladdin_Left); //idle left
+    sprites->Add(-10002, 1012, 1222, 1055, 1273, texAladdin_Left); //running left
+    sprites->Add(-10003, 960, 1220, 1001, 1273, texAladdin_Left);
+    sprites->Add(-10004, 909, 1216, 950, 1273, texAladdin_Left);
+    sprites->Add(-10005, 849, 1216, 901, 1273, texAladdin_Left);
+    sprites->Add(-10006, 796, 1219, 842, 1273, texAladdin_Left);
+    sprites->Add(-10007, 745, 1215, 787, 1273, texAladdin_Left);
+    sprites->Add(-10008, 694, 1221, 690, 1273, texAladdin_Left);
+    sprites->Add(-10009, 646, 1219, 681, 1273, texAladdin_Left);
+    sprites->Add(-10010, 584, 1216, 633, 1273, texAladdin_Left);
+    sprites->Add(-10011, 519, 1215, 574, 1273, texAladdin_Left);
+    sprites->Add(-10012, 455, 1219, 510, 1273, texAladdin_Left);
+    sprites->Add(-10013, 398, 1218, 442, 1273, texAladdin_Left);
 
-	//Guard 0
+    sprites->Add(10014, 8, 846, 67, 889, texAladdin); //jump right
+    sprites->Add(10015, 75, 828, 127, 890, texAladdin);
+    sprites->Add(10016, 137, 829, 191, 890, texAladdin);
+    sprites->Add(10017, 203, 824, 257, 893, texAladdin);
+    sprites->Add(10018, 269, 820, 320, 894, texAladdin);
+    sprites->Add(10019, 336, 829, 374, 895, texAladdin);
+    sprites->Add(10020, 390, 818, 425, 897, texAladdin);
+    sprites->Add(10021, 448, 808, 482, 901, texAladdin);
+    sprites->Add(10022, 504, 810, 538, 903, texAladdin);
+    sprites->Add(10023, 564, 812, 598, 905, texAladdin);
+
+    sprites->Add(-10014, 523, 812, 557, 905, texAladdin); //jump left
+    sprites->Add(-10015, 583, 810, 617, 903, texAladdin);
+    sprites->Add(-10016, 639, 808, 673, 901, texAladdin);
+    sprites->Add(-10017, 696, 818, 731, 897, texAladdin);
+    sprites->Add(-10018, 747, 829, 785, 895, texAladdin);
+    sprites->Add(-10019, 801, 820, 852, 894, texAladdin);
+    sprites->Add(-10020, 864, 824, 918, 893, texAladdin);
+    sprites->Add(-10021, 930, 829, 984, 890, texAladdin);
+    sprites->Add(-10022, 994, 828, 1046, 890, texAladdin);
+    sprites->Add(-10023, 1054, 846, 1113, 889, texAladdin);
+
+#pragma endregion Aladdin
+	
 #pragma region
 	LPDIRECT3DTEXTURE9 texGuards = textures->Get(TEX_GUARD);
 
@@ -217,9 +245,8 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(-20021, 345, 160, 384, 233, texGuards);
 	sprites->Add(-20022, 399, 185, 439, 233, texGuards);
 	sprites->Add(-20023, 446, 175, 490, 233, texGuards);
-#pragma endregion
+#pragma endregion Guard 0
 
-	//Guard 1
 #pragma region
 	sprites->Add(-20001, 69, 253, 116, 307, texGuards);   //Guard 1 walking to the right
 	sprites->Add(-20002, 120, 251, 164, 307, texGuards);
@@ -257,10 +284,9 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(-20029, 364, 515, 427, 586, texGuards);
 	sprites->Add(-20030, 438, 538, 492, 586, texGuards);
 
-#pragma endregion
+#pragma endregion Guard 1
 
-	//Dungeon_Objects
-#pragma region
+#pragma region 
 	LPDIRECT3DTEXTURE9 texDungeonObjects = textures->Get(TEX_DUNGEON_ENVIRONMENT);
 	
 	sprites->Add(-30001, 177, 5, 217, 346, texDungeonObjects); //pillar 0
@@ -305,57 +331,59 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(-30031, 569, 628, 602, 681, texDungeonObjects);
 	sprites->Add(-30032, 607, 628, 640, 680, texDungeonObjects);
 
-#pragma endregion
+#pragma endregion Dungeon_Objects
 
-    //LPDIRECT3DTEXTURE9 texApple = textures->Get(TEX_APPLE);
-    ////Apple
-    //sprites->Add(20001, 8, 18, 19, 30, texApple);		// idle apple
-    //sprites->Add(20002, 35, 19, 47, 30, texApple);
-    //sprites->Add(20003, 62, 19, 73, 31, texApple);
-    //sprites->Add(20004, 87, 19, 99, 30, texApple);
-    //sprites->Add(20005, 113, 20, 120, 30, texApple);
-    //sprites->Add(20006, 133, 15, 153, 33, texApple);
-    //sprites->Add(20007, 163, 13, 192, 35, texApple);
-    //sprites->Add(20008, 240, 11, 235, 36, texApple);
-    //sprites->Add(20009, 251, 10, 281, 37, texApple);
+#pragma region
+    LPDIRECT3DTEXTURE9 texApple = textures->Get(TEX_APPLE);
 
-    //LPDIRECT3DTEXTURE9 texGround = textures->Get(TEX_GROUND);
-    ////Ground
-    //sprites->Add(30001, 10, 10, 100, 100, texGround);
+    sprites->Add(20001, 8, 18, 19, 30, texApple);		// idle apple
+    sprites->Add(20002, 35, 19, 47, 30, texApple);
+    sprites->Add(20003, 62, 19, 73, 31, texApple);
+    sprites->Add(20004, 87, 19, 99, 30, texApple);
+    sprites->Add(20005, 113, 20, 120, 30, texApple);
+    sprites->Add(20006, 133, 15, 153, 33, texApple);
+    sprites->Add(20007, 163, 13, 192, 35, texApple);
+    sprites->Add(20008, 240, 11, 235, 36, texApple);
+    sprites->Add(20009, 251, 10, 281, 37, texApple);
+#pragma region Apple
 
-    LPDIRECT3DTEXTURE9 texMario = textures->Get(ID_TEX_MARIO);
-    // Mario big
-    sprites->Add(10001, 246, 154, 260, 181, texMario);		// idle right
+    //Ground
+    LPDIRECT3DTEXTURE9 texGround = textures->Get(TEX_GROUND);  
+    sprites->Add(30001, 10, 10, 100, 100, texGround);
 
-    sprites->Add(10002, 275, 154, 290, 181, texMario);		// walk
-    sprites->Add(10003, 304, 154, 321, 181, texMario);
+    //LPDIRECT3DTEXTURE9 texMario = textures->Get(ID_TEX_MARIO);
+    //// Mario big
+    //sprites->Add(10001, 246, 154, 260, 181, texMario);		// idle right
 
-    sprites->Add(10011, 186, 154, 200, 181, texMario);		// idle left
-    sprites->Add(10012, 155, 154, 170, 181, texMario);		// walk
-    sprites->Add(10013, 125, 154, 140, 181, texMario);
+    //sprites->Add(10002, 275, 154, 290, 181, texMario);		// walk
+    //sprites->Add(10003, 304, 154, 321, 181, texMario);
 
-    sprites->Add(10099, 215, 120, 231, 135, texMario);		// die 
+    //sprites->Add(10011, 186, 154, 200, 181, texMario);		// idle left
+    //sprites->Add(10012, 155, 154, 170, 181, texMario);		// walk
+    //sprites->Add(10013, 125, 154, 140, 181, texMario);
 
-    // Mario small
-    sprites->Add(10021, 247, 0, 259, 15, texMario);			// idle small right
-    sprites->Add(10022, 275, 0, 291, 15, texMario);			// walk 
-    sprites->Add(10023, 306, 0, 320, 15, texMario);			// 
+    //sprites->Add(10099, 215, 120, 231, 135, texMario);		// die 
 
-    sprites->Add(10031, 187, 0, 198, 15, texMario);			// idle small left
+    //// Mario small
+    //sprites->Add(10021, 247, 0, 259, 15, texMario);			// idle small right
+    //sprites->Add(10022, 275, 0, 291, 15, texMario);			// walk 
+    //sprites->Add(10023, 306, 0, 320, 15, texMario);			// 
 
-    sprites->Add(10032, 155, 0, 170, 15, texMario);			// walk
-    sprites->Add(10033, 125, 0, 139, 15, texMario);			// 
+    //sprites->Add(10031, 187, 0, 198, 15, texMario);			// idle small left
 
-    // Platform
-    LPDIRECT3DTEXTURE9 texMisc = textures->Get(ID_TEX_MISC);
-    sprites->Add(20001, 408, 225, 424, 241, texMisc);
+    //sprites->Add(10032, 155, 0, 170, 15, texMario);			// walk
+    //sprites->Add(10033, 125, 0, 139, 15, texMario);			// 
 
-    // Enemy
-    LPDIRECT3DTEXTURE9 texEnemy = textures->Get(ID_TEX_ENEMY);
-    sprites->Add(30001, 5, 14, 21, 29, texEnemy);
-    sprites->Add(30002, 25, 14, 41, 29, texEnemy);
+    //// Platform
+    //LPDIRECT3DTEXTURE9 texMisc = textures->Get(ID_TEX_MISC);
+    //sprites->Add(20001, 408, 225, 424, 241, texMisc);
 
-    sprites->Add(30003, 45, 21, 61, 29, texEnemy); // die sprite
+    //// Enemy
+    //LPDIRECT3DTEXTURE9 texEnemy = textures->Get(ID_TEX_ENEMY);
+    //sprites->Add(30001, 5, 14, 21, 29, texEnemy);
+    //sprites->Add(30002, 25, 14, 41, 29, texEnemy);
+
+    //sprites->Add(30003, 45, 21, 61, 29, texEnemy); // die sprite
 }
 
 void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects)
@@ -368,7 +396,18 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 		//Chuyen toa do y theo goc toa do cua file txt thanh toa do decart
 		ChangeYtoDecart(y);
 
-		if (name == BRICK_ID)
+        if (name == GROUND0_ID)
+        {
+            Ground* ground0 = new Ground();
+            ground0->AddAnimation(301);
+            ground0->SetPosition(x, y);
+            ground0->SetName(name);
+            ground0->width = w;
+            ground0->height = h;
+            objects.push_back(ground0);
+        }
+
+		/*if (name == BRICK_ID)
 		{
 			CBrick* brick = new CBrick();
 			brick->AddAnimation(601);
@@ -389,7 +428,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             goomba->height = h;
             goomba->SetState(GOOMBA_STATE_WALKING);
 			objects.push_back(goomba);
-		}
+		}*/
 	}
 }
 

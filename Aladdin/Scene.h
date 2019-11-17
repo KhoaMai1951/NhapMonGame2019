@@ -3,7 +3,8 @@
 #include <fstream>
 #include <sstream>
 
-#include "Mario.h"
+//#include "Mario.h"
+#include "Aladdin.h"
 #include "Map.h"
 #include "Game.h"
 #include "ViewPort.h"
@@ -26,7 +27,8 @@ class Scene
 {
 protected:
     //int tile_count; //số lượng tile
-    CMario* mario;
+    //CMario* mario;
+    Aladdin* aladdin;
     //vector<LPGAMEOBJECT*> Tiles; //chứa tile
     vector<LPGAMEOBJECT> map_vector;
     vector<LPGAMEOBJECT> objects; //All game objects

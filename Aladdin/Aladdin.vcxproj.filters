@@ -93,6 +93,12 @@
     <ClInclude Include="SultansDungeon_Scene.h">
       <Filter>Header Files\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Aladdin.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ground.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -139,6 +145,12 @@
     </ClCompile>
     <ClCompile Include="SultansDungeon_Scene.cpp">
       <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Aladdin.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ground.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

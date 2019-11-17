@@ -4,22 +4,36 @@ SultansDungeon_Scene::SultansDungeon_Scene()
 {
     ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
 
-    mario = new CMario();
-    mario->AddAnimation(400);		// idle right big
-    mario->AddAnimation(401);		// idle left big
-    mario->AddAnimation(402);		// idle right small
-    mario->AddAnimation(403);		// idle left small
+    //mario = new CMario();
+    //mario->AddAnimation(400);		// idle right big
+    //mario->AddAnimation(401);		// idle left big
+    //mario->AddAnimation(402);		// idle right small
+    //mario->AddAnimation(403);		// idle left small
 
-    mario->AddAnimation(500);		// walk right big
-    mario->AddAnimation(501);		// walk left big
-    mario->AddAnimation(502);		// walk right small
-    mario->AddAnimation(503);		// walk left big
+    //mario->AddAnimation(500);		// walk right big
+    //mario->AddAnimation(501);		// walk left big
+    //mario->AddAnimation(502);		// walk right small
+    //mario->AddAnimation(503);		// walk left big
 
-    mario->AddAnimation(599);		// die
+    //mario->AddAnimation(599);		// die
 
-    mario->SetPosition(50.0f, 100);
-    objects.push_back(mario);
+    //mario->SetPosition(50.0f, 100);
+    //objects.push_back(mario);
 
+#pragma region 
+    aladdin = new Aladdin();
+    aladdin->AddAnimation(101); //idle right 
+    aladdin->AddAnimation(-101); //idle left 
+    aladdin->AddAnimation(102); //running right
+    aladdin->AddAnimation(-102); //running left
+    aladdin->AddAnimation(103); //jump right
+    aladdin->AddAnimation(-103); //jump left
+
+    aladdin->SetPosition(50.0f, 150.f);
+    objects.push_back(aladdin);
+#pragma endregion Initalize Aladdin
+
+    //ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects);
     ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects);
 
 
@@ -58,35 +72,30 @@ void SultansDungeon_Scene::Update(DWORD dt)
 
     //Truyền set các obj thuộc các lưới có player vào vector
     vector<LPGAMEOBJECT> coObjects(set_gameobject.begin(), 
-		set_gameobject.end()); //Vector chứa các Object va chạm (trừ index 0 vì là Mario)
+		set_gameobject.end()); //Vector chứa các Object va chạm (trừ index 0 vì là player)
 
     //Update objects
     objects[0]->Update(dt, &coObjects); //player
-
-	////test
-	//for (int i = 0; i < objects.size(); i++)
-	//{
-	//	objects[i]->Update(dt, &coObjects);
-	//}
 
     for (int i = 0; i < coObjects.size(); i++)
     {
         coObjects[i]->Update(dt, &coObjects);
     }
 
+#pragma region
     //Camera follow player (use distance bettween player and camera right-side)
     //Horizontally
-    if (mario->x - camera->getPositionWorld().x > SCREEN_ACTUAL_WIDTH / 2)
+    if (aladdin->x - camera->getPositionWorld().x > SCREEN_ACTUAL_WIDTH / 2)
     {
-    	camera->setPositionWorld(D3DXVECTOR2((int)(mario->x - SCREEN_ACTUAL_WIDTH / 2),  camera->getPositionWorld().y));
+    	camera->setPositionWorld(D3DXVECTOR2((int)(aladdin->x - SCREEN_ACTUAL_WIDTH / 2),  camera->getPositionWorld().y));
 
         //Check right-most of the map
         if (camera->getPositionWorld().x > MAP_WIDTH - SCREEN_ACTUAL_WIDTH)
             camera->setPositionWorld(D3DXVECTOR2(MAP_WIDTH - SCREEN_ACTUAL_WIDTH, camera->getPositionWorld().y));
     }
-    else if (mario->x - camera->getPositionWorld().x < 50) //50 is min distance between player and left side of camera
+    else if (aladdin->x - camera->getPositionWorld().x < 50) //50 is min distance between player and left side of camera
     {
-    	camera->setPositionWorld(D3DXVECTOR2((int)(mario->x - 50),
+    	camera->setPositionWorld(D3DXVECTOR2((int)(aladdin->x - 50),
             camera->getPositionWorld().y));
 
         //Check left-most of the map
@@ -94,21 +103,22 @@ void SultansDungeon_Scene::Update(DWORD dt)
             camera->setPositionWorld(D3DXVECTOR2(0, camera->getPositionWorld().y));
     }
     //Vertically
-    if (camera->getPositionWorld().y - mario->y < SCREEN_ACTUAL_HEIGHT * 1 / 4)
+    if (camera->getPositionWorld().y - aladdin->y < SCREEN_ACTUAL_HEIGHT * 1 / 4)
     {
-         camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, mario->y + (SCREEN_ACTUAL_HEIGHT * 1 / 4)));
+         camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, aladdin->y + (SCREEN_ACTUAL_HEIGHT * 1 / 4)));
 
         //Check top-most of the map
          if (camera->getPositionWorld().y > MAP_HEIGHT)
               camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, MAP_HEIGHT));
     }
-    else if (mario->y - (camera->getPositionWorld().y - SCREEN_ACTUAL_HEIGHT) < 5 + mario->height) //5 is min distance between player and bottom side of camera
+    else if (aladdin->y - (camera->getPositionWorld().y - SCREEN_ACTUAL_HEIGHT) < 5 + aladdin->height) //5 is min distance between player and bottom side of camera
     {
-        camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x), mario->y + SCREEN_ACTUAL_HEIGHT - (5 + mario->height)));
+        camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x), aladdin->y + SCREEN_ACTUAL_HEIGHT - (5 + aladdin->height)));
         //Check top-most of the map
          if (camera->getPositionWorld().y < SCREEN_HEIGHT)
               camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, SCREEN_HEIGHT));
     }
+#pragma endregion Camera
 
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;

@@ -7,5 +7,4 @@ public:
     SultansDungeon_Scene();
     void Update(DWORD);
     void Render();
-    void LoadResources();
 };
