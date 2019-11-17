@@ -146,7 +146,7 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_GUARD_LEFT, L"textures\\Guards_left.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_APPLE, L"textures\\Apple.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_GROUND, L"textures\\Ground.png", D3DCOLOR_XRGB(255, 255, 255));
-
+	
     //temp
     textures->Add(ID_TEX_MARIO, L"textures\\mario.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
@@ -188,6 +188,124 @@ void ResourceLoader::LoadSprite()
     //sprites->Add(-10012, 455, 1219, 510, 1273, texAladdin_Left);
     //sprites->Add(-10013, 398, 1218, 442, 1273, texAladdin_Left);
 
+	//Guard 0
+#pragma region
+	LPDIRECT3DTEXTURE9 texGuards = textures->Get(TEX_GUARD);
+
+	sprites->Add(-20001, 99, 11, 135, 76, texGuards);	//sprites for Guards 0 walking right
+	sprites->Add(-20002, 140, 9, 190, 76, texGuards);
+	sprites->Add(-20003, 196, 9, 239, 76, texGuards);
+	sprites->Add(-20004, 247, 10, 284, 76, texGuards);
+	sprites->Add(-20005, 289, 11, 334, 76, texGuards);
+	sprites->Add(-20006, 343, 11, 389, 76, texGuards);
+	sprites->Add(-20007, 400, 10, 445, 76, texGuards);
+	sprites->Add(-20008, 451, 9, 496, 76, texGuards);
+
+	sprites->Add(-20009, 42, 96, 83, 156, texGuards);	//sprites for Guards 0 attack
+	sprites->Add(-20010, 143, 96, 220, 156, texGuards);
+	sprites->Add(-20011, 294, 97, 380, 156, texGuards);
+	sprites->Add(-20012, 472, 98, 564, 156, texGuards);
+	sprites->Add(-20013, 671, 96, 720, 156, texGuards);
+	sprites->Add(-20014, 816, 84, 853, 156, texGuards);
+
+	sprites->Add(-20015, 20, 166, 65, 233, texGuards); //sprites for Guards 0 hurt
+	sprites->Add(-20016, 80, 185, 120, 233, texGuards);
+	sprites->Add(-20017, 133, 184, 180, 233, texGuards);
+	sprites->Add(-20018, 188, 162, 230, 233, texGuards);
+	sprites->Add(-20019, 242, 171, 288, 233, texGuards);
+	sprites->Add(-20020, 296, 165, 337, 233, texGuards);
+	sprites->Add(-20021, 345, 160, 384, 233, texGuards);
+	sprites->Add(-20022, 399, 185, 439, 233, texGuards);
+	sprites->Add(-20023, 446, 175, 490, 233, texGuards);
+#pragma endregion
+
+	//Guard 1
+#pragma region
+	sprites->Add(-20001, 69, 253, 116, 307, texGuards);   //Guard 1 walking to the right
+	sprites->Add(-20002, 120, 251, 164, 307, texGuards);
+	sprites->Add(-20003, 172, 254, 214, 307, texGuards);
+	sprites->Add(-20004, 219, 255, 268, 307, texGuards);
+	sprites->Add(-20005, 274, 253, 325, 307, texGuards);
+	sprites->Add(-20006, 331, 252, 387, 307, texGuards);
+	sprites->Add(-20007, 391, 253, 443, 307, texGuards);
+	sprites->Add(-20008, 449, 255, 496, 307, texGuards);
+
+	sprites->Add(-20009, 54, 317, 98, 370, texGuards);    //Guard 1 taunt
+	sprites->Add(-20010, 167, 317, 216, 370, texGuards);
+	sprites->Add(-20011, 283, 317, 341, 370, texGuards);
+	sprites->Add(-20012, 392, 317, 446, 370, texGuards);
+	sprites->Add(-20013, 513, 316, 550, 370, texGuards);
+	sprites->Add(-20014, 613, 317, 657, 370, texGuards);
+
+	sprites->Add(-20015, 67, 384, 162, 430, texGuards); //Guard 1 attack 1
+	sprites->Add(-20016, 223, 385, 311, 430, texGuards);
+	sprites->Add(-20016, 376, 387, 451, 430, texGuards);
+	sprites->Add(-20017, 515, 388, 585, 430, texGuards);
+	sprites->Add(-20018, 644, 386, 711, 430, texGuards);
+	sprites->Add(-20019, 761, 378, 816, 430, texGuards);
+
+	sprites->Add(-20020, 44, 440, 132, 513, texGuards); //Guard 1 attack 2
+	sprites->Add(-20021, 206, 451, 320, 507, texGuards);
+	sprites->Add(-20022, 330, 441, 382, 507, texGuards);
+	sprites->Add(-20023, 434, 434, 477, 507, texGuards);
+	sprites->Add(-20024, 550, 447, 593, 507, texGuards);
+
+	sprites->Add(-20025, 50, 530, 116, 586, texGuards); //Guard 1 hurt
+	sprites->Add(-20026, 134, 522, 208, 586, texGuards);
+	sprites->Add(-20027, 217, 520, 288, 586, texGuards);
+	sprites->Add(-20028, 295, 529, 360, 586, texGuards);
+	sprites->Add(-20029, 364, 515, 427, 586, texGuards);
+	sprites->Add(-20030, 438, 538, 492, 586, texGuards);
+
+#pragma endregion
+
+	//Dungeon_Objects
+#pragma region
+	LPDIRECT3DTEXTURE9 texDungeonObjects = textures->Get(TEX_DUNGEON_ENVIRONMENT);
+	
+	sprites->Add(-30001, 177, 5, 217, 346, texDungeonObjects); //pillar 0
+
+	sprites->Add(-30002, 497, 2, 529, 162, texDungeonObjects); //pillar 1
+
+	sprites->Add(-30003, 817, 2, 849, 746, texDungeonObjects);   //pillar 2
+
+	sprites->Add(-30004, 1169, 2, 1201, 194, texDungeonObjects); //pillar 3
+
+	sprites->Add(-30005, 1, 351, 513, 607, texDungeonObjects);   //chains_front
+
+	sprites->Add(-30007, 1, 628, 32, 643, texDungeonObjects);    //step-in
+	sprites->Add(-30008, 37, 628, 68, 643, texDungeonObjects);
+	sprites->Add(-30009, 73, 628, 107, 645, texDungeonObjects);
+
+	sprites->Add(-30010, 112, 628, 150, 649, texDungeonObjects);  //step-out
+	sprites->Add(-30011, 155, 628, 195, 652, texDungeonObjects);
+
+	sprites->Add(-30012, 1, 657, 24, 677, texDungeonObjects);  //spike-in
+	sprites->Add(-30013, 29, 657, 52, 680, texDungeonObjects);
+	sprites->Add(-30014, 57, 657, 83, 685, texDungeonObjects);
+	sprites->Add(-30015, 88, 657, 121, 688, texDungeonObjects);
+
+	sprites->Add(-30016, 126, 657, 168, 691, texDungeonObjects); //spike-out
+	sprites->Add(-30017, 173, 657, 222, 692, texDungeonObjects);
+
+	sprites->Add(-30018, 227, 628, 241, 673, texDungeonObjects); //ball-in
+	sprites->Add(-30019, 246, 628, 261, 675, texDungeonObjects);
+	sprites->Add(-30020, 266, 628, 281, 678, texDungeonObjects);
+	sprites->Add(-30021, 286, 628, 301, 680, texDungeonObjects);
+	sprites->Add(-30022, 306, 628, 322, 684, texDungeonObjects);
+	sprites->Add(-30023, 306, 628, 343, 688, texDungeonObjects);
+	sprites->Add(-30024, 348, 628, 366, 693, texDungeonObjects);
+	sprites->Add(-30025, 371, 628, 392, 695, texDungeonObjects);
+	sprites->Add(-30026, 397, 628, 423, 693, texDungeonObjects);
+	sprites->Add(-30027, 428, 628, 456, 691, texDungeonObjects);
+	sprites->Add(-30028, 461, 628, 491, 687, texDungeonObjects);
+	sprites->Add(-30029, 496, 628, 527, 685, texDungeonObjects);
+	
+	sprites->Add(-30030, 532, 628, 564, 684, texDungeonObjects);  //ball-out
+	sprites->Add(-30031, 569, 628, 602, 681, texDungeonObjects);
+	sprites->Add(-30032, 607, 628, 640, 680, texDungeonObjects);
+
+#pragma endregion
 
     //LPDIRECT3DTEXTURE9 texApple = textures->Get(TEX_APPLE);
     ////Apple
