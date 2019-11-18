@@ -31,7 +31,8 @@ protected:
     Aladdin* aladdin;
     //vector<LPGAMEOBJECT*> Tiles; //chứa tile
     vector<LPGAMEOBJECT> map_vector;
-    vector<LPGAMEOBJECT> objects; //All game objects
+    vector<LPGAMEOBJECT> front_objects;
+    vector<LPGAMEOBJECT> objects; //All collision object and aladdin
     ViewPort * camera = ViewPort::getInstance();
 
 public:

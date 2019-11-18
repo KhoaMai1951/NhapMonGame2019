@@ -37,6 +37,7 @@ public:
 	string name;
 	int id;
     bool isEnemy;
+    bool isDead;
 
 	float x; 
 	float y;

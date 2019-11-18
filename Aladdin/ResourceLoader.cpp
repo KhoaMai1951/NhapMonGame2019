@@ -73,69 +73,45 @@ void ResourceLoader::CreateAnimation()
 
 #pragma endregion Aladdin
 
+#pragma region
+    //Animation apple
+    ani = new CAnimation(75);
+    ani->Add(40001);
+    animations->Add(401, ani);
+    ani = new CAnimation(75); //item destroy of apple
+    for (int i = 1; i <= 12; i++)
+        ani->Add(-40000 - i);
+    animations->Add(ITEM_DESTROY, ani);
+#pragma endregion Items
+
+#pragma region
+
+    ani = new CAnimation(75);
+    ani->Add(-30001);   //pillar0
+    animations->Add(-301, ani);
+
+    ani = new CAnimation(75);
+    ani->Add(-30002);   //pillar1
+    animations->Add(-302, ani);
+
+    ani = new CAnimation(75);
+    ani->Add(-30003);   //pillar2
+    animations->Add(-303, ani);
+
+    ani = new CAnimation(75);
+    ani->Add(-30004);   //pillar3
+    animations->Add(-304, ani);
+
+    ani = new CAnimation(75);
+    ani->Add(-30005);   //front_chains
+    animations->Add(-305, ani);
+
+#pragma endregion Dungeon environment
+
     //Animation ground
     ani = new CAnimation(75);
     ani->Add(30001);
     animations->Add(301, ani);
-
-    //ani = new CAnimation(100);	// idle big right
-    //ani->Add(10001);
-    //animations->Add(400, ani);
-
-    //ani = new CAnimation(100);	// idle big left
-    //ani->Add(10011);
-    //animations->Add(401, ani);
-
-    //ani = new CAnimation(100);	// idle small right
-    //ani->Add(10021);
-    //animations->Add(402, ani);
-
-    //ani = new CAnimation(100);	// idle small left
-    //ani->Add(10031);
-    //animations->Add(403, ani);
-
-    //ani = new CAnimation(100);	// walk right big
-    //ani->Add(10001);
-    //ani->Add(10002);
-    //ani->Add(10003);
-    //animations->Add(500, ani);
-
-    //ani = new CAnimation(100);	// // walk left big
-    //ani->Add(10011);
-    //ani->Add(10012);
-    //ani->Add(10013);
-    //animations->Add(501, ani);
-
-    //ani = new CAnimation(100);	// walk right small
-    //ani->Add(10021);
-    //ani->Add(10022);
-    //ani->Add(10023);
-    //animations->Add(502, ani);
-
-    //ani = new CAnimation(100);	// walk left small
-    //ani->Add(10031);
-    //ani->Add(10032);
-    //ani->Add(10033);
-    //animations->Add(503, ani);
-
-
-    //ani = new CAnimation(100);		// Mario die
-    //ani->Add(10099);
-    //animations->Add(599, ani);
-
-
-    //ani = new CAnimation(100);		// brick
-    //ani->Add(20001);
-    //animations->Add(601, ani);
-
-    //ani = new CAnimation(300);		// Goomba walk
-    //ani->Add(30001);
-    //ani->Add(30002);
-    //animations->Add(701, ani);
-
-    //ani = new CAnimation(1000);		// Goomba dead
-    //ani->Add(30003);
-    //animations->Add(702, ani);
 }
 
 void ResourceLoader::LoadSprite()
@@ -151,13 +127,7 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_GUARD_LEFT, L"textures\\Guards_left.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_APPLE, L"textures\\Apple.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_GROUND, L"textures\\Ground.png", D3DCOLOR_XRGB(255, 255, 255));
-	
-    ////temp
-    //textures->Add(ID_TEX_MARIO, L"textures\\mario.png", D3DCOLOR_XRGB(255, 255, 255));
-    //textures->Add(ID_TEX_MISC, L"textures\\misc.png", D3DCOLOR_XRGB(176, 224, 248));
-    //textures->Add(ID_TEX_ENEMY, L"textures\\enemies.png", D3DCOLOR_XRGB(3, 26, 110));
-
-
+    textures->Add(TEX_ITEM_DESTROY, L"textures\\Items_destroy.png", D3DCOLOR_XRGB(255, 255, 255));
 
     CSprites* sprites = CSprites::GetInstance();
 
@@ -297,7 +267,7 @@ void ResourceLoader::LoadSprite()
 
 	sprites->Add(-30004, 1169, 2, 1201, 194, texDungeonObjects); //pillar 3
 
-	sprites->Add(-30005, 1, 351, 513, 607, texDungeonObjects);   //chains_front
+	sprites->Add(-30005, 1, 351, 513, 607, texDungeonObjects);   //front_chains
 
 	sprites->Add(-30007, 1, 628, 32, 643, texDungeonObjects);    //step-in
 	sprites->Add(-30008, 37, 628, 68, 643, texDungeonObjects);
@@ -336,54 +306,37 @@ void ResourceLoader::LoadSprite()
 #pragma region
     LPDIRECT3DTEXTURE9 texApple = textures->Get(TEX_APPLE);
 
-    sprites->Add(20001, 8, 18, 19, 30, texApple);		// idle apple
-    sprites->Add(20002, 35, 19, 47, 30, texApple);
-    sprites->Add(20003, 62, 19, 73, 31, texApple);
-    sprites->Add(20004, 87, 19, 99, 30, texApple);
-    sprites->Add(20005, 113, 20, 120, 30, texApple);
-    sprites->Add(20006, 133, 15, 153, 33, texApple);
-    sprites->Add(20007, 163, 13, 192, 35, texApple);
-    sprites->Add(20008, 240, 11, 235, 36, texApple);
-    sprites->Add(20009, 251, 10, 281, 37, texApple);
-#pragma region Apple
+    sprites->Add(40001, 8, 18, 19, 30, texApple); // idle apple
+    //sprites->Add(20002, 35, 19, 47, 30, texApple);
+    //sprites->Add(20003, 62, 19, 73, 31, texApple);
+    //sprites->Add(20004, 87, 19, 99, 30, texApple);
+    //sprites->Add(20005, 113, 20, 120, 30, texApple);
+    //sprites->Add(20006, 133, 15, 153, 33, texApple);
+    //sprites->Add(20007, 163, 13, 192, 35, texApple);
+    //sprites->Add(20008, 240, 11, 235, 36, texApple);
+    //sprites->Add(20009, 251, 10, 281, 37, texApple);
+#pragma endregion Throw Apple
+
+#pragma region
+    LPDIRECT3DTEXTURE9 texItemDestroy = textures->Get(TEX_ITEM_DESTROY);
+
+    sprites->Add(-40001, 11, 19, 6, 6, texItemDestroy);
+    sprites->Add(-40002, 53, 13, 10, 16, texItemDestroy);
+    sprites->Add(-40003, 97, 11, 12, 18, texItemDestroy);
+    sprites->Add(-40004, 135, 7, 22, 24, texItemDestroy);
+    sprites->Add(-40005, 175, 5, 34, 32, texItemDestroy);
+    sprites->Add(-40006, 219, 1, 14, 34, texItemDestroy);
+    sprites->Add(-40007, 239, 5, 38, 34, texItemDestroy);
+    sprites->Add(-40008, 285, 7, 32, 28, texItemDestroy);
+    sprites->Add(-40009, 325, 11, 34, 26, texItemDestroy);
+    sprites->Add(-40010, 369, 15, 34, 22, texItemDestroy);
+    sprites->Add(-40011, 417, 19, 34, 20, texItemDestroy);
+    sprites->Add(-40012, 461, 25, 12, 14, texItemDestroy);
+#pragma endregion Item Destroy
 
     //Ground
     LPDIRECT3DTEXTURE9 texGround = textures->Get(TEX_GROUND);  
     sprites->Add(30001, 10, 10, 100, 100, texGround);
-
-    //LPDIRECT3DTEXTURE9 texMario = textures->Get(ID_TEX_MARIO);
-    //// Mario big
-    //sprites->Add(10001, 246, 154, 260, 181, texMario);		// idle right
-
-    //sprites->Add(10002, 275, 154, 290, 181, texMario);		// walk
-    //sprites->Add(10003, 304, 154, 321, 181, texMario);
-
-    //sprites->Add(10011, 186, 154, 200, 181, texMario);		// idle left
-    //sprites->Add(10012, 155, 154, 170, 181, texMario);		// walk
-    //sprites->Add(10013, 125, 154, 140, 181, texMario);
-
-    //sprites->Add(10099, 215, 120, 231, 135, texMario);		// die 
-
-    //// Mario small
-    //sprites->Add(10021, 247, 0, 259, 15, texMario);			// idle small right
-    //sprites->Add(10022, 275, 0, 291, 15, texMario);			// walk 
-    //sprites->Add(10023, 306, 0, 320, 15, texMario);			// 
-
-    //sprites->Add(10031, 187, 0, 198, 15, texMario);			// idle small left
-
-    //sprites->Add(10032, 155, 0, 170, 15, texMario);			// walk
-    //sprites->Add(10033, 125, 0, 139, 15, texMario);			// 
-
-    //// Platform
-    //LPDIRECT3DTEXTURE9 texMisc = textures->Get(ID_TEX_MISC);
-    //sprites->Add(20001, 408, 225, 424, 241, texMisc);
-
-    //// Enemy
-    //LPDIRECT3DTEXTURE9 texEnemy = textures->Get(ID_TEX_ENEMY);
-    //sprites->Add(30001, 5, 14, 21, 29, texEnemy);
-    //sprites->Add(30002, 25, 14, 41, 29, texEnemy);
-
-    //sprites->Add(30003, 45, 21, 61, 29, texEnemy); // die sprite
 }
 
 void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects)
@@ -396,7 +349,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 		//Chuyen toa do y theo goc toa do cua file txt thanh toa do decart
 		ChangeYtoDecart(y);
 
-        if (name == GROUND0_ID)
+        if (name == GROUND0_ID || name == GROUND1_ID)
         {
             Ground* ground0 = new Ground();
             ground0->AddAnimation(301);
@@ -406,29 +359,38 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ground0->height = h;
             objects.push_back(ground0);
         }
+        else if (name == APPLE_ID)
+        {
+            Apple* apple = new Apple();
+            apple->AddAnimation(401); //apple idle
+            apple->AddAnimation(ITEM_DESTROY);
+            apple->SetPosition(x, y);
+            apple->SetName(name);
+            apple->width = w;
+            apple->height = h;
+            objects.push_back(apple);
+        }
+        else if (name == PILLAR0_ID || name == PILLAR1_ID || name == PILLAR2_ID || name == PILLAR3_ID || name == FRONT_CHAINS_ID)
+        {
+            Ground* ground0 = new Ground();
+            if(name == PILLAR0_ID)
+                ground0->AddAnimation(-301);
+            else if (name == PILLAR1_ID)
+                ground0->AddAnimation(-302);
+            else if (name == PILLAR2_ID)
+                ground0->AddAnimation(-303);
+            else if (name == PILLAR3_ID)
+                ground0->AddAnimation(-304);
+            else
+                ground0->AddAnimation(-305);
+            ground0->SetPosition(x, y);
+            ground0->SetName(name);
+            ground0->width = w;
+            ground0->height = h;
+            objects.push_back(ground0);
 
-		/*if (name == BRICK_ID)
-		{
-			CBrick* brick = new CBrick();
-			brick->AddAnimation(601);
-			brick->SetPosition(x, y);
-            brick->SetName(name);
-            brick->width = w;
-            brick->height = h;
-			objects.push_back(brick);
-		}
-		if (name == GOOMBA_ID)
-		{
-			CGoomba* goomba = new CGoomba();
-			goomba->AddAnimation(701);
-			goomba->AddAnimation(702);
-			goomba->SetPosition(x, y);
-            goomba->SetName(name);
-            goomba->width = w;
-            goomba->height = h;
-            goomba->SetState(GOOMBA_STATE_WALKING);
-			objects.push_back(goomba);
-		}*/
+            
+        }
 	}
 }
 
@@ -464,5 +426,5 @@ void ResourceLoader::LoadMapFromFile(string FileName, LPDIRECT3DTEXTURE9 texMap,
 
 void ResourceLoader::ChangeYtoDecart(float& y)
 {
-	y = MAP_HEIGHT + 38 - y; //38 la do lech pixel o duoi man hinh
+	y = MAP_HEIGHT + 30 - y; //38 la do lech pixel o duoi man hinh
 }

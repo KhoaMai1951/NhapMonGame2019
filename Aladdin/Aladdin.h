@@ -1,6 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "ViewPort.h"
+#include "Apple.h"
 
 #define ALADDIN_RUNNING_SPEED		0.1f 
 #define ALADDIN_JUMP_SPEED_Y		0.5f

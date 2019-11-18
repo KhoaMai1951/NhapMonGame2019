@@ -99,6 +99,9 @@
     <ClInclude Include="Ground.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Apple.h">
+      <Filter>Header Files\Objects\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -151,6 +154,9 @@
     </ClCompile>
     <ClCompile Include="Ground.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Apple.cpp">
+      <Filter>Source Files\Objects\Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

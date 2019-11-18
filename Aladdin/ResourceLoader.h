@@ -8,6 +8,7 @@
 //#include "Mario.h"
 //#include "Goomba.h"
 //#include "Brick.h"
+#include "Apple.h"
 #include "Ground.h"
 #include "Map.h"
 #include "define.h"

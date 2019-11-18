@@ -57,6 +57,26 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
         FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
+        // Collision logic 
+        for (UINT i = 0; i < coEventsResult.size(); i++)
+        {
+            LPCOLLISIONEVENT e = coEventsResult[i];
+
+            if (dynamic_cast<Apple *>(e->obj)) // if e->obj is Apple 
+            {
+                Apple *apple = dynamic_cast<Apple *>(e->obj);
+
+                if (e->ny != 0 || e->nx != 0)
+                {
+                    if (apple->GetState() != APPLE_STATE_DESTROY)
+                    {
+                        apple->SetState(APPLE_STATE_DESTROY);
+                        //apple->isDead = true;
+                    }
+                }
+            }
+        }
+
         // block 
         x += min_tx * dx + nx * 0.4f;	// nx*0.4f : need to push out a bit to avoid overlapping next frame
         y += min_ty * dy + ny * 0.4f;
@@ -68,43 +88,6 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
             if (ny < 0)
                 jumping = false;
         }
-
-        //// Collision logic with Goombas
-        //for (UINT i = 0; i < coEventsResult.size(); i++)
-        //{
-        //    LPCOLLISIONEVENT e = coEventsResult[i];
-
-        //    if (dynamic_cast<CGoomba *>(e->obj)) // if e->obj is Goomba 
-        //    {
-        //        CGoomba *goomba = dynamic_cast<CGoomba *>(e->obj);
-
-        //        // jump on top >> kill Goomba and deflect a bit 
-        //        if (e->ny < 0)
-        //        {
-        //            if (goomba->GetState() != GOOMBA_STATE_DIE)
-        //            {
-        //                goomba->SetState(GOOMBA_STATE_DIE);
-        //                vy = MARIO_JUMP_DEFLECT_SPEED;
-        //            }
-        //        }
-        //        else if (e->nx != 0)
-        //        {
-        //            if (untouchable == 0)
-        //            {
-        //                if (goomba->GetState() != GOOMBA_STATE_DIE)
-        //                {
-        //                    if (level > MARIO_LEVEL_SMALL)
-        //                    {
-        //                        level = MARIO_LEVEL_SMALL;
-        //                        StartUntouchable();
-        //                    }
-        //                    else
-        //                        SetState(MARIO_STATE_DIE);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
     }
 
     // clean up collision events

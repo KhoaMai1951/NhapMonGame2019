@@ -3,23 +3,7 @@
 SultansDungeon_Scene::SultansDungeon_Scene()
 {
     ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
-
-    //mario = new CMario();
-    //mario->AddAnimation(400);		// idle right big
-    //mario->AddAnimation(401);		// idle left big
-    //mario->AddAnimation(402);		// idle right small
-    //mario->AddAnimation(403);		// idle left small
-
-    //mario->AddAnimation(500);		// walk right big
-    //mario->AddAnimation(501);		// walk left big
-    //mario->AddAnimation(502);		// walk right small
-    //mario->AddAnimation(503);		// walk left big
-
-    //mario->AddAnimation(599);		// die
-
-    //mario->SetPosition(50.0f, 100);
-    //objects.push_back(mario);
-
+    ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
 #pragma region 
     aladdin = new Aladdin();
     aladdin->AddAnimation(101); //idle right 
@@ -33,9 +17,7 @@ SultansDungeon_Scene::SultansDungeon_Scene()
     objects.push_back(aladdin);
 #pragma endregion Initalize Aladdin
 
-    //ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects);
     ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects);
-
 
     SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
@@ -111,14 +93,21 @@ void SultansDungeon_Scene::Update(DWORD dt)
          if (camera->getPositionWorld().y > MAP_HEIGHT)
               camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, MAP_HEIGHT));
     }
-    else if (aladdin->y - (camera->getPositionWorld().y - SCREEN_ACTUAL_HEIGHT) < 5 + aladdin->height) //5 is min distance between player and bottom side of camera
+    else if (aladdin->y - (camera->getPositionWorld().y - SCREEN_ACTUAL_HEIGHT) < 28 + aladdin->height) // min distance between player and bottom side of camera
     {
-        camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x), aladdin->y + SCREEN_ACTUAL_HEIGHT - (5 + aladdin->height)));
+        camera->setPositionWorld(D3DXVECTOR2((int)(camera->getPositionWorld().x), aladdin->y + SCREEN_ACTUAL_HEIGHT - (28 + aladdin->height)));
         //Check top-most of the map
          if (camera->getPositionWorld().y < SCREEN_HEIGHT)
               camera->setPositionWorld(D3DXVECTOR2(camera->getPositionWorld().x, SCREEN_HEIGHT));
     }
 #pragma endregion Camera
+
+    for (int i = objects.size() - 1; i >= 0; --i)
+        if (objects[i]->isDead)
+        {
+            delete objects[i];
+            objects.erase(objects.begin() + i);
+        }
 
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;
@@ -152,6 +141,17 @@ void SultansDungeon_Scene::Render()
 
         for (int i = 0; i < objects.size(); i++)
             objects[i]->Render();
+
+        for (int i = 0; i < front_objects.size(); i++)
+        {
+            //IsContain(left, top, right, bottom) truyền vào l,t,r,b của object và xem có overlap với camera hay ko
+            if (camera->isContain(front_objects[i]->x, front_objects[i]->y,
+                front_objects[i]->x + front_objects[i]->width, front_objects[i]->y - front_objects[i]->height))
+            {
+                front_objects[i]->Render();
+            }
+
+        }
 
         spriteHandler->End();
         d3ddv->EndScene();

@@ -3,7 +3,8 @@
 void Ground::Render()
 {
     animations[0]->Render(x, y);
-    RenderBoundingBox();
+    if(name == "Ground0" || name == "Ground1")
+        RenderBoundingBox();
 }
 
 void Ground::GetBoundingBox(float &l, float &t, float &r, float &b)
