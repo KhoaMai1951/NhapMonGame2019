@@ -10,6 +10,8 @@ CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEX
 	this->right = right;
 	this->bottom = bottom;
 	this->texture = tex;
+    this->width;
+    this->height;
 }
 
 CSprites * CSprites::__instance = NULL;
@@ -49,7 +51,7 @@ void CAnimation::Add(int spriteId, DWORD time)
 	frames.push_back(frame);
 }
 
-void CAnimation::Render(float x, float y, int alpha)
+void CAnimation::Render(float x, float y, int alpha, int restart)
 {
 	DWORD now = GetTickCount();
 	if (currentFrame == -1) 
@@ -64,7 +66,7 @@ void CAnimation::Render(float x, float y, int alpha)
 		{
 			currentFrame++;
 			lastFrameTime = now;
-			if (currentFrame == frames.size()) currentFrame = 0;
+			if (currentFrame == frames.size()) currentFrame = restart;
 		}
 		
 	}

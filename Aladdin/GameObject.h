@@ -52,7 +52,7 @@ public:
 
 	int nx;	 
 
-	int state;
+    int state, ani; //current State and Animation
 
 	DWORD dt; 
 

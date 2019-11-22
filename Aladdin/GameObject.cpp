@@ -14,7 +14,6 @@ CGameObject::CGameObject()
     width = height = 0;
 	vx = vy = 0;
 	nx = 1;	
-    isEnemy = false;
 }
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)

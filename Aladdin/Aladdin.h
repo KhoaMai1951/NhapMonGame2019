@@ -1,17 +1,25 @@
 #pragma once
+#include "Game.h"
 #include "GameObject.h"
 #include "ViewPort.h"
+#include <set>
+#include "SpatialGrid.h"
+
 #include "Apple.h"
+#include "Ground.h"
+#include "Enemy.h"
 
-#define ALADDIN_RUNNING_SPEED		0.1f 
-#define ALADDIN_JUMP_SPEED_Y		0.5f
-#define ALADDIN_GRAVITY			0.002f
+#define ALADDIN_RUNNING_SPEED		0.15f 
+#define ALADDIN_JUMP_SPEED_Y		0.3f
+#define ALADDIN_GRAVITY			0.0005f
 
-#define ALADDIN_STATE_IDLE			0
-#define ALADDIN_STATE_RUNNING_RIGHT	100
-#define ALADDIN_STATE_RUNNING_LEFT	200
-#define ALADDIN_STATE_JUMP			300
-#define ALADDIN_STATE_DIE		    400
+#define ALADDIN_STATE_IDLE	    101
+#define ALADDIN_STATE_RUN	    102
+#define ALADDIN_STATE_JUMP		103
+#define ALADDIN_STATE_RUN_JUMP  104
+#define ALADDIN_STATE_LOOKUP  105
+#define ALADDIN_STATE_CROUCH  106
+#define ALADDIN_STATE_DIE		400
 
 #define ALADDIN_ANI_IDLE_RIGHT  0
 #define ALADDIN_ANI_IDLE_LEFT   1
@@ -21,6 +29,15 @@
 
 #define ALADDIN_ANI_JUMP_RIGHT	4
 #define ALADDIN_ANI_JUMP_LEFT	5
+
+#define ALADDIN_ANI_RUN_JUMP_RIGHT	6
+#define ALADDIN_ANI_RUN_JUMP_LEFT	7
+
+#define ALADDIN_ANI_LOOKUP_RIGHT	8
+#define ALADDIN_ANI_LOOKUP_LEFT 	9
+
+#define ALADDIN_ANI_CROUCH_RIGHT	10
+#define ALADDIN_ANI_CROUCH_LEFT	    11
 
 #define MARIO_ANI_DIE				999
 
@@ -37,6 +54,9 @@ class Aladdin : public CGameObject
     int untouchable;
     bool jumping = false;
     DWORD untouchable_start;
+
+    vector<CCollisionEvent*> GetWallCollision(vector<CCollisionEvent*>&, float&, float&, float&, float&);
+    vector<CCollisionEvent*> GetEnemyCollision(vector<CCollisionEvent*>&);
 public:
     Aladdin() : CGameObject()
     {

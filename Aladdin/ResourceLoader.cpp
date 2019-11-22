@@ -56,26 +56,74 @@ void ResourceLoader::CreateAnimation()
     animations->Add(-102, ani);
 
     //jump right
-    ani = new CAnimation(75);
-    for (int i = 14; i <= 23; i++)
+    ani = new CAnimation(150);
+    for (int i = 16; i <= 23; i++)  //Remove 14, 15 sprite
     {
         ani->Add(aladdin_sprite_id + i);
     }
     animations->Add(103, ani);
 
     //jump left
-    ani = new CAnimation(75);
-    for (int i = 14; i <= 23; i++)
+    ani = new CAnimation(150);
+    for (int i = 16; i <= 23; i++)
     {
         ani->Add(-(aladdin_sprite_id + i));
     }
     animations->Add(-103, ani);
 
+    //run jump right  (//remove sprite 24, 31, 32)
+    ani = new CAnimation(100);
+    for (int i = 25; i <= 30; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(104, ani);
+
+    //run jump left
+    ani = new CAnimation(100);
+    for (int i = 25; i <= 30; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-104, ani);
+
+    //look up right
+    ani = new CAnimation(100);
+    for (int i = 33; i <= 35; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(105, ani);
+
+    //look up left
+    ani = new CAnimation(100);
+    for (int i = 33; i <= 35; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-105, ani);
+
+    //crouch right
+    ani = new CAnimation(100);
+    for (int i = 36; i <= 39; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(106, ani);
+
+    //crouch left
+    ani = new CAnimation(100);
+    for (int i = 36; i <= 39; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-106, ani);
+
 #pragma endregion Aladdin
 
 #pragma region
     //Animation apple
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(40001);
     animations->Add(401, ani);
     ani = new CAnimation(75); //item destroy of apple
@@ -86,30 +134,30 @@ void ResourceLoader::CreateAnimation()
 
 #pragma region
 
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(-30001);   //pillar0
     animations->Add(-301, ani);
 
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(-30002);   //pillar1
     animations->Add(-302, ani);
 
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(-30003);   //pillar2
     animations->Add(-303, ani);
 
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(-30004);   //pillar3
     animations->Add(-304, ani);
 
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(-30005);   //front_chains
     animations->Add(-305, ani);
 
 #pragma endregion Dungeon environment
 
     //Animation ground
-    ani = new CAnimation(75);
+    ani = new CAnimation(100);
     ani->Add(30001);
     animations->Add(301, ani);
 }
@@ -156,7 +204,7 @@ void ResourceLoader::LoadSprite()
     sprites->Add(-10005, 849, 1216, 901, 1273, texAladdin_Left);
     sprites->Add(-10006, 796, 1219, 842, 1273, texAladdin_Left);
     sprites->Add(-10007, 745, 1215, 787, 1273, texAladdin_Left);
-    sprites->Add(-10008, 694, 1221, 690, 1273, texAladdin_Left);
+    sprites->Add(-10008, 694, 1221, 735, 1273, texAladdin_Left);
     sprites->Add(-10009, 646, 1219, 681, 1273, texAladdin_Left);
     sprites->Add(-10010, 584, 1216, 633, 1273, texAladdin_Left);
     sprites->Add(-10011, 519, 1215, 574, 1273, texAladdin_Left);
@@ -174,16 +222,55 @@ void ResourceLoader::LoadSprite()
     sprites->Add(10022, 504, 810, 538, 903, texAladdin);
     sprites->Add(10023, 564, 812, 598, 905, texAladdin);
 
-    sprites->Add(-10014, 523, 812, 557, 905, texAladdin); //jump left
-    sprites->Add(-10015, 583, 810, 617, 903, texAladdin);
-    sprites->Add(-10016, 639, 808, 673, 901, texAladdin);
-    sprites->Add(-10017, 696, 818, 731, 897, texAladdin);
-    sprites->Add(-10018, 747, 829, 785, 895, texAladdin);
-    sprites->Add(-10019, 801, 820, 852, 894, texAladdin);
-    sprites->Add(-10020, 864, 824, 918, 893, texAladdin);
-    sprites->Add(-10021, 930, 829, 984, 890, texAladdin);
-    sprites->Add(-10022, 994, 828, 1046, 890, texAladdin);
-    sprites->Add(-10023, 1054, 846, 1113, 889, texAladdin);
+    sprites->Add(-10014, 1054, 846, 1113, 889, texAladdin_Left);//jump left
+    sprites->Add(-10015, 994, 828, 1046, 890, texAladdin_Left);
+    sprites->Add(-10016, 930, 829, 984, 890, texAladdin_Left);
+    sprites->Add(-10017, 864, 824, 918, 893, texAladdin_Left);
+    sprites->Add(-10018, 801, 820, 852, 894, texAladdin_Left);
+    sprites->Add(-10019, 747, 829, 785, 895, texAladdin_Left);
+    sprites->Add(-10020, 696, 818, 731, 897, texAladdin_Left);
+    sprites->Add(-10021, 639, 808, 673, 901, texAladdin_Left);
+    sprites->Add(-10022, 583, 810, 617, 903, texAladdin_Left);
+    sprites->Add(-10023, 523, 812, 557, 905, texAladdin_Left);
+
+    sprites->Add(10024, 10, 705, 51, 747, texAladdin); //run jump right
+    sprites->Add(10025, 66, 683, 111, 759, texAladdin);
+    sprites->Add(10026, 124, 686, 181, 743, texAladdin);
+    sprites->Add(10027, 199, 698, 257, 740, texAladdin);
+    sprites->Add(10028, 273, 696, 334, 744, texAladdin);
+    sprites->Add(10029, 350, 692, 408, 745, texAladdin);
+    sprites->Add(10030, 419, 688, 472, 746, texAladdin);
+    sprites->Add(10031, 491, 680, 541, 765, texAladdin);
+    sprites->Add(10032, 560, 719, 619, 763, texAladdin);
+
+    sprites->Add(-10024, 1070, 705, 1111, 747, texAladdin_Left); //run jump left
+    sprites->Add(-10025, 1010, 683, 1055, 759, texAladdin_Left);
+    sprites->Add(-10026, 940, 686, 997, 743, texAladdin_Left);
+    sprites->Add(-10027, 864, 698, 922, 740, texAladdin_Left);
+    sprites->Add(-10028, 787, 696, 848, 744, texAladdin_Left);
+    sprites->Add(-10029, 713, 692, 771, 745, texAladdin_Left);
+    sprites->Add(-10030, 649, 688, 702, 746, texAladdin_Left);
+    sprites->Add(-10031, 580, 680, 630, 765, texAladdin_Left);
+    sprites->Add(-10032, 502, 719, 561, 763, texAladdin_Left);
+
+    sprites->Add(10033, 11, 496, 50, 549, texAladdin);        //look up right
+    sprites->Add(10034, 59, 490, 104, 549, texAladdin);
+    sprites->Add(10035, 111, 491, 160, 549, texAladdin);
+
+    sprites->Add(-10033, 1071, 496, 1110, 549, texAladdin_Left);  //look up left
+    sprites->Add(-10034, 1017, 490, 1062, 549, texAladdin_Left);
+    sprites->Add(-10035, 961, 491, 1010, 549, texAladdin_Left);
+
+    sprites->Add(10036, 205, 500, 247, 549, texAladdin);       //crouch right
+    sprites->Add(10037, 258, 509, 306, 549, texAladdin);
+    sprites->Add(10038, 315, 519, 369, 549, texAladdin);
+    sprites->Add(10039, 378, 516, 431, 551, texAladdin);
+
+    sprites->Add(-10036, 874, 500, 916, 549, texAladdin_Left);  //crouch left
+    sprites->Add(-10037, 815, 509, 863, 549, texAladdin_Left);
+    sprites->Add(-10038, 752, 519, 806, 549, texAladdin_Left);
+    sprites->Add(-10039, 690, 516, 743, 551, texAladdin_Left);
+
 
 #pragma endregion Aladdin
 	
@@ -320,18 +407,18 @@ void ResourceLoader::LoadSprite()
 #pragma region
     LPDIRECT3DTEXTURE9 texItemDestroy = textures->Get(TEX_ITEM_DESTROY);
 
-    sprites->Add(-40001, 11, 19, 6, 6, texItemDestroy);
-    sprites->Add(-40002, 53, 13, 10, 16, texItemDestroy);
-    sprites->Add(-40003, 97, 11, 12, 18, texItemDestroy);
-    sprites->Add(-40004, 135, 7, 22, 24, texItemDestroy);
-    sprites->Add(-40005, 175, 5, 34, 32, texItemDestroy);
-    sprites->Add(-40006, 219, 1, 14, 34, texItemDestroy);
-    sprites->Add(-40007, 239, 5, 38, 34, texItemDestroy);
-    sprites->Add(-40008, 285, 7, 32, 28, texItemDestroy);
-    sprites->Add(-40009, 325, 11, 34, 26, texItemDestroy);
-    sprites->Add(-40010, 369, 15, 34, 22, texItemDestroy);
-    sprites->Add(-40011, 417, 19, 34, 20, texItemDestroy);
-    sprites->Add(-40012, 461, 25, 12, 14, texItemDestroy);
+    sprites->Add(-40001, 11, 19, 17, 25, texItemDestroy);
+    sprites->Add(-40002, 53, 13, 63, 29, texItemDestroy);
+    sprites->Add(-40003, 97, 11, 109, 29, texItemDestroy);
+    sprites->Add(-40004, 135, 7, 157, 31, texItemDestroy);
+    sprites->Add(-40005, 175, 5, 209, 37, texItemDestroy);
+    sprites->Add(-40006, 219, 1, 233, 35, texItemDestroy);
+    sprites->Add(-40007, 239, 5, 277, 39, texItemDestroy);
+    sprites->Add(-40008, 285, 7, 317, 35, texItemDestroy);
+    sprites->Add(-40009, 325, 11, 359, 37, texItemDestroy);
+    sprites->Add(-40010, 369, 15, 403, 37, texItemDestroy);
+    sprites->Add(-40011, 417, 19, 451, 39, texItemDestroy);
+    sprites->Add(-40012, 461, 25, 473, 39, texItemDestroy);
 #pragma endregion Item Destroy
 
     //Ground

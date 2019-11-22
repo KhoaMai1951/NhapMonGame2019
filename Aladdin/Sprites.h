@@ -13,6 +13,7 @@ class CSprite
 	int top;
 	int right;
 	int bottom;
+    int width, height;
 
 	LPDIRECT3DTEXTURE9 texture;
 public: 
@@ -60,12 +61,13 @@ class CAnimation
 {
 	DWORD lastFrameTime;
 	int defaultTime;
-	int currentFrame;
 	vector<LPANIMATION_FRAME> frames;
 public:
+    int currentFrame;
 	CAnimation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(int spriteId, DWORD time = 0);
-	void Render(float x, float y, int alpha=255);
+	void Render(float x, float y, int alpha=255, int restart=0);
+    void ResetAnimation() { currentFrame = -1; }
 };
 
 typedef CAnimation *LPANIMATION;

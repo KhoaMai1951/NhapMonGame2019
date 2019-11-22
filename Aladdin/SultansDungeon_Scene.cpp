@@ -12,8 +12,14 @@ SultansDungeon_Scene::SultansDungeon_Scene()
     aladdin->AddAnimation(-102); //running left
     aladdin->AddAnimation(103); //jump right
     aladdin->AddAnimation(-103); //jump left
+    aladdin->AddAnimation(104); //run jump right
+    aladdin->AddAnimation(-104); //run jump left
+    aladdin->AddAnimation(105); //look up
+    aladdin->AddAnimation(-105); //look up
+    aladdin->AddAnimation(106); //crouch   
+    aladdin->AddAnimation(-106); //crouch
 
-    aladdin->SetPosition(50.0f, 150.f);
+    aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);
 #pragma endregion Initalize Aladdin
 

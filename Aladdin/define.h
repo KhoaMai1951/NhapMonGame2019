@@ -13,7 +13,7 @@
 
 #define CELL_SIZE 240
 
-#define MAX_FRAME_RATE 60
+#define MAX_FRAME_RATE 120
 
 //Object ID from text
 #define GROUND0_ID "Ground0"
@@ -25,8 +25,6 @@
 #define EXIT_GATE_ID "exit_gate"
 #define FRONT_CHAINS_ID "front_chains"
 #define APPLE_ID "apple"
-//#define GOOMBA_ID "goomba_0"
-//#define BRICK_ID "brick_0"
 
 //Aladdin animation
 enum AladdinAnimation

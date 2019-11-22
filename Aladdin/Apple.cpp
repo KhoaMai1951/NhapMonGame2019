@@ -12,6 +12,10 @@ void Apple::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
     CGameObject::Update(dt, coObjects);
 
+    if (state == APPLE_STATE_DESTROY)
+        if (animations[ani]->currentFrame == 11)
+            this->isDead = true;
+
    /* vector<LPCOLLISIONEVENT> coEvents;
     vector<LPCOLLISIONEVENT> coEventsResult;
 
@@ -109,7 +113,7 @@ void Apple::SetState(int state)
 
 void Apple::Render()
 {
-    int ani = APPLE_ANI_IDLE;
+    ani = APPLE_ANI_IDLE;
     if (state == APPLE_STATE_DESTROY) {
         ani = APPLE_ANI_DESTROY;
     }
