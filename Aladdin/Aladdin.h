@@ -13,33 +13,46 @@
 #define ALADDIN_JUMP_SPEED_Y		0.3f
 #define ALADDIN_GRAVITY			0.0005f
 
-#define ALADDIN_STATE_IDLE	    101
-#define ALADDIN_STATE_RUN	    102
-#define ALADDIN_STATE_JUMP		103
-#define ALADDIN_STATE_RUN_JUMP  104
-#define ALADDIN_STATE_LOOKUP  105
-#define ALADDIN_STATE_CROUCH  106
-#define ALADDIN_STATE_DIE		400
+enum ALADDIN_STATE
+{
+    ALADDIN_STATE_IDLE = 101,
+    ALADDIN_STATE_IDLE1 = 1011,
+    ALADDIN_STATE_IDLE2 = 1012,
+    ALADDIN_STATE_IDLE3 = 1013,
+    ALADDIN_STATE_RUN = 102,
+    ALADDIN_STATE_JUMP = 103,
+    ALADDIN_STATE_RUN_JUMP = 104,
+    ALADDIN_STATE_LOOKUP = 105,
+    ALADDIN_STATE_CROUCH = 106,
+    ALADDIN_STATE_DIE = 400,
+};
 
-#define ALADDIN_ANI_IDLE_RIGHT  0
-#define ALADDIN_ANI_IDLE_LEFT   1
+enum ALADDIN_ANI
+{
+    ALADDIN_ANI_IDLE_RIGHT = 0,
+    ALADDIN_ANI_IDLE_LEFT,
 
-#define ALADDIN_ANI_RUNNING_RIGHT	2
-#define ALADDIN_ANI_RUNNING_LEFT	3
+    ALADDIN_ANI_RUNNING_RIGHT,
+    ALADDIN_ANI_RUNNING_LEFT,
 
-#define ALADDIN_ANI_JUMP_RIGHT	4
-#define ALADDIN_ANI_JUMP_LEFT	5
+    ALADDIN_ANI_JUMP_RIGHT,
+    ALADDIN_ANI_JUMP_LEFT,
 
-#define ALADDIN_ANI_RUN_JUMP_RIGHT	6
-#define ALADDIN_ANI_RUN_JUMP_LEFT	7
+    ALADDIN_ANI_RUN_JUMP_RIGHT,
+    ALADDIN_ANI_RUN_JUMP_LEFT,
 
-#define ALADDIN_ANI_LOOKUP_RIGHT	8
-#define ALADDIN_ANI_LOOKUP_LEFT 	9
+    ALADDIN_ANI_LOOKUP_RIGHT,
+    ALADDIN_ANI_LOOKUP_LEFT,
 
-#define ALADDIN_ANI_CROUCH_RIGHT	10
-#define ALADDIN_ANI_CROUCH_LEFT	    11
+    ALADDIN_ANI_CROUCH_RIGHT,
+    ALADDIN_ANI_CROUCH_LEFT,
 
-#define MARIO_ANI_DIE				999
+    ALADDIN_ANI_IDLE1,
+    ALADDIN_ANI_IDLE2,
+    ALADDIN_ANI_IDLE3,
+
+    ALADDIN_ANI_DIE,
+};
 
 #define ALADDIN_IDLE_WIDTH  40
 #define ALADDIN_IDLE_HEIGHT 48
@@ -53,18 +66,42 @@ class Aladdin : public CGameObject
     int health;
     int untouchable;
     bool jumping = false;
-    DWORD untouchable_start;
+    DWORD untouchable_start, idle_start;
 
-    vector<CCollisionEvent*> GetWallCollision(vector<CCollisionEvent*>&, float&, float&, float&, float&);
-    vector<CCollisionEvent*> GetEnemyCollision(vector<CCollisionEvent*>&);
+    //type: 0-ground0, 1-ground1, 2-enemies, 3-items
+    void FilterGroundCollision0(
+        vector<LPCOLLISIONEVENT> &coEvents,
+        vector<LPCOLLISIONEVENT> &coEventsResult,
+        float &min_tx,
+        float &min_ty,
+        float &nx,
+        float &ny);
+    void FilterGroundCollision1(
+        vector<LPCOLLISIONEVENT> &coEvents,
+        vector<LPCOLLISIONEVENT> &coEventsResult,
+        float &min_tx,
+        float &min_ty,
+        float &nx,
+        float &ny);
+    void FilterItemCollision(
+        vector<LPCOLLISIONEVENT> &coEvents,
+        vector<LPCOLLISIONEVENT> &coEventsResult,
+        float &min_tx,
+        float &min_ty,
+        float &nx,
+        float &ny);
 public:
     Aladdin() : CGameObject()
     {
         health = 10;
         untouchable = 0;
+        idle_start = 0;
         width = ALADDIN_IDLE_WIDTH;
         height = ALADDIN_IDLE_HEIGHT;
-        state = ALADDIN_STATE_IDLE;
+        //state = ALADDIN_STATE_IDLE;
+        SetState(ALADDIN_STATE_IDLE);
+        lastFrameWidth = ALADDIN_IDLE_WIDTH;
+        lastFrameHeight = ALADDIN_IDLE_HEIGHT;
         nx = 1;
     }
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);

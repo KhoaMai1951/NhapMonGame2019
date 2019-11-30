@@ -18,6 +18,9 @@ SultansDungeon_Scene::SultansDungeon_Scene()
     aladdin->AddAnimation(-105); //look up
     aladdin->AddAnimation(106); //crouch   
     aladdin->AddAnimation(-106); //crouch
+    aladdin->AddAnimation(1011); //idle1
+    aladdin->AddAnimation(1012); //idle2
+    aladdin->AddAnimation(1013); //idle3
 
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);

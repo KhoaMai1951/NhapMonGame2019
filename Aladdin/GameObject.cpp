@@ -121,7 +121,6 @@ void CGameObject::FilterCollision(
 
 void CGameObject::RenderBoundingBox()
 {
-	D3DXVECTOR3 p(x, y, 0);
 	RECT rect;
 
 	LPDIRECT3DTEXTURE9 bbox = CTextures::GetInstance()->Get(ID_TEX_BBOX);
@@ -134,7 +133,9 @@ void CGameObject::RenderBoundingBox()
 	rect.right = (int)r - (int)l;
 	rect.bottom = (int)t - (int)b;
 
-	CGame::GetInstance()->Draw(x, y, bbox, rect.left, rect.top, rect.right, rect.bottom, 128);
+    D3DXVECTOR3 p = ViewPort::getInstance()->getPositionInViewPort(new D3DXVECTOR3(l + width / 2, t - height / 2, 0));
+    D3DXVECTOR3 center = D3DXVECTOR3(this->width / 2, this->height / 2, 0);
+	CGame::GetInstance()->Draw(p.x, p.y, bbox, rect.left, rect.top, rect.right, rect.bottom, &center, 128);
 }
 
 void CGameObject::AddAnimation(int aniId)

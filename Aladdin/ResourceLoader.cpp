@@ -39,6 +39,38 @@ void ResourceLoader::CreateAnimation()
     ani->Add(-10001);
     animations->Add(-101, ani);
 
+    //idle1
+    ani = new CAnimation(100);
+    /*for (int i = 11; i <= 17; i++)
+    {
+        ani->Add(100000 + i);
+    }*/
+    ani->Add(100011);
+    ani->Add(100012,750);
+    ani->Add(100013);
+    ani->Add(100014);
+    ani->Add(100015);
+    ani->Add(100016,750);
+    ani->Add(100017);
+    animations->Add(1011, ani);
+
+    //idle2
+    ani = new CAnimation(100);
+    for (int i = 17; i <= 31; i++)
+    {
+        ani->Add(100000 + i);
+    }
+    ani->Add(100032,750);       //Sprite 15 of animation
+    animations->Add(1012, ani);
+    //idle3
+    ani = new CAnimation(100);
+    for (int i = 33; i <= 49; i++)
+    {
+        ani->Add(100000 + i);
+    }
+    ani->Add(100049);
+    animations->Add(1013, ani);
+
     //running right
     ani = new CAnimation(75);
     for (int i = 2; i <= 13; i++)
@@ -72,7 +104,7 @@ void ResourceLoader::CreateAnimation()
     animations->Add(-103, ani);
 
     //run jump right  (//remove sprite 24, 31, 32)
-    ani = new CAnimation(100);
+    ani = new CAnimation(150);
     for (int i = 25; i <= 30; i++)
     {
         ani->Add(aladdin_sprite_id + i);
@@ -80,7 +112,7 @@ void ResourceLoader::CreateAnimation()
     animations->Add(104, ani);
 
     //run jump left
-    ani = new CAnimation(100);
+    ani = new CAnimation(150);
     for (int i = 25; i <= 30; i++)
     {
         ani->Add(-(aladdin_sprite_id + i));
@@ -182,6 +214,47 @@ void ResourceLoader::LoadSprite()
 #pragma region
     LPDIRECT3DTEXTURE9 texAladdin = textures->Get(TEX_ALADDIN);
     LPDIRECT3DTEXTURE9 texAladdin_Left = textures->Get(TEX_ALADDIN_LEFT);
+
+    sprites->Add(100011, 47, 11, 88, 58, texAladdin);		// idle1
+    sprites->Add(100012, 95, 6, 135, 58, texAladdin);
+    sprites->Add(100013, 143, 3, 187, 58, texAladdin);
+    sprites->Add(100014, 197, 6, 238, 57, texAladdin);
+    sprites->Add(100015, 250, 5, 292, 56, texAladdin);
+    sprites->Add(100016, 303, 2, 347, 55, texAladdin);
+    sprites->Add(100017, 197, 6, 238, 57, texAladdin);      //start of idle2
+
+    sprites->Add(100018, 6, 83, 46, 135, texAladdin);		// idle2
+    sprites->Add(100019, 51, 81, 112, 134, texAladdin);
+    sprites->Add(100020, 116, 80, 178, 134, texAladdin);
+    sprites->Add(100021, 180, 81, 221, 134, texAladdin);
+    sprites->Add(100022, 228, 81, 267, 134, texAladdin);
+    sprites->Add(100023, 275, 81, 311, 134, texAladdin);
+    sprites->Add(100024, 319, 81, 359, 134, texAladdin);
+    sprites->Add(100025, 366, 79, 407, 134, texAladdin);
+    sprites->Add(100026, 417, 61, 460, 134, texAladdin);
+    sprites->Add(100027, 465, 57, 507, 134, texAladdin);
+    sprites->Add(100028, 516, 63, 558, 134, texAladdin);
+    sprites->Add(100029, 568, 72, 610, 134, texAladdin);
+    sprites->Add(100030, 619, 80, 660, 134, texAladdin);
+    sprites->Add(100031, 668, 80, 708, 134, texAladdin);
+    sprites->Add(100032, 715, 81, 754, 134, texAladdin);
+    sprites->Add(100033, 3, 165, 39, 218, texAladdin);      //idle3
+    sprites->Add(100034, 46, 165, 86, 218, texAladdin);
+    sprites->Add(100035, 91, 163, 132, 218, texAladdin);
+    sprites->Add(100036, 140, 155, 178, 218, texAladdin);
+    sprites->Add(100037, 188, 151, 229, 218, texAladdin);
+    sprites->Add(100038, 238, 159, 280, 218, texAladdin);
+    sprites->Add(100039, 287, 168, 325, 218, texAladdin);
+    sprites->Add(100040, 334, 168, 373, 218, texAladdin);
+    sprites->Add(100041, 378, 168, 417, 218, texAladdin);
+    sprites->Add(100042, 425, 156, 463, 218, texAladdin);
+    sprites->Add(100043, 472, 150, 510, 218, texAladdin);
+    sprites->Add(100044, 519, 143, 555, 218, texAladdin);
+    sprites->Add(100045, 568, 138, 607, 218, texAladdin);
+    sprites->Add(100046, 615, 155, 657, 218, texAladdin);
+    sprites->Add(100047, 666, 163, 707, 218, texAladdin);
+    sprites->Add(100048, 715, 163, 755, 218, texAladdin);
+    sprites->Add(100049, 762, 164, 801, 218, texAladdin);
 
     sprites->Add(10001, 14, 1225, 54, 1273, texAladdin);		// idle right
     sprites->Add(10002, 66, 1222, 109, 1273, texAladdin);       //running right
@@ -436,15 +509,27 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 		//Chuyen toa do y theo goc toa do cua file txt thanh toa do decart
 		ChangeYtoDecart(y);
 
-        if (name == GROUND0_ID || name == GROUND1_ID)
+        if (name == GROUND0_ID)
         {
             Ground* ground0 = new Ground();
+            ground0->type = 0;
             ground0->AddAnimation(301);
             ground0->SetPosition(x, y);
             ground0->SetName(name);
             ground0->width = w;
             ground0->height = h;
             objects.push_back(ground0);
+        }
+        else if (name == GROUND1_ID || name == "Ground3")
+        {
+            Ground* ground1 = new Ground();
+            ground1->type = 1;
+            ground1->AddAnimation(301);
+            ground1->SetPosition(x, y);
+            ground1->SetName(name);
+            ground1->width = w;
+            ground1->height = h;
+            objects.push_back(ground1);
         }
         else if (name == APPLE_ID)
         {

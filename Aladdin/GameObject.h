@@ -36,7 +36,6 @@ class CGameObject
 public:
 	string name;
 	int id;
-    bool isEnemy;
     bool isDead;
 
 	float x; 
@@ -53,6 +52,8 @@ public:
 	int nx;	 
 
     int state, ani; //current State and Animation
+
+    long lastFrameWidth , lastFrameHeight;
 
 	DWORD dt; 
 

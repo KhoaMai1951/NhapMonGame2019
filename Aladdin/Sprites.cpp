@@ -10,8 +10,8 @@ CSprite::CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEX
 	this->right = right;
 	this->bottom = bottom;
 	this->texture = tex;
-    this->width;
-    this->height;
+    this->width = right - left;
+    this->height = bottom - top;
 }
 
 CSprites * CSprites::__instance = NULL;
@@ -24,8 +24,11 @@ CSprites *CSprites::GetInstance()
 
 void CSprite::Draw(float x, float y, int alpha)
 {
-	CGame * game = CGame::GetInstance();
-	game->Draw(x, y, texture, left, top, right, bottom, alpha);
+    D3DXVECTOR3 p = ViewPort::getInstance()->getPositionInViewPort(new D3DXVECTOR3(x + width/2, y - height/2, 0));
+    D3DXVECTOR3 center = D3DXVECTOR3(width / 2, height / 2, 0);
+    CGame::GetInstance()->Draw(p.x, p.y, texture, left, top, right, bottom, &center, alpha);
+   /* D3DXVECTOR3 p = ViewPort::getInstance()->getPositionInViewPort(new D3DXVECTOR3(x , y, 0));
+    CGame::GetInstance()->Draw(p.x, p.y, texture, left, top, right, bottom, new D3DXVECTOR3(0,0,0), alpha);*/
 }
 
 void CSprites::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)
@@ -72,6 +75,85 @@ void CAnimation::Render(float x, float y, int alpha, int restart)
 	}
 
 	frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
+}
+
+void CAnimation::Render(float &x, float &y, long &lastFrameWidth, long &lastFrameHeight, int alpha, int restart)
+{
+    DWORD now = GetTickCount();
+    if (currentFrame == -1)
+    {
+        currentFrame = 0;
+        lastFrameTime = now;
+    }
+    else
+    {
+        DWORD t = frames[currentFrame]->GetTime();
+        if (now - lastFrameTime > t)
+        {
+            currentFrame++;
+            lastFrameTime = now;
+            if (currentFrame == frames.size()) currentFrame = restart;
+
+            //int curWidth = frames[currentFrame]->GetSprite()->width;
+            //int curHeight = frames[currentFrame]->GetSprite()->height;
+
+            ////x += (curWidth - lastFrameWidth) / 2;
+            ////y += (curHeight - lastFrameHeight) / 2;
+
+            ////x += (curWidth - lastFrameWidth) / 2;
+            //y += curHeight - lastFrameHeight;
+
+            //lastFrame = currentFrame;
+            //lastFrameWidth = curWidth;
+            //lastFrameHeight = curHeight;
+        }
+
+    }
+
+    int curWidth = frames[currentFrame]->GetSprite()->width;
+    int curHeight = frames[currentFrame]->GetSprite()->height;
+
+    //x += (curWidth - lastFrameWidth) / 2;
+    //y += (curHeight - lastFrameHeight) / 2;
+
+    //x += (curWidth - lastFrameWidth) / 2;
+    //x -= curWidth - lastFrameWidth;
+    y += curHeight - lastFrameHeight ;
+
+    lastFrame = currentFrame;
+    lastFrameWidth = curWidth;
+    lastFrameHeight = curHeight;
+
+    //if (currentFrame >= 0)
+    //{
+    //    int curWidth = frames[currentFrame]->GetSprite()->width;
+    //    int curHeight = frames[currentFrame]->GetSprite()->height;
+
+    //    x += (curWidth - lastFrameWidth) / 2;
+    //    y += (curHeight - lastFrameHeight) / 2;
+
+    //    lastFrameWidth = curWidth;
+    //    lastFrameHeight = curHeight;
+    //    lastFrame = currentFrame;
+
+    //    //int curHeight = frames[currentFrame]->GetSprite()->height;
+
+    //    //if (curHeight > lastFrameHeight)
+    //    //{
+    //    //    y += curHeight - lastFrameHeight;
+    //    //}
+    //    //else
+    //    //{
+    //    //    y += lastFrameHeight - curHeight;
+    //    //    //y += 0.0005 * 16;
+    //    //}
+    //    //lastFrameHeight = curHeight;
+    //}
+
+ /*   lastFrameWidth = frames[currentFrame]->GetSprite()->width;
+    lastFrameHeight = frames[currentFrame]->GetSprite()->height;*/
+
+    frames[currentFrame]->GetSprite()->Draw(x, y, alpha);
 }
 
 CAnimations * CAnimations::__instance = NULL;

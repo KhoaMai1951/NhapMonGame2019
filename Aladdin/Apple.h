@@ -24,5 +24,10 @@ class Apple : public CGameObject
     virtual void Render();
 
 public:
+    Apple() : CGameObject()
+    {
+        lastFrameWidth = APPLE_IDLE_WIDTH;
+        lastFrameHeight = APPLE_IDLE_HEIGHT;
+    }
     virtual void SetState(int state);
 };
