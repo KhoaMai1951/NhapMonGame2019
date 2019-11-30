@@ -158,7 +158,7 @@ void ResourceLoader::CreateAnimation()
     ani = new CAnimation(100);
     ani->Add(40001);
     animations->Add(401, ani);
-    ani = new CAnimation(300); //item destroy of apple
+    ani = new CAnimation(75); //item destroy of apple
     for (int i = 1; i <= 12; i++)
         ani->Add(-40000 - i);
     animations->Add(ITEM_DESTROY, ani);

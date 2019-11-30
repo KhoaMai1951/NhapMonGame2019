@@ -47,7 +47,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
     //Lấy các obj thuộc các lưới có chứa player
     RECT temp = ViewPort::getInstance()->InvertY(l, t, r, b, SCREEN_WIDTH, SCREEN_HEIGHT);
-    set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(temp.left,
+    set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->GetGridForCollision(temp.left,
         temp.top, temp.right, temp.bottom);
     //set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(l, t, r, b);
 

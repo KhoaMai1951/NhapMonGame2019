@@ -22,6 +22,7 @@ public:
 	void Insert(CGameObject*, string FileName);
 	void Index(CGameObject*, float&, float&, float&, float&);
 	set<CGameObject*> Get(float, float, float, float);
+    set<CGameObject*> GetGridForCollision(float, float, float, float);
 	void AddGridFromFile(vector<LPGAMEOBJECT> objects, string FileName);
 	void DeleteFromGrid(int id);
 	static SpatialGrid* GetInstance();

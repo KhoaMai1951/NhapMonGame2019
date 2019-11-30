@@ -96,6 +96,33 @@ set<CGameObject*> SpatialGrid::Get(float x1, float y1, float x2, float y2)
 	return result;
 };
 
+set<CGameObject*> SpatialGrid::GetGridForCollision(float x1, float y1, float x2, float y2)
+{
+    // Determine which grid cell it's in.
+
+    x1 = floor(x1 / CellSize);
+    y1 = floor(y1 / CellSize);
+    x2 = ceil(x2 / CellSize);
+    y2 = ceil(y2 / CellSize);
+
+
+
+    set<CGameObject*> result;
+    stringstream ss;
+    string key;
+
+
+    for (float i = x1; i < x2; i++)
+        for (float j = y1; j < y2; j++)
+        {
+            key = IndexMakeKey(ss, i, j);
+            vector<CGameObject*> v_cell = Grid[key];
+            result.insert(v_cell.begin(), v_cell.end());
+        }
+
+    return result;
+};
+
 //Add grid from file
 void SpatialGrid::AddGridFromFile(vector<LPGAMEOBJECT> objects, string FileName)
 {

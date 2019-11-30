@@ -27,9 +27,9 @@ void Apple::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
     CGameObject::Update(dt, coObjects);
 
-    //if (state == APPLE_STATE_DESTROY)
-    //    if (animations[ani]->currentFrame == 11)
-    //        this->isDead = true;
+    if (state == APPLE_STATE_DESTROY)
+        if (animations[ani]->currentFrame == 11)
+            this->isDead = true;
 	
 }
 
