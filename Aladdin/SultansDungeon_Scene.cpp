@@ -30,6 +30,12 @@ SultansDungeon_Scene::SultansDungeon_Scene()
 
     SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
+	//Grid
+	SpatialGrid* grid = SpatialGrid::GetInstance();
+	grid->Clear();
+	//for (unsigned i = 1; i < objects.size(); i++)
+		//grid->Insert(objects[i]);
+	grid->AddGridFromFile(objects, "dungeon_grid.txt");
 };
 
 void SultansDungeon_Scene::Update(DWORD dt)
@@ -41,30 +47,20 @@ void SultansDungeon_Scene::Update(DWORD dt)
         coObjects.push_back(objects[i]);
     }*/ 
 
-    //Grid
-    SpatialGrid* grid = SpatialGrid::GetInstance();
-    grid->Clear();
-    for (unsigned i = 1; i < objects.size(); i++)
-        grid->Insert(objects[i]);
+
     
     RECT cam_rect = camera->getBounding();
-
-   /* set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(cam_rect.left, 
-		cam_rect.top, cam_rect.right, cam_rect.bottom);*/
-
-	//set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(mario->x,
-	//	mario->y, mario->x + mario->width, mario->y - mario->height);
-
-	//set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(200,150,3000,10);
+	//fix thuật toán add vào grid
 	RECT temp = camera->InvertY(cam_rect.left, cam_rect.top, cam_rect.right, 
 		cam_rect.bottom, SCREEN_WIDTH, SCREEN_HEIGHT);
 	set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(temp.left, 
 		temp.top, temp.right, temp.bottom);
 
-    //Truyền set các obj thuộc các lưới có player vào vector
+    //Truyền set các obj thuộc các lưới va chạm với camera
     vector<LPGAMEOBJECT> coObjects(set_gameobject.begin(), 
 		set_gameobject.end()); //Vector chứa các Object va chạm (trừ index 0 vì là player)
 
+	SpatialGrid* grid = SpatialGrid::GetInstance();
     //Update objects
     objects[0]->Update(dt, &coObjects); //player
 
@@ -111,11 +107,15 @@ void SultansDungeon_Scene::Update(DWORD dt)
     }
 #pragma endregion Camera
 
-    for (int i = objects.size() - 1; i >= 0; --i)
+    for (int i = 1; i < objects.size(); i++)
         if (objects[i]->isDead)
         {
-            delete objects[i];
-            objects.erase(objects.begin() + i);
+			//delete in grid
+			SpatialGrid::GetInstance()->DeleteFromGrid(objects[i]->id);
+
+			//delete in objects
+			delete objects[i];
+			objects.erase(objects.begin() + i);
         }
 
  /*   if (mario->x > MAP_WIDTH)

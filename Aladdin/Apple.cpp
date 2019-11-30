@@ -2,34 +2,35 @@
 
 void Apple::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-    //left = x;
-    //top = y;
-    //right = x + width;
-    //bottom = y - height;
-
-    int lastFrame = animations[ani]->lastFrame;
-    //if (lastFrame < 0) lastFrame = 0;
-    /*   width = animations[ani]->frames[lastFrame]->GetSprite()->width;
-       height = animations[ani]->frames[lastFrame]->GetSprite()->height;*/
-    width = lastFrameWidth;
-    height = lastFrameHeight;
-
-    //x += (width - lastFrameWidth) / 2;
-    //y += (height - lastFrameHeight) / 2;
-
     left = x;
     top = y;
     right = x + width;
     bottom = y - height;
+
+    //int lastFrame = animations[ani]->lastFrame;
+    ////if (lastFrame < 0) lastFrame = 0;
+    ///*   width = animations[ani]->frames[lastFrame]->GetSprite()->width;
+    //   height = animations[ani]->frames[lastFrame]->GetSprite()->height;*/
+    //width = lastFrameWidth;
+    //height = lastFrameHeight;
+
+    ////x += (width - lastFrameWidth) / 2;
+    ////y += (height - lastFrameHeight) / 2;
+
+    //left = x;
+    //top = y;
+    //right = x + width;
+    //bottom = y - height;
 }
 
 void Apple::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
     CGameObject::Update(dt, coObjects);
 
-    if (state == APPLE_STATE_DESTROY)
-        if (animations[ani]->currentFrame == 11)
-            this->isDead = true;
+    //if (state == APPLE_STATE_DESTROY)
+    //    if (animations[ani]->currentFrame == 11)
+    //        this->isDead = true;
+	
 }
 
 void Apple::SetState(int state)

@@ -158,7 +158,7 @@ void ResourceLoader::CreateAnimation()
     ani = new CAnimation(100);
     ani->Add(40001);
     animations->Add(401, ani);
-    ani = new CAnimation(75); //item destroy of apple
+    ani = new CAnimation(300); //item destroy of apple
     for (int i = 1; i <= 12; i++)
         ani->Add(-40000 - i);
     animations->Add(ITEM_DESTROY, ani);
@@ -501,6 +501,8 @@ void ResourceLoader::LoadSprite()
 
 void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects)
 {
+	int object_index = 1;
+
 	std::ifstream infile(FileName);
 	string name;
 	float  x, y, w, h;
@@ -518,6 +520,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ground0->SetName(name);
             ground0->width = w;
             ground0->height = h;
+			ground0->id = object_index;
             objects.push_back(ground0);
         }
         else if (name == GROUND1_ID || name == "Ground3")
@@ -529,6 +532,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ground1->SetName(name);
             ground1->width = w;
             ground1->height = h;
+			ground1->id = object_index;
             objects.push_back(ground1);
         }
         else if (name == APPLE_ID)
@@ -540,6 +544,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             apple->SetName(name);
             apple->width = w;
             apple->height = h;
+			apple->id = object_index;
             objects.push_back(apple);
         }
         else if (name == PILLAR0_ID || name == PILLAR1_ID || name == PILLAR2_ID || name == PILLAR3_ID || name == FRONT_CHAINS_ID)
@@ -559,10 +564,11 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ground0->SetName(name);
             ground0->width = w;
             ground0->height = h;
+			ground0->id = object_index;
             objects.push_back(ground0);
-
-            
         }
+
+		object_index++;
 	}
 }
 
