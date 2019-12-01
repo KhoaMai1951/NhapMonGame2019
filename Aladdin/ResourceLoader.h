@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -27,6 +27,9 @@ public:
     static void LoadSprite();
 	static void CreateAnimation();
     void ChangeYtoDecart(float& y);
+
+	vector<int> read_map(string file_path);
+	void load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, vector<LPGAMEOBJECT>& map_vector);
 
 private:
 	static ResourceLoader* _instance;

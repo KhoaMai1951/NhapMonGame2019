@@ -13,7 +13,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     // Simple fall down
     vy -= ALADDIN_GRAVITY * dt;
 
-    /*if (state == ALADDIN_STATE_IDLE)
+    if (state == ALADDIN_STATE_IDLE)
     {
         if (idle_start != 0 && GetTickCount() - idle_start > 1000)
         {
@@ -37,7 +37,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     else if (state == ALADDIN_STATE_IDLE3 && animations[ani]->currentFrame == 17)
     {
         SetState(ALADDIN_STATE_IDLE);
-    }*/
+    }
         
     vector<LPCOLLISIONEVENT> coEvents;
     vector<LPCOLLISIONEVENT> coEventsResult;
@@ -215,6 +215,13 @@ void Aladdin::ProcessKeyboard()
         {
             vx = 0;
         }
+		if (game->IsKeyPress(DIK_SPACE))
+		{
+			if (vx == 0)
+				SetState(ALADDIN_STATE_JUMP);
+			else
+				SetState(ALADDIN_STATE_RUN_JUMP);
+		}
         return;
     }
     }

@@ -344,13 +344,107 @@ void ResourceLoader::LoadSprite()
     sprites->Add(-10038, 752, 519, 806, 549, texAladdin_Left);
     sprites->Add(-10039, 690, 516, 743, 551, texAladdin_Left);
 
+	//attack (standing, no wall) - dòng 5
+	sprites->Add(10040, 5, 337, 50, 388, texAladdin);
+	sprites->Add(10041, 54,	326, 105, 388, texAladdin);
+	sprites->Add(10042, 115,314, 160, 388, texAladdin);
+	sprites->Add(10043, 171	,319, 253, 388, texAladdin);
+	sprites->Add(10044, 260,335, 311, 388, texAladdin);
+	//attack left (standing, no wall) - dòng 5
+	sprites->Add(-10040, 1071,	337,	1116,	388, texAladdin_Left);
+	sprites->Add(-10041, 1016,	326,	1067,	388, texAladdin_Left);
+	sprites->Add(-10042, 961,	314,	1006,	388, texAladdin_Left);
+	sprites->Add(-10043, 868,	319,	950,	388, texAladdin_Left);
+	sprites->Add(-10044, 810,	335,	861,	388, texAladdin_Left);
+	//throw apple (standing) - dòng 4
+	sprites->Add(10045, 7,	235, 50, 291, texAladdin);
+	sprites->Add(10045, 57,	232, 98, 291, texAladdin);
+	sprites->Add(10045, 109, 233, 147, 291, texAladdin);
+	sprites->Add(10045, 163, 231, 209, 291, texAladdin);
+	sprites->Add(10045, 221, 233, 258, 291, texAladdin);
+	sprites->Add(10045, 268, 239, 307, 291, texAladdin);
+	//throw apple left(standing) - dòng 4
+	sprites->Add(-10045, 1071,	235,	1114,	291, texAladdin_Left);
+	sprites->Add(-10045, 1023,	232, 1064,	291, texAladdin_Left);
+	sprites->Add(-10045, 974,	233, 1012,	291, texAladdin_Left);
+	sprites->Add(-10045, 912,	231, 958,	291, texAladdin_Left);
+	sprites->Add(-10045, 863,	233,	900,	291, texAladdin_Left);
+	sprites->Add(-10045, 814,	239,	853,	291, texAladdin_Left);
+	//attack (sitting) - dòng 9
+	sprites->Add(10046, 9,	640,	56,	673, texAladdin);
+	sprites->Add(10047, 64,	642,	109,	673, texAladdin);
+	sprites->Add(10048, 115, 640,	186, 673, texAladdin);
+	sprites->Add(10049, 193,	639,	285,	673, texAladdin);
+	sprites->Add(10050, 298,	640,	382,	673, texAladdin);
+	sprites->Add(10051, 392,	640,	463,	673, texAladdin);
+	sprites->Add(10051, 475,	642,	520,	673, texAladdin);
+	//attack (sitting) left - dòng 9
+	sprites->Add(-10046, 1065,	640,	1112,	673, texAladdin_Left);
+	sprites->Add(-10047, 1012,	642,	1057,	673, texAladdin_Left);
+	sprites->Add(-10048, 935,	640,	1006,	673, texAladdin_Left);
+	sprites->Add(-10049, 836,	639,	928,	673, texAladdin_Left);
+	sprites->Add(-10050, 739,	640,	823,	673, texAladdin_Left);
+	sprites->Add(-10051, 658,	640,	729,	673, texAladdin_Left);
+	sprites->Add(-10051, 601,	642,	646,	673, texAladdin_Left);
+	//throw apple (sitting) - dòng 8
+	sprites->Add(10052, 9,	571,	46,	615, texAladdin);
+	sprites->Add(10053, 58,	567,	95,	615, texAladdin);
+	sprites->Add(10054, 107,	571,	157,	619, texAladdin);
+	sprites->Add(10055, 164,	578,	246,	615, texAladdin);
+	sprites->Add(10056, 256,	579,	313,	616, texAladdin);
+	//throw apple (sitting) left - dòng 8
+	sprites->Add(-10052, 1075,	571,	1112,	615, texAladdin_Left);
+	sprites->Add(-10053, 1026,	567,	1063,	615, texAladdin_Left);
+	sprites->Add(-10054, 964,	571,	1014,	619, texAladdin_Left);
+	sprites->Add(-10055, 875,	578,	957,	615, texAladdin_Left);
+	sprites->Add(-10056, 808,	579,	865,	616, texAladdin_Left);
+	//attack (jumping) - dòng 14
+	sprites->Add(10057, 13,	1077,	65,	1131, texAladdin);
+	sprites->Add(10057, 75, 1075,	125,	1127, texAladdin);
+	sprites->Add(10057, 140,	1067,	187,	1133, texAladdin);
+	sprites->Add(10057, 199,	1078,	251,	1134, texAladdin);
+	sprites->Add(10057, 266,	1070,	349,	1130, texAladdin);
+	sprites->Add(10057, 361,	1087,	408,	1142, texAladdin);
+	//attack (jumping) left - dòng 14
+	sprites->Add(-10057, 1056,	1077,	1108,	1131, texAladdin_Left);
+	sprites->Add(-10057, 996,	1075,	1046,	1127, texAladdin_Left);
+	sprites->Add(-10057, 934,	1067,	981,	1133, texAladdin_Left);
+	sprites->Add(-10057, 870,	1078,	922,	1134, texAladdin_Left);
+	sprites->Add(-10057, 772,	1070,	855,	1130, texAladdin_Left);
+	sprites->Add(-10057, 701,	1087,	760,	1142, texAladdin_Left);
+	//throw apple (jumping) - dòng 13
+	sprites->Add(10058, 19,	1005,	68,	1060, texAladdin);
+	sprites->Add(10059, 77,	1007,	120,	1059, texAladdin);
+	sprites->Add(10060, 132,	1008,	171,	1061, texAladdin);
+	sprites->Add(10061, 185,	1008,	237,	1061, texAladdin);
+	sprites->Add(10062, 253,	1012,	293,	1064, texAladdin);
+	//throw apple (jumping) left - dòng 13
+	sprites->Add(-10058, 1053,	1005,	1102,	1060, texAladdin_Left);
+	sprites->Add(-10059, 1001,	1007,	1044,	1059, texAladdin_Left);
+	sprites->Add(-10060, 950,	1008,	989,	1061, texAladdin_Left);
+	sprites->Add(-10061, 884,	1008,	936,	1061, texAladdin_Left);
+	sprites->Add(-10062, 828,	1012,	868,	1064, texAladdin_Left);
+	//leo dây (ko có left-right)
+	sprites->Add(10063, 11,	1362,	40,	1448, texAladdin);
+	sprites->Add(10064, 53,	1361,	81,	1450, texAladdin);
+	sprites->Add(10065, 94,	1374,	122,	1448, texAladdin);
+	sprites->Add(10066, 133,	1377,	175,	1439, texAladdin);
+	sprites->Add(10067, 186,	1363,	217,	1439, texAladdin);
+	sprites->Add(10068, 231,	1358,	260,	1444, texAladdin);
+	sprites->Add(10069, 274,	1367,	302,	1446, texAladdin);
+	sprites->Add(10070, 314,	1377,	346,	1440, texAladdin);
+	sprites->Add(10071, 356,	1377,	398,	1439, texAladdin);
+	sprites->Add(10072, 406,	1362,	434,	1443, texAladdin);
+	//pushing
+	//death (ko có left-right)
+
 
 #pragma endregion Aladdin
 	
 #pragma region
 	LPDIRECT3DTEXTURE9 texGuards = textures->Get(TEX_GUARD);
 
-	sprites->Add(-20001, 99, 11, 135, 76, texGuards);	//sprites for Guards 0 walking right
+	sprites->Add(-20001, 99, 11, 135, 76, texGuards);	//sprites for Guards 0 (Blade) walking right
 	sprites->Add(-20002, 140, 9, 190, 76, texGuards);
 	sprites->Add(-20003, 196, 9, 239, 76, texGuards);
 	sprites->Add(-20004, 247, 10, 284, 76, texGuards);
@@ -378,10 +472,10 @@ void ResourceLoader::LoadSprite()
 #pragma endregion Guard 0
 
 #pragma region
-	sprites->Add(-20001, 69, 253, 116, 307, texGuards);   //Guard 1 walking to the right
-	sprites->Add(-20002, 120, 251, 164, 307, texGuards);
-	sprites->Add(-20003, 172, 254, 214, 307, texGuards);
-	sprites->Add(-20004, 219, 255, 268, 307, texGuards);
+	sprites->Add(-21001, 69, 253, 116, 307, texGuards);   //Guard 1 (Staff) walking to the right
+	sprites->Add(-21002, 120, 251, 164, 307, texGuards);
+	sprites->Add(-21003, 172, 254, 214, 307, texGuards);
+	sprites->Add(-21004, 219, 255, 268, 307, texGuards);
 	sprites->Add(-20005, 274, 253, 325, 307, texGuards);
 	sprites->Add(-20006, 331, 252, 387, 307, texGuards);
 	sprites->Add(-20007, 391, 253, 443, 307, texGuards);
@@ -601,6 +695,102 @@ void ResourceLoader::LoadMapFromFile(string FileName, LPDIRECT3DTEXTURE9 texMap,
 		map_vector.push_back(map1);
 	}
 }
+
+vector<int> ResourceLoader::read_map(string file_path)
+{
+	ifstream map_file(file_path);
+	vector<int> result;
+	if (map_file.is_open())
+	{
+		while (true)
+		{
+			int x;
+			map_file >> x;
+			if (map_file.eof())
+				break;
+			result.push_back(x);
+		}
+		map_file.close();
+	}
+	return result;
+};
+
+// Load map từ file ma trận
+void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, vector<LPGAMEOBJECT>& map_vector)
+{
+	CSprites* sprites = CSprites::GetInstance();
+	vector<int> arr = ResourceLoader::read_map(file_path);
+
+	int tile_set_count = arr[0];
+	int tile_map_row = arr[1];
+	int tile_map_column = arr[2];
+	int tile_height = arr[3];
+	int tile_width = arr[4];
+	int tile_set_row = arr[5];
+	int tile_set_column = arr[6];
+
+	//tile_count = tile_set_count;
+
+	arr.erase(arr.begin(), arr.begin() + 7);
+
+	//duyệt tileset để lấy sprite
+	for (int i = 0; i < tile_set_count; i++)
+	{
+		int l = (i % tile_set_column) * tile_width;
+		int t = (i / tile_set_column) * tile_height;
+		int r = l + tile_width;
+		int b = t + tile_height;
+		sprites->Add(TILE_INDEX + i, l, t, r, b, tile_set);
+	}
+
+	//duyệt ma trận
+	for (int i = 0; i < arr.size(); i++)
+	{
+		float l = (float)((i % tile_map_column) * tile_width);
+		float t = (float)((i / tile_map_column) * tile_height);
+
+		LPANIMATION ani;
+		ani = new CAnimation(100);
+		ani->Add(TILE_INDEX + arr[i]);
+		CAnimations* animations = CAnimations::GetInstance();
+		animations->Add(2222, ani);
+
+		ChangeYtoDecart(t);
+		l += 64;	//fix position, map bị lệch 1 tile
+		//khởi tạo cell map
+		CMap* map1 = new CMap();
+
+		map1->AddAnimation(2222);
+		map1->width = tile_height;
+		map1->height = tile_height;
+		map1->SetPosition(l, t);
+		map_vector.push_back(map1);
+		// Tiles.push_back(new Tile((float)l, (float)t, sprites->Get(TILE_INDEX + arr[i])));
+	}
+
+	//temp fix first column not show (aladdin dungeon map only)
+	for (int i = 0; i < tile_map_row; i++)
+	{
+		float l = 0;
+		float t = (float)(i * tile_height);
+
+		LPANIMATION ani;
+		ani = new CAnimation(100);
+		ani->Add(TILE_INDEX + arr[i * tile_map_column] - 1);
+		CAnimations* animations = CAnimations::GetInstance();
+		animations->Add(22222, ani);
+
+		ChangeYtoDecart(t);
+		//khởi tạo cell map
+		CMap* map1 = new CMap();
+
+		map1->AddAnimation(22222);
+		map1->width = tile_height;
+		map1->height = tile_height;
+		map1->SetPosition(l, t);
+		map_vector.push_back(map1);
+	}
+};
 
 void ResourceLoader::ChangeYtoDecart(float& y)
 {

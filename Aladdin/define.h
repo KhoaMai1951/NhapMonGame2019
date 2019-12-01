@@ -26,6 +26,7 @@
 #define FRONT_CHAINS_ID "front_chains"
 #define APPLE_ID "apple"
 
+#define TILE_INDEX 900000
 //Aladdin animation
 enum AladdinAnimation
 {
@@ -55,5 +56,5 @@ enum TEX_ID
     TEX_GUARD = 40,
     TEX_GUARD_LEFT = 41,
     TEX_ITEM_DESTROY,
-
+	TEX_TILESET_DUNGEON = 99,
 };

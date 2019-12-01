@@ -2,8 +2,18 @@
 
 SultansDungeon_Scene::SultansDungeon_Scene()
 {
-    ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
+    //ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
     ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
+
+	//----------Load Map từ file text và Tile Set
+	CTextures* textures = CTextures::GetInstance();
+
+	textures->Add(TEX_TILESET_DUNGEON, L"textures\\TileSet_Sultans Dungeon_Back.png", D3DCOLOR_XRGB(255, 255, 255));
+
+	LPDIRECT3DTEXTURE9 texDungeonTileSet = textures->Get(TEX_TILESET_DUNGEON);
+
+	ResourceLoader::GetInstance()->load_tile_map(texDungeonTileSet, "Map_Matrix_Dungeon.txt", map_vector);
+	//----------------------------------------------
 #pragma region 
     aladdin = new Aladdin();
     aladdin->AddAnimation(101); //idle right 
