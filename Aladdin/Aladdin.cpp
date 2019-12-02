@@ -38,10 +38,8 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         SetState(ALADDIN_STATE_IDLE);
     }
-        
-    vector<LPCOLLISIONEVENT> coEvents;
-    vector<LPCOLLISIONEVENT> coEventsResult;
 
+#pragma region
     float l, t, r, b;
     GetBoundingBox(l, t, r, b);
 
@@ -53,77 +51,33 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
     //Truyền set các obj thuộc các lưới có player vào vector
     vector<CGameObject*> vector_gameobject(set_gameobject.begin(), set_gameobject.end());
-
-    coEvents.clear();
+#pragma endregion Find objects in grid
 
     // turn off collision when die 
-    //void CGameObject::CalcPotentialCollisions(vector<LPGAMEOBJECT>* coObjects, vector<LPCOLLISIONEVENT>& coEvents)
-    if (state != ALADDIN_STATE_DIE)
-        CalcPotentialCollisions(vector_gameobject, coEvents);
-    else return;
-
+    if (state == ALADDIN_STATE_DIE)
+        return;
     //// reset untouchable timer if untouchable time has passed
     //if (GetTickCount() - untouchable_start > ALADDIN_UNTOUCHABLE_TIME)
     //{
     //    untouchable_start = 0;
     //    untouchable = 0;
     //}
+    int Ground0Collided = CheckGround0Collision(&vector_gameobject, dt),
+        Ground1Collided = CheckGround1Collision(&vector_gameobject, dt);
 
-    // No collision occured, proceed normally
-    if (coEvents.size() == 0)
-    {
-        x += dx;
+    //0 - no collision, 1 - collide from all direction, -1 - collide from left-right , -2 -collide from top-bot 
+    if (Ground0Collided == 0 && !Ground1Collided)
         y += dy;
-    }
-    else
+    else if (Ground0Collided == -1 && !Ground1Collided)
     {
-        float min_tx, min_ty, nx = 0, ny;
-        FilterGroundCollision0(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-        
-        // block 
-        x += min_tx * dx + nx * 0.4f;	// nx*0.4f : need to push out a bit to avoid overlapping next frame
-        y += min_ty * dy + ny * 0.4f;
-
-        if (nx != 0) vx = 0;
-        if (ny != 0)
-        {
-            vy = 0;
-            if (ny > 0)
-                jumping = false;
-        }
-
-        FilterGroundCollision1(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-
-        if (ny > 0)
-        {
-            vy = 0;
-            //y += min_ty * dy + ny * 0.1f;
-            //y += 2;
-            jumping = false;
-        }
-
-        FilterItemCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-        for (UINT i = 0; i < coEventsResult.size(); i++)
-        {
-            LPCOLLISIONEVENT e = coEventsResult[i];
-
-            if (dynamic_cast<Apple *>(e->obj)) // if e->obj is Apple 
-            {
-                Apple *apple = dynamic_cast<Apple *>(e->obj);
-
-                if (e->ny != 0 || e->nx != 0)
-                {
-                    if (apple->GetState() != APPLE_STATE_DESTROY)
-                    {
-                        apple->SetState(APPLE_STATE_DESTROY);
-                    }
-                }
-            }
-        }
+        y += dy;
+        //vy *= 0.9; // jump slower
     }
+        
+    //Bug when pushing wall and release
 
-    // clean up collision events
-    for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+    //Bug when collide with items the same time
+    CheckItemCollision(&vector_gameobject, dt);
 
     ProcessKeyboard();
 }
@@ -409,118 +363,276 @@ void Aladdin::GetBoundingBox(float &left, float &top, float &right, float &botto
     }*/
 }
 
-void Aladdin::FilterGroundCollision0(
-    vector<LPCOLLISIONEVENT> &coEvents,
-    vector<LPCOLLISIONEVENT> &coEventsResult,
-    float &min_tx, float &min_ty,
-    float &nx, float &ny)
+//0 - no collision, 1 - collide from all direction, -1 - collide from left-right , -2 -collide from top-bot 
+int Aladdin::CheckGround0Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 {
-    min_tx = 1.0f;
-    min_ty = 1.0f;
-    int min_ix = -1;
-    int min_iy = -1;
+    vector<LPCOLLISIONEVENT> coEvents;
+    vector<LPCOLLISIONEVENT> coEventsResult;
+    coEvents.clear();
 
-    nx = 0.0f;
-    ny = 0.0f;
+    vector<LPGAMEOBJECT> ground0_objects;
+    ground0_objects.clear();
 
+    for (UINT i = 0; i < coObjects->size(); i++)
+    {
+        if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 0)
+            ground0_objects.push_back(coObjects->at(i));
+    }
+
+    CalcPotentialCollisions(ground0_objects, coEvents);
+
+    // No collision occured, proceed normally
+    if (coEvents.size() == 0)
+    {
+        x += dx;
+
+        // clean up collision events
+        for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+        return 0;
+    }
+
+    float min_tx, min_ty, nx = 0, ny;
+    FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+    // block 
+    x += min_tx * dx +nx * 0.2f;	// nx*0.4f : need to push out a bit to avoid overlapping next frame
+    //y += min_ty * dy + dt*ALADDIN_GRAVITY; //+ ny * 0.2f;
+
+    // clean up collision events
+    for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+
+    if (ny != 0)
+    {
+        vy = 0;
+        if (ny > 0)
+            jumping = false;
+
+        if (nx != 0)
+        {
+            x += min_tx * dx;
+            vx = 0;
+            return 1;
+        }
+        else
+        {
+            return -2;
+        }
+    }
+    else if (nx != 0)
+    {
+        return -1;
+    }
+}
+
+bool Aladdin::CheckGround1Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
+{
+    vector<LPCOLLISIONEVENT> coEvents;
+    vector<LPCOLLISIONEVENT> coEventsResult;
+    coEvents.clear();
+
+    vector<LPGAMEOBJECT> ground1_objects;
+    ground1_objects.clear();
+
+    for (UINT i = 0; i < coObjects->size(); i++)
+    {
+        if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 1)
+            ground1_objects.push_back(coObjects->at(i));
+    }
+
+    CalcPotentialCollisions(ground1_objects, coEvents);
+
+    // No collision occured, proceed normally
+    if (coEvents.size() == 0)
+    {
+        // clean up collision events
+        for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+        return false;
+    }
+    else
+    {
+        float min_tx, min_ty, nx = 0, ny;
+        FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+        if (ny > 0)
+        {
+            vy = 0;
+            jumping = false;
+            //y += min_ty * dy + ny * 0.2f;
+        }
+    }
+
+    // clean up collision events
+    for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+    return true;
+}
+
+bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
+{
+    vector<LPCOLLISIONEVENT> coEvents;
+    vector<LPCOLLISIONEVENT> coEventsResult;
+    coEvents.clear();
     coEventsResult.clear();
 
-    for (UINT i = 0; i < coEvents.size(); i++)
-    {
-        LPCOLLISIONEVENT c = coEvents[i];
-        
-        if (dynamic_cast<Ground *>(c->obj) && dynamic_cast<Ground *>(c->obj)->type == 0)
-        {
-            /*if (dynamic_cast<Ground *>(c->obj)->type == 0)
-                c->type = 0;
-            else
-                c->type = 1;*/
-            if (c->t < min_tx && c->nx != 0) {
-                min_tx = c->t; nx = c->nx; min_ix = i;
-            }
+    vector<LPGAMEOBJECT> item_objects;
+    item_objects.clear();
 
-            if (c->t < min_ty  && c->ny != 0) {
-                min_ty = c->t; ny = c->ny; min_iy = i;
+    for (UINT i = 0; i < coObjects->size(); i++)
+    {
+        if (dynamic_cast<Apple *>(coObjects->at(i)))
+            item_objects.push_back(coObjects->at(i));
+    }
+
+    CalcPotentialCollisions(item_objects, coEvents);
+
+    // No collision occured, proceed normally
+    if (coEvents.size() == 0)
+    {
+        // clean up collision events
+        for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+        return false;
+    }
+    else
+    {
+        DebugOut(L"Va cham1\n");
+        float min_tx, min_ty, nx = 0, ny;
+        FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+        for (UINT i = 0; i < coEventsResult.size(); i++)
+        {
+            LPCOLLISIONEVENT e = coEventsResult[i];
+
+            if (dynamic_cast<Apple *>(e->obj)) // if e->obj is Apple 
+            {
+                Apple *apple = dynamic_cast<Apple *>(e->obj);
+
+                if (e->ny != 0 || e->nx != 0)
+                {
+                    if (apple->GetState() != APPLE_STATE_DESTROY)
+                    {
+                        apple->SetState(APPLE_STATE_DESTROY);
+                    }
+                }
             }
         }
     }
 
-    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
+    // clean up collision events
+    for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+    return true;
 }
 
-void Aladdin::FilterGroundCollision1(
-    vector<LPCOLLISIONEVENT> &coEvents,
-    vector<LPCOLLISIONEVENT> &coEventsResult,
-    float &min_tx, float &min_ty,
-    float &nx, float &ny)
-{
-    min_tx = 1.0f;
-    min_ty = 1.0f;
-    int min_ix = -1;
-    int min_iy = -1;
-
-    nx = 0.0f;
-    ny = 0.0f;
-
-    coEventsResult.clear();
-
-    for (UINT i = 0; i < coEvents.size(); i++)
-    {
-        LPCOLLISIONEVENT c = coEvents[i];
-
-        if (dynamic_cast<Ground *>(c->obj) && dynamic_cast<Ground *>(c->obj)->type == 1)
-        {
-            /*if (dynamic_cast<Ground *>(c->obj)->type == 0)
-                c->type = 0;
-            else
-                c->type = 1;*/
-            if (c->t < min_tx && c->nx != 0) {
-                min_tx = c->t; nx = c->nx; min_ix = i;
-            }
-
-            if (c->t < min_ty  && c->ny != 0) {
-                min_ty = c->t; ny = c->ny; min_iy = i;
-            }
-        }
-    }
-
-    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
-}
-
-void Aladdin::FilterItemCollision(
-    vector<LPCOLLISIONEVENT> &coEvents,
-    vector<LPCOLLISIONEVENT> &coEventsResult,
-    float &min_tx, float &min_ty,
-    float &nx, float &ny)
-{
-    min_tx = 1.0f;
-    min_ty = 1.0f;
-    int min_ix = -1;
-    int min_iy = -1;
-
-    nx = 0.0f;
-    ny = 0.0f;
-
-    coEventsResult.clear();
-
-    for (UINT i = 0; i < coEvents.size(); i++)
-    {
-        LPCOLLISIONEVENT c = coEvents[i];
-
-        if (dynamic_cast<Apple *>(c->obj))
-        {
-            if (c->t < min_tx && c->nx != 0) {
-                min_tx = c->t; nx = c->nx; min_ix = i;
-            }
-
-            if (c->t < min_ty  && c->ny != 0) {
-                min_ty = c->t; ny = c->ny; min_iy = i;
-            }
-        }
-    }
-
-    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
-}
+//void Aladdin::FilterGroundCollision0(
+//    vector<LPCOLLISIONEVENT> &coEvents,
+//    vector<LPCOLLISIONEVENT> &coEventsResult,
+//    float &min_tx, float &min_ty,
+//    float &nx, float &ny)
+//{
+//    min_tx = 1.0f;
+//    min_ty = 1.0f;
+//    int min_ix = -1;
+//    int min_iy = -1;
+//
+//    nx = 0.0f;
+//    ny = 0.0f;
+//
+//    coEventsResult.clear();
+//
+//    for (UINT i = 0; i < coEvents.size(); i++)
+//    {
+//        LPCOLLISIONEVENT c = coEvents[i];
+//        
+//        if (dynamic_cast<Ground *>(c->obj) && dynamic_cast<Ground *>(c->obj)->type == 0)
+//        {
+//            /*if (dynamic_cast<Ground *>(c->obj)->type == 0)
+//                c->type = 0;
+//            else
+//                c->type = 1;*/
+//            if (c->t < min_tx && c->nx != 0) {
+//                min_tx = c->t; nx = c->nx; min_ix = i;
+//            }
+//
+//            if (c->t < min_ty  && c->ny != 0) {
+//                min_ty = c->t; ny = c->ny; min_iy = i;
+//            }
+//        }
+//    }
+//
+//    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
+//    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
+//}
+//
+//void Aladdin::FilterGroundCollision1(
+//    vector<LPCOLLISIONEVENT> &coEvents,
+//    vector<LPCOLLISIONEVENT> &coEventsResult,
+//    float &min_tx, float &min_ty,
+//    float &nx, float &ny)
+//{
+//    min_tx = 1.0f;
+//    min_ty = 1.0f;
+//    int min_ix = -1;
+//    int min_iy = -1;
+//
+//    nx = 0.0f;
+//    ny = 0.0f;
+//
+//    coEventsResult.clear();
+//
+//    for (UINT i = 0; i < coEvents.size(); i++)
+//    {
+//        LPCOLLISIONEVENT c = coEvents[i];
+//
+//        if (dynamic_cast<Ground *>(c->obj) && dynamic_cast<Ground *>(c->obj)->type == 1)
+//        {
+//            /*if (dynamic_cast<Ground *>(c->obj)->type == 0)
+//                c->type = 0;
+//            else
+//                c->type = 1;*/
+//            if (c->t < min_tx && c->nx != 0) {
+//                min_tx = c->t; nx = c->nx; min_ix = i;
+//            }
+//
+//            if (c->t < min_ty  && c->ny != 0) {
+//                min_ty = c->t; ny = c->ny; min_iy = i;
+//            }
+//        }
+//    }
+//
+//    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
+//    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
+//}
+//
+//void Aladdin::FilterItemCollision(
+//    vector<LPCOLLISIONEVENT> &coEvents,
+//    vector<LPCOLLISIONEVENT> &coEventsResult,
+//    float &min_tx, float &min_ty,
+//    float &nx, float &ny)
+//{
+//    min_tx = 1.0f;
+//    min_ty = 1.0f;
+//    int min_ix = -1;
+//    int min_iy = -1;
+//
+//    nx = 0.0f;
+//    ny = 0.0f;
+//
+//    coEventsResult.clear();
+//
+//    for (UINT i = 0; i < coEvents.size(); i++)
+//    {
+//        LPCOLLISIONEVENT c = coEvents[i];
+//
+//        if (dynamic_cast<Apple *>(c->obj))
+//        {
+//            if (c->t < min_tx && c->nx != 0) {
+//                min_tx = c->t; nx = c->nx; min_ix = i;
+//            }
+//
+//            if (c->t < min_ty  && c->ny != 0) {
+//                min_ty = c->t; ny = c->ny; min_iy = i;
+//            }
+//        }
+//    }
+//
+//    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
+//    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
+//}

@@ -68,8 +68,12 @@ class Aladdin : public CGameObject
     bool jumping = false;
     DWORD untouchable_start, idle_start;
 
+    int CheckGround0Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
+    bool CheckGround1Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
+    bool CheckItemCollision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
+
     //type: 0-ground0, 1-ground1, 2-enemies, 3-items
-    void FilterGroundCollision0(
+    /*void FilterGroundCollision0(
         vector<LPCOLLISIONEVENT> &coEvents,
         vector<LPCOLLISIONEVENT> &coEventsResult,
         float &min_tx,
@@ -89,7 +93,7 @@ class Aladdin : public CGameObject
         float &min_tx,
         float &min_ty,
         float &nx,
-        float &ny);
+        float &ny);*/
 public:
     Aladdin() : CGameObject()
     {
