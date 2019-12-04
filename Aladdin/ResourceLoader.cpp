@@ -680,6 +680,7 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_MAIN_MENU, L"textures\\Menu.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\LevelComplete.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ABU, L"textures\\Abu.png", D3DCOLOR_XRGB(255, 255, 255));
+    textures->Add(TEX_ENEMY_EXPLODE, L"textures\\Enemy_exlode.png", D3DCOLOR_XRGB(255, 255, 255));
 
 
     CSprites* sprites = CSprites::GetInstance();
@@ -1242,16 +1243,17 @@ void ResourceLoader::LoadSprite()
 #pragma endregion Explode Skeleton
 
 #pragma region
-	sprites->Add(20031, 20,	1020,	32,	1030, texGuards); //Enemy dead
-	sprites->Add(20032, 54,	1005,	95,	1032, texGuards);
-	sprites->Add(20033, 102,	1003,	149,	1032, texGuards);
-	sprites->Add(20034, 149,	1003,	196,	1031, texGuards);
-	sprites->Add(20035, 196,	1002,	245,	1032, texGuards);
-	sprites->Add(20036, 245,	1002,	294,	1032, texGuards);
-	sprites->Add(20037, 305,	1012,	329,	1033, texGuards);
-	sprites->Add(20038, 355,	1013,	378,	1033, texGuards);
-	sprites->Add(20039, 405,	1014,	428,	1033, texGuards);
-	sprites->Add(20040, 454,	1014,	475,	1033, texGuards);
+    LPDIRECT3DTEXTURE9 texEnemyExplode = textures->Get(TEX_ENEMY_EXPLODE);
+	sprites->Add(20031, 20,	30,	32,	40, texEnemyExplode); //Enemy explode
+	sprites->Add(20032, 54,	15,	95,	42, texEnemyExplode);
+	sprites->Add(20033, 102,	15,	149,	43, texEnemyExplode);
+	sprites->Add(20034, 148,	14,	195,	42, texEnemyExplode);
+	sprites->Add(20035, 197,	12,	246,	42, texEnemyExplode);
+	sprites->Add(20036, 246,	12,	294,	42, texEnemyExplode);
+	sprites->Add(20037, 305,	22,	329,	43, texEnemyExplode);
+	sprites->Add(20038, 355,	23,	378,	43, texEnemyExplode);
+	sprites->Add(20039, 405,	24,	428,	43, texEnemyExplode);
+	sprites->Add(20040, 454,	24,	475,	43, texEnemyExplode);
 #pragma endregion Enemy Dead
 
 #pragma region 

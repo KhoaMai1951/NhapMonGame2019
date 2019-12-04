@@ -356,7 +356,7 @@ void Aladdin::Render()
     //animations[ani]->Render(x, y, alpha, restart_frame);
     animations[ani]->Render(x, y, width, lastFrameHeight, alpha, restart_frame, nx);
 
-    //RenderBoundingBox();
+    RenderBoundingBox();
 }
 
 void Aladdin::GetBoundingBox(float &left, float &top, float &right, float &bottom)

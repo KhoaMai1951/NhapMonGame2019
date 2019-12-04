@@ -106,6 +106,7 @@ set<CGameObject*> SpatialGrid::GetGridForCollision(float x1, float y1, float x2,
     y2 = ceil(y2 / CellSize);
 
 
+
     set<CGameObject*> result;
     stringstream ss;
     string key;
