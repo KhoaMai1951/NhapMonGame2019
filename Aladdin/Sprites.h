@@ -19,7 +19,8 @@ public:
     int width, height;
 	CSprite(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex);
 
-	void Draw(float x, float y, int alpha = 255);
+	void Draw(float x, float y, D3DXVECTOR3 center, int alpha = 255);
+    void Draw(float x, float y, int alpha = 255);
 };
 
 typedef CSprite * LPSPRITE;
@@ -67,7 +68,7 @@ public:
 	CAnimation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(int spriteId, DWORD time = 0);
     void Render(float x, float y, int alpha = 255, int restart = 0);
-    void Render(float &x, float &y, long &lastFrameWidth, long &lastFrameHeight, int alpha = 255, int restart = 0);
+    void Render(float &x, float &y, float bbWidth, long &lastFrameHeight, int alpha = 255, int restart = 0, float nx = 1);
     void ResetAnimation() { currentFrame = -1; }
 };
 

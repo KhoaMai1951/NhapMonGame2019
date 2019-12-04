@@ -32,6 +32,21 @@ SultansDungeon_Scene::SultansDungeon_Scene()
     aladdin->AddAnimation(1012); //idle2
     aladdin->AddAnimation(1013); //idle3
 
+    aladdin->AddAnimation(107);  //attack right
+    aladdin->AddAnimation(-107); //attack left
+    aladdin->AddAnimation(108); //throw apple right standing
+    aladdin->AddAnimation(-108); //throw apple left standing
+    aladdin->AddAnimation(109); //sit attack right
+    aladdin->AddAnimation(-109); //sit attack left
+    aladdin->AddAnimation(110); //jump attack right
+    aladdin->AddAnimation(-110); //jump attack left
+    aladdin->AddAnimation(111); //jump throw apple right
+    aladdin->AddAnimation(-111); //jump throw apple left
+    aladdin->AddAnimation(112); //climb rope
+    aladdin->AddAnimation(113); //pushing right
+    aladdin->AddAnimation(-113); //pushing left
+    aladdin->AddAnimation(114); //dead
+
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);
 #pragma endregion Initalize Aladdin

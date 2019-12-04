@@ -15,10 +15,15 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
     if (state == ALADDIN_STATE_IDLE)
     {
-        if (idle_start != 0 && GetTickCount() - idle_start > 1000)
+        if (idle_start != 0 && GetTickCount() - idle_start > 5000)
         {
             SetState(ALADDIN_STATE_IDLE1);
         }
+    }
+    if (state == ALADDIN_STATE_ATTACK)
+    {
+        if (animations[ani]->currentFrame == 4)
+            SetState(ALADDIN_STATE_IDLE);
     }
     else if (state == ALADDIN_STATE_IDLE1)
     {
@@ -54,7 +59,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 #pragma endregion Find objects in grid
 
     // turn off collision when die 
-    if (state == ALADDIN_STATE_DIE)
+    if (state == ALADDIN_STATE_DEAD)
         return;
     //// reset untouchable timer if untouchable time has passed
     //if (GetTickCount() - untouchable_start > ALADDIN_UNTOUCHABLE_TIME)
@@ -88,7 +93,7 @@ void Aladdin::ProcessKeyboard()
     switch (state)
     {
         int direction, updown;
-     case ALADDIN_STATE_DIE: return;
+     case ALADDIN_STATE_DEAD: return;
     case ALADDIN_STATE_IDLE:
     case ALADDIN_STATE_RUN:
     case ALADDIN_STATE_IDLE1:
@@ -138,12 +143,16 @@ void Aladdin::ProcessKeyboard()
                     SetState(ALADDIN_STATE_IDLE);
             }
         }
-        if (game->IsKeyPress(DIK_SPACE))
+        if (game->IsKeyPress(DIK_SPACE)|| game->IsKeyPress(DIK_X))
         {
             if (vx == 0)
                 SetState(ALADDIN_STATE_JUMP);
             else
                 SetState(ALADDIN_STATE_RUN_JUMP);
+        }
+        if (game->IsKeyPress(DIK_C))
+        {
+            SetState(ALADDIN_STATE_ATTACK);
         }
         return;
     }
@@ -169,7 +178,7 @@ void Aladdin::ProcessKeyboard()
         {
             vx = 0;
         }
-		if (game->IsKeyPress(DIK_SPACE))
+		if (game->IsKeyPress(DIK_SPACE) || game->IsKeyPress(DIK_X))
 		{
 			if (vx == 0)
 				SetState(ALADDIN_STATE_JUMP);
@@ -185,7 +194,6 @@ void Aladdin::ProcessKeyboard()
 void Aladdin::SetState(int state)
 {
     CGameObject::SetState(state);
-
     switch (state)
     {
     case ALADDIN_STATE_RUN:
@@ -205,7 +213,7 @@ void Aladdin::SetState(int state)
     {
         jumping = true;
         vy = ALADDIN_JUMP_SPEED_Y;
-        
+
         animations[ALADDIN_ANI_RUN_JUMP_RIGHT]->ResetAnimation();
         animations[ALADDIN_ANI_RUN_JUMP_LEFT]->ResetAnimation();
         break;
@@ -239,8 +247,16 @@ void Aladdin::SetState(int state)
         animations[ALADDIN_ANI_LOOKUP_RIGHT]->ResetAnimation();
         break;
     }
-    case ALADDIN_STATE_DIE:
-        //vy = MARIO_DIE_DEFLECT_SPEED;
+    case ALADDIN_STATE_ATTACK:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_ATTACK_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_ATTACK_RIGHT]->ResetAnimation();
+        break;
+    }
+    case ALADDIN_STATE_DEAD:
+        idle_start = 0;
+        animations[ALADDIN_ANI_DEAD]->ResetAnimation();
         break;
     }
 }
@@ -248,7 +264,7 @@ void Aladdin::SetState(int state)
 void Aladdin::Render()
 {
     int restart_frame = 0; //for jump
-    if (state == ALADDIN_STATE_DIE)
+    if (state == ALADDIN_STATE_DEAD)
     {
         restart_frame = 0;
         //ani = MARIO_ANI_DIE;
@@ -324,33 +340,34 @@ void Aladdin::Render()
                 ani = ALADDIN_ANI_CROUCH_LEFT;
             break;
         }
+        case ALADDIN_STATE_ATTACK:
+        {
+            restart_frame = 0;
+            if (nx > 0)
+                ani = ALADDIN_ANI_ATTACK_RIGHT;
+            else
+                ani = ALADDIN_ANI_ATTACK_LEFT; break;
+        }
         }
     }
 
     int alpha = 255;
     if (untouchable) alpha = 128;
     //animations[ani]->Render(x, y, alpha, restart_frame);
-    animations[ani]->Render(x, y, lastFrameWidth, lastFrameHeight, alpha, restart_frame);
+    animations[ani]->Render(x, y, width, lastFrameHeight, alpha, restart_frame, nx);
 
     RenderBoundingBox();
 }
 
 void Aladdin::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 {
-    int lastFrame = animations[ani]->lastFrame;
-    //if (lastFrame < 0) lastFrame = 0;
- /*   width = animations[ani]->frames[lastFrame]->GetSprite()->width;
-    height = animations[ani]->frames[lastFrame]->GetSprite()->height;*/
     //width = lastFrameWidth;
     height = lastFrameHeight;
 
-    //x += (width - lastFrameWidth) / 2;
-    //y += (height - lastFrameHeight) / 2;
-
     left = x;
     top = y;
-    right = x + width;
-    bottom = y - height;
+    right = left + width;
+    bottom = top - height;
     /*switch (state)
     {
     case ALADDIN_STATE_IDLE:

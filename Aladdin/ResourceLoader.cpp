@@ -151,6 +151,117 @@ void ResourceLoader::CreateAnimation()
     }
     animations->Add(-106, ani);
 
+    //attack right
+    ani = new CAnimation(100);
+    for (int i = 40; i <= 44; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(107, ani);
+
+    //attack left
+    ani = new CAnimation(100);
+    for (int i = 40; i <= 44; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-107, ani);
+
+    //throw apple right standing
+    ani = new CAnimation(100);
+    for (int i = 445; i <= 450; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(108, ani);
+
+    //throw apple left standing
+    ani = new CAnimation(100);
+    for (int i = 445; i <= 450; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-108, ani);
+
+    //sit attack right
+    ani = new CAnimation(100);
+    for (int i = 46; i <= 51; i++)
+    {
+        ani->Add(aladdin_sprite_id + i);
+    }
+    animations->Add(109, ani);
+
+    //sit attack left
+    ani = new CAnimation(100);
+    for (int i = 46; i <= 51; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-109, ani);
+
+    //jump attack right
+    ani = new CAnimation(100);
+    for (int i = 557; i <= 562; i++)
+    {
+        ani->Add((aladdin_sprite_id + i));
+    }
+    animations->Add(110, ani);
+
+    //jump attack left
+    ani = new CAnimation(100);
+    for (int i = 557; i <= 562; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-110, ani);
+
+    //jump throw apple right
+    ani = new CAnimation(100);
+    for (int i = 58; i <= 62; i++)
+    {
+        ani->Add((aladdin_sprite_id + i));
+    }
+    animations->Add(111, ani);
+
+    //jump throw apple left
+    ani = new CAnimation(100);
+    for (int i = 58; i <= 62; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-111, ani);
+
+    //climb rope
+    ani = new CAnimation(100);
+    for (int i = 63; i <= 72; i++)
+    {
+        ani->Add((aladdin_sprite_id + i));
+    }
+    animations->Add(112, ani);
+
+    //pushing right
+    ani = new CAnimation(100);
+    for (int i = 73; i <= 81; i++)
+    {
+        ani->Add((aladdin_sprite_id + i));
+    }
+    animations->Add(113, ani);
+
+    //pushing left
+    ani = new CAnimation(100);
+    for (int i = 73; i <= 81; i++)
+    {
+        ani->Add(-(aladdin_sprite_id + i));
+    }
+    animations->Add(-113, ani);
+
+    //dead
+    ani = new CAnimation(100);
+    for (int i = 82; i <= 116; i++)
+    {
+        ani->Add((aladdin_sprite_id + i));
+    }
+    animations->Add(114, ani);
 #pragma endregion Aladdin
 
 #pragma region
@@ -344,99 +455,152 @@ void ResourceLoader::LoadSprite()
     sprites->Add(-10038, 752, 519, 806, 549, texAladdin_Left);
     sprites->Add(-10039, 690, 516, 743, 551, texAladdin_Left);
 
-	//attack (standing, no wall) - dòng 5
-	sprites->Add(10040, 5, 337, 50, 388, texAladdin);
-	sprites->Add(10041, 54,	326, 105, 388, texAladdin);
-	sprites->Add(10042, 115,314, 160, 388, texAladdin);
-	sprites->Add(10043, 171	,319, 253, 388, texAladdin);
-	sprites->Add(10044, 260,335, 311, 388, texAladdin);
-	//attack left (standing, no wall) - dòng 5
-	sprites->Add(-10040, 1071,	337,	1116,	388, texAladdin_Left);
-	sprites->Add(-10041, 1016,	326,	1067,	388, texAladdin_Left);
-	sprites->Add(-10042, 961,	314,	1006,	388, texAladdin_Left);
-	sprites->Add(-10043, 868,	319,	950,	388, texAladdin_Left);
-	sprites->Add(-10044, 810,	335,	861,	388, texAladdin_Left);
-	//throw apple (standing) - dòng 4
-	sprites->Add(10045, 7,	235, 50, 291, texAladdin);
-	sprites->Add(10045, 57,	232, 98, 291, texAladdin);
-	sprites->Add(10045, 109, 233, 147, 291, texAladdin);
-	sprites->Add(10045, 163, 231, 209, 291, texAladdin);
-	sprites->Add(10045, 221, 233, 258, 291, texAladdin);
-	sprites->Add(10045, 268, 239, 307, 291, texAladdin);
-	//throw apple left(standing) - dòng 4
-	sprites->Add(-10045, 1071,	235,	1114,	291, texAladdin_Left);
-	sprites->Add(-10045, 1023,	232, 1064,	291, texAladdin_Left);
-	sprites->Add(-10045, 974,	233, 1012,	291, texAladdin_Left);
-	sprites->Add(-10045, 912,	231, 958,	291, texAladdin_Left);
-	sprites->Add(-10045, 863,	233,	900,	291, texAladdin_Left);
-	sprites->Add(-10045, 814,	239,	853,	291, texAladdin_Left);
-	//attack (sitting) - dòng 9
-	sprites->Add(10046, 9,	640,	56,	673, texAladdin);
-	sprites->Add(10047, 64,	642,	109,	673, texAladdin);
-	sprites->Add(10048, 115, 640,	186, 673, texAladdin);
-	sprites->Add(10049, 193,	639,	285,	673, texAladdin);
-	sprites->Add(10050, 298,	640,	382,	673, texAladdin);
-	sprites->Add(10051, 392,	640,	463,	673, texAladdin);
-	sprites->Add(10051, 475,	642,	520,	673, texAladdin);
-	//attack (sitting) left - dòng 9
-	sprites->Add(-10046, 1065,	640,	1112,	673, texAladdin_Left);
-	sprites->Add(-10047, 1012,	642,	1057,	673, texAladdin_Left);
-	sprites->Add(-10048, 935,	640,	1006,	673, texAladdin_Left);
-	sprites->Add(-10049, 836,	639,	928,	673, texAladdin_Left);
-	sprites->Add(-10050, 739,	640,	823,	673, texAladdin_Left);
-	sprites->Add(-10051, 658,	640,	729,	673, texAladdin_Left);
-	sprites->Add(-10051, 601,	642,	646,	673, texAladdin_Left);
-	//throw apple (sitting) - dòng 8
-	sprites->Add(10052, 9,	571,	46,	615, texAladdin);
-	sprites->Add(10053, 58,	567,	95,	615, texAladdin);
-	sprites->Add(10054, 107,	571,	157,	619, texAladdin);
-	sprites->Add(10055, 164,	578,	246,	615, texAladdin);
-	sprites->Add(10056, 256,	579,	313,	616, texAladdin);
-	//throw apple (sitting) left - dòng 8
-	sprites->Add(-10052, 1075,	571,	1112,	615, texAladdin_Left);
-	sprites->Add(-10053, 1026,	567,	1063,	615, texAladdin_Left);
-	sprites->Add(-10054, 964,	571,	1014,	619, texAladdin_Left);
-	sprites->Add(-10055, 875,	578,	957,	615, texAladdin_Left);
-	sprites->Add(-10056, 808,	579,	865,	616, texAladdin_Left);
-	//attack (jumping) - dòng 14
-	sprites->Add(10057, 13,	1077,	65,	1131, texAladdin);
-	sprites->Add(10057, 75, 1075,	125,	1127, texAladdin);
-	sprites->Add(10057, 140,	1067,	187,	1133, texAladdin);
-	sprites->Add(10057, 199,	1078,	251,	1134, texAladdin);
-	sprites->Add(10057, 266,	1070,	349,	1130, texAladdin);
-	sprites->Add(10057, 361,	1087,	408,	1142, texAladdin);
-	//attack (jumping) left - dòng 14
-	sprites->Add(-10057, 1056,	1077,	1108,	1131, texAladdin_Left);
-	sprites->Add(-10057, 996,	1075,	1046,	1127, texAladdin_Left);
-	sprites->Add(-10057, 934,	1067,	981,	1133, texAladdin_Left);
-	sprites->Add(-10057, 870,	1078,	922,	1134, texAladdin_Left);
-	sprites->Add(-10057, 772,	1070,	855,	1130, texAladdin_Left);
-	sprites->Add(-10057, 701,	1087,	760,	1142, texAladdin_Left);
-	//throw apple (jumping) - dòng 13
-	sprites->Add(10058, 19,	1005,	68,	1060, texAladdin);
-	sprites->Add(10059, 77,	1007,	120,	1059, texAladdin);
-	sprites->Add(10060, 132,	1008,	171,	1061, texAladdin);
-	sprites->Add(10061, 185,	1008,	237,	1061, texAladdin);
-	sprites->Add(10062, 253,	1012,	293,	1064, texAladdin);
-	//throw apple (jumping) left - dòng 13
-	sprites->Add(-10058, 1053,	1005,	1102,	1060, texAladdin_Left);
-	sprites->Add(-10059, 1001,	1007,	1044,	1059, texAladdin_Left);
-	sprites->Add(-10060, 950,	1008,	989,	1061, texAladdin_Left);
-	sprites->Add(-10061, 884,	1008,	936,	1061, texAladdin_Left);
-	sprites->Add(-10062, 828,	1012,	868,	1064, texAladdin_Left);
-	//leo dây (ko có left-right)
-	sprites->Add(10063, 11,	1362,	40,	1448, texAladdin);
-	sprites->Add(10064, 53,	1361,	81,	1450, texAladdin);
-	sprites->Add(10065, 94,	1374,	122,	1448, texAladdin);
-	sprites->Add(10066, 133,	1377,	175,	1439, texAladdin);
-	sprites->Add(10067, 186,	1363,	217,	1439, texAladdin);
-	sprites->Add(10068, 231,	1358,	260,	1444, texAladdin);
-	sprites->Add(10069, 274,	1367,	302,	1446, texAladdin);
-	sprites->Add(10070, 314,	1377,	346,	1440, texAladdin);
-	sprites->Add(10071, 356,	1377,	398,	1439, texAladdin);
-	sprites->Add(10072, 406,	1362,	434,	1443, texAladdin);
-	//pushing
-	//death (ko có left-right)
+    // attack(standing, no wall) - dòng 5
+    sprites->Add(10040, 5, 337, 50, 388, texAladdin);
+    sprites->Add(10041, 54, 326, 105, 388, texAladdin);
+    sprites->Add(10042, 115, 314, 160, 388, texAladdin);
+    sprites->Add(10043, 171, 319, 253, 388, texAladdin);
+    sprites->Add(10044, 260, 335, 311, 388, texAladdin);
+    //attack left (standing, no wall) - dòng 5
+    sprites->Add(-10040, 1071, 337, 1116, 388, texAladdin_Left);
+    sprites->Add(-10041, 1016, 326, 1067, 388, texAladdin_Left);
+    sprites->Add(-10042, 961, 314, 1006, 388, texAladdin_Left);
+    sprites->Add(-10043, 868, 319, 950, 388, texAladdin_Left);
+    sprites->Add(-10044, 810, 335, 861, 388, texAladdin_Left);
+    //throw apple (standing) - dòng 4
+    sprites->Add(10445, 7, 235, 50, 291, texAladdin);
+    sprites->Add(10446, 57, 232, 98, 291, texAladdin);
+    sprites->Add(10447, 109, 233, 147, 291, texAladdin);
+    sprites->Add(10448, 163, 231, 209, 291, texAladdin);
+    sprites->Add(10449, 221, 233, 258, 291, texAladdin);
+    sprites->Add(10450, 268, 239, 307, 291, texAladdin);
+    //throw apple left(standing) - dòng 4
+    sprites->Add(-10445, 1071, 235, 1114, 291, texAladdin_Left);
+    sprites->Add(-10446, 1023, 232, 1064, 291, texAladdin_Left);
+    sprites->Add(-10447, 974, 233, 1012, 291, texAladdin_Left);
+    sprites->Add(-10448, 912, 231, 958, 291, texAladdin_Left);
+    sprites->Add(-10449, 863, 233, 900, 291, texAladdin_Left);
+    sprites->Add(-10450, 814, 239, 853, 291, texAladdin_Left);
+    //attack (sitting) - dòng 9
+    sprites->Add(10046, 9, 640, 56, 673, texAladdin);
+    sprites->Add(10047, 64, 642, 109, 673, texAladdin);
+    sprites->Add(10048, 115, 640, 186, 673, texAladdin);
+    sprites->Add(10049, 193, 639, 285, 673, texAladdin);
+    sprites->Add(10050, 298, 640, 382, 673, texAladdin);
+    sprites->Add(10051, 392, 640, 463, 673, texAladdin);
+    sprites->Add(10051, 475, 642, 520, 673, texAladdin);
+    //attack (sitting) left - dòng 9
+    sprites->Add(-10046, 1065, 640, 1112, 673, texAladdin_Left);
+    sprites->Add(-10047, 1012, 642, 1057, 673, texAladdin_Left);
+    sprites->Add(-10048, 935, 640, 1006, 673, texAladdin_Left);
+    sprites->Add(-10049, 836, 639, 928, 673, texAladdin_Left);
+    sprites->Add(-10050, 739, 640, 823, 673, texAladdin_Left);
+    sprites->Add(-10051, 658, 640, 729, 673, texAladdin_Left);
+    sprites->Add(-10051, 601, 642, 646, 673, texAladdin_Left);
+    //throw apple (sitting) - dòng 8
+    sprites->Add(10052, 9, 571, 46, 615, texAladdin);
+    sprites->Add(10053, 58, 567, 95, 615, texAladdin);
+    sprites->Add(10054, 107, 571, 157, 619, texAladdin);
+    sprites->Add(10055, 164, 578, 246, 615, texAladdin);
+    sprites->Add(10056, 256, 579, 313, 616, texAladdin);
+    //throw apple (sitting) left - dòng 8
+    sprites->Add(-10052, 1075, 571, 1112, 615, texAladdin_Left);
+    sprites->Add(-10053, 1026, 567, 1063, 615, texAladdin_Left);
+    sprites->Add(-10054, 964, 571, 1014, 619, texAladdin_Left);
+    sprites->Add(-10055, 875, 578, 957, 615, texAladdin_Left);
+    sprites->Add(-10056, 808, 579, 865, 616, texAladdin_Left);
+    //attack (jumping) - dòng 14
+    sprites->Add(10557, 13, 1077, 65, 1131, texAladdin);
+    sprites->Add(10558, 75, 1075, 125, 1127, texAladdin);
+    sprites->Add(10559, 140, 1067, 187, 1133, texAladdin);
+    sprites->Add(10560, 199, 1078, 251, 1134, texAladdin);
+    sprites->Add(10561, 266, 1070, 349, 1130, texAladdin);
+    sprites->Add(10562, 361, 1087, 408, 1142, texAladdin);
+    //attack (jumping) left - dòng 14
+    sprites->Add(-10557, 1056, 1077, 1108, 1131, texAladdin_Left);
+    sprites->Add(-10558, 996, 1075, 1046, 1127, texAladdin_Left);
+    sprites->Add(-10559, 934, 1067, 981, 1133, texAladdin_Left);
+    sprites->Add(-10560, 870, 1078, 922, 1134, texAladdin_Left);
+    sprites->Add(-10561, 772, 1070, 855, 1130, texAladdin_Left);
+    sprites->Add(-10562, 701, 1087, 760, 1142, texAladdin_Left);
+    //throw apple (jumping) - dòng 13
+    sprites->Add(10058, 19, 1005, 68, 1060, texAladdin);
+    sprites->Add(10059, 77, 1007, 120, 1059, texAladdin);
+    sprites->Add(10060, 132, 1008, 171, 1061, texAladdin);
+    sprites->Add(10061, 185, 1008, 237, 1061, texAladdin);
+    sprites->Add(10062, 253, 1012, 293, 1064, texAladdin);
+    //throw apple (jumping) left - dòng 13
+    sprites->Add(-10058, 1053, 1005, 1102, 1060, texAladdin_Left);
+    sprites->Add(-10059, 1001, 1007, 1044, 1059, texAladdin_Left);
+    sprites->Add(-10060, 950, 1008, 989, 1061, texAladdin_Left);
+    sprites->Add(-10061, 884, 1008, 936, 1061, texAladdin_Left);
+    sprites->Add(-10062, 828, 1012, 868, 1064, texAladdin_Left);
+    //leo dây (ko có left-right)
+    sprites->Add(10063, 11, 1362, 40, 1448, texAladdin);
+    sprites->Add(10064, 53, 1361, 81, 1450, texAladdin);
+    sprites->Add(10065, 94, 1374, 122, 1448, texAladdin);
+    sprites->Add(10066, 133, 1377, 175, 1439, texAladdin);
+    sprites->Add(10067, 186, 1363, 217, 1439, texAladdin);
+    sprites->Add(10068, 231, 1358, 260, 1444, texAladdin);
+    sprites->Add(10069, 274, 1367, 302, 1446, texAladdin);
+    sprites->Add(10070, 314, 1377, 346, 1440, texAladdin);
+    sprites->Add(10071, 356, 1377, 398, 1439, texAladdin);
+    sprites->Add(10072, 406, 1362, 434, 1443, texAladdin);
+    //pushing right
+    sprites->Add(10073, 7, 1959, 63, 2005, texAladdin);
+    sprites->Add(10074, 75, 1961, 140, 2005, texAladdin);
+    sprites->Add(10075, 157, 1961, 227, 2006, texAladdin);
+    sprites->Add(10076, 237, 1962, 314, 2006, texAladdin);
+    sprites->Add(10077, 327, 1964, 399, 2008, texAladdin);
+    sprites->Add(10078, 416, 1965, 482, 2009, texAladdin);
+    sprites->Add(10079, 495, 1965, 570, 2009, texAladdin);
+    sprites->Add(10080, 585, 1966, 666, 2010, texAladdin);
+    sprites->Add(10081, 681, 1968, 756, 2012, texAladdin);
+    //pushing left
+    sprites->Add(-10073, 1058, 1959, 1114, 2005, texAladdin_Left);
+    sprites->Add(-10074, 981, 1961, 1046, 2005, texAladdin_Left);
+    sprites->Add(-10075, 894, 1961, 964, 2006, texAladdin_Left);
+    sprites->Add(-10076, 807, 1962, 884, 2006, texAladdin_Left);
+    sprites->Add(-10077, 722, 1964, 794, 2008, texAladdin_Left);
+    sprites->Add(-10078, 639, 1965, 705, 2009, texAladdin_Left);
+    sprites->Add(-10079, 551, 1965, 626, 2009, texAladdin_Left);
+    sprites->Add(-10080, 455, 1966, 536, 2010, texAladdin_Left);
+    sprites->Add(-10081, 365, 1968, 440, 2012, texAladdin_Left);
+    //dead (ko có left-right)
+    sprites->Add(10082, 9, 2167, 51, 2213, texAladdin);
+    sprites->Add(10083, 58, 2161, 113, 2213, texAladdin);
+    sprites->Add(10084, 122, 2162, 181, 2212, texAladdin);
+    sprites->Add(10085, 189, 2163, 269, 2211, texAladdin);
+    sprites->Add(10086, 282, 2160, 343, 2211, texAladdin);
+    sprites->Add(10087, 351, 2161, 410, 2210, texAladdin);
+    sprites->Add(10088, 1, 2234, 81, 2282, texAladdin);
+    sprites->Add(10089, 87, 2231, 148, 2282, texAladdin);
+    sprites->Add(10090, 160, 2224, 205, 2282, texAladdin);
+    sprites->Add(10091, 213, 2224, 258, 2282, texAladdin);
+    sprites->Add(10092, 264, 2231, 303, 2281, texAladdin);
+    sprites->Add(10093, 312, 2230, 352, 2281, texAladdin);
+    sprites->Add(10094, 361, 2230, 396, 2281, texAladdin);
+    sprites->Add(10095, 407, 2230, 443, 2281, texAladdin);
+    sprites->Add(10096, 454, 2232, 493, 2281, texAladdin);
+    sprites->Add(10097, 505, 2227, 549, 2283, texAladdin);
+    sprites->Add(10099, 560, 2228, 601, 2281, texAladdin);
+    sprites->Add(10100, 614, 2232, 653, 2282, texAladdin);
+    sprites->Add(10101, 661, 2232, 701, 2283, texAladdin);
+    sprites->Add(10102, 2, 2335, 39, 2386, texAladdin);
+    sprites->Add(10103, 49, 2329, 86, 2386, texAladdin);
+    sprites->Add(10104, 97, 2331, 140, 2386, texAladdin);
+    sprites->Add(10105, 148, 2333, 209, 2386, texAladdin);
+    sprites->Add(10106, 223, 2336, 284, 2387, texAladdin);
+    sprites->Add(10107, 296, 2310, 372, 2393, texAladdin);
+    sprites->Add(10108, 383, 2309, 460, 2394, texAladdin);
+    sprites->Add(10109, 476, 2309, 551, 2394, texAladdin);
+    sprites->Add(10110, 567, 2311, 635, 2394, texAladdin);
+    sprites->Add(10111, 654, 2319, 720, 2394, texAladdin);
+    sprites->Add(10112, 734, 2321, 800, 2395, texAladdin);
+    sprites->Add(10113, 811, 2323, 877, 2397, texAladdin);
+    sprites->Add(10114, 888, 2323, 954, 2397, texAladdin);
+    sprites->Add(10115, 970, 2325, 1036, 2399, texAladdin);
+    sprites->Add(10116, 1049, 2325, 1115, 2399, texAladdin);
 
 
 #pragma endregion Aladdin
