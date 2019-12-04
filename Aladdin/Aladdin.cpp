@@ -44,7 +44,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
         SetState(ALADDIN_STATE_IDLE);
     }
 
-#pragma region
+#pragma region Find objects in grid
     float l, t, r, b;
     GetBoundingBox(l, t, r, b);
 
@@ -56,7 +56,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 
     //Truyền set các obj thuộc các lưới có player vào vector
     vector<CGameObject*> vector_gameobject(set_gameobject.begin(), set_gameobject.end());
-#pragma endregion Find objects in grid
+#pragma endregion 
 
     // turn off collision when die 
     if (state == ALADDIN_STATE_DEAD)
@@ -356,7 +356,7 @@ void Aladdin::Render()
     //animations[ani]->Render(x, y, alpha, restart_frame);
     animations[ani]->Render(x, y, width, lastFrameHeight, alpha, restart_frame, nx);
 
-    RenderBoundingBox();
+    //RenderBoundingBox();
 }
 
 void Aladdin::GetBoundingBox(float &left, float &top, float &right, float &bottom)
