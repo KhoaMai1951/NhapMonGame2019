@@ -102,6 +102,9 @@
     <ClInclude Include="Apple.h">
       <Filter>Header Files\Objects\Items</Filter>
     </ClInclude>
+    <ClInclude Include="Guard0.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -157,6 +160,9 @@
     </ClCompile>
     <ClCompile Include="Apple.cpp">
       <Filter>Source Files\Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard0.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

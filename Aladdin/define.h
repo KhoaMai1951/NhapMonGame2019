@@ -36,6 +36,20 @@ enum AladdinAnimation
 //Map animation
 
 //Enemy animation
+enum EnemyAnimation
+{
+	ENEMY_EXPLODE = 2000,
+	GUARD0_IDLE_RIGHT = 2001,
+	GUARD0_IDLE_LEFT = -2001,
+	GUARD0_WALK_RIGHT = 2002,
+	GUARD0_WALK_LEFT = -2002,
+	GUARD0_ATTACK_RIGHT = 2003,
+	GUARD0_ATTACK_LEFT = -2003,
+	GUARD0_HURT_RIGHT = 2004,
+	GUARD0_HURT_LEFT = -2004,
+
+	
+};
 enum ItemAnimation
 {
     ITEM = 400,

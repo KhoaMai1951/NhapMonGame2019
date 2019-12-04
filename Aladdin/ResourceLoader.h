@@ -5,10 +5,8 @@
 #include <fstream>
 #include <string>
 
-//#include "Mario.h"
-//#include "Goomba.h"
-//#include "Brick.h"
 #include "Apple.h"
+#include "Guard0.h"
 #include "Ground.h"
 #include "Map.h"
 #include "define.h"
