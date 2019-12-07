@@ -3,7 +3,7 @@
 void Ground::Render()
 {
     animations[0]->Render(x, y);
-    if(name == "Ground0" || name == "Ground1" || name == "Ground3")
+    if(name == "Ground0" || name == "Ground1")
         RenderBoundingBox();
 }
 

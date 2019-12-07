@@ -69,6 +69,7 @@ public:
 	void Add(int spriteId, DWORD time = 0);
     void Render(float x, float y, int alpha = 255, int restart = 0);
     void Render(float &x, float &y, float bbWidth, long &lastFrameHeight, int alpha = 255, int restart = 0, float nx = 1);
+    void Render(float &x, float &y, float bbWidth, long &lastFrameWidth, long &lastFrameHeight, int alpha = 255, int restart = 0, float nx = 1);
     void ResetAnimation() { currentFrame = -1; }
 };
 

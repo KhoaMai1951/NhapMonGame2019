@@ -6,8 +6,20 @@
 #include <string>
 
 #include "Apple.h"
+#include "Ruby.h"
+#include "Genie.h"
+#include "Vase.h"
+#include "LifeHeal.h"
+
 #include "Guard0.h"
+#include "Guard1.h"
+#include "Skeleton.h"
+
+#include "Step.h"
+#include "SpikeTrap.h"
+#include "WreckingBall.h"
 #include "Ground.h"
+
 #include "Map.h"
 #include "define.h"
 #include "Textures.h"

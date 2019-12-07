@@ -37,6 +37,7 @@ public:
 	string name;
 	int id;
     bool isDead;
+    bool isItem = false;
 
 	float x; 
 	float y;

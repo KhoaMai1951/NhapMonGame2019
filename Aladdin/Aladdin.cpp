@@ -20,7 +20,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
             SetState(ALADDIN_STATE_IDLE1);
         }
     }
-    if (state == ALADDIN_STATE_ATTACK)
+    else if (state == ALADDIN_STATE_ATTACK)
     {
         if (animations[ani]->currentFrame == 4)
             SetState(ALADDIN_STATE_IDLE);
@@ -495,7 +495,9 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        if (dynamic_cast<Apple *>(coObjects->at(i)))
+        //if (dynamic_cast<Apple *>(coObjects->at(i)))
+        //    item_objects.push_back(coObjects->at(i));
+        if (coObjects->at(i)->isItem == true)
             item_objects.push_back(coObjects->at(i));
     }
 
@@ -527,6 +529,54 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
                     if (apple->GetState() != APPLE_STATE_DESTROY)
                     {
                         apple->SetState(APPLE_STATE_DESTROY);
+                    }
+                }
+            }
+            else if (dynamic_cast<Ruby *>(e->obj))
+            {
+                Ruby *ruby = dynamic_cast<Ruby *>(e->obj);
+
+                if (e->ny != 0 || e->nx != 0)
+                {
+                    if (ruby->GetState() != RUBY_STATE_EATEN)
+                    {
+                        ruby->SetState(RUBY_STATE_EATEN);
+                    }
+                }
+            }
+            else if (dynamic_cast<Genie *>(e->obj))
+            {
+                Genie *genie = dynamic_cast<Genie *>(e->obj);
+
+                if (e->ny != 0 || e->nx != 0)
+                {
+                    if (genie->GetState() != GENIE_STATE_EATEN)
+                    {
+                        genie->SetState(GENIE_STATE_EATEN);
+                    }
+                }
+            }
+            else if (dynamic_cast<Vase *>(e->obj))
+            {
+                Vase *vase = dynamic_cast<Vase *>(e->obj);
+
+                if (e->ny != 0 || e->nx != 0)
+                {
+                    if (vase->GetState() != VASE_STATE_EATEN)
+                    {
+                        vase->SetState(VASE_STATE_EATEN);
+                    }
+                }
+            }
+            else if (dynamic_cast<LifeHeal *>(e->obj))
+            {
+                LifeHeal *life = dynamic_cast<LifeHeal *>(e->obj);
+
+                if (e->ny != 0 || e->nx != 0)
+                {
+                    if (life->GetState() != LIFEHEAL_STATE_EATEN)
+                    {
+                        life->SetState(LIFEHEAL_STATE_EATEN);
                     }
                 }
             }

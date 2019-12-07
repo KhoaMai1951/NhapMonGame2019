@@ -6,6 +6,11 @@
 #include "SpatialGrid.h"
 
 #include "Apple.h"
+#include "Ruby.h"
+#include "Genie.h"
+#include "LifeHeal.h"
+#include "Vase.h"
+
 #include "Ground.h"
 #include "Enemy.h"
 

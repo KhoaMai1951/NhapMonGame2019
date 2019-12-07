@@ -378,7 +378,7 @@ void ResourceLoader::CreateAnimation()
 #pragma endregion Aladdin
 
 // enemy explode
-ani = new CAnimation(75);
+ani = new CAnimation(100);
 for (int i = 1; i <= 10; i++)
 {
 	ani->Add((20090 + i));
@@ -386,48 +386,51 @@ for (int i = 1; i <= 10; i++)
 animations->Add(2000, ani);
 
 #pragma region
+
 	int enemy_staff_sprite_id = 20000;
 	//idle right
-	ani->Add((enemy_staff_sprite_id + 1));
+    ani = new CAnimation(100);
+	ani->Add(enemy_staff_sprite_id);
 	animations->Add(2001, ani);
 	//idle left
-	ani->Add(-(enemy_staff_sprite_id + 1));
+    ani = new CAnimation(100);
+	ani->Add(-enemy_staff_sprite_id);
 	animations->Add(-2001, ani);
 
 	//staff walk right
-	ani = new CAnimation(75);
-	for (int i = 2; i <= 8; i++)
+	ani = new CAnimation(100);
+	for (int i = 1; i <= 8; i++)
 	{
 		ani->Add((enemy_staff_sprite_id + i));
 	}
 	animations->Add(2002, ani);
 
 	//staff walk left
-	ani = new CAnimation(75);
-	for (int i = 2; i <= 8; i++)
+	ani = new CAnimation(100);
+	for (int i = 1; i <= 8; i++)
 	{
 		ani->Add(-(enemy_staff_sprite_id + i));
 	}
 	animations->Add(-2002, ani);
 
 	//staff attack right
-	ani = new CAnimation(75);
-	for (int i = 9; i <= 14; i++)
+	ani = new CAnimation(100);
+	for (int i = 9; i <= 13; i++)
 	{
 		ani->Add((enemy_staff_sprite_id + i));
 	}
 	animations->Add(2003, ani);
 
 	//staff attack left
-	ani = new CAnimation(75);
-	for (int i = 9; i <= 14; i++)
+	ani = new CAnimation(100);
+	for (int i = 9; i <= 13; i++)
 	{
 		ani->Add(-(enemy_staff_sprite_id + i));
 	}
 	animations->Add(-2003, ani);
 
 	//staff hurt right
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 15; i <= 23; i++)
 	{
 		ani->Add((enemy_staff_sprite_id + i));
@@ -435,7 +438,7 @@ animations->Add(2000, ani);
 	animations->Add(2004, ani);
 
 	//staff hurt left
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 15; i <= 23; i++)
 	{
 		ani->Add(-(enemy_staff_sprite_id + i));
@@ -447,110 +450,117 @@ animations->Add(2000, ani);
 #pragma region
 	int enemy_blade_sprite_id = 21000;
 
+    //idle right
+    ani = new CAnimation(100);
+    ani->Add(enemy_blade_sprite_id);
+    animations->Add(2101, ani);
+    //idle left
+    ani = new CAnimation(100);
+    ani->Add(-enemy_blade_sprite_id);
+    animations->Add(-2101, ani);
+
 	//blade walk right
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 1; i <= 8; i++)
 	{
 		ani->Add((enemy_blade_sprite_id + i));
 	}
-	animations->Add(126, ani);
+	animations->Add(2102, ani);
 
 	//blade walk left
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 1; i <= 8; i++)
 	{
 		ani->Add(-(enemy_blade_sprite_id + i));
 	}
-	animations->Add(-126, ani);
+	animations->Add(-2102, ani);
 
 	//blade taunt right
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 9; i <= 14; i++)
 	{
 		ani->Add((enemy_blade_sprite_id + i));
 	}
-	animations->Add(127, ani);
+	animations->Add(2103, ani);
 
 	//blade taunt left
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 9; i <= 14; i++)
 	{
 		ani->Add(-(enemy_blade_sprite_id + i));
 	}
-	animations->Add(-127, ani);
+	animations->Add(-2103, ani);
 
 	//blade attack 1 right
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 15; i <= 19; i++)
 	{
 		ani->Add((enemy_blade_sprite_id + i));
 	}
-	animations->Add(128, ani);
+	animations->Add(2104, ani);
 
 	//blade attack 1 left
-	ani = new CAnimation(75);
+	ani = new CAnimation(100);
 	for (int i = 15; i <= 19; i++)
 	{
 		ani->Add(-(enemy_blade_sprite_id + i));
 	}
-	animations->Add(-128, ani);
+	animations->Add(-2104, ani);
 
 	//blade attack 2 right
-	ani = new CAnimation(75);
-	for (int i = 20; i <= 24; i++)
+	ani = new CAnimation(100);
+	for (int i = 21; i <= 25; i++)
 	{
 		ani->Add((enemy_blade_sprite_id + i));
 	}
-	animations->Add(129, ani);
+	animations->Add(2105, ani);
 
 	//blade attack 2 left
-	ani = new CAnimation(75);
-	for (int i = 20; i <= 24; i++)
+	ani = new CAnimation(100);
+	for (int i = 21; i <= 25; i++)
 	{
 		ani->Add(-(enemy_blade_sprite_id + i));
 	}
-	animations->Add(-129, ani);
+	animations->Add(-2105, ani);
 
 	//blade hurt right
-	ani = new CAnimation(75);
-	for (int i = 25; i <= 30; i++)
+	ani = new CAnimation(100);
+	for (int i = 26; i <= 31; i++)
 	{
 		ani->Add((enemy_blade_sprite_id + i));
 	}
-	animations->Add(130, ani);
+	animations->Add(2106, ani);
 
 	//blade hurt left
-	ani = new CAnimation(75);
-	for (int i = 25; i <= 30; i++)
+	ani = new CAnimation(100);
+	for (int i = 26; i <= 31; i++)
 	{
 		ani->Add(-(enemy_blade_sprite_id + i));
 	}
-	animations->Add(-130, ani);
+	animations->Add(-2106, ani);
 #pragma endregion Enemy Blade
 
 #pragma region
 	int explode_skeleton_sprite_id = 22000;
 
 	//skeleton create
-	ani = new CAnimation(75);
+	ani = new CAnimation(200);
 	for (int i = 0; i <= 6; i++)
 	{
 		ani->Add((explode_skeleton_sprite_id + i));
 	}
-	animations->Add(131, ani);
+	animations->Add(2201, ani);
 
 	//skeleton exploding
-	ani = new CAnimation(75);
+	ani = new CAnimation(200);
 	for (int i = 7; i <= 19; i++)
 	{
 		ani->Add((explode_skeleton_sprite_id + i));
 	}
-	animations->Add(132, ani);
+	animations->Add(2202, ani);
 #pragma endregion Explode Skeleton
 
 #pragma region
-	int item_sprite_id = 50000;
-
 	//Animation apple
 	ani = new CAnimation(100);
 	ani->Add(40001);
@@ -561,77 +571,80 @@ animations->Add(2000, ani);
 	animations->Add(ITEM_DESTROY, ani);
 
 	//genie
-	ani = new CAnimation(75);
-	for (int i = 1; i <= 4; i++)
-	{
-		ani->Add((item_sprite_id + i));
-	}
-	animations->Add(133, ani);
+    ani = new CAnimation(200);
+    ani->Add(41001);
+    animations->Add(4101, ani);
+	ani = new CAnimation(200);
+    ani->Add(41001);
+    ani->Add(41002);
+    ani->Add(41003);
+    ani->Add(41004, 750);
+    ani->Add(41004);
+	animations->Add(4102, ani);
 
 	//ruby
-	ani = new CAnimation(75);
-	for (int i = 5; i <= 13; i++)
+	ani = new CAnimation(100);
+	for (int i = 1; i <= 5; i++)
 	{
-		ani->Add((item_sprite_id + i));
+		ani->Add((42000 + i));
 	}
-	animations->Add(134, ani);
+    //skip 6 for now
+    for (int i = 7; i <= 9; i++)
+    {
+        ani->Add((42000 + i));
+    }
+	animations->Add(4201, ani);
 
 	//save idle
-	ani = new CAnimation(75);
-	ani->Add((item_sprite_id + 14));
-	animations->Add(135, ani);
+	ani = new CAnimation(100);
+	ani->Add((43001));
+	animations->Add(4301, ani);
 
 	//save eaten
-	ani = new CAnimation(75);
-	for (int i = 15; i <= 23; i++)
+	ani = new CAnimation(150);
+	for (int i = 2; i <= 9; i++)
 	{
-		ani->Add((item_sprite_id + i));
+		ani->Add((43000 + i));
 	}
-	animations->Add(136, ani);
+    ani->Add(43010, 750);
+    ani->Add(43010);
+	animations->Add(4302, ani);
 
 	//life
-	ani = new CAnimation(75);
-	for (int i = 24; i <= 31; i++)
+	ani = new CAnimation(100);
+	for (int i = 1; i <= 8; i++)
 	{
-		ani->Add((item_sprite_id + i));
+        ani->Add(44000 + i);
 	}
-	animations->Add(137, ani);
-
-	//face
-	ani = new CAnimation(75);
-	ani->Add((item_sprite_id + 32));
-	animations->Add(138, ani);
-
+	animations->Add(4401, ani);
 #pragma endregion Items
 
 #pragma region 
-	int scene_sprite_id = 60000;
-
 	//main menu
 	ani = new CAnimation(75);
-	ani->Add((item_sprite_id + 1));
-	animations->Add(139, ani);
+	ani->Add(60001);
+	animations->Add(6001, ani);
 
 	//level complete
 	ani = new CAnimation(75);
-	ani->Add((item_sprite_id + 2));
-	animations->Add(140, ani);
+	ani->Add(60002);
+	animations->Add(6002, ani);
 
 	//aladdin level complete
 	ani = new CAnimation(75);
 	for (int i = 3; i <= 10; i++)
 	{
-		ani->Add((item_sprite_id + i));
+		ani->Add((60000 + i));
 	}
-	animations->Add(141, ani);
+	animations->Add(6003, ani);
 
 	//abu monkey level complete
 	ani = new CAnimation(75);
 	for (int i = 12; i <= 19; i++)
 	{
-		ani->Add((item_sprite_id + i));
+		ani->Add((60000 + i));
 	}
-	animations->Add(142, ani);
+	animations->Add(6004, ani);
 
 #pragma endregion Scenes
 
@@ -657,7 +670,42 @@ animations->Add(2000, ani);
 	ani->Add(-30005);   //front_chains
 	animations->Add(-305, ani);
 
+    //Step
+    ani = new CAnimation(200);
+    ani->Add(31001, 1000);
+    ani->Add(31002);
+    ani->Add(31003);
+    ani->Add(31004);
+    ani->Add(31005, 1000);
+    ani->Add(31006);
+    ani->Add(31007);
+    ani->Add(31008);
+    animations->Add(3101, ani);
+
+    //Spike
+    ani = new CAnimation(200);
+    ani->Add(32001, 1000);
+    for (int i = 2; i <= 5; i++)
+        ani->Add(32000 + i);
+    ani->Add(32006, 1000);
+    for (int i = 7; i <= 10; i++)
+        ani->Add(32000 + i);
+    animations->Add(3201, ani);
+
+    //Wrecking Ball
+    ani = new CAnimation(100);
+    for (int i = 1; i <= 15; i++)
+        ani->Add(33000 + i);
+    for (int i = 14; i >= 2; i--)
+        ani->Add(33000 + i);
+    animations->Add(3301, ani);
+
+
 #pragma endregion Dungeon environment
+
+#pragma region 
+
+#pragma endregion Score
 
 	//Animation ground
 	ani = new CAnimation(100);
@@ -679,7 +727,7 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_APPLE, L"textures\\Apple.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_GROUND, L"textures\\Ground.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_ITEM_DESTROY, L"textures\\Items_destroy.png", D3DCOLOR_XRGB(255, 255, 255));
-	textures->Add(TEX_ITEM, L"textures\\Items.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_ITEM, L"textures\\Items.png", D3DCOLOR_XRGB(248, 0, 248));
 	textures->Add(TEX_ALADDIN_2, L"textures\\Aladdin2.png", D3DCOLOR_XRGB(105, 148, 190));
 	textures->Add(TEX_ALADDIN_2_LEFT, L"textures\\Aladdin2_left.png", D3DCOLOR_XRGB(105, 148, 190));
 	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Explode Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
@@ -1093,8 +1141,11 @@ void ResourceLoader::LoadSprite()
 	LPDIRECT3DTEXTURE9 texGuards = textures->Get(TEX_GUARD);
 	LPDIRECT3DTEXTURE9 texGuardsLeft = textures->Get(TEX_GUARD_LEFT);
 
-	sprites->Add(20001, 99, 11, 135, 76, texGuards);	//sprites for Guards 0 (Staff) idle 
-	sprites->Add(20002, 140, 9, 190, 76, texGuards);	//walking right
+    sprites->Add(20000, 42, 96, 83, 156, texGuards); //idle right
+    sprites->Add(-20000, 382, 96, 423, 156, texGuardsLeft); //idle left
+
+	sprites->Add(20001, 99, 11, 135, 76, texGuards);	//sprites for Guards 0 (Staff) walking right 
+	sprites->Add(20002, 140, 9, 190, 76, texGuards);   
 	sprites->Add(20003, 196, 9, 239, 76, texGuards);
 	sprites->Add(20004, 247, 10, 284, 76, texGuards);
 	sprites->Add(20005, 289, 11, 334, 76, texGuards);
@@ -1102,28 +1153,26 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(20007, 400, 10, 445, 76, texGuards);
 	sprites->Add(20008, 451, 9, 496, 76, texGuards);
 
-	sprites->Add(-20001, 2,	9,	47,	76, texGuardsLeft);	//sprites for Guards 0 (Staff) walking left
-	sprites->Add(-20002, 53,	10,	98,	76, texGuardsLeft);
-	sprites->Add(-20003, 109,	11,	155,	76, texGuardsLeft);
-	sprites->Add(-20004, 164,	11,	209,	76, texGuardsLeft);
-	sprites->Add(-20005, 214,	10,	251,	76, texGuardsLeft);
-	sprites->Add(-20006, 259,	9,	302,	76, texGuardsLeft);
-	sprites->Add(-20007, 308,	9,	358,	76, texGuardsLeft);
-	sprites->Add(-20008, 363,	11,	399,	76, texGuardsLeft);
+	sprites->Add(-20008, 2,	9,	47,	76, texGuardsLeft);	//sprites for Guards 0 (Staff) walking left
+	sprites->Add(-20007, 53,	10,	98,	76, texGuardsLeft);
+	sprites->Add(-20006, 109,	11,	155,	76, texGuardsLeft);
+	sprites->Add(-20005, 164,	11,	209,	76, texGuardsLeft);
+	sprites->Add(-20004, 214,	10,	251,	76, texGuardsLeft);
+	sprites->Add(-20003, 259,	9,	302,	76, texGuardsLeft);
+	sprites->Add(-20002, 308,	9,	358,	76, texGuardsLeft);
+	sprites->Add(-20001, 363,	11,	399,	76, texGuardsLeft);
+	
+	sprites->Add(20009, 143, 96, 220, 156, texGuards);  // attack
+	sprites->Add(20010, 294, 97, 380, 156, texGuards);
+	sprites->Add(20011, 472, 98, 564, 156, texGuards);
+	sprites->Add(20012, 671, 96, 720, 156, texGuards);
+	sprites->Add(20013, 816, 84, 853, 156, texGuards);
 
-	sprites->Add(20009, 42, 96, 83, 156, texGuards);	//sprites for Guards 0 attack
-	sprites->Add(20010, 143, 96, 220, 156, texGuards);
-	sprites->Add(20011, 294, 97, 380, 156, texGuards);
-	sprites->Add(20012, 472, 98, 564, 156, texGuards);
-	sprites->Add(20013, 671, 96, 720, 156, texGuards);
-	sprites->Add(20014, 816, 84, 853, 156, texGuards);
-
-	sprites->Add(-20009, 9,	82,	46,	156, texGuardsLeft);	//sprites for Guards 0 attack left
-	sprites->Add(-20010, 53,	96,	102,	156, texGuardsLeft);
+	sprites->Add(-20013, 9,	82,	46,	156, texGuardsLeft);	//attack left
+	sprites->Add(-20012, 53,	96,	102,	156, texGuardsLeft);
 	sprites->Add(-20011, 109,	98,	201,	156, texGuardsLeft);
-	sprites->Add(-20012, 203,	97,	289,	156, texGuardsLeft);
-	sprites->Add(-20013, 292,	96,	369,	156, texGuardsLeft);
-	sprites->Add(-20014, 382,	96,	423,	156, texGuardsLeft);
+	sprites->Add(-20010, 203,	97,	289,	156, texGuardsLeft);
+	sprites->Add(-20009, 292,	96,	369,	156, texGuardsLeft);
 
 	sprites->Add(20015, 20, 166, 65, 233, texGuards); //sprites for Guards 0 hurt
 	sprites->Add(20016, 80, 185, 120, 233, texGuards);
@@ -1135,18 +1184,21 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(20022, 399, 185, 439, 233, texGuards);
 	sprites->Add(20023, 446, 175, 490, 233, texGuards);
 
-	sprites->Add(-20015, 8,	175,	52,	233, texGuardsLeft); //sprites for Guards 0 hurt left
-	sprites->Add(-20016, 59,	185,	99,	233, texGuardsLeft);
-	sprites->Add(-20017, 114,	160,	153,	233, texGuardsLeft);
-	sprites->Add(-20018, 161,	165,	202,	233, texGuardsLeft);
+	sprites->Add(-20023, 8,	175,	52,	233, texGuardsLeft); //sprites for Guards 0 hurt left
+	sprites->Add(-20022, 59,	185,	99,	233, texGuardsLeft);
+	sprites->Add(-20021, 114,	160,	153,	233, texGuardsLeft);
+	sprites->Add(-20020, 161,	165,	202,	233, texGuardsLeft);
 	sprites->Add(-20019, 210,	171,	256,	233, texGuardsLeft);
-	sprites->Add(-20020, 268,	162,	310,	233, texGuardsLeft);
-	sprites->Add(-20021, 318,	184,	365,	233, texGuardsLeft);
-	sprites->Add(-20022, 378,	185,	418,	233, texGuardsLeft);
-	sprites->Add(-20023, 433,	166,	478,	233, texGuardsLeft);
+	sprites->Add(-20018, 268,	162,	310,	233, texGuardsLeft);
+	sprites->Add(-20017, 318,	184,	365,	233, texGuardsLeft);
+	sprites->Add(-20016, 378,	185,	418,	233, texGuardsLeft);
+	sprites->Add(-20015, 433,	166,	478,	233, texGuardsLeft);
 #pragma endregion Guard Staff
 
 #pragma region
+    sprites->Add(21000, 761, 378, 816, 430, texGuards); //idle right
+    sprites->Add(-21000, 6, 378, 61, 430, texGuardsLeft);   //idle left
+
 	sprites->Add(21001, 69, 253, 116, 307, texGuards);   //Guard 1 (Blade) walking to the right
 	sprites->Add(21002, 120, 251, 164, 307, texGuards);
 	sprites->Add(21003, 172, 254, 214, 307, texGuards);
@@ -1156,14 +1208,14 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(21007, 391, 253, 443, 307, texGuards);
 	sprites->Add(21008, 449, 255, 496, 307, texGuards);
 
-	sprites->Add(-21001, 2,	255,	49,	307, texGuardsLeft);   //Guard 1 (Blade) walking to the left
-	sprites->Add(-21002, 55,	253,	107,	307, texGuardsLeft);
-	sprites->Add(-21003, 111,	252,	167,	307, texGuardsLeft);
-	sprites->Add(-21004, 173,	253,	224,	307, texGuardsLeft);
-	sprites->Add(-21005, 230,	255,	279,	307, texGuardsLeft);
-	sprites->Add(-21006, 284,	254,	326,	307, texGuardsLeft);
-	sprites->Add(-21007, 334,	251,	378,	307, texGuardsLeft);
-	sprites->Add(-21008, 382,	253,	429,	307, texGuardsLeft);
+	sprites->Add(-21008, 2,	255,	49,	307, texGuardsLeft);   //Guard 1 (Blade) walking to the left
+	sprites->Add(-21007, 55,	253,	107,	307, texGuardsLeft);
+	sprites->Add(-21006, 111,	252,	167,	307, texGuardsLeft);
+	sprites->Add(-21005, 173,	253,	224,	307, texGuardsLeft);
+	sprites->Add(-21004, 230,	255,	279,	307, texGuardsLeft);
+	sprites->Add(-21003, 284,	254,	326,	307, texGuardsLeft);
+	sprites->Add(-21002, 334,	251,	378,	307, texGuardsLeft);
+	sprites->Add(-21001, 382,	253,	429,	307, texGuardsLeft);
 
 	sprites->Add(21009, 54, 317, 98, 370, texGuards);    //Guard 1 taunt
 	sprites->Add(21010, 167, 317, 216, 370, texGuards);
@@ -1172,52 +1224,50 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(21013, 513, 316, 550, 370, texGuards);
 	sprites->Add(21014, 613, 317, 657, 370, texGuards);
 
-	sprites->Add(-21009, 5,	317,	49,	370, texGuardsLeft);    //Guard 1 taunt left
-	sprites->Add(-21010, 56,	316,	93,	370, texGuardsLeft);
-	sprites->Add(-21011, 98,	317,	152,	370, texGuardsLeft);
-	sprites->Add(-21012, 157,	317,	215,	370, texGuardsLeft);
-	sprites->Add(-21013, 221,	317,	270,	370, texGuardsLeft);
-	sprites->Add(-21014, 278,	317,	322,	370, texGuardsLeft);
+	sprites->Add(-21014, 5,	317,	49,	370, texGuardsLeft);    //Guard 1 taunt left
+	sprites->Add(-21013, 56,	316,	93,	370, texGuardsLeft);
+	sprites->Add(-21012, 98,	317,	152,	370, texGuardsLeft);
+	sprites->Add(-21011, 157,	317,	215,	370, texGuardsLeft);
+	sprites->Add(-21010, 221,	317,	270,	370, texGuardsLeft);
+	sprites->Add(-21009, 278,	317,	322,	370, texGuardsLeft);
 
 	sprites->Add(21015, 67, 384, 162, 430, texGuards); //Guard 1 attack 1
 	sprites->Add(21016, 223, 385, 311, 430, texGuards);
-	sprites->Add(21016, 376, 387, 451, 430, texGuards);
-	sprites->Add(21017, 515, 388, 585, 430, texGuards);
-	sprites->Add(21018, 644, 386, 711, 430, texGuards);
-	sprites->Add(21019, 761, 378, 816, 430, texGuards);
+	sprites->Add(21017, 376, 387, 451, 430, texGuards);
+	sprites->Add(21018, 515, 388, 585, 430, texGuards);
+	sprites->Add(21019, 644, 386, 711, 430, texGuards);
 
-	sprites->Add(-21015, 6,	378,	61,	430, texGuardsLeft); //Guard 1 attack 1 left
-	sprites->Add(-21016, 65,	386,	132,	430, texGuardsLeft);
-	sprites->Add(-21016, 140,	388,	210,	430, texGuardsLeft);
+	sprites->Add(-21019, 65,	386,	132,	430, texGuardsLeft); //Guard 1 attack 1 left
+	sprites->Add(-21018, 140,	388,	210,	430, texGuardsLeft);
 	sprites->Add(-21017, 216,	387,	291,	430, texGuardsLeft);
-	sprites->Add(-21018, 297,	385,	385,	430, texGuardsLeft);
-	sprites->Add(-21019, 395,	384,	490,	430, texGuardsLeft);
+	sprites->Add(-21016, 297,	385,	385,	430, texGuardsLeft);
+	sprites->Add(-21015, 395,	384,	490,	430, texGuardsLeft);
 
-	sprites->Add(21020, 44, 440, 132, 513, texGuards); //Guard 1 attack 2
-	sprites->Add(21021, 206, 451, 320, 507, texGuards);
-	sprites->Add(21022, 330, 441, 382, 507, texGuards);
-	sprites->Add(21023, 434, 434, 477, 507, texGuards);
-	sprites->Add(21024, 550, 447, 593, 507, texGuards);
+	sprites->Add(21021, 44, 440, 132, 513, texGuards); //Guard 1 attack 2
+	sprites->Add(21022, 206, 451, 320, 507, texGuards);
+	sprites->Add(21023, 330, 441, 382, 507, texGuards);
+	sprites->Add(21024, 434, 434, 477, 507, texGuards);
+	sprites->Add(21025, 550, 447, 593, 507, texGuards);
 
-	sprites->Add(-21020, 6,	447,	49,	507, texGuardsLeft); //Guard 1 attack 2 left
-	sprites->Add(-21021, 61,	434,	104,	507, texGuardsLeft);
-	sprites->Add(-21022, 116,	441,	168,	507, texGuardsLeft);
-	sprites->Add(-21023, 178,	451,	292,	507, texGuardsLeft);
-	sprites->Add(-21024, 300,	434,	391,	507, texGuardsLeft);
+	sprites->Add(-21025, 6,	447,	49,	507, texGuardsLeft); //Guard 1 attack 2 left
+	sprites->Add(-21024, 61,	434,	104,	507, texGuardsLeft);
+	sprites->Add(-21023, 116,	441,	168,	507, texGuardsLeft);
+	sprites->Add(-21022, 178,	451,	292,	507, texGuardsLeft);
+	sprites->Add(-21021, 300,	434,	391,	507, texGuardsLeft);
 
-	sprites->Add(21025, 50, 530, 116, 586, texGuards); //Guard 1 hurt
-	sprites->Add(21026, 134, 522, 208, 586, texGuards);
-	sprites->Add(21027, 217, 520, 288, 586, texGuards);
-	sprites->Add(21028, 295, 529, 360, 586, texGuards);
-	sprites->Add(21029, 364, 515, 427, 586, texGuards);
-	sprites->Add(21030, 438, 538, 492, 586, texGuards);
+	sprites->Add(21026, 50, 530, 116, 586, texGuards); //Guard 1 hurt
+	sprites->Add(21027, 134, 522, 208, 586, texGuards);
+	sprites->Add(21028, 217, 520, 288, 586, texGuards);
+	sprites->Add(21029, 295, 529, 360, 586, texGuards);
+	sprites->Add(21030, 364, 515, 427, 586, texGuards);
+	sprites->Add(21031, 438, 538, 492, 586, texGuards);
 
-	sprites->Add(-21025, 6,	538,	60,	586, texGuardsLeft); //Guard 1 hurt left
-	sprites->Add(-21026, 71,	515,	134,	586, texGuardsLeft);
-	sprites->Add(-21027, 138,	529,	203,	586, texGuardsLeft);
+	sprites->Add(-21031, 6,	538,	60,	586, texGuardsLeft); //Guard 1 hurt left
+	sprites->Add(-21030, 71,	515,	134,	586, texGuardsLeft);
+	sprites->Add(-21029, 138,	529,	203,	586, texGuardsLeft);
 	sprites->Add(-21028, 210,	520,	281,	586, texGuardsLeft);
-	sprites->Add(-21029, 290,	522,	364,	586, texGuardsLeft);
-	sprites->Add(-21030, 382,	530,	448,	586, texGuardsLeft);
+	sprites->Add(-21027, 290,	522,	364,	586, texGuardsLeft);
+	sprites->Add(-21026, 382,	530,	448,	586, texGuardsLeft);
 
 #pragma endregion Guard Blade
 
@@ -1275,37 +1325,42 @@ void ResourceLoader::LoadSprite()
 
 	sprites->Add(-30005, 1, 351, 513, 607, texDungeonObjects);   //front_chains
 
-	sprites->Add(-30007, 1, 628, 32, 643, texDungeonObjects);    //step-in
-	sprites->Add(-30008, 37, 628, 68, 643, texDungeonObjects);
-	sprites->Add(-30009, 73, 628, 107, 645, texDungeonObjects);
+	sprites->Add(31001, 1, 628, 32, 643, texDungeonObjects);    //step-in
+	sprites->Add(31002, 37, 628, 68, 643, texDungeonObjects);   
+	sprites->Add(31003, 73, 628, 107, 645, texDungeonObjects);
+	sprites->Add(31004, 112, 628, 150, 649, texDungeonObjects);  //step-out
+	sprites->Add(31005, 155, 628, 195, 652, texDungeonObjects);  //longer time
+    sprites->Add(31006, 112, 628, 150, 649, texDungeonObjects);
+    sprites->Add(31007, 73, 628, 107, 645, texDungeonObjects); // step - in - again
+    sprites->Add(31008, 37, 628, 68, 643, texDungeonObjects);
 
-	sprites->Add(-30010, 112, 628, 150, 649, texDungeonObjects);  //step-out
-	sprites->Add(-30011, 155, 628, 195, 652, texDungeonObjects);
+	sprites->Add(32001, 1, 657, 24, 677, texDungeonObjects);  //spike-in
+	sprites->Add(32002, 29, 657, 52, 680, texDungeonObjects);
+	sprites->Add(32003, 57, 657, 83, 685, texDungeonObjects);
+	sprites->Add(32004, 88, 657, 121, 688, texDungeonObjects);
+	sprites->Add(32005, 126, 657, 168, 691, texDungeonObjects); //spike-out (4)
+	sprites->Add(32006, 173, 657, 222, 692, texDungeonObjects);
+    sprites->Add(32007, 126, 657, 168, 691, texDungeonObjects);
+    sprites->Add(32008, 88, 657, 121, 688, texDungeonObjects); //spike in (7)
+    sprites->Add(32009, 57, 657, 83, 685, texDungeonObjects);
+    sprites->Add(32010, 29, 657, 52, 680, texDungeonObjects);
 
-	sprites->Add(-30012, 1, 657, 24, 677, texDungeonObjects);  //spike-in
-	sprites->Add(-30013, 29, 657, 52, 680, texDungeonObjects);
-	sprites->Add(-30014, 57, 657, 83, 685, texDungeonObjects);
-	sprites->Add(-30015, 88, 657, 121, 688, texDungeonObjects);
+	sprites->Add(33001, 227, 628, 241, 673, texDungeonObjects); //ball-in
+	sprites->Add(33002, 246, 628, 261, 675, texDungeonObjects);
+	sprites->Add(33003, 266, 628, 281, 678, texDungeonObjects);
+	sprites->Add(33004, 286, 628, 301, 680, texDungeonObjects);
+	sprites->Add(33005, 306, 628, 322, 684, texDungeonObjects);
+	sprites->Add(33006, 327, 628, 343, 688, texDungeonObjects);
+	sprites->Add(33007, 348, 628, 366, 693, texDungeonObjects);
+	sprites->Add(33008, 371, 628, 392, 695, texDungeonObjects);
+	sprites->Add(33009, 397, 628, 423, 693, texDungeonObjects);
+	sprites->Add(33010, 428, 628, 456, 691, texDungeonObjects);
+	sprites->Add(33011, 461, 628, 491, 687, texDungeonObjects);
+	sprites->Add(33012, 496, 628, 527, 685, texDungeonObjects);
+	sprites->Add(33013, 532, 628, 564, 684, texDungeonObjects);  //ball-out (12) -> ball-in(17)
+	sprites->Add(33014, 569, 628, 602, 681, texDungeonObjects);
+	sprites->Add(33015, 607, 628, 640, 680, texDungeonObjects);
 
-	sprites->Add(-30016, 126, 657, 168, 691, texDungeonObjects); //spike-out
-	sprites->Add(-30017, 173, 657, 222, 692, texDungeonObjects);
-
-	sprites->Add(-30018, 227, 628, 241, 673, texDungeonObjects); //ball-in
-	sprites->Add(-30019, 246, 628, 261, 675, texDungeonObjects);
-	sprites->Add(-30020, 266, 628, 281, 678, texDungeonObjects);
-	sprites->Add(-30021, 286, 628, 301, 680, texDungeonObjects);
-	sprites->Add(-30022, 306, 628, 322, 684, texDungeonObjects);
-	sprites->Add(-30023, 306, 628, 343, 688, texDungeonObjects);
-	sprites->Add(-30024, 348, 628, 366, 693, texDungeonObjects);
-	sprites->Add(-30025, 371, 628, 392, 695, texDungeonObjects);
-	sprites->Add(-30026, 397, 628, 423, 693, texDungeonObjects);
-	sprites->Add(-30027, 428, 628, 456, 691, texDungeonObjects);
-	sprites->Add(-30028, 461, 628, 491, 687, texDungeonObjects);
-	sprites->Add(-30029, 496, 628, 527, 685, texDungeonObjects);
-	
-	sprites->Add(-30030, 532, 628, 564, 684, texDungeonObjects);  //ball-out
-	sprites->Add(-30031, 569, 628, 602, 681, texDungeonObjects);
-	sprites->Add(-30032, 607, 628, 640, 680, texDungeonObjects);
 
 #pragma endregion Dungeon_Objects
 
@@ -1344,50 +1399,52 @@ void ResourceLoader::LoadSprite()
 	LPDIRECT3DTEXTURE9 texItem = textures->Get(TEX_ITEM);
 
 	//genie
-	sprites->Add(50001, 335,	45,	373,	95, texItem);		
-	sprites->Add(50002, 389,	45,	432,	97, texItem);
-	sprites->Add(50003, 443,	49,	487,	93, texItem);
-	sprites->Add(50004, 497,	48,	542,	92, texItem);
+	sprites->Add(41001, 335,	45,	373,	95, texItem);		
+	sprites->Add(41002, 389,	45,	432,	97, texItem);
+	sprites->Add(41003, 443,	49,	487,	93, texItem);
+	sprites->Add(41004, 497,	48,	542,	92, texItem);
 		
 	//ruby
-	sprites->Add(50005, 340,	111,	357,	127, texItem);	
-	sprites->Add(50006, 363,	111,	380,	127, texItem);
-	sprites->Add(50007, 386,	111,	403,	127, texItem);
-	sprites->Add(50008, 409,	111,	426,	127, texItem);
-	sprites->Add(50009, 432,	110,	449,	127, texItem);
-	sprites->Add(50010, 454,	107,	486,	128, texItem);
-	sprites->Add(50011, 492,	110,	515,	128, texItem);
-	sprites->Add(50012, 522,	112,	539,	128, texItem);
-	sprites->Add(50013, 545,	112,	562,	128, texItem);
+	sprites->Add(42001, 340,	111,	357,	127, texItem);	
+	sprites->Add(42002, 363,	111,	380,	127, texItem);
+	sprites->Add(42003, 386,	111,	403,	127, texItem);
+	sprites->Add(42004, 409,	111,	426,	127, texItem);
+	sprites->Add(42005, 432,	110,	449,	127, texItem);
+	sprites->Add(42006, 454,	107,	486,	128, texItem);
+	sprites->Add(42007, 492,	110,	515,	128, texItem);
+	sprites->Add(42008, 522,	112,	539,	128, texItem);
+	sprites->Add(42009, 545,	112,	562,	128, texItem);
 
 	//save idle
-	sprites->Add(50014, 19,	424, 39,	457, texItem);			
+	sprites->Add(43001, 19,	424, 39,	457, texItem);			
 
 	//save eaten
-	sprites->Add(50015, 49,	428,	73,	457, texItem);			
-	sprites->Add(50016, 78,	437,	112,	457, texItem);
-	sprites->Add(50017, 119,	425,	139,	459, texItem);
-	sprites->Add(50018, 145,	425,	168,	459, texItem);
-	sprites->Add(50019, 174,	426,	200,	459, texItem);
-	sprites->Add(50020, 207,	426,	231,	460, texItem);
-	sprites->Add(50021, 239,	427,	259,	461, texItem);
-	sprites->Add(50022, 270,	428,	294,	461, texItem);
-	sprites->Add(50023, 302,	429,	325,	462, texItem);
+	sprites->Add(43002, 49,	428,	73,	457, texItem);			
+	sprites->Add(43003, 78,	437,	112,	457, texItem);
+	sprites->Add(43004, 119,	425,	139,	459, texItem);
+	sprites->Add(43005, 145,	425,	168,	459, texItem);
+	sprites->Add(43006, 174,	426,	200,	459, texItem);
+	sprites->Add(43007, 207,	426,	231,	460, texItem);
+	sprites->Add(43008, 239,	427,	259,	461, texItem);
+	sprites->Add(43009, 270,	428,	294,	461, texItem);
+	sprites->Add(43010, 302,	429,	325,	462, texItem);
 
 	//life
-	sprites->Add(50024, 343,	171,	362,	195, texItem);			
-	sprites->Add(50025, 366,	173,	383,	196, texItem);
-	sprites->Add(50026, 387,	175,	403,	196, texItem);
-	sprites->Add(50027, 406,	175,	423,	196, texItem);
-	sprites->Add(50028, 426,	173,	445,	196, texItem);
-	sprites->Add(50029, 448,	174,	466,	196, texItem);
-	sprites->Add(50030, 466,	174,	483,	196, texItem);
-	sprites->Add(50031, 486,	176,	503,	197, texItem);
-
-	//face
-	sprites->Add(50032, 340,	140,	362,	164, texItem);			
+	sprites->Add(44001, 343,	171,	362,	195, texItem);			
+	sprites->Add(44002, 366,	173,	383,	196, texItem);
+	sprites->Add(44003, 387,	175,	403,	196, texItem);
+	sprites->Add(44004, 406,	175,	423,	196, texItem);
+	sprites->Add(44005, 426,	173,	445,	196, texItem);
+	sprites->Add(44006, 448,	174,	466,	196, texItem);
+	sprites->Add(44007, 466,	174,	483,	196, texItem);
+	sprites->Add(44008, 486,	176,	503,	197, texItem);	
 
 #pragma endregion Items
+
+#pragma region
+    //face
+    sprites->Add(50001, 340, 140, 362, 164, texItem);
+#pragma endregion Score
 
 #pragma region
 	LPDIRECT3DTEXTURE9 texMenu = textures->Get(TEX_MAIN_MENU);
@@ -1447,7 +1504,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 			ground0->id = object_index;
             objects.push_back(ground0);
         }
-        else if (name == GROUND1_ID || name == "Ground3")
+        else if (name == GROUND1_ID)
         {
             Ground* ground1 = new Ground();
             ground1->type = 1;
@@ -1508,9 +1565,141 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 			guard0->SetName(name);
 			guard0->width = w;
 			guard0->height = h;
+            guard0->SetState(GUARD0_STATE_IDLE);
 			guard0->id = object_index;
 			objects.push_back(guard0);
 		}
+        else if (name == "guard1")
+        {
+            Guard1* guard1 = new Guard1();
+            guard1->AddAnimation(GUARD1_IDLE_RIGHT);
+            guard1->AddAnimation(GUARD1_IDLE_LEFT);
+            guard1->AddAnimation(GUARD1_WALK_RIGHT);
+            guard1->AddAnimation(GUARD1_WALK_LEFT);
+            guard1->AddAnimation(GUARD1_TAUNT_RIGHT);
+            guard1->AddAnimation(GUARD1_TAUNT_LEFT);
+            guard1->AddAnimation(GUARD1_ATTACK1_RIGHT);
+            guard1->AddAnimation(GUARD1_ATTACK1_LEFT);
+            guard1->AddAnimation(GUARD1_ATTACK2_LEFT);
+            guard1->AddAnimation(GUARD1_ATTACK2_LEFT);
+            guard1->AddAnimation(GUARD1_HURT_RIGHT);
+            guard1->AddAnimation(GUARD1_HURT_LEFT);
+            guard1->AddAnimation(ENEMY_EXPLODE);
+
+            guard1->SetPosition(x, y);
+            guard1->SetName(name);
+            guard1->width = w;
+            guard1->height = h;
+            guard1->SetState(GUARD1_STATE_IDLE);
+            guard1->id = object_index;
+            objects.push_back(guard1);
+        }
+        else if (name == "skeleton")
+        {
+            Skeleton* skeleton = new Skeleton();
+            skeleton->AddAnimation(SKELETON_CREATE);
+            skeleton->AddAnimation(SKELETON_EXPLODE);
+            skeleton->AddAnimation(ENEMY_EXPLODE);
+
+            skeleton->SetPosition(x, y);
+            skeleton->SetName(name);
+            skeleton->width = w;
+            skeleton->height = h;
+            skeleton->SetState(SKELETON_STATE_CREATE);
+            skeleton->id = object_index;
+            objects.push_back(skeleton);
+        }
+        else if (name == "step0" || name == "step1")
+        {
+            Step* step = new Step();
+            step->AddAnimation(ANI_STEP);
+
+            step->SetPosition(x, y);
+            step->SetName(name);
+            step->width = w;
+            step->height = h;
+            step->SetState(STATE_NOT_STANDABLE);
+            step->id = object_index;
+            objects.push_back(step);
+        }
+        else if (name == "spike")
+        {
+            SpikeTrap* spike = new SpikeTrap();
+            spike->AddAnimation(ANI_SPIKE);
+
+            spike->SetPosition(x, y);
+            spike->SetName(name);
+            spike->width = w;
+            spike->height = h;
+            spike->SetState(SPIKETRAP_STATE::STATE_NOT_DO_DAMAGE);
+            spike->id = object_index;
+            objects.push_back(spike);
+        }
+        else if (name == "ball")
+        {
+            WreckingBall* ball = new WreckingBall();
+            ball->AddAnimation(ANI_WRECKING_BALL);
+
+            ball->SetPosition(x, y);
+            ball->SetName(name);
+            ball->width = w;
+            ball->height = h;
+            ball->SetState(WRECKINGBALL_STATE::BALL_STATE_NOT_DO_DAMAGE);
+            ball->id = object_index;
+            objects.push_back(ball);
+        }
+        else if (name == "ruby")
+        {
+            Ruby* ruby = new Ruby();
+            ruby->AddAnimation(ANI_RUBY);
+            ruby->AddAnimation(ITEM_DESTROY);
+            ruby->SetPosition(x, y);
+            ruby->SetState(RUBY_STATE_IDLE);
+            ruby->SetName(name);
+            ruby->width = w;
+            ruby->height = h;
+            ruby->id = object_index;
+            objects.push_back(ruby);
+        }
+        else if (name == "genie")
+        {
+            Genie* genie = new Genie();
+            genie->AddAnimation(ANI_GENIE_IDLE);
+            genie->AddAnimation(ANI_GENIE_EATEN);
+            genie->SetPosition(x, y);
+            genie->SetState(GENIE_STATE_IDLE);
+            genie->SetName(name);
+            genie->width = w;
+            genie->height = h;
+            genie->id = object_index;
+            objects.push_back(genie);
+        }
+        else if (name == "save")
+        {
+            Vase* vase = new Vase();
+            vase->AddAnimation(ANI_SAVE_IDLE);
+            vase->AddAnimation(ANI_SAVE_EATEN);
+            vase->SetPosition(x, y);
+            vase->SetState(VASE_STATE_IDLE);
+            vase->SetName(name);
+            vase->width = w;
+            vase->height = h;
+            vase->id = object_index;
+            objects.push_back(vase);
+        }
+        else if (name == "life")
+        {
+            LifeHeal* life = new LifeHeal();
+            life->AddAnimation(ANI_LIFE);
+            life->AddAnimation(ITEM_DESTROY);
+            life->SetPosition(x, y);
+            life->SetState(LIFEHEAL_STATE_IDLE);
+            life->SetName(name);
+            life->width = w;
+            life->height = h;
+            life->id = object_index;
+            objects.push_back(life);
+        }
 
 
 		object_index++;

@@ -22,13 +22,13 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FECCD678-E09E-4294-B8EE-B026D8926F11}</ProjectGuid>
     <RootNamespace>My04Collision</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -130,18 +130,27 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Genie.h" />
     <ClInclude Include="Goomba.h" />
     <ClInclude Include="Ground.h" />
     <ClInclude Include="Guard0.h" />
+    <ClInclude Include="Guard1.h" />
+    <ClInclude Include="LifeHeal.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Mario.h" />
     <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="Ruby.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="SpatialGrid.h" />
+    <ClInclude Include="SpikeTrap.h" />
     <ClInclude Include="Sprites.h" />
+    <ClInclude Include="Step.h" />
     <ClInclude Include="SultansDungeon_Scene.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="Vase.h" />
     <ClInclude Include="ViewPort.h" />
+    <ClInclude Include="WreckingBall.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Aladdin.cpp" />
@@ -151,18 +160,27 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Genie.cpp" />
     <ClCompile Include="Goomba.cpp" />
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="Guard0.cpp" />
+    <ClCompile Include="Guard1.cpp" />
+    <ClCompile Include="LifeHeal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Mario.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="Ruby.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="SpatialGrid.cpp" />
+    <ClCompile Include="SpikeTrap.cpp" />
     <ClCompile Include="Sprites.cpp" />
+    <ClCompile Include="Step.cpp" />
     <ClCompile Include="SultansDungeon_Scene.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="Vase.cpp" />
     <ClCompile Include="ViewPort.cpp" />
+    <ClCompile Include="WreckingBall.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

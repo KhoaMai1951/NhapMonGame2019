@@ -26,6 +26,7 @@ class Apple : public CGameObject
 public:
     Apple() : CGameObject()
     {
+        isItem = true;
         lastFrameWidth = APPLE_IDLE_WIDTH;
         lastFrameHeight = APPLE_IDLE_HEIGHT;
     }

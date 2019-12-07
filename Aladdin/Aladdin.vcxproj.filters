@@ -105,6 +105,33 @@
     <ClInclude Include="Guard0.h">
       <Filter>Header Files\Objects\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Guard1.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Step.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="SpikeTrap.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="WreckingBall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Ruby.h">
+      <Filter>Header Files\Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Vase.h">
+      <Filter>Header Files\Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Genie.h">
+      <Filter>Header Files\Objects\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeHeal.h">
+      <Filter>Header Files\Objects\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -163,6 +190,33 @@
     </ClCompile>
     <ClCompile Include="Guard0.cpp">
       <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Guard1.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Step.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="SpikeTrap.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="WreckingBall.cpp">
+      <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ruby.cpp">
+      <Filter>Source Files\Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Vase.cpp">
+      <Filter>Source Files\Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Genie.cpp">
+      <Filter>Source Files\Objects\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="LifeHeal.cpp">
+      <Filter>Source Files\Objects\Items</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

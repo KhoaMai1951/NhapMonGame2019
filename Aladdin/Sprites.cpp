@@ -35,8 +35,6 @@ void CSprite::Draw(float x, float y, int alpha)
     D3DXVECTOR3 p = ViewPort::getInstance()->getPositionInViewPort(new D3DXVECTOR3(x + width / 2, y - height / 2, 0));
     D3DXVECTOR3 center = D3DXVECTOR3(width / 2, height / 2, 0);
     CGame::GetInstance()->Draw(p.x, p.y, texture, left, top, right, bottom, &center, alpha);
-    /* D3DXVECTOR3 p = ViewPort::getInstance()->getPositionInViewPort(new D3DXVECTOR3(x , y, 0));
-     CGame::GetInstance()->Draw(p.x, p.y, texture, left, top, right, bottom, new D3DXVECTOR3(0,0,0), alpha);*/
 }
 
 void CSprites::Add(int id, int left, int top, int right, int bottom, LPDIRECT3DTEXTURE9 tex)
@@ -123,6 +121,46 @@ void CAnimation::Render(float &x, float &y, float bbWidth, long &lastFrameHeight
     {
         D3DXVECTOR3 center = D3DXVECTOR3(0, curHeight / 2, 0);
         frames[currentFrame]->GetSprite()->Draw(x, y - curHeight / 2 , center, alpha);
+    }
+}
+void CAnimation::Render(float &x, float &y, float bbWidth, long &lastFrameWidth, long &lastFrameHeight, int alpha, int restart, float nx)
+{
+    DWORD now = GetTickCount();
+    if (currentFrame == -1)
+    {
+        currentFrame = 0;
+        lastFrameTime = now;
+    }
+    else
+    {
+        DWORD t = frames[currentFrame]->GetTime();
+        if (now - lastFrameTime > t)
+        {
+            currentFrame++;
+            lastFrameTime = now;
+            if (currentFrame == frames.size()) currentFrame = restart;
+        }
+
+    }
+
+    int curWidth = frames[currentFrame]->GetSprite()->width;
+    int curHeight = frames[currentFrame]->GetSprite()->height;
+
+    y += curHeight - lastFrameHeight;
+
+    lastFrame = currentFrame;
+    lastFrameWidth = curWidth;
+    lastFrameHeight = curHeight;
+    if (nx < 0)
+    {
+        float render_x = x + bbWidth - curWidth;
+        D3DXVECTOR3 center = D3DXVECTOR3(0, curHeight / 2, 0);
+        frames[currentFrame]->GetSprite()->Draw(render_x, y - curHeight / 2, center, alpha);
+    }
+    else
+    {
+        D3DXVECTOR3 center = D3DXVECTOR3(0, curHeight / 2, 0);
+        frames[currentFrame]->GetSprite()->Draw(x, y - curHeight / 2, center, alpha);
     }
 }
 
