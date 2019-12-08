@@ -46,6 +46,12 @@ SultansDungeon_Scene::SultansDungeon_Scene()
     aladdin->AddAnimation(113); //pushing right
     aladdin->AddAnimation(-113); //pushing left
     aladdin->AddAnimation(114); //dead
+    aladdin->AddAnimation(115); //sit throw apple
+    aladdin->AddAnimation(-115);
+    aladdin->AddAnimation(119); //run attack
+    aladdin->AddAnimation(-119);
+    aladdin->AddAnimation(120); //run throw
+    aladdin->AddAnimation(-120);
 
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);

@@ -7,6 +7,16 @@
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+    // turn off collision when die 
+    if (state == ALADDIN_STATE_DEAD)
+    {
+        if (CGame::GetInstance()->IsKeyPress(DIK_Q))
+        {
+            SetState(ALADDIN_STATE_IDLE);
+            vx = 0; nx = 1;
+        }
+        return;
+    }
     // Calculate dx, dy 
     CGameObject::Update(dt);
 
@@ -22,8 +32,76 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     }
     else if (state == ALADDIN_STATE_ATTACK)
     {
-        if (animations[ani]->currentFrame == 4)
+        if (animations[ani]->currentFrame == 5)
             SetState(ALADDIN_STATE_IDLE);
+    }
+    else if (state == ALADDIN_STATE_SIT_ATTACK)
+    {
+        if (animations[ani]->currentFrame == 6)
+        {
+            SetState(ALADDIN_STATE_CROUCH);
+            if (nx > 0)
+                animations[ALADDIN_ANI_CROUCH_RIGHT]->currentFrame = 3;
+            else if (nx < 0)
+                animations[ALADDIN_ANI_CROUCH_LEFT]->currentFrame = 3;
+        }      
+    }
+    else if (state == ALADDIN_STATE_RUN_ATTACK)
+    {
+        if (animations[ani]->currentFrame == 6)
+            SetState(ALADDIN_STATE_RUN);
+    }
+    else if (state == ALADDIN_STATE_THROW_APPLE)
+    {
+        if (animations[ani]->currentFrame == 3)
+        {
+            ////nem tao
+            //ThrowApple* throwApple = new ThrowApple();
+            //throwApple->AddAnimation(ANI_APPLE_FLYING);
+            //throwApple->AddAnimation(ANI_APPLE_DESTROY);
+            //throwApple->nx = nx;
+            //float temp_x = 0;
+            //if (nx >= 0)
+            //{
+            //    temp_x = x + width;
+            //}
+            //throwApple->SetPosition(temp_x, y);
+            //throwApple->SetState(THROW_APPLE_STATE_FLYING);
+            ////vector_apple.push_back(throwApple);
+        }
+        else if (animations[ani]->currentFrame == 6)
+        {
+            SetState(ALADDIN_STATE_IDLE);
+        }
+
+    }
+    else if (state == ALADDIN_STATE_RUN_THROW)
+    {
+        if (animations[ani]->currentFrame == 3)
+        {
+            //ném táo
+        }
+        else if (animations[ani]->currentFrame == 6)
+        {
+            SetState(ALADDIN_STATE_RUN);
+        }
+
+    }
+    else if (state == ALADDIN_STATE_SIT_THROW)
+    {
+        if (animations[ani]->currentFrame == 2)
+        {
+            //nem tao
+        }
+        else if (animations[ani]->currentFrame == 5)
+        {
+            SetState(ALADDIN_STATE_CROUCH);
+            if (nx > 0)
+                animations[ALADDIN_ANI_CROUCH_RIGHT]->currentFrame = 3;
+            else if (nx < 0)
+                animations[ALADDIN_ANI_CROUCH_LEFT]->currentFrame = 3;
+        }
+            
     }
     else if (state == ALADDIN_STATE_IDLE1)
     {
@@ -58,9 +136,16 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     vector<CGameObject*> vector_gameobject(set_gameobject.begin(), set_gameobject.end());
 #pragma endregion 
 
-    // turn off collision when die 
-    if (state == ALADDIN_STATE_DEAD)
-        return;
+    //// turn off collision when die 
+    //if (state == ALADDIN_STATE_DEAD)
+    //{
+    //    if (CGame::GetInstance()->IsKeyPress(DIK_Q))
+    //    {
+    //        SetState(ALADDIN_STATE_IDLE);
+    //        vx = 0; nx = 1;
+    //    }
+    //    return;
+    //}
     //// reset untouchable timer if untouchable time has passed
     //if (GetTickCount() - untouchable_start > ALADDIN_UNTOUCHABLE_TIME)
     //{
@@ -90,6 +175,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 void Aladdin::ProcessKeyboard()
 {
     CGame *game = CGame::GetInstance();
+
     switch (state)
     {
         int direction, updown;
@@ -117,30 +203,88 @@ void Aladdin::ProcessKeyboard()
         {
             if (direction > 0)
                 nx = 1;
-            else
+            else if(direction < 0)
                 nx = -1;
             if (state != ALADDIN_STATE_CROUCH)
                 SetState(ALADDIN_STATE_CROUCH);
+            //sit attack
+            if (game->IsKeyPress(DIK_C))
+            {
+                SetState(ALADDIN_STATE_SIT_ATTACK);
+            }
+            //sit throw
+            else if (game->IsKeyPress(DIK_V))
+            {
+                SetState(ALADDIN_STATE_SIT_THROW);
+            }
         }
         else
         {
             if (direction > 0)
             {
-                SetState(ALADDIN_STATE_RUN);
-                vx = ALADDIN_RUNNING_SPEED;
+                if (pushing == 0)
+                {
+                    SetState(ALADDIN_STATE_RUN);
+                    vx = ALADDIN_RUNNING_SPEED;
+                }
+                else if (pushing == 0)
+                {
+                    SetState(ALADDIN_STATE_PUSH);
+                }
+                
                 nx = 1;
+
+                //run attack
+                if (game->IsKeyPress(DIK_C))
+                {
+                    SetState(ALADDIN_STATE_RUN_ATTACK);
+                }
+                //run throw
+                else if (game->IsKeyPress(DIK_V))
+                {
+                    SetState(ALADDIN_STATE_RUN_THROW);
+                }
             }
             else if (direction < 0)
             {
-                SetState(ALADDIN_STATE_RUN);
-                vx = -ALADDIN_RUNNING_SPEED;
+                if (pushing == 0)
+                {
+                    SetState(ALADDIN_STATE_RUN);
+                    vx = -ALADDIN_RUNNING_SPEED;
+                }
+                else if (pushing == 0)
+                {
+                    SetState(ALADDIN_STATE_PUSH);
+                }
                 nx = -1;
+
+                //run attack
+                if (game->IsKeyPress(DIK_C))
+                {
+                    SetState(ALADDIN_STATE_RUN_ATTACK);
+                }
+                //run throw
+                else if (game->IsKeyPress(DIK_V))
+                {
+                    SetState(ALADDIN_STATE_RUN_THROW);
+                }
             }
             else
             {
                 if(state != ALADDIN_STATE_IDLE && state != ALADDIN_STATE_IDLE1 
                     && state != ALADDIN_STATE_IDLE2 && state != ALADDIN_STATE_IDLE3)
                     SetState(ALADDIN_STATE_IDLE);
+            }
+            //stand attack
+            if (game->IsKeyPress(DIK_C))
+            {
+                if (vx == 0)
+                    SetState(ALADDIN_STATE_ATTACK);
+            }
+            //stand throw
+            else if (game->IsKeyPress(DIK_V))
+            {
+                if (vx == 0) SetState(ALADDIN_STATE_THROW_APPLE);
             }
         }
         if (game->IsKeyPress(DIK_SPACE)|| game->IsKeyPress(DIK_X))
@@ -150,18 +294,68 @@ void Aladdin::ProcessKeyboard()
             else
                 SetState(ALADDIN_STATE_RUN_JUMP);
         }
-        if (game->IsKeyPress(DIK_C))
+        //stuck breaker
+        else if (game->IsKeyPress(DIK_Q))
         {
-            SetState(ALADDIN_STATE_ATTACK);
+            SetState(ALADDIN_STATE_IDLE);
+            nx = 1;
+            vx = 0;
+        }
+        //Dead
+        else if (game->IsKeyPress(DIK_P))
+        {
+            SetState(ALADDIN_STATE_DEAD);
+            vy = 0;
+            vx = 0;
+        }
+        return;
+    }
+    case ALADDIN_STATE_PUSH:
+    {
+        direction = game->IsKeyDown(DIK_RIGHT) - game->IsKeyDown(DIK_LEFT);
+        if (direction > 0)
+        {
+            if (pushing == -1)
+            {
+                nx = 1;
+                SetState(ALADDIN_STATE_RUN);
+                vx = ALADDIN_RUNNING_SPEED;
+                width = ALADDIN_IDLE_WIDTH;
+            }
+        }
+        else if (direction < 0)
+        {
+            if (pushing == 1)
+            {
+                nx = -1;
+                SetState(ALADDIN_STATE_RUN);
+                vx = -ALADDIN_RUNNING_SPEED;
+                pushing = false;
+                width = ALADDIN_IDLE_WIDTH;
+            }
+        }
+        else //direction == 0
+        {
+            pushing = false;
+            SetState(ALADDIN_STATE_IDLE);
+            width = ALADDIN_IDLE_WIDTH;
+            if (nx > 0)
+            {
+                x += ALADDIN_PUSH_WIDTH - ALADDIN_IDLE_WIDTH;
+            }
         }
         return;
     }
     case ALADDIN_STATE_JUMP: 
     case ALADDIN_STATE_RUN_JUMP:
+    case ALADDIN_STATE_JUMP_ATTACK:
+    case ALADDIN_STATE_JUMP_THROW:
     {
         if (!jumping)
         {
-            state = ALADDIN_STATE_IDLE;
+            //state = ALADDIN_STATE_IDLE;
+            SetState(ALADDIN_STATE_IDLE);
+            return;
         }
         direction = game->IsKeyDown(DIK_RIGHT) - game->IsKeyDown(DIK_LEFT);
         if (direction > 0)
@@ -177,6 +371,14 @@ void Aladdin::ProcessKeyboard()
         else
         {
             vx = 0;
+        }
+        if (game->IsKeyPress(DIK_C))
+        {
+            SetState(ALADDIN_STATE_JUMP_ATTACK);
+        }
+        else if (game->IsKeyPress(DIK_V))
+        {
+            SetState(ALADDIN_STATE_JUMP_THROW);
         }
 		if (game->IsKeyPress(DIK_SPACE) || game->IsKeyPress(DIK_X))
 		{
@@ -252,8 +454,132 @@ void Aladdin::SetState(int state)
         idle_start = 0;
         animations[ALADDIN_ANI_ATTACK_LEFT]->ResetAnimation();
         animations[ALADDIN_ANI_ATTACK_RIGHT]->ResetAnimation();
+
+        //Lấy rect Aladdin
+        float l, t, r, b;
+        GetBoundingBox(l, t, r, b);
+        l -= THROW_SIZE;
+        t += THROW_SIZE;
+        r += THROW_SIZE;
+        b -= THROW_SIZE;
+        //Lấy các obj thuộc các lưới có chứa player
+        RECT temp = ViewPort::getInstance()->InvertY(l, t, r, b, SCREEN_WIDTH, SCREEN_HEIGHT);
+        set<CGameObject*> objects = SpatialGrid::GetInstance()->GetGridForCollision(temp.left,
+            temp.top, temp.right, temp.bottom);
+
+        vector<CGameObject*> vector_object(objects.begin(), objects.end());
+
+        CheckAttackCollision(vector_object);
+
         break;
     }
+    case ALADDIN_STATE_RUN_ATTACK:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_RUN_ATTACK_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_RUN_ATTACK_RIGHT]->ResetAnimation();
+
+        //Lấy rect Aladdin
+        float l, t, r, b;
+        GetBoundingBox(l, t, r, b);
+        l -= THROW_SIZE;
+        t += THROW_SIZE;
+        r += THROW_SIZE;
+        b -= THROW_SIZE;
+        //Lấy các obj thuộc các lưới có chứa player
+        RECT temp = ViewPort::getInstance()->InvertY(l, t, r, b, SCREEN_WIDTH, SCREEN_HEIGHT);
+        set<CGameObject*> objects = SpatialGrid::GetInstance()->GetGridForCollision(temp.left,
+            temp.top, temp.right, temp.bottom);
+
+        vector<CGameObject*> vector_object(objects.begin(), objects.end());
+
+        CheckAttackCollision(vector_object);
+
+        break;
+    }
+    case ALADDIN_STATE_JUMP_ATTACK:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_JUMP_ATTACK_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_JUMP_ATTACK_RIGHT]->ResetAnimation();
+
+        //Lấy rect Aladdin
+        float l, t, r, b;
+        GetBoundingBox(l, t, r, b);
+        l -= THROW_SIZE;
+        t += THROW_SIZE;
+        r += THROW_SIZE;
+        b -= THROW_SIZE;
+        //Lấy các obj thuộc các lưới có chứa player
+        RECT temp = ViewPort::getInstance()->InvertY(l, t, r, b, SCREEN_WIDTH, SCREEN_HEIGHT);
+        set<CGameObject*> objects = SpatialGrid::GetInstance()->GetGridForCollision(temp.left,
+            temp.top, temp.right, temp.bottom);
+
+        vector<CGameObject*> vector_object(objects.begin(), objects.end());
+
+        CheckAttackCollision(vector_object);
+        break;
+    }
+    case ALADDIN_STATE_SIT_ATTACK:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_SIT_ATTACK_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_SIT_ATTACK_RIGHT]->ResetAnimation();
+
+        //Lấy rect Aladdin
+        float l, t, r, b;
+        GetBoundingBox(l, t, r, b);
+        l -= THROW_SIZE;
+        t += THROW_SIZE;
+        r += THROW_SIZE;
+        b -= THROW_SIZE;
+        //Lấy các obj thuộc các lưới có chứa player
+        RECT temp = ViewPort::getInstance()->InvertY(l, t, r, b, SCREEN_WIDTH, SCREEN_HEIGHT);
+        set<CGameObject*> objects = SpatialGrid::GetInstance()->GetGridForCollision(temp.left,
+            temp.top, temp.right, temp.bottom);
+
+        vector<CGameObject*> vector_object(objects.begin(), objects.end());
+
+        CheckAttackCollision(vector_object);
+
+        break;
+    }
+    case ALADDIN_STATE_THROW_APPLE:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_THROW_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_THROW_RIGHT]->ResetAnimation();
+        break;
+    }
+    case ALADDIN_STATE_SIT_THROW:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_SIT_THROW_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_SIT_THROW_RIGHT]->ResetAnimation();
+        break;
+    }
+    case ALADDIN_STATE_RUN_THROW:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_RUN_THROW_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_RUN_THROW_RIGHT]->ResetAnimation();
+        break;
+    }
+    case ALADDIN_STATE_JUMP_THROW:
+    {
+        idle_start = 0;
+        animations[ALADDIN_ANI_JUMP_THROW_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_JUMP_THROW_RIGHT]->ResetAnimation();
+        break;
+    }
+    case ALADDIN_STATE_PUSH:
+        idle_start = 0;
+        animations[ALADDIN_ANI_PUSHING_LEFT]->ResetAnimation();
+        animations[ALADDIN_ANI_PUSHING_RIGHT]->ResetAnimation();
+        width = ALADDIN_PUSH_WIDTH;
+        if (nx > 0)
+            x -= ALADDIN_PUSH_WIDTH - ALADDIN_IDLE_WIDTH;
+        break;
     case ALADDIN_STATE_DEAD:
         idle_start = 0;
         animations[ALADDIN_ANI_DEAD]->ResetAnimation();
@@ -267,7 +593,7 @@ void Aladdin::Render()
     if (state == ALADDIN_STATE_DEAD)
     {
         restart_frame = 0;
-        //ani = MARIO_ANI_DIE;
+        ani = ALADDIN_ANI_DEAD;
     }
     else 
     {
@@ -283,7 +609,7 @@ void Aladdin::Render()
         }
         case ALADDIN_STATE_RUN:
         {
-            restart_frame = 0;
+            restart_frame = 3;
             if (vx > 0)
                 ani = ALADDIN_ANI_RUNNING_RIGHT;
             else if (vx < 0)
@@ -348,6 +674,70 @@ void Aladdin::Render()
             else
                 ani = ALADDIN_ANI_ATTACK_LEFT; break;
         }
+        case ALADDIN_STATE_RUN_ATTACK:
+        {
+            restart_frame = 0;
+            if (nx > 0)
+                ani = ALADDIN_ANI_RUN_ATTACK_RIGHT;
+            else
+                ani = ALADDIN_ANI_RUN_ATTACK_LEFT; break;
+        }
+        case ALADDIN_STATE_JUMP_ATTACK:
+        {
+            restart_frame = 6;
+            if (nx > 0)
+                ani = ALADDIN_ANI_JUMP_ATTACK_RIGHT;
+            else
+                ani = ALADDIN_ANI_JUMP_ATTACK_LEFT; break;
+        }
+        case ALADDIN_STATE_SIT_ATTACK:
+        {
+            restart_frame = 0;
+            if (nx > 0)
+                ani = ALADDIN_ANI_SIT_ATTACK_RIGHT;
+            else
+                ani = ALADDIN_ANI_SIT_ATTACK_LEFT; break;
+        }
+        case ALADDIN_STATE_THROW_APPLE:
+        {
+            restart_frame = 0;
+            if (nx > 0)
+                ani = ALADDIN_ANI_THROW_RIGHT;
+            else
+                ani = ALADDIN_ANI_THROW_LEFT; break;
+        }
+        case ALADDIN_STATE_RUN_THROW:
+        {
+            restart_frame = 0;
+            if (nx > 0)
+                ani = ALADDIN_ANI_RUN_THROW_RIGHT;
+            else
+                ani = ALADDIN_ANI_RUN_THROW_LEFT; break;
+        }
+        case ALADDIN_STATE_JUMP_THROW:
+        {
+            restart_frame = 5;
+            if (nx > 0)
+                ani = ALADDIN_ANI_JUMP_THROW_RIGHT;
+            else
+                ani = ALADDIN_ANI_JUMP_THROW_LEFT; break;
+        }
+        case ALADDIN_STATE_SIT_THROW:
+        {
+            restart_frame = 0;
+            if (nx > 0)
+                ani = ALADDIN_ANI_SIT_THROW_RIGHT;
+            else
+                ani = ALADDIN_ANI_SIT_THROW_LEFT; break;
+        }
+        case ALADDIN_STATE_PUSH:
+        {
+            restart_frame = 2;
+            if (nx > 0)
+                ani = ALADDIN_ANI_PUSHING_RIGHT;
+            else
+                ani = ALADDIN_ANI_PUSHING_LEFT; break;
+        }
         }
     }
 
@@ -356,7 +746,7 @@ void Aladdin::Render()
     //animations[ani]->Render(x, y, alpha, restart_frame);
     animations[ani]->Render(x, y, width, lastFrameHeight, alpha, restart_frame, nx);
 
-    RenderBoundingBox();
+    //RenderBoundingBox();
 }
 
 void Aladdin::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -439,6 +829,15 @@ int Aladdin::CheckGround0Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
         {
             x += min_tx * dx;
             vx = 0;
+            if (state == ALADDIN_STATE_RUN || state == ALADDIN_STATE_IDLE)
+            {
+                if (nx > 0)
+                    pushing = -1;
+                else
+                    pushing = 1;
+                if (state != ALADDIN_STATE_PUSH)
+                    SetState(ALADDIN_STATE_PUSH);
+            }
             return 1;
         }
         else
@@ -448,6 +847,15 @@ int Aladdin::CheckGround0Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
     }
     else if (nx != 0)
     {
+        if (state == ALADDIN_STATE_RUN || state == ALADDIN_STATE_IDLE)
+        {
+            if (nx > 0)
+                pushing = -1;
+            else
+                pushing = 1;
+            if (state != ALADDIN_STATE_PUSH)
+                SetState(ALADDIN_STATE_PUSH);
+        }
         return -1;
     }
 }
@@ -531,7 +939,6 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
     }
     else
     {
-        DebugOut(L"Va cham1\n");
         float min_tx, min_ty, nx = 0, ny;
         FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
@@ -607,118 +1014,70 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
     return true;
 }
 
-//void Aladdin::FilterGroundCollision0(
-//    vector<LPCOLLISIONEVENT> &coEvents,
-//    vector<LPCOLLISIONEVENT> &coEventsResult,
-//    float &min_tx, float &min_ty,
-//    float &nx, float &ny)
-//{
-//    min_tx = 1.0f;
-//    min_ty = 1.0f;
-//    int min_ix = -1;
-//    int min_iy = -1;
-//
-//    nx = 0.0f;
-//    ny = 0.0f;
-//
-//    coEventsResult.clear();
-//
-//    for (UINT i = 0; i < coEvents.size(); i++)
-//    {
-//        LPCOLLISIONEVENT c = coEvents[i];
-//        
-//        if (dynamic_cast<Ground *>(c->obj) && dynamic_cast<Ground *>(c->obj)->type == 0)
-//        {
-//            /*if (dynamic_cast<Ground *>(c->obj)->type == 0)
-//                c->type = 0;
-//            else
-//                c->type = 1;*/
-//            if (c->t < min_tx && c->nx != 0) {
-//                min_tx = c->t; nx = c->nx; min_ix = i;
-//            }
-//
-//            if (c->t < min_ty  && c->ny != 0) {
-//                min_ty = c->t; ny = c->ny; min_iy = i;
-//            }
-//        }
-//    }
-//
-//    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-//    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
-//}
-//
-//void Aladdin::FilterGroundCollision1(
-//    vector<LPCOLLISIONEVENT> &coEvents,
-//    vector<LPCOLLISIONEVENT> &coEventsResult,
-//    float &min_tx, float &min_ty,
-//    float &nx, float &ny)
-//{
-//    min_tx = 1.0f;
-//    min_ty = 1.0f;
-//    int min_ix = -1;
-//    int min_iy = -1;
-//
-//    nx = 0.0f;
-//    ny = 0.0f;
-//
-//    coEventsResult.clear();
-//
-//    for (UINT i = 0; i < coEvents.size(); i++)
-//    {
-//        LPCOLLISIONEVENT c = coEvents[i];
-//
-//        if (dynamic_cast<Ground *>(c->obj) && dynamic_cast<Ground *>(c->obj)->type == 1)
-//        {
-//            /*if (dynamic_cast<Ground *>(c->obj)->type == 0)
-//                c->type = 0;
-//            else
-//                c->type = 1;*/
-//            if (c->t < min_tx && c->nx != 0) {
-//                min_tx = c->t; nx = c->nx; min_ix = i;
-//            }
-//
-//            if (c->t < min_ty  && c->ny != 0) {
-//                min_ty = c->t; ny = c->ny; min_iy = i;
-//            }
-//        }
-//    }
-//
-//    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-//    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
-//}
-//
-//void Aladdin::FilterItemCollision(
-//    vector<LPCOLLISIONEVENT> &coEvents,
-//    vector<LPCOLLISIONEVENT> &coEventsResult,
-//    float &min_tx, float &min_ty,
-//    float &nx, float &ny)
-//{
-//    min_tx = 1.0f;
-//    min_ty = 1.0f;
-//    int min_ix = -1;
-//    int min_iy = -1;
-//
-//    nx = 0.0f;
-//    ny = 0.0f;
-//
-//    coEventsResult.clear();
-//
-//    for (UINT i = 0; i < coEvents.size(); i++)
-//    {
-//        LPCOLLISIONEVENT c = coEvents[i];
-//
-//        if (dynamic_cast<Apple *>(c->obj))
-//        {
-//            if (c->t < min_tx && c->nx != 0) {
-//                min_tx = c->t; nx = c->nx; min_ix = i;
-//            }
-//
-//            if (c->t < min_ty  && c->ny != 0) {
-//                min_ty = c->t; ny = c->ny; min_iy = i;
-//            }
-//        }
-//    }
-//
-//    if (min_ix >= 0) coEventsResult.push_back(coEvents[min_ix]);
-//    if (min_iy >= 0) coEventsResult.push_back(coEvents[min_iy]);
-//}
+bool Aladdin::checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2)
+{
+    //Check horizontal aspect
+    if (l1 > r2 || l2 > r1)
+        return false;
+
+    //Check vertical aspect
+    if (t1 < b2 || t2 < b1)
+        return false;
+
+    return true;
+}
+
+void Aladdin::CheckAttackCollision(vector<LPGAMEOBJECT> atkCol_object)
+{
+
+    for (UINT i = 0; i < atkCol_object.size(); i++)
+    {
+        int attack_size = 0;
+        if (dynamic_cast<Enemy*>(atkCol_object.at(i)))
+        {
+            Enemy* enemy = dynamic_cast<Enemy*>(atkCol_object.at(i));
+
+            //Lấy rect enemy
+            float l1 = enemy->x;
+            float t1 = enemy->y;
+            float r1 = l1 + enemy->width;
+            float b1 = t1 - enemy->height;
+
+            //Lấy bbox của attack animation
+            float l2, t2, r2, b2;
+            switch (state)
+            {
+            case ALADDIN_STATE_ATTACK: 
+                attack_size = ATTACK_SIZE; break;
+            case ALADDIN_STATE_SIT_ATTACK:
+                attack_size = SIT_ATTACK_SIZE; break;
+            case ALADDIN_STATE_JUMP_ATTACK:
+                attack_size = JUMP_ATTACK_SIZE; break;
+            case ALADDIN_STATE_RUN_ATTACK:
+                attack_size = RUN_ATTACK_SIZE; break;
+            }
+            if (nx >= 1)
+            {
+                l2 = x;
+                t2 = y;
+                r2 = l2 + width + attack_size;
+                b2 = t2 - height;
+            }
+            if (nx <= -1)
+            {
+                l2 = x - attack_size;
+                t2 = y;
+                r2 = l2 + width;
+                b2 = t2 - height;
+            }
+
+
+            if (checkOverlap(l1, t1, r1, b1, l2, t2, r2, b2))
+            {
+                //guard0->SetState(STATE_HURT);
+                //enemy->hitpoint--;
+                DebugOut(L"Enemy overlap \n");
+            }
+        }
+    }
+}

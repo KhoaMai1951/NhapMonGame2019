@@ -152,83 +152,93 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(-106, ani);
 
 	//attack right
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 40; i <= 44; i++)
 	{
 		ani->Add(aladdin_sprite_id + i);
 	}
+    ani->Add(10044);
 	animations->Add(107, ani);
 
 	//attack left
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 40; i <= 44; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10044);
 	animations->Add(-107, ani);
 
 	//throw apple right standing
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 445; i <= 450; i++)
 	{
 		ani->Add(aladdin_sprite_id + i);
 	}
+    ani->Add(10450);
 	animations->Add(108, ani);
 
 	//throw apple left standing
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 445; i <= 450; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10450);
 	animations->Add(-108, ani);
 
 	//sit attack right
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 46; i <= 51; i++)
 	{
 		ani->Add(aladdin_sprite_id + i);
 	}
+    ani->Add(10051);
 	animations->Add(109, ani);
 
 	//sit attack left
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 46; i <= 51; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10051);
 	animations->Add(-109, ani);
 
 	//jump attack right
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 557; i <= 562; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
+    ani->Add(10030);
 	animations->Add(110, ani);
 
 	//jump attack left
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 557; i <= 562; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10030);
 	animations->Add(-110, ani);
 
 	//jump throw apple right
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 58; i <= 62; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
+    ani->Add(10029);
 	animations->Add(111, ani);
 
 	//jump throw apple left
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 58; i <= 62; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10029);
 	animations->Add(-111, ani);
 
 	//climb rope
@@ -256,27 +266,29 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(-113, ani);
 
 	//dead
-	ani = new CAnimation(100);
-	for (int i = 82; i <= 116; i++)
+	ani = new CAnimation(150);
+	for (int i = 82; i <= 114; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
 	animations->Add(114, ani);
 
 	//sit throw apple right
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 52; i <= 56; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
+    ani->Add(10056);
 	animations->Add(115, ani);
 
 	//sit throw apple left
-	ani = new CAnimation(100);
+	ani = new CAnimation(75);
 	for (int i = 52; i <= 56; i++)
 	{
-		ani->Add((aladdin_sprite_id + i));
+		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10056);
 	animations->Add(-115, ani);
 
 	//climb throw left
@@ -325,6 +337,7 @@ void ResourceLoader::CreateAnimation()
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
+    ani->Add(10143);
 	animations->Add(119, ani);
 
 	//running attack left
@@ -333,6 +346,7 @@ void ResourceLoader::CreateAnimation()
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10143);
 	animations->Add(-119, ani);
 
 	//running throw right
@@ -341,6 +355,7 @@ void ResourceLoader::CreateAnimation()
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
+    ani->Add(10149);
 	animations->Add(120, ani);
 
 	//running throw left
@@ -349,6 +364,7 @@ void ResourceLoader::CreateAnimation()
 	{
 		ani->Add(-(aladdin_sprite_id + i));
 	}
+    ani->Add(-10149);
 	animations->Add(-120, ani);
 
 	//hurt right
@@ -570,6 +586,19 @@ animations->Add(2000, ani);
 		ani->Add(-40000 - i);
 	animations->Add(ITEM_DESTROY, ani);
 
+    //Animation throw apple
+    //throwing
+    ani = new CAnimation(100);
+    for (int i = 1; i <= 4; i++)
+        ani->Add(40000 + i);
+    animations->Add(4001, ani);
+    //destroy
+    ani = new CAnimation(100);
+    for (int i = 5; i <= 9; i++)
+        ani->Add(40000 + i);
+    ani->Add(40009);
+    animations->Add(4002, ani);
+
 	//genie
     ani = new CAnimation(200);
     ani->Add(41001);
@@ -728,8 +757,8 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_GROUND, L"textures\\Ground.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_ITEM_DESTROY, L"textures\\Items_destroy.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ITEM, L"textures\\Items.png", D3DCOLOR_XRGB(248, 0, 248));
-	textures->Add(TEX_ALADDIN_2, L"textures\\Aladdin2.png", D3DCOLOR_XRGB(105, 148, 190));
-	textures->Add(TEX_ALADDIN_2_LEFT, L"textures\\Aladdin2_left.png", D3DCOLOR_XRGB(105, 148, 190));
+	textures->Add(TEX_ALADDIN_2, L"textures\\Aladdin2.png", D3DCOLOR_XRGB(106, 148, 189));
+	textures->Add(TEX_ALADDIN_2_LEFT, L"textures\\Aladdin2_left.png", D3DCOLOR_XRGB(106, 149, 190));
 	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Explode Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(TEX_MAIN_MENU, L"textures\\Menu.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\LevelComplete.png", D3DCOLOR_XRGB(255, 255, 255));
@@ -935,6 +964,7 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(10560, 199, 1078, 251, 1134, texAladdin);
 	sprites->Add(10561, 266, 1070, 349, 1130, texAladdin);
 	sprites->Add(10562, 361, 1087, 408, 1142, texAladdin);
+    sprites->Add(10562, 361, 1087, 408, 1142, texAladdin);
 	//attack (jumping) left - dòng 14
 	sprites->Add(-10557, 1056, 1077, 1108, 1131, texAladdin_Left);
 	sprites->Add(-10558, 996, 1075, 1046, 1127, texAladdin_Left);
@@ -988,38 +1018,37 @@ void ResourceLoader::LoadSprite()
 	//dead (ko có left-right)
 	sprites->Add(10082, 9, 2167, 51, 2213, texAladdin);
 	sprites->Add(10083, 58, 2161, 113, 2213, texAladdin);
-	sprites->Add(10084, 122, 2162, 181, 2212, texAladdin);
+	sprites->Add(10084, 122, 2163, 181, 2212, texAladdin);
 	sprites->Add(10085, 189, 2163, 269, 2211, texAladdin);
 	sprites->Add(10086, 282, 2160, 343, 2211, texAladdin);
-	sprites->Add(10087, 351, 2161, 410, 2210, texAladdin);
-	sprites->Add(10088, 1, 2234, 81, 2282, texAladdin);
-	sprites->Add(10089, 87, 2231, 148, 2282, texAladdin);
-	sprites->Add(10090, 160, 2224, 205, 2282, texAladdin);
-	sprites->Add(10091, 213, 2224, 258, 2282, texAladdin);
-	sprites->Add(10092, 264, 2231, 303, 2281, texAladdin);
-	sprites->Add(10093, 312, 2230, 352, 2281, texAladdin);
-	sprites->Add(10094, 361, 2230, 396, 2281, texAladdin);
-	sprites->Add(10095, 407, 2230, 443, 2281, texAladdin);
-	sprites->Add(10096, 454, 2232, 493, 2281, texAladdin);
-	sprites->Add(10097, 505, 2227, 549, 2283, texAladdin);
-	sprites->Add(10099, 560, 2228, 601, 2281, texAladdin);
-	sprites->Add(10100, 614, 2232, 653, 2282, texAladdin);
-	sprites->Add(10101, 661, 2232, 701, 2283, texAladdin);
-	sprites->Add(10102, 2, 2335, 39, 2386, texAladdin);
-	sprites->Add(10103, 49, 2329, 86, 2386, texAladdin);
-	sprites->Add(10104, 97, 2331, 140, 2386, texAladdin);
-	sprites->Add(10105, 148, 2333, 209, 2386, texAladdin);
-	sprites->Add(10106, 223, 2336, 284, 2387, texAladdin);
-	sprites->Add(10107, 296, 2310, 372, 2393, texAladdin);
-	sprites->Add(10108, 383, 2309, 460, 2394, texAladdin);
-	sprites->Add(10109, 476, 2309, 551, 2394, texAladdin);
-	sprites->Add(10110, 567, 2311, 635, 2394, texAladdin);
-	sprites->Add(10111, 654, 2319, 720, 2394, texAladdin);
-	sprites->Add(10112, 734, 2321, 800, 2395, texAladdin);
-	sprites->Add(10113, 811, 2323, 877, 2397, texAladdin);
-	sprites->Add(10114, 888, 2323, 954, 2397, texAladdin);
-	sprites->Add(10115, 970, 2325, 1036, 2399, texAladdin);
-	sprites->Add(10116, 1049, 2325, 1115, 2399, texAladdin);
+	sprites->Add(10087, 1, 2234, 81, 2282, texAladdin);
+	sprites->Add(10088, 87, 2231, 148, 2282, texAladdin);
+	sprites->Add(10089, 160, 2224, 205, 2282, texAladdin);
+	sprites->Add(10090, 213, 2224, 258, 2282, texAladdin);
+	sprites->Add(10091, 264, 2231, 303, 2281, texAladdin);
+	sprites->Add(10092, 312, 2230, 352, 2281, texAladdin);
+	sprites->Add(10093, 361, 2230, 396, 2281, texAladdin);
+	sprites->Add(10094, 407, 2230, 443, 2281, texAladdin);
+	sprites->Add(10095, 454, 2232, 493, 2281, texAladdin);
+	sprites->Add(10096, 505, 2227, 549, 2283, texAladdin);
+	sprites->Add(10097, 560, 2228, 601, 2281, texAladdin);
+	sprites->Add(10098, 614, 2232, 653, 2282, texAladdin);
+	sprites->Add(10099, 661, 2232, 701, 2283, texAladdin);
+	sprites->Add(10100, 2, 2335, 39, 2386, texAladdin);
+	sprites->Add(10101, 49, 2329, 86, 2386, texAladdin);
+	sprites->Add(10102, 97, 2331, 140, 2386, texAladdin);
+	sprites->Add(10103, 148, 2333, 209, 2386, texAladdin);
+	sprites->Add(10104, 223, 2336, 284, 2387, texAladdin);
+	sprites->Add(10105, 296, 2310, 372, 2393, texAladdin);
+	sprites->Add(10106, 383, 2309, 460, 2394, texAladdin);
+	sprites->Add(10107, 476, 2309, 551, 2394, texAladdin);
+	sprites->Add(10108, 567, 2311, 635, 2394, texAladdin);
+	sprites->Add(10109, 654, 2319, 720, 2394, texAladdin);
+	sprites->Add(10110, 734, 2321, 800, 2395, texAladdin);
+	sprites->Add(10111, 811, 2323, 877, 2397, texAladdin);
+	sprites->Add(10112, 888, 2323, 954, 2397, texAladdin);
+	sprites->Add(10113, 970, 2325, 1036, 2399, texAladdin);
+	sprites->Add(10114, 1049, 2325, 1115, 2399, texAladdin);
 	//climb throw left
 	sprites->Add(10117, 13,	1666,	50,	1753, texAladdin);
 	sprites->Add(10118, 65,	1666,	106,	1753, texAladdin);
@@ -1368,14 +1397,14 @@ void ResourceLoader::LoadSprite()
     LPDIRECT3DTEXTURE9 texApple = textures->Get(TEX_APPLE);
 
     sprites->Add(40001, 8, 18, 19, 30, texApple); // idle apple
-    //sprites->Add(20002, 35, 19, 47, 30, texApple);
-    //sprites->Add(20003, 62, 19, 73, 31, texApple);
-    //sprites->Add(20004, 87, 19, 99, 30, texApple);
-    //sprites->Add(20005, 113, 20, 120, 30, texApple);
-    //sprites->Add(20006, 133, 15, 153, 33, texApple);
-    //sprites->Add(20007, 163, 13, 192, 35, texApple);
-    //sprites->Add(20008, 240, 11, 235, 36, texApple);
-    //sprites->Add(20009, 251, 10, 281, 37, texApple);
+    sprites->Add(40002, 35, 19, 47, 30, texApple);
+    sprites->Add(40003, 62, 19, 73, 31, texApple);
+    sprites->Add(40004, 87, 19, 99, 30, texApple);
+    sprites->Add(40005, 113, 20, 120, 30, texApple);
+    sprites->Add(40006, 133, 15, 153, 33, texApple);
+    sprites->Add(40007, 163, 13, 192, 35, texApple);
+    sprites->Add(40008, 240, 11, 235, 36, texApple);
+    sprites->Add(40009, 251, 10, 281, 37, texApple);
 #pragma endregion Throw Apple
 
 #pragma region
@@ -1700,7 +1729,17 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             life->id = object_index;
             objects.push_back(life);
         }
-
+        else if (name == "chain")
+        {
+            Chains* chains = new Chains();
+            chains->AddAnimation(301);
+            chains->SetPosition(x, y);
+            chains->SetName(name);
+            chains->width = w;
+            chains->height = h;
+            chains->id = object_index;
+            objects.push_back(chains);
+        }
 
 		object_index++;
 	}

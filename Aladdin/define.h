@@ -30,6 +30,7 @@
 //Aladdin animation
 enum AladdinAnimation
 {
+
 	ALADDIN = 100,
 };
 
@@ -75,7 +76,9 @@ enum DungeonAnimation
 enum ItemAnimation
 {
     ITEM = 400,
-	ITEM_DESTROY = -401,
+    ITEM_DESTROY = -401,
+    ANI_APPLE_FLYING = 4001,
+    ANI_APPLE_DESTROY = 4002,
     ANI_GENIE_IDLE = 4101,
     ANI_GENIE_EATEN = 4102,
     ANI_RUBY = 4201,

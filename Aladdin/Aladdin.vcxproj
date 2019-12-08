@@ -125,6 +125,7 @@
     <ClInclude Include="Aladdin.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Brick.h" />
+    <ClInclude Include="Chains.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Enemy.h" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Step.h" />
     <ClInclude Include="SultansDungeon_Scene.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="ThrowApple.h" />
     <ClInclude Include="Vase.h" />
     <ClInclude Include="ViewPort.h" />
     <ClInclude Include="WreckingBall.h" />
@@ -156,6 +158,7 @@
     <ClCompile Include="Aladdin.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Brick.cpp" />
+    <ClCompile Include="Chains.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -178,6 +181,7 @@
     <ClCompile Include="Step.cpp" />
     <ClCompile Include="SultansDungeon_Scene.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="ThrowApple.cpp" />
     <ClCompile Include="Vase.cpp" />
     <ClCompile Include="ViewPort.cpp" />
     <ClCompile Include="WreckingBall.cpp" />

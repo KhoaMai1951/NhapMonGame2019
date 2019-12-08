@@ -19,6 +19,7 @@
 #include "SpikeTrap.h"
 #include "WreckingBall.h"
 #include "Ground.h"
+#include "Chains.h"
 
 #include "Map.h"
 #include "define.h"

@@ -10,6 +10,7 @@
 #include "Genie.h"
 #include "LifeHeal.h"
 #include "Vase.h"
+#include "ThrowApple.h"
 
 #include "Ground.h"
 #include "Enemy.h"
@@ -33,10 +34,13 @@ enum ALADDIN_STATE
     ALADDIN_STATE_THROW_APPLE = 108,
     ALADDIN_STATE_SIT_ATTACK = 109,
     ALADDIN_STATE_JUMP_ATTACK = 110,
-    ALADDIN_STATE_JUMP_THROW_APPLE = 111,
+    ALADDIN_STATE_JUMP_THROW = 111,
     ALADDIN_STATE_CLIMB = 112,
     ALADDIN_STATE_PUSH = 113,
     ALADDIN_STATE_DEAD = 114,
+    ALADDIN_STATE_SIT_THROW = 115,
+    ALADDIN_STATE_RUN_ATTACK = 119,
+    ALADDIN_STATE_RUN_THROW = 120,
 };
 
 enum ALADDIN_ANI
@@ -84,6 +88,15 @@ enum ALADDIN_ANI
     ALADDIN_ANI_PUSHING_LEFT,
 
     ALADDIN_ANI_DEAD,
+
+    ALADDIN_ANI_SIT_THROW_RIGHT,
+    ALADDIN_ANI_SIT_THROW_LEFT,
+
+    ALADDIN_ANI_RUN_ATTACK_RIGHT,
+    ALADDIN_ANI_RUN_ATTACK_LEFT,
+
+    ALADDIN_ANI_RUN_THROW_RIGHT,
+    ALADDIN_ANI_RUN_THROW_LEFT,
 };
 
 enum ALADDIN_BOX
@@ -131,6 +144,15 @@ enum ALADDIN_BOX
     ALADDIN_DEAD_HEIGHT = 52,
 };
 
+enum AttackBBoxSize {
+    ATTACK_SIZE = 40,
+    RUN_ATTACK_SIZE = 40,
+    JUMP_ATTACK_SIZE = 40,
+    RUN_JUMP_ATTACK_SIZE = 40,
+    SIT_ATTACK_SIZE = 40,
+    THROW_SIZE = 200,
+};
+
 
 #define ALADDIN_UNTOUCHABLE_TIME 5000
 
@@ -140,34 +162,15 @@ class Aladdin : public CGameObject
     int health;
     int untouchable;
     bool jumping = false;
+    int pushing = 0; // >0 - pushing right, <0 pushing left
     DWORD untouchable_start, idle_start;
 
     int CheckGround0Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckGround1Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckItemCollision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
 
-    //type: 0-ground0, 1-ground1, 2-enemies, 3-items
-    /*void FilterGroundCollision0(
-        vector<LPCOLLISIONEVENT> &coEvents,
-        vector<LPCOLLISIONEVENT> &coEventsResult,
-        float &min_tx,
-        float &min_ty,
-        float &nx,
-        float &ny);
-    void FilterGroundCollision1(
-        vector<LPCOLLISIONEVENT> &coEvents,
-        vector<LPCOLLISIONEVENT> &coEventsResult,
-        float &min_tx,
-        float &min_ty,
-        float &nx,
-        float &ny);
-    void FilterItemCollision(
-        vector<LPCOLLISIONEVENT> &coEvents,
-        vector<LPCOLLISIONEVENT> &coEventsResult,
-        float &min_tx,
-        float &min_ty,
-        float &nx,
-        float &ny);*/
+    bool checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
+    void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
 public:
     Aladdin() : CGameObject()
     {
@@ -176,7 +179,6 @@ public:
         idle_start = 0;
         width = ALADDIN_IDLE_WIDTH;
         height = ALADDIN_IDLE_HEIGHT;
-        //state = ALADDIN_STATE_IDLE;
         SetState(ALADDIN_STATE_IDLE);
         lastFrameWidth = ALADDIN_IDLE_WIDTH;
         lastFrameHeight = ALADDIN_IDLE_HEIGHT;
