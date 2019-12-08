@@ -23,3 +23,8 @@ front_chains 512 882 512 256
 front_chains 1024 882 512 256
 front_chains 1536 882 512 256
 front_chains 2048 882 512 256
+front_chains 0 -143 512 256
+front_chains 512 -143 512 256
+front_chains 1024 -143 512 256
+front_chains 1536 -143 512 256
+front_chains 2048 -143 512 256

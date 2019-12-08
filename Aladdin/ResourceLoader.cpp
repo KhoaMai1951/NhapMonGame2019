@@ -511,7 +511,7 @@ animations->Add(2000, ani);
 	ani = new CAnimation(100);
 	for (int i = 21; i <= 25; i++)
 	{
-		ani->Add((enemy_blade_sprite_id + i));
+		ani->Add(enemy_blade_sprite_id + i);
 	}
 	animations->Add(2105, ani);
 
@@ -1580,7 +1580,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             guard1->AddAnimation(GUARD1_TAUNT_LEFT);
             guard1->AddAnimation(GUARD1_ATTACK1_RIGHT);
             guard1->AddAnimation(GUARD1_ATTACK1_LEFT);
-            guard1->AddAnimation(GUARD1_ATTACK2_LEFT);
+            guard1->AddAnimation(GUARD1_ATTACK2_RIGHT);
             guard1->AddAnimation(GUARD1_ATTACK2_LEFT);
             guard1->AddAnimation(GUARD1_HURT_RIGHT);
             guard1->AddAnimation(GUARD1_HURT_LEFT);

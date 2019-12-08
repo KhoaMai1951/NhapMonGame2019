@@ -392,8 +392,19 @@ int Aladdin::CheckGround0Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 0)
-            ground0_objects.push_back(coObjects->at(i));
+        try
+        {
+            if (dynamic_cast<Ground *>(coObjects->at(i)))
+            {
+                if (dynamic_cast<Ground *>(coObjects->at(i))->type == 0)
+                    ground0_objects.push_back(coObjects->at(i));
+            }
+        }
+        catch (exception e)
+        {
+            DebugOut(L"Caused exception\n");
+            continue;
+        }    
     }
 
     CalcPotentialCollisions(ground0_objects, coEvents);
@@ -452,8 +463,16 @@ bool Aladdin::CheckGround1Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 1)
-            ground1_objects.push_back(coObjects->at(i));
+        try
+        {
+            if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 1)
+                ground1_objects.push_back(coObjects->at(i));
+        }
+        catch (exception e)
+        {
+            DebugOut(L"Caused exception\n");
+            continue;
+        }
     }
 
     CalcPotentialCollisions(ground1_objects, coEvents);
