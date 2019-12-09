@@ -3,8 +3,6 @@
 #include <fstream>
 #include <sstream>
 
-//#include "Mario.h"
-#include "Aladdin.h"
 #include "Map.h"
 #include "Game.h"
 #include "ViewPort.h"
@@ -26,16 +24,13 @@ enum LEVEL
 class Scene
 {
 protected:
-    //int tile_count; //số lượng tile
-    //CMario* mario;
-    Aladdin* aladdin;
-    //vector<LPGAMEOBJECT*> Tiles; //chứa tile
     vector<LPGAMEOBJECT> map_vector;
     vector<LPGAMEOBJECT> front_objects;
     vector<LPGAMEOBJECT> objects; //All collision object and aladdin
     ViewPort * camera = ViewPort::getInstance();
 
 public:
+    vector<LPGAMEOBJECT> vector_throwApples;
     int next_scene;
 
     Scene()

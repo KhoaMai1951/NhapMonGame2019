@@ -1,5 +1,6 @@
 ﻿#include <algorithm>
 #include "debug.h"
+//#include"SultansDungeon_Scene.h"
 
 #include "Aladdin.h"
 
@@ -67,7 +68,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
             //}
             //throwApple->SetPosition(temp_x, y);
             //throwApple->SetState(THROW_APPLE_STATE_FLYING);
-            ////vector_apple.push_back(throwApple);
+            //scene->vector_throwApples.push_back(throwApple);
         }
         else if (animations[ani]->currentFrame == 6)
         {
@@ -970,7 +971,7 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
                     }
                 }
             }
-            else if (dynamic_cast<Genie *>(e->obj))
+           /* else if (dynamic_cast<Genie *>(e->obj))
             {
                 Genie *genie = dynamic_cast<Genie *>(e->obj);
 
@@ -981,7 +982,7 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
                         genie->SetState(GENIE_STATE_EATEN);
                     }
                 }
-            }
+            }*/
             else if (dynamic_cast<Vase *>(e->obj))
             {
                 Vase *vase = dynamic_cast<Vase *>(e->obj);

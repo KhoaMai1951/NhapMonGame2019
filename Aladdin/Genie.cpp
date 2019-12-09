@@ -11,10 +11,30 @@ void Genie::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 void Genie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
     CGameObject::Update(dt, coObjects);
+    vy = going_up * MOVE_SPEED;
 
-    if (state == GENIE_STATE_EATEN)
+    if (y >= top_y)
+        going_up = -1;
+    else if (y <= bot_y)
+        going_up = 1;
+
+
+    if (state == GENIE_STATE_IDLE)
+    {
+        if (idle_start != 0 && GetTickCount() - idle_start > 3000)
+        {
+            SetState(GENIE_STATE_IDLE2);
+        }
+    }
+    else if (state == GENIE_STATE_IDLE2)
+    {
         if (animations[ani]->currentFrame == 4)
-            this->isDead = true;
+        {
+            SetState(GENIE_STATE_IDLE);
+        }
+    }
+
+    y += vy;
 }
 
 void Genie::SetState(int state)
@@ -23,8 +43,10 @@ void Genie::SetState(int state)
     switch (state)
     {
     case GENIE_STATE_IDLE:
+        idle_start = GetTickCount();
         break;
-    case GENIE_STATE_EATEN:
+    case GENIE_STATE_IDLE2:
+        animations[GENIE_ANI_IDLE2]->ResetAnimation();
         break;
     }
 }
@@ -32,8 +54,8 @@ void Genie::SetState(int state)
 void Genie::Render()
 {
     ani = GENIE_ANI_IDLE;
-    if (state == GENIE_STATE_EATEN) {
-        ani = GENIE_ANI_EATEN;
+    if (state == GENIE_STATE_IDLE2) {
+        ani = GENIE_ANI_IDLE2;
     }
 
     animations[ani]->Render(x, y);

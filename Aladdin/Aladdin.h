@@ -1,9 +1,9 @@
 #pragma once
 #include "Game.h"
-#include "GameObject.h"
 #include "ViewPort.h"
 #include <set>
 #include "SpatialGrid.h"
+//#include "SultansDungeon_Scene.h"
 
 #include "Apple.h"
 #include "Ruby.h"
@@ -11,6 +11,7 @@
 #include "LifeHeal.h"
 #include "Vase.h"
 #include "ThrowApple.h"
+#include "Chains.h"
 
 #include "Ground.h"
 #include "Enemy.h"

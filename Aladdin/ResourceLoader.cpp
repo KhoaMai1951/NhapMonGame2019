@@ -587,6 +587,7 @@ animations->Add(2000, ani);
 	animations->Add(ITEM_DESTROY, ani);
 
     //Animation throw apple
+
     //throwing
     ani = new CAnimation(100);
     for (int i = 1; i <= 4; i++)
@@ -607,7 +608,7 @@ animations->Add(2000, ani);
     ani->Add(41001);
     ani->Add(41002);
     ani->Add(41003);
-    ani->Add(41004, 750);
+    ani->Add(41004);
     ani->Add(41004);
 	animations->Add(4102, ani);
 
@@ -631,12 +632,10 @@ animations->Add(2000, ani);
 
 	//save eaten
 	ani = new CAnimation(150);
-	for (int i = 2; i <= 9; i++)
+	for (int i = 2; i <= 10; i++)
 	{
 		ani->Add((43000 + i));
 	}
-    ani->Add(43010, 750);
-    ani->Add(43010);
 	animations->Add(4302, ani);
 
 	//life
@@ -1694,12 +1693,13 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
         {
             Genie* genie = new Genie();
             genie->AddAnimation(ANI_GENIE_IDLE);
-            genie->AddAnimation(ANI_GENIE_EATEN);
+            genie->AddAnimation(ANI_GENIE_IDLE2);
             genie->SetPosition(x, y);
             genie->SetState(GENIE_STATE_IDLE);
             genie->SetName(name);
             genie->width = w;
             genie->height = h;
+            genie->GetMoveLimit();
             genie->id = object_index;
             objects.push_back(genie);
         }
