@@ -758,7 +758,8 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_ITEM, L"textures\\Items.png", D3DCOLOR_XRGB(248, 0, 248));
 	textures->Add(TEX_ALADDIN_2, L"textures\\Aladdin2.png", D3DCOLOR_XRGB(106, 148, 189));
 	textures->Add(TEX_ALADDIN_2_LEFT, L"textures\\Aladdin2_left.png", D3DCOLOR_XRGB(106, 149, 190));
-	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Explode Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
+	//textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Explode Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(TEX_MAIN_MENU, L"textures\\Menu.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\LevelComplete.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ABU, L"textures\\Abu.png", D3DCOLOR_XRGB(255, 255, 255));
@@ -1302,27 +1303,27 @@ void ResourceLoader::LoadSprite()
 #pragma region
 	LPDIRECT3DTEXTURE9 texExplodeSkeleton = textures->Get(TEX_EXPLODE_SKELETON);
 	
-	sprites->Add(22000, 8,	73,	94,	99, texExplodeSkeleton);			 //Skeleton Create
-	sprites->Add(22001, 101,	72,	181,	97, texExplodeSkeleton);
-	sprites->Add(22002, 188,	52,	263,	97, texExplodeSkeleton);
-	sprites->Add(22003, 283,	37,	345,	97, texExplodeSkeleton);
-	sprites->Add(22004, 365,	29,	415,	96, texExplodeSkeleton);
-	sprites->Add(22005, 427,	25,	475,	96, texExplodeSkeleton);
-	sprites->Add(22006, 486,	22,	534,	97, texExplodeSkeleton);
+	sprites->Add(22000, 0, 0, 95, 91, texExplodeSkeleton);			 //Skeleton Create
+	sprites->Add(22001, 95, 0, 190, 91, texExplodeSkeleton);
+	sprites->Add(22002, 190, 0, 285, 91, texExplodeSkeleton);
+	sprites->Add(22003, 285, 0, 380, 91, texExplodeSkeleton);
+	sprites->Add(22004, 380, 0, 475, 91, texExplodeSkeleton);
+	sprites->Add(22005, 475, 0, 570, 91, texExplodeSkeleton);
+	sprites->Add(22006, 570, 0, 665, 91, texExplodeSkeleton);
 
-	sprites->Add(22007, 544,	16,	595, 97, texExplodeSkeleton);		//Skeleton Exploding
-	sprites->Add(22008, 601,	16,	652,	97, texExplodeSkeleton);
-	sprites->Add(22009, 662,	17,	714,	97, texExplodeSkeleton);
-	sprites->Add(22010, 726,	16,	794,	97, texExplodeSkeleton);
-	sprites->Add(22011, 799,	8,	864,	97, texExplodeSkeleton);
-	sprites->Add(22012, 13,	122,	63,	204, texExplodeSkeleton);
-	sprites->Add(22013, 75,	123,	124,	204, texExplodeSkeleton);
-	sprites->Add(22014, 132,	121,	193,	205, texExplodeSkeleton);
-	sprites->Add(22015, 203,	130,	267,	205, texExplodeSkeleton);
-	sprites->Add(22016, 279,	121,	353,	206, texExplodeSkeleton);
-	sprites->Add(22017, 376,	115,	457,	206, texExplodeSkeleton);
-	sprites->Add(22018, 479,	126,	574,	203, texExplodeSkeleton);
-	sprites->Add(22019, 593,	125,	653,	204, texExplodeSkeleton);
+	sprites->Add(22007, 665, 0, 760, 91, texExplodeSkeleton);		//Skeleton Exploding
+	sprites->Add(22008, 760, 0, 855, 91, texExplodeSkeleton);
+	sprites->Add(22009, 855, 0, 950, 91, texExplodeSkeleton);
+	sprites->Add(22010, 950, 0, 1045, 91, texExplodeSkeleton);
+	sprites->Add(22011, 1045, 0, 1140, 91, texExplodeSkeleton);
+	sprites->Add(22012, 1140, 0, 1235, 91, texExplodeSkeleton);
+	sprites->Add(22013, 1235, 0, 1330, 91, texExplodeSkeleton);
+	sprites->Add(22014, 1330, 0, 1425, 91, texExplodeSkeleton);
+	sprites->Add(22015, 1425, 0, 1520, 91, texExplodeSkeleton);
+	sprites->Add(22016, 1520, 0, 1615, 91, texExplodeSkeleton);
+	sprites->Add(22017, 1615, 0, 1710, 91, texExplodeSkeleton);
+	sprites->Add(22018, 1710, 0, 1805, 91, texExplodeSkeleton);
+	sprites->Add(22019, 1805, 0, 1900, 91, texExplodeSkeleton);
 
 #pragma endregion Explode Skeleton
 
@@ -1737,6 +1738,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             chains->SetName(name);
             chains->width = w;
             chains->height = h;
+			chains->bot = y + h;
             chains->id = object_index;
             objects.push_back(chains);
         }

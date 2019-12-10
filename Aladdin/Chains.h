@@ -14,6 +14,7 @@ class Chains : public CGameObject
     virtual void Render();
 
 public:
+	float bot;
     Chains() : CGameObject()
     {
         ani = 0;

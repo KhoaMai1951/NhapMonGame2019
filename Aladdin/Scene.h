@@ -30,7 +30,6 @@ protected:
     ViewPort * camera = ViewPort::getInstance();
 
 public:
-    vector<LPGAMEOBJECT> vector_throwApples;
     int next_scene;
 
     Scene()

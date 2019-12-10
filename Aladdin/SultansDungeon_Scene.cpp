@@ -92,7 +92,7 @@ void SultansDungeon_Scene::Update(DWORD dt)
 		set_gameobject.end()); //Vector chứa các Object va chạm (trừ index 0 vì là player)
 
 	SpatialGrid* grid = SpatialGrid::GetInstance();
-    //Update objects
+    //Update objets
     objects[0]->Update(dt, &coObjects); //player
 
     for (int i = 0; i < coObjects.size(); i++)

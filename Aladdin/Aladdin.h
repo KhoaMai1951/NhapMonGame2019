@@ -3,7 +3,6 @@
 #include "ViewPort.h"
 #include <set>
 #include "SpatialGrid.h"
-//#include "SultansDungeon_Scene.h"
 
 #include "Apple.h"
 #include "Ruby.h"
@@ -42,6 +41,7 @@ enum ALADDIN_STATE
     ALADDIN_STATE_SIT_THROW = 115,
     ALADDIN_STATE_RUN_ATTACK = 119,
     ALADDIN_STATE_RUN_THROW = 120,
+	ALADDIN_STATE_CLIMB_UP = 121,
 };
 
 enum ALADDIN_ANI
@@ -164,11 +164,14 @@ class Aladdin : public CGameObject
     int untouchable;
     bool jumping = false;
     int pushing = 0; // >0 - pushing right, <0 pushing left
+	int climbing = 0;	// 2 - climbing up, -1 climbing down, 1-hanging, 0 - not climbing
+
     DWORD untouchable_start, idle_start;
 
     int CheckGround0Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckGround1Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckItemCollision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
+	bool CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
 
     bool checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);

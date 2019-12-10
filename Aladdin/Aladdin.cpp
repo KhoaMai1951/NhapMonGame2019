@@ -1,6 +1,5 @@
 ﻿#include <algorithm>
 #include "debug.h"
-//#include"SultansDungeon_Scene.h"
 
 #include "Aladdin.h"
 
@@ -22,7 +21,8 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     CGameObject::Update(dt);
 
     // Simple fall down
-    vy -= ALADDIN_GRAVITY * dt;
+	if(state != ALADDIN_STATE_CLIMB)
+		vy -= ALADDIN_GRAVITY * dt;
 
     if (state == ALADDIN_STATE_IDLE)
     {
@@ -68,7 +68,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
             //}
             //throwApple->SetPosition(temp_x, y);
             //throwApple->SetState(THROW_APPLE_STATE_FLYING);
-            //scene->vector_throwApples.push_back(throwApple);
+            //CGame::GetInstance()->vector_throwApples.push_back(throwApple);
         }
         else if (animations[ani]->currentFrame == 6)
         {
@@ -122,6 +122,13 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         SetState(ALADDIN_STATE_IDLE);
     }
+	else if (state == ALADDIN_STATE_CLIMB)
+	{
+		//vx = 0;
+		////vy += ALADDIN_GRAVITY * dt;
+		//vy = 0;
+	}
+	
 
 #pragma region Find objects in grid
     float l, t, r, b;
@@ -170,6 +177,12 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     //Bug when collide with items the same time
     CheckItemCollision(&vector_gameobject, dt);
 
+	if (CheckChainCollision(&vector_gameobject, dt))
+	{
+		y += dy;
+	}
+
+
     ProcessKeyboard();
 }
 
@@ -180,7 +193,7 @@ void Aladdin::ProcessKeyboard()
     switch (state)
     {
         int direction, updown;
-     case ALADDIN_STATE_DEAD: return;
+    case ALADDIN_STATE_DEAD: return;
     case ALADDIN_STATE_IDLE:
     case ALADDIN_STATE_RUN:
     case ALADDIN_STATE_IDLE1:
@@ -390,6 +403,28 @@ void Aladdin::ProcessKeyboard()
 		}
         return;
     }
+	case ALADDIN_STATE_CLIMB:
+	{
+		if (game->IsKeyDown(DIK_UP))
+		{
+			vy = 0.1;
+		}
+		else if (game->IsKeyDown(DIK_DOWN))
+		{
+			vy = -0.1;
+		}
+		else
+		{
+			vy = 0;
+		}
+		if (game->IsKeyPress(DIK_W))
+		{
+			x += 100;
+			if (vx == 0)
+				SetState(ALADDIN_STATE_IDLE);
+		}
+		return;
+	}
     }
 
 }
@@ -585,6 +620,12 @@ void Aladdin::SetState(int state)
         idle_start = 0;
         animations[ALADDIN_ANI_DEAD]->ResetAnimation();
         break;
+	case ALADDIN_STATE_CLIMB:
+		idle_start = 0;
+		vx = 0;
+		vy = 0;
+		//animations[ALADDIN_ANI_DEAD]->ResetAnimation();
+		break;
     }
 }
 
@@ -598,148 +639,158 @@ void Aladdin::Render()
     }
     else 
     {
-        switch (state)
-        {
-        case ALADDIN_STATE_IDLE:
-        {
-            restart_frame = 0;
-            if(nx > 0)
-                ani = ALADDIN_ANI_IDLE_RIGHT;
-            else 
-                ani = ALADDIN_ANI_IDLE_LEFT;break;
-        }
-        case ALADDIN_STATE_RUN:
-        {
-            restart_frame = 3;
-            if (vx > 0)
-                ani = ALADDIN_ANI_RUNNING_RIGHT;
-            else if (vx < 0)
-                ani = ALADDIN_ANI_RUNNING_LEFT;
-            break;
-        }
-        case ALADDIN_STATE_JUMP:
-        {
-            restart_frame = 5;
-            if (nx > 0) ani = ALADDIN_ANI_JUMP_RIGHT;
-            else ani = ALADDIN_ANI_JUMP_LEFT;
-            break;
-        }
-        case ALADDIN_STATE_RUN_JUMP:
-        {
-            restart_frame = 5;
-            if (nx > 0) ani = ALADDIN_ANI_RUN_JUMP_RIGHT;
-            else ani = ALADDIN_ANI_RUN_JUMP_LEFT;
-            break;
-        }
-        case ALADDIN_STATE_IDLE1:
-        {
-            restart_frame = 1;
-            ani = ALADDIN_ANI_IDLE1;
-            break;
-        }
-        case ALADDIN_STATE_IDLE2:
-        {
-            restart_frame = 6;
-            ani = ALADDIN_ANI_IDLE2;
-            break;
-        }
-        case ALADDIN_STATE_IDLE3:
-        {
-            restart_frame = 0;
-            ani = ALADDIN_ANI_IDLE3;
-            break;
-        }
-        case ALADDIN_STATE_LOOKUP:
-        {
-            restart_frame = 2;
-            if (nx > 0)
-                ani = ALADDIN_ANI_LOOKUP_RIGHT;
-            else
-                ani = ALADDIN_ANI_LOOKUP_LEFT;
-            break;
-        }
-        case ALADDIN_STATE_CROUCH:
-        {
-            restart_frame = 3;
-            if (nx > 0)
-                ani = ALADDIN_ANI_CROUCH_RIGHT;
-            else
-                ani = ALADDIN_ANI_CROUCH_LEFT;
-            break;
-        }
-        case ALADDIN_STATE_ATTACK:
-        {
-            restart_frame = 0;
-            if (nx > 0)
-                ani = ALADDIN_ANI_ATTACK_RIGHT;
-            else
-                ani = ALADDIN_ANI_ATTACK_LEFT; break;
-        }
-        case ALADDIN_STATE_RUN_ATTACK:
-        {
-            restart_frame = 0;
-            if (nx > 0)
-                ani = ALADDIN_ANI_RUN_ATTACK_RIGHT;
-            else
-                ani = ALADDIN_ANI_RUN_ATTACK_LEFT; break;
-        }
-        case ALADDIN_STATE_JUMP_ATTACK:
-        {
-            restart_frame = 6;
-            if (nx > 0)
-                ani = ALADDIN_ANI_JUMP_ATTACK_RIGHT;
-            else
-                ani = ALADDIN_ANI_JUMP_ATTACK_LEFT; break;
-        }
-        case ALADDIN_STATE_SIT_ATTACK:
-        {
-            restart_frame = 0;
-            if (nx > 0)
-                ani = ALADDIN_ANI_SIT_ATTACK_RIGHT;
-            else
-                ani = ALADDIN_ANI_SIT_ATTACK_LEFT; break;
-        }
-        case ALADDIN_STATE_THROW_APPLE:
-        {
-            restart_frame = 0;
-            if (nx > 0)
-                ani = ALADDIN_ANI_THROW_RIGHT;
-            else
-                ani = ALADDIN_ANI_THROW_LEFT; break;
-        }
-        case ALADDIN_STATE_RUN_THROW:
-        {
-            restart_frame = 0;
-            if (nx > 0)
-                ani = ALADDIN_ANI_RUN_THROW_RIGHT;
-            else
-                ani = ALADDIN_ANI_RUN_THROW_LEFT; break;
-        }
-        case ALADDIN_STATE_JUMP_THROW:
-        {
-            restart_frame = 5;
-            if (nx > 0)
-                ani = ALADDIN_ANI_JUMP_THROW_RIGHT;
-            else
-                ani = ALADDIN_ANI_JUMP_THROW_LEFT; break;
-        }
-        case ALADDIN_STATE_SIT_THROW:
-        {
-            restart_frame = 0;
-            if (nx > 0)
-                ani = ALADDIN_ANI_SIT_THROW_RIGHT;
-            else
-                ani = ALADDIN_ANI_SIT_THROW_LEFT; break;
-        }
-        case ALADDIN_STATE_PUSH:
-        {
-            restart_frame = 2;
-            if (nx > 0)
-                ani = ALADDIN_ANI_PUSHING_RIGHT;
-            else
-                ani = ALADDIN_ANI_PUSHING_LEFT; break;
-        }
-        }
+		switch (state)
+		{
+		case ALADDIN_STATE_IDLE:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_IDLE_RIGHT;
+			else
+				ani = ALADDIN_ANI_IDLE_LEFT; break;
+		}
+		case ALADDIN_STATE_RUN:
+		{
+			restart_frame = 3;
+			if (vx > 0)
+				ani = ALADDIN_ANI_RUNNING_RIGHT;
+			else if (vx < 0)
+				ani = ALADDIN_ANI_RUNNING_LEFT;
+			break;
+		}
+		case ALADDIN_STATE_JUMP:
+		{
+			restart_frame = 5;
+			if (nx > 0) ani = ALADDIN_ANI_JUMP_RIGHT;
+			else ani = ALADDIN_ANI_JUMP_LEFT;
+			break;
+		}
+		case ALADDIN_STATE_RUN_JUMP:
+		{
+			restart_frame = 5;
+			if (nx > 0) ani = ALADDIN_ANI_RUN_JUMP_RIGHT;
+			else ani = ALADDIN_ANI_RUN_JUMP_LEFT;
+			break;
+		}
+		case ALADDIN_STATE_IDLE1:
+		{
+			restart_frame = 1;
+			ani = ALADDIN_ANI_IDLE1;
+			break;
+		}
+		case ALADDIN_STATE_IDLE2:
+		{
+			restart_frame = 6;
+			ani = ALADDIN_ANI_IDLE2;
+			break;
+		}
+		case ALADDIN_STATE_IDLE3:
+		{
+			restart_frame = 0;
+			ani = ALADDIN_ANI_IDLE3;
+			break;
+		}
+		case ALADDIN_STATE_LOOKUP:
+		{
+			restart_frame = 2;
+			if (nx > 0)
+				ani = ALADDIN_ANI_LOOKUP_RIGHT;
+			else
+				ani = ALADDIN_ANI_LOOKUP_LEFT;
+			break;
+		}
+		case ALADDIN_STATE_CROUCH:
+		{
+			restart_frame = 3;
+			if (nx > 0)
+				ani = ALADDIN_ANI_CROUCH_RIGHT;
+			else
+				ani = ALADDIN_ANI_CROUCH_LEFT;
+			break;
+		}
+		case ALADDIN_STATE_ATTACK:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_ATTACK_RIGHT;
+			else
+				ani = ALADDIN_ANI_ATTACK_LEFT; break;
+		}
+		case ALADDIN_STATE_RUN_ATTACK:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_RUN_ATTACK_RIGHT;
+			else
+				ani = ALADDIN_ANI_RUN_ATTACK_LEFT; break;
+		}
+		case ALADDIN_STATE_JUMP_ATTACK:
+		{
+			restart_frame = 6;
+			if (nx > 0)
+				ani = ALADDIN_ANI_JUMP_ATTACK_RIGHT;
+			else
+				ani = ALADDIN_ANI_JUMP_ATTACK_LEFT; break;
+		}
+		case ALADDIN_STATE_SIT_ATTACK:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_SIT_ATTACK_RIGHT;
+			else
+				ani = ALADDIN_ANI_SIT_ATTACK_LEFT; break;
+		}
+		case ALADDIN_STATE_THROW_APPLE:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_THROW_RIGHT;
+			else
+				ani = ALADDIN_ANI_THROW_LEFT; break;
+		}
+		case ALADDIN_STATE_RUN_THROW:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_RUN_THROW_RIGHT;
+			else
+				ani = ALADDIN_ANI_RUN_THROW_LEFT; break;
+		}
+		case ALADDIN_STATE_JUMP_THROW:
+		{
+			restart_frame = 5;
+			if (nx > 0)
+				ani = ALADDIN_ANI_JUMP_THROW_RIGHT;
+			else
+				ani = ALADDIN_ANI_JUMP_THROW_LEFT; break;
+		}
+		case ALADDIN_STATE_SIT_THROW:
+		{
+			restart_frame = 0;
+			if (nx > 0)
+				ani = ALADDIN_ANI_SIT_THROW_RIGHT;
+			else
+				ani = ALADDIN_ANI_SIT_THROW_LEFT; break;
+		}
+		case ALADDIN_STATE_PUSH:
+		{
+			restart_frame = 2;
+			if (nx > 0)
+				ani = ALADDIN_ANI_PUSHING_RIGHT;
+			else
+				ani = ALADDIN_ANI_PUSHING_LEFT; break;
+		}
+		case ALADDIN_STATE_CLIMB:
+		{
+			ani = ALADDIN_ANI_CLIMB_ROPE;
+			break;
+		}
+		case ALADDIN_STATE_CLIMB_UP:
+		{
+			ani = ALADDIN_ANI_CLIMB_ROPE;
+			break;
+		}
+		}
     }
 
     int alpha = 255;
@@ -1081,4 +1132,55 @@ void Aladdin::CheckAttackCollision(vector<LPGAMEOBJECT> atkCol_object)
             }
         }
     }
+}
+
+bool Aladdin::CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
+{
+	vector<LPCOLLISIONEVENT> coEvents;
+	vector<LPCOLLISIONEVENT> coEventsResult;
+	coEvents.clear();
+	coEventsResult.clear();
+
+	vector<LPGAMEOBJECT> item_objects;
+	item_objects.clear();
+
+	for (UINT i = 0; i < coObjects->size(); i++)
+	{
+		//if (dynamic_cast<Apple *>(coObjects->at(i)))
+		//    item_objects.push_back(coObjects->at(i));
+		item_objects.push_back(coObjects->at(i));
+	}
+
+	CalcPotentialCollisions(item_objects, coEvents);
+
+	// No collision occured, proceed normally
+	if (coEvents.size() == 0)
+	{
+		// clean up collision events
+		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+		return false;
+	}
+	else
+	{
+		float min_tx, min_ty, nx = 0, ny;
+		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+		for (UINT i = 0; i < coEventsResult.size(); i++)
+		{
+			LPCOLLISIONEVENT e = coEventsResult[i];
+
+			if (dynamic_cast<Chains*>(e->obj)) // if e->obj is Chain
+			{
+				Chains* chain = dynamic_cast<Chains*>(e->obj);
+				if (state != ALADDIN_STATE_CLIMB)
+				{
+					this->x = chain->x - 15;
+					SetState(ALADDIN_STATE_CLIMB);
+				}	
+				return true;
+			}
+		}
+	}
+	// clean up collision events
+	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
 }
