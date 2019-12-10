@@ -577,13 +577,29 @@ animations->Add(2000, ani);
 #pragma endregion Explode Skeleton
 
 #pragma region
+	//bat idle
+	ani = new CAnimation(100);
+	ani->Add(23000);
+	animations->Add(2301, ani);
+
+	//bat flying
+	ani = new CAnimation(100);
+	for (int i = 1; i <= 10; i++)
+	{
+		ani->Add(23000 + i);
+	}
+	animations->Add(2302, ani);
+#pragma endregion Bat
+
+#pragma region
 	//Animation apple
 	ani = new CAnimation(100);
 	ani->Add(40001);
 	animations->Add(401, ani);
 	ani = new CAnimation(75); //item destroy of apple
-	for (int i = 1; i <= 12; i++)
+	for (int i = 1; i <= 11; i++)
 		ani->Add(-40000 - i);
+	ani->Add(-40011);
 	animations->Add(ITEM_DESTROY, ani);
 
     //Animation throw apple
@@ -754,16 +770,16 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_GUARD_LEFT, L"textures\\Guards_left.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_APPLE, L"textures\\Apple.png", D3DCOLOR_XRGB(120, 193, 152));
     textures->Add(TEX_GROUND, L"textures\\Ground.png", D3DCOLOR_XRGB(255, 255, 255));
-    textures->Add(TEX_ITEM_DESTROY, L"textures\\Items_destroy.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_ITEM_DESTROY, L"textures\\Items_destroy.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(TEX_ITEM, L"textures\\Items.png", D3DCOLOR_XRGB(248, 0, 248));
 	textures->Add(TEX_ALADDIN_2, L"textures\\Aladdin2.png", D3DCOLOR_XRGB(106, 148, 189));
 	textures->Add(TEX_ALADDIN_2_LEFT, L"textures\\Aladdin2_left.png", D3DCOLOR_XRGB(106, 149, 190));
-	//textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Explode Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
-	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Skeleton.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Skeleton.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BAT, L"textures\\Bat.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_MAIN_MENU, L"textures\\Menu.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\LevelComplete.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ABU, L"textures\\Abu.png", D3DCOLOR_XRGB(255, 255, 255));
-    textures->Add(TEX_ENEMY_EXPLODE, L"textures\\Enemy_exlode.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_ENEMY_EXPLODE, L"textures\\Enemy_exlode.png", D3DCOLOR_XRGB(255, 0, 255));
 
 
     CSprites* sprites = CSprites::GetInstance();
@@ -1328,17 +1344,34 @@ void ResourceLoader::LoadSprite()
 #pragma endregion Explode Skeleton
 
 #pragma region
+	LPDIRECT3DTEXTURE9 texBat = textures->Get(TEX_BAT);
+
+	sprites->Add(23000, 0, 0, 34, 25, texBat);			 //bat idle
+	sprites->Add(23001, 34, 0, 68, 25, texBat);          //bat flying
+	sprites->Add(23002, 68, 0, 102, 25, texBat);
+	sprites->Add(23003, 102, 0, 136, 25, texBat);
+	sprites->Add(23004, 136, 0, 170, 25, texBat);
+	sprites->Add(23005, 170, 0, 204, 25, texBat);
+	sprites->Add(23006, 204, 0, 238, 25, texBat);
+	sprites->Add(23007, 238, 0, 272, 25, texBat);
+	sprites->Add(23008, 272, 0, 306, 25, texBat);
+	sprites->Add(23009, 306, 0, 340, 25, texBat);
+	sprites->Add(23010, 340, 0, 374, 25, texBat);
+
+#pragma endregion Bat
+
+#pragma region
     LPDIRECT3DTEXTURE9 texEnemyExplode = textures->Get(TEX_ENEMY_EXPLODE);
-	sprites->Add(20091, 20,	30,	32,	40, texEnemyExplode); //Enemy explode
-	sprites->Add(20092, 54,	15,	95,	42, texEnemyExplode);
-	sprites->Add(20093, 102,	15,	149,	43, texEnemyExplode);
-	sprites->Add(20094, 148,	14,	195,	42, texEnemyExplode);
-	sprites->Add(20095, 197,	12,	246,	42, texEnemyExplode);
-	sprites->Add(20096, 246,	12,	294,	42, texEnemyExplode);
-	sprites->Add(20097, 305,	22,	329,	43, texEnemyExplode);
-	sprites->Add(20098, 355,	23,	378,	43, texEnemyExplode);
-	sprites->Add(20099, 405,	24,	428,	43, texEnemyExplode);
-	sprites->Add(20100, 454,	24,	475,	43, texEnemyExplode);
+	sprites->Add(20091, 0, 0, 90, 57, texEnemyExplode); //Enemy explode
+	sprites->Add(20092, 90, 0, 180, 57, texEnemyExplode);
+	sprites->Add(20093, 180, 0, 270, 57, texEnemyExplode);
+	sprites->Add(20094, 270, 0, 360, 57, texEnemyExplode);
+	sprites->Add(20095, 360, 0, 450, 57, texEnemyExplode);
+	sprites->Add(20096, 450, 0, 540, 57, texEnemyExplode);
+	sprites->Add(20097, 540, 0, 630, 57, texEnemyExplode);
+	sprites->Add(20098, 630, 0, 720, 57, texEnemyExplode);
+	sprites->Add(20099, 720, 0, 810, 57, texEnemyExplode);
+	sprites->Add(20100, 810, 0, 900, 57, texEnemyExplode);
 #pragma endregion Enemy Dead
 
 #pragma region 
@@ -1410,18 +1443,17 @@ void ResourceLoader::LoadSprite()
 #pragma region
     LPDIRECT3DTEXTURE9 texItemDestroy = textures->Get(TEX_ITEM_DESTROY);
 
-    sprites->Add(-40001, 11, 19, 17, 25, texItemDestroy);
-    sprites->Add(-40002, 53, 13, 63, 29, texItemDestroy);
-    sprites->Add(-40003, 97, 11, 109, 29, texItemDestroy);
-    sprites->Add(-40004, 135, 7, 157, 31, texItemDestroy);
-    sprites->Add(-40005, 175, 5, 209, 37, texItemDestroy);
-    sprites->Add(-40006, 219, 1, 233, 35, texItemDestroy);
-    sprites->Add(-40007, 239, 5, 277, 39, texItemDestroy);
-    sprites->Add(-40008, 285, 7, 317, 35, texItemDestroy);
-    sprites->Add(-40009, 325, 11, 359, 37, texItemDestroy);
-    sprites->Add(-40010, 369, 15, 403, 37, texItemDestroy);
-    sprites->Add(-40011, 417, 19, 451, 39, texItemDestroy);
-    sprites->Add(-40012, 461, 25, 473, 39, texItemDestroy);
+	sprites->Add(-40001, 0, 0, 22, 22, texItemDestroy);
+	sprites->Add(-40002, 22, 0, 44, 22, texItemDestroy);
+	sprites->Add(-40003, 44, 00, 66, 22, texItemDestroy);
+	sprites->Add(-40004, 66, 00, 88, 22, texItemDestroy);
+	sprites->Add(-40005, 88, 00, 110, 22, texItemDestroy);
+	sprites->Add(-40006, 110, 00, 132, 22, texItemDestroy);
+	sprites->Add(-40007, 132, 00, 154, 22, texItemDestroy);
+	sprites->Add(-40008, 154, 00, 176, 22, texItemDestroy);
+	sprites->Add(-40009, 176, 00, 198, 22, texItemDestroy);
+	sprites->Add(-40010, 198, 00, 220, 22, texItemDestroy);
+	sprites->Add(-40011, 220, 00, 242, 22, texItemDestroy);
 #pragma endregion Item Destroy
 
 #pragma region
@@ -1638,6 +1670,18 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             skeleton->id = object_index;
             objects.push_back(skeleton);
         }
+		else if (name == "bat")
+		{
+		Bat* bat = new Bat();
+		bat->AddAnimation(BAT_IDLE);
+		bat->AddAnimation(BAT_FLYING);
+		bat->AddAnimation(ENEMY_EXPLODE);
+		bat->SetState(BAT_STATE_IDLE);
+		bat->SetPosition(x, y);
+		bat->SetName(name);
+		bat->id = object_index;
+		objects.push_back(bat);
+		}
         else if (name == "step0" || name == "step1")
         {
             Step* step = new Step();
@@ -1738,7 +1782,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             chains->SetName(name);
             chains->width = w;
             chains->height = h;
-			chains->bot = y + h;
+			chains->bot = y - h;
             chains->id = object_index;
             objects.push_back(chains);
         }

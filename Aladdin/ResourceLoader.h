@@ -14,6 +14,7 @@
 #include "Guard0.h"
 #include "Guard1.h"
 #include "Skeleton.h"
+#include "Bat.h"
 
 #include "Step.h"
 #include "SpikeTrap.h"

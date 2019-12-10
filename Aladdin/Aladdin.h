@@ -18,6 +18,8 @@
 #define ALADDIN_RUNNING_SPEED		0.15f 
 #define ALADDIN_JUMP_SPEED_Y		0.3f
 #define ALADDIN_GRAVITY			0.0005f
+#define ALADDIN_CLIMB_SPEED 0.1f
+#define ALADDIN_UNTOUCHABLE_TIME 5000
 
 enum ALADDIN_STATE
 {
@@ -155,8 +157,6 @@ enum AttackBBoxSize {
 };
 
 
-#define ALADDIN_UNTOUCHABLE_TIME 5000
-
 
 class Aladdin : public CGameObject
 {
@@ -166,13 +166,15 @@ class Aladdin : public CGameObject
     int pushing = 0; // >0 - pushing right, <0 pushing left
 	int climbing = 0;	// 2 - climbing up, -1 climbing down, 1-hanging, 0 - not climbing
 
+	Chains* climbingChains;
+
     DWORD untouchable_start, idle_start;
 
     int CheckGround0Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckGround1Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckItemCollision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
 	bool CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
-
+	
     bool checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
 public:

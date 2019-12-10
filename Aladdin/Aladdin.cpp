@@ -24,6 +24,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 	if(state != ALADDIN_STATE_CLIMB)
 		vy -= ALADDIN_GRAVITY * dt;
 
+#pragma region
     if (state == ALADDIN_STATE_IDLE)
     {
         if (idle_start != 0 && GetTickCount() - idle_start > 5000)
@@ -128,6 +129,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 		////vy += ALADDIN_GRAVITY * dt;
 		//vy = 0;
 	}
+#pragma endregion Check State
 	
 
 #pragma region Find objects in grid
@@ -405,13 +407,20 @@ void Aladdin::ProcessKeyboard()
     }
 	case ALADDIN_STATE_CLIMB:
 	{
-		if (game->IsKeyDown(DIK_UP))
+		if (this->y <= climbingChains->bot)
 		{
-			vy = 0.1;
+			SetState(ALADDIN_STATE_IDLE);
+			climbingChains = NULL;
+			//climbing = false;
+			return;
+		}
+		else if (game->IsKeyDown(DIK_UP) && this->y < climbingChains->y - 15)
+		{
+				vy = ALADDIN_CLIMB_SPEED;
 		}
 		else if (game->IsKeyDown(DIK_DOWN))
 		{
-			vy = -0.1;
+			vy = -ALADDIN_CLIMB_SPEED;
 		}
 		else
 		{
@@ -798,7 +807,7 @@ void Aladdin::Render()
     //animations[ani]->Render(x, y, alpha, restart_frame);
     animations[ani]->Render(x, y, width, lastFrameHeight, alpha, restart_frame, nx);
 
-    //RenderBoundingBox();
+    RenderBoundingBox();
 }
 
 void Aladdin::GetBoundingBox(float &left, float &top, float &right, float &bottom)
@@ -1158,7 +1167,6 @@ bool Aladdin::CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 	{
 		// clean up collision events
 		for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-		return false;
 	}
 	else
 	{
@@ -1176,11 +1184,14 @@ bool Aladdin::CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 				{
 					this->x = chain->x - 15;
 					SetState(ALADDIN_STATE_CLIMB);
-				}	
+					climbingChains = chain;
+					y += 6;
+				}
 				return true;
 			}
 		}
 	}
 	// clean up collision events
 	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+	return false;
 }

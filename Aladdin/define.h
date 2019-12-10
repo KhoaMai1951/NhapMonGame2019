@@ -64,6 +64,8 @@ enum EnemyAnimation
 
     SKELETON_CREATE = 2201,
     SKELETON_EXPLODE = 2202,
+	BAT_IDLE = 2301,
+	BAT_FLYING = 2302,
 };
 
 enum DungeonAnimation
@@ -118,4 +120,5 @@ enum TEX_ID
 	TEX_LEVEL_COMPLETE = 80,
 	TEX_ABU = 90,
     TEX_ENEMY_EXPLODE = 100,
+	TEX_BAT,
 };

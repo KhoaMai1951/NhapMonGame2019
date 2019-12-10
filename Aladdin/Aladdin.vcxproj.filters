@@ -138,6 +138,9 @@
     <ClInclude Include="Chains.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Bat.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -229,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="Chains.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Bat.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
