@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BAT_H
+#define BAT_H
+
 #include "Enemy.h"
 
 #define BBOX_WIDTH 20   //when flying
@@ -40,3 +42,4 @@ public:
 
 	virtual void SetState(int state);
 };
+#endif 

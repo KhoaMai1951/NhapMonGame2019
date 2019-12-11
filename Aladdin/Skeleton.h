@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SKELETON_H
+#define SKELETON_H
 #include "Enemy.h"
 
 #define BBOX_WIDTH 51
@@ -40,3 +41,4 @@ public:
 
     virtual void SetState(int state);
 };
+#endif

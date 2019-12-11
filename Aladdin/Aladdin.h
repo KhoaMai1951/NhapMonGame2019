@@ -1,8 +1,12 @@
-#pragma once
+﻿#ifndef ALADDIN_H
+#define ALADDIN_H
 #include "Game.h"
 #include "ViewPort.h"
 #include <set>
 #include "SpatialGrid.h"
+#include <algorithm>
+#include "debug.h"
+#include "Scene.h"
 
 #include "Apple.h"
 #include "Ruby.h"
@@ -156,7 +160,7 @@ enum AttackBBoxSize {
     THROW_SIZE = 200,
 };
 
-
+class Scene;
 
 class Aladdin : public CGameObject
 {
@@ -165,10 +169,12 @@ class Aladdin : public CGameObject
     bool jumping = false;
     int pushing = 0; // >0 - pushing right, <0 pushing left
 	int climbing = 0;	// 2 - climbing up, -1 climbing down, 1-hanging, 0 - not climbing
+    bool throwing = false; // tránh bug ném nhiều lần khi dt quá ngắn
 
 	Chains* climbingChains;
 
     DWORD untouchable_start, idle_start;
+    Scene *scene;
 
     int CheckGround0Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckGround1Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
@@ -177,7 +183,9 @@ class Aladdin : public CGameObject
 	
     bool checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
+    void AddThrowApple();
 public:
+    
     Aladdin() : CGameObject()
     {
         health = 10;
@@ -192,9 +200,11 @@ public:
     }
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT> *colliable_objects = NULL);
     virtual void Render();
+    void SetScene(Scene *s) { scene = s; }
     void ProcessKeyboard();
     void SetState(int state);
     void StartUntouchable() { untouchable = 1; untouchable_start = GetTickCount(); }
 
     virtual void GetBoundingBox(float &left, float &top, float &right, float &bottom);
 };
+#endif

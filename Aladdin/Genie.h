@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GENIE_H
+#define GENIE_H
 #include "GameObject.h"
 
 #define BBOX_WIDTH 38
@@ -46,3 +47,4 @@ public:
 
     virtual void SetState(int state);
 };
+#endif

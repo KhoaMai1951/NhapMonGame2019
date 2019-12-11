@@ -1,4 +1,5 @@
-#pragma once
+#ifndef RUBY_H
+#define RUBY_H
 #include "GameObject.h"
 
 #define BBOX_WIDTH 17
@@ -33,3 +34,4 @@ public:
     }
     virtual void SetState(int state);
 };
+#endif

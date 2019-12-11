@@ -170,6 +170,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     ResourceLoader::CreateAnimation();
     scene = new SultansDungeon_Scene();
+    scene->Initialize();
 
 	Run();
 

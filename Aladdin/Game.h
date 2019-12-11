@@ -1,10 +1,12 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 #include <Windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
-
 #include"ViewPort.h"
+#include "GameObject.h"
 #include "debug.h"
+#include <vector>
 
 #define DIRECTINPUT_VERSION 0x0800
 #include <dinput.h>
@@ -47,6 +49,7 @@ class CGame
     //LPKEYEVENTHANDLER keyHandler;
 
 public:
+    //std::vector<CGameObject*> vector_apple;
 	//void InitKeyboard(LPKEYEVENTHANDLER handler);
     void InitKeyboard();
 	void Init(HWND hWnd);
@@ -79,5 +82,7 @@ public:
 
 	~CGame();
 };
+
+#endif
 
 

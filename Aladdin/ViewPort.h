@@ -1,5 +1,5 @@
-﻿#pragma once
-#define __VIEWPORT_H__
+﻿#ifndef VIEWPORT_H
+#define VIEWPORT_H
 
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -44,4 +44,6 @@ private:
 	float _width;
 	float _height;
 };
+
+#endif
 

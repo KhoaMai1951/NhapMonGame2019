@@ -10,18 +10,22 @@ void ThrowApple::GetBoundingBox(float& left, float& top, float& right, float& bo
 
 void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-    // Calculate dx, dy 
     CGameObject::Update(dt);
 
     // Simple fall down
-    vx += dt*nx*THROW_APPLE_SPEED;
-    vy -= dt*THROW_APPLE_GRAVITY;
-    //vx += dt * nx*0.015f;
-    //vy -= dt * 0.008f;
+    //vx += dt*nx*THROW_APPLE_SPEED;
+    //vy -= dt*THROW_APPLE_GRAVITY;
+    vy -= dt * THROW_APPLE_GRAVITY;
+    if (nx == 1)
+    {
+        vx = dt * THROW_APPLE_SPEED;
+    }
+    else
+        vx = dt * -THROW_APPLE_SPEED;
 
     if (state == THROW_APPLE_STATE_DESTROYED)
     {
-        if (animations[ani]->currentFrame == 5)
+        if (animations[ani]->currentFrame == 4)
             this->isDead = true;
         return;
     }
@@ -32,7 +36,7 @@ void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
     float l, t, r, b;
     GetBoundingBox(l, t, r, b);
-    set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(l, t, r, b);
+    set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->GetGridForCollision(l, t, r, b);
     vector<CGameObject*> vector_gameobject(set_gameobject.begin(), set_gameobject.end());
 
     coEvents.clear();
@@ -52,13 +56,14 @@ void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
         FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
 
-        // block 
-        x += min_tx * dx + nx * 0.1f;
-        y += min_ty * dy + ny * 0.1f;
+        //// block 
+        //x += min_tx * dx + nx * 0.1f;
+        //y += min_ty * dy + ny * 0.1f;
 
-        if (nx != 0) vx = 0;
-        if (ny != 0) vy = 0;
+        //if (nx != 0) vx = 0;
+        //if (ny != 0) vy = 0;
 
+        bool collided = false;
         for (UINT i = 0; i < coEventsResult.size(); i++)
         {
             LPCOLLISIONEVENT e = coEventsResult[i];
@@ -66,7 +71,19 @@ void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
             if (dynamic_cast<Enemy*>(e->obj) || dynamic_cast<Ground*>(e->obj))
             {
                 SetState(THROW_APPLE_STATE_DESTROYED);
+                // block 
+                x += min_tx * dx + nx * 0.1f;
+                y += min_ty * dy + ny * 0.1f;
+
+                if (nx != 0) vx = 0;
+                if (ny != 0) vy = 0;
+                collided = true;
             }
+        }
+        if (!collided)
+        {
+            x += vx;
+            y += vy;
         }
     }
 

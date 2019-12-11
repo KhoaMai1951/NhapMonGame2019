@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef CGAMEOBJECT_H
+#define CGAMEOBJECT_H
 
 #include <Windows.h>
 #include <d3dx9.h>
@@ -95,3 +96,4 @@ public:
 
 	~CGameObject();
 };
+#endif

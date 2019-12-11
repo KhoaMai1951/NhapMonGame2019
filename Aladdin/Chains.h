@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CHAINS_H
+#define CHAINS_H
 #include "GameObject.h"
 #include "debug.h"
 
@@ -22,3 +23,4 @@ public:
 
     virtual void SetState(int state);
 };
+#endif

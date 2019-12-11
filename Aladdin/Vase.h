@@ -1,4 +1,5 @@
-#pragma once
+#ifndef VASE_H
+#define VASE_H
 #include "GameObject.h"
 
 #define BBOX_WIDTH 20
@@ -33,3 +34,4 @@ public:
     }
     virtual void SetState(int state);
 };
+#endif

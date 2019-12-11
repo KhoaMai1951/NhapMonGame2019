@@ -170,7 +170,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(-107, ani);
 
 	//throw apple right standing
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 445; i <= 450; i++)
 	{
 		ani->Add(aladdin_sprite_id + i);
@@ -179,7 +179,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(108, ani);
 
 	//throw apple left standing
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 445; i <= 450; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
@@ -224,7 +224,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(-110, ani);
 
 	//jump throw apple right
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 58; i <= 62; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
@@ -233,7 +233,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(111, ani);
 
 	//jump throw apple left
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 58; i <= 62; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
@@ -274,7 +274,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(114, ani);
 
 	//sit throw apple right
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 52; i <= 56; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
@@ -283,7 +283,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(115, ani);
 
 	//sit throw apple left
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 52; i <= 56; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
@@ -291,16 +291,16 @@ void ResourceLoader::CreateAnimation()
     ani->Add(-10056);
 	animations->Add(-115, ani);
 
-	//climb throw left
-	ani = new CAnimation(75);
+	//climb throw right
+	ani = new CAnimation(50);
 	for (int i = 117; i <= 121; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
 	}
 	animations->Add(116, ani);
 
-	//climb throw right
-	ani = new CAnimation(75);
+	//climb throw left
+	ani = new CAnimation(50);
 	for (int i = 117; i <= 121; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
@@ -350,7 +350,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(-119, ani);
 
 	//running throw right
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 144; i <= 149; i++)
 	{
 		ani->Add((aladdin_sprite_id + i));
@@ -359,7 +359,7 @@ void ResourceLoader::CreateAnimation()
 	animations->Add(120, ani);
 
 	//running throw left
-	ani = new CAnimation(75);
+	ani = new CAnimation(50);
 	for (int i = 144; i <= 149; i++)
 	{
 		ani->Add(-(aladdin_sprite_id + i));
@@ -605,15 +605,14 @@ animations->Add(2000, ani);
     //Animation throw apple
 
     //throwing
-    ani = new CAnimation(100);
+    ani = new CAnimation(150);
     for (int i = 1; i <= 4; i++)
         ani->Add(40000 + i);
     animations->Add(4001, ani);
     //destroy
-    ani = new CAnimation(100);
+    ani = new CAnimation(50);
     for (int i = 5; i <= 9; i++)
         ani->Add(40000 + i);
-    ani->Add(40009);
     animations->Add(4002, ani);
 
 	//genie

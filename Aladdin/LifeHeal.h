@@ -1,4 +1,5 @@
-#pragma once
+#ifndef LIFEHEAL_H
+#define LIFEHEAL_H
 #include "GameObject.h"
 
 #define BBOX_WIDTH 19
@@ -33,3 +34,4 @@ public:
     }
     virtual void SetState(int state);
 };
+#endif

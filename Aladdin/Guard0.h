@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GUARD0_H
+#define GUARD0_H
 #include "Enemy.h"
 
 #define WALKING_SPEED 0.05f;
@@ -54,3 +55,4 @@ public:
     
 	virtual void SetState(int state);
 };
+#endif

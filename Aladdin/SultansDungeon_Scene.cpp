@@ -2,20 +2,26 @@
 
 SultansDungeon_Scene::SultansDungeon_Scene()
 {
+    
+};
+
+void SultansDungeon_Scene::Initialize()
+{
     //ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
     ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
 
-	//----------Load Map từ file text và Tile Set
-	CTextures* textures = CTextures::GetInstance();
+    //----------Load Map từ file text và Tile Set
+    CTextures* textures = CTextures::GetInstance();
 
-	textures->Add(TEX_TILESET_DUNGEON, L"textures\\TileSet_Sultans Dungeon_Back.png", D3DCOLOR_XRGB(255, 255, 255));
+    textures->Add(TEX_TILESET_DUNGEON, L"textures\\TileSet_Sultans Dungeon_Back.png", D3DCOLOR_XRGB(255, 255, 255));
 
-	LPDIRECT3DTEXTURE9 texDungeonTileSet = textures->Get(TEX_TILESET_DUNGEON);
+    LPDIRECT3DTEXTURE9 texDungeonTileSet = textures->Get(TEX_TILESET_DUNGEON);
 
-	ResourceLoader::GetInstance()->load_tile_map(texDungeonTileSet, "Map_Matrix_Dungeon.txt", map_vector);
-	//----------------------------------------------
+    ResourceLoader::GetInstance()->load_tile_map(texDungeonTileSet, "Map_Matrix_Dungeon.txt", map_vector);
+    //----------------------------------------------
 #pragma region 
     aladdin = new Aladdin();
+    aladdin->SetScene(this);
     aladdin->AddAnimation(101); //idle right 
     aladdin->AddAnimation(-101); //idle left 
     aladdin->AddAnimation(102); //running right
@@ -61,13 +67,13 @@ SultansDungeon_Scene::SultansDungeon_Scene()
 
     SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
-	//Grid
-	SpatialGrid* grid = SpatialGrid::GetInstance();
-	grid->Clear();
-	//for (unsigned i = 1; i < objects.size(); i++)
-		//grid->Insert(objects[i]);
-	grid->AddGridFromFile(objects, "dungeon_grid.txt");
-};
+    //Grid
+    SpatialGrid* grid = SpatialGrid::GetInstance();
+    grid->Clear();
+    //for (unsigned i = 1; i < objects.size(); i++)
+        //grid->Insert(objects[i]);
+    grid->AddGridFromFile(objects, "dungeon_grid.txt");
+}
 
 void SultansDungeon_Scene::Update(DWORD dt)
 {
@@ -94,6 +100,11 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	SpatialGrid* grid = SpatialGrid::GetInstance();
     //Update objets
     objects[0]->Update(dt, &coObjects); //player
+
+    for (int i = 0; i < vector_apple.size(); i++)
+    {
+        vector_apple[i]->Update(dt, &coObjects);
+    }
 
     for (int i = 0; i < coObjects.size(); i++)
     {
@@ -148,6 +159,15 @@ void SultansDungeon_Scene::Update(DWORD dt)
 			delete objects[i];
 			objects.erase(objects.begin() + i);
         }
+    //delete apple throw
+    for (int i = 0; i < vector_apple.size(); i++)
+    {
+        if (vector_apple[i]->isDead == true)
+        {
+            delete vector_apple[i];
+            vector_apple.erase(vector_apple.begin() + i);  
+        }
+    }
 
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;
@@ -180,7 +200,18 @@ void SultansDungeon_Scene::Render()
         }
 
         for (int i = 0; i < objects.size(); i++)
-            objects[i]->Render();
+        {
+            if (camera->isContain(objects[i]->x, objects[i]->y,
+                objects[i]->x + objects[i]->width, objects[i]->y - objects[i]->height))
+            {
+                objects[i]->Render();
+            }
+            //objects[i]->Render();
+        }
+        for (int i = 0; i < vector_apple.size(); i++)
+        {
+            vector_apple[i]->Render();
+        }
 
         for (int i = 0; i < front_objects.size(); i++)
         {

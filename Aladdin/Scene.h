@@ -1,4 +1,6 @@
-﻿#pragma once
+﻿#ifndef scene_h
+#define scene_h
+
 #include <vector>
 #include <fstream>
 #include <sstream>
@@ -10,6 +12,9 @@
 #include "Textures.h"
 #include "SpatialGrid.h"
 #include "ResourceLoader.h"
+#include "Aladdin.h"
+
+//class Aladdin;
 
 using namespace std;
 
@@ -20,10 +25,11 @@ enum LEVEL
     SCENE_INTRO,
     SCENE_COMPLETE
 };
-
+class Aladdin;
 class Scene
 {
 protected:
+    Aladdin *aladdin;
     vector<LPGAMEOBJECT> map_vector;
     vector<LPGAMEOBJECT> front_objects;
     vector<LPGAMEOBJECT> objects; //All collision object and aladdin
@@ -53,5 +59,9 @@ public:
         for (int i = 0; i < tile_count; i++)
             delete (sprites->Get(TILE_INDEX + i));*/
     };
+
+    virtual void Initialize() {};
 };
+#endif // !scene_h
+
 

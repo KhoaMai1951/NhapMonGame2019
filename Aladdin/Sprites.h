@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPRITE_H
+#define SPRITE_H
 #include <Windows.h>
 #include <d3dx9.h>
 #include <unordered_map>
@@ -87,4 +88,4 @@ public:
 
 	static CAnimations * GetInstance();
 };
-
+#endif

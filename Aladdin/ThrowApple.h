@@ -1,12 +1,14 @@
-#pragma once
+#ifndef THROWAPPLE_H
+#define THROWAPPLE_H
 #include "GameObject.h"
 #include "ViewPort.h"
 #include "set"
 #include "SpatialGrid.h"
-#include "Apple.h"
+#include "Enemy.h"
+#include "Ground.h"
 
-#define THROW_APPLE_GRAVITY 0.008f;
-#define THROW_APPLE_SPEED 0.015f;
+#define THROW_APPLE_GRAVITY 0.003f;
+#define THROW_APPLE_SPEED 0.28f;
 
 enum THROW_APPLE_STATE
 {
@@ -36,10 +38,11 @@ class ThrowApple : public CGameObject
 public:
     ThrowApple() : CGameObject()
     {
-        vx = 1;
-        vy = 1;
+        vx = 0;
+        vy = 0;
         width = THROW_APPLE_WIDTH;
         height = THROW_APPLE_HEIGHT;
     }
     virtual void SetState(int state);
 };
+#endif

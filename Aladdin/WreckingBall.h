@@ -1,4 +1,5 @@
-#pragma once
+#ifndef WRECKINGBALL_H
+#define WRECKINGBALL_H
 #include "GameObject.h"
 #include "debug.h"
 
@@ -28,3 +29,4 @@ public:
 
     virtual void SetState(int state);
 };
+#endif

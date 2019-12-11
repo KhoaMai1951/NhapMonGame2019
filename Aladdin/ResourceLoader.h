@@ -1,4 +1,5 @@
-﻿#pragma once
+﻿#ifndef RESOURCELOADER_H
+#define RESOURCELOADER_H
 #include <windows.h>
 #include <d3d9.h>
 #include <d3dx9.h>
@@ -47,4 +48,5 @@ private:
 	static ResourceLoader* _instance;
 
 };
+#endif
 

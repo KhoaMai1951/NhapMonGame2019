@@ -1,14 +1,15 @@
-#pragma once
+#ifndef SultansDungeon_Scene_H
+#define SultansDungeon_Scene_H
 #include "Scene.h"
-#include "Aladdin.h"
-
 class SultansDungeon_Scene : public Scene
 {
 private:
-    Aladdin *aladdin;
+    
 public:
-    //vector<LPGAMEOBJECT> vector_throwApples;
+    vector<CGameObject*> vector_apple;
     SultansDungeon_Scene();
     void Update(DWORD);
     void Render();
+    void Initialize();
 };
+#endif

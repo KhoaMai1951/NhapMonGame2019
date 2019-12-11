@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ENEMY_H
+#define ENEMY_H
 #include "GameObject.h"
 
 class Enemy : public CGameObject
@@ -10,3 +11,4 @@ public:
     Enemy();
     ~Enemy();
 };
+#endif

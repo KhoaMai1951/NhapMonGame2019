@@ -1,9 +1,10 @@
-#pragma once
+#ifndef APPLE_H
+#define APPLE_H
 #include "GameObject.h"
 #include "ViewPort.h"
 #include "set"
 #include "SpatialGrid.h"
-#include "Aladdin.h"
+//#include "Aladdin.h"
 
 #define APPLE_IDLE_WIDTH 11
 #define APPLE_IDLE_HEIGHT 12
@@ -32,3 +33,5 @@ public:
     }
     virtual void SetState(int state);
 };
+
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef DEFINE_H
+#define DEFINE_H
 #define WINDOW_CLASS_NAME L"SampleWindow"
 #define MAIN_WINDOW_TITLE L"04 - Collision"
 
@@ -13,7 +14,7 @@
 
 #define CELL_SIZE 240
 
-#define MAX_FRAME_RATE 120
+#define MAX_FRAME_RATE 240
 
 //Object ID from text
 #define GROUND0_ID "Ground0"
@@ -122,3 +123,5 @@ enum TEX_ID
     TEX_ENEMY_EXPLODE = 100,
 	TEX_BAT,
 };
+
+#endif

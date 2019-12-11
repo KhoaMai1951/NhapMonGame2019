@@ -1,4 +1,5 @@
-#pragma once
+#ifndef SPACIALGRID_H
+#define SPACIALGRID_H
 #include <cmath>
 #include <set>
 #include "GameObject.h"
@@ -27,3 +28,5 @@ public:
 	void DeleteFromGrid(int id);
 	static SpatialGrid* GetInstance();
 };
+
+#endif

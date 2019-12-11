@@ -1,9 +1,5 @@
-﻿#include <algorithm>
-#include "debug.h"
-
-#include "Aladdin.h"
-
-//#include "Goomba.h"
+﻿#include "Aladdin.h"
+#include "SultansDungeon_Scene.h"
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -57,20 +53,10 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         if (animations[ani]->currentFrame == 3)
         {
-            ////nem tao
-            //ThrowApple* throwApple = new ThrowApple();
-            //throwApple->AddAnimation(ANI_APPLE_FLYING);
-            //throwApple->AddAnimation(ANI_APPLE_DESTROY);
-            //throwApple->nx = nx;
-            //float temp_x = 0;
-            //if (nx >= 0)
-            //{
-            //    temp_x = x + width;
-            //}
-            //throwApple->SetPosition(temp_x, y);
-            //throwApple->SetState(THROW_APPLE_STATE_FLYING);
-            //CGame::GetInstance()->vector_throwApples.push_back(throwApple);
+            AddThrowApple();
         }
+        else if (animations[ani]->currentFrame == 4)
+            throwing = false;
         else if (animations[ani]->currentFrame == 6)
         {
             SetState(ALADDIN_STATE_IDLE);
@@ -81,8 +67,10 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         if (animations[ani]->currentFrame == 3)
         {
-            //ném táo
+            AddThrowApple();
         }
+        else if (animations[ani]->currentFrame == 4)
+            throwing = false;
         else if (animations[ani]->currentFrame == 6)
         {
             SetState(ALADDIN_STATE_RUN);
@@ -93,8 +81,10 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         if (animations[ani]->currentFrame == 2)
         {
-            //nem tao
+            AddThrowApple();
         }
+        else if (animations[ani]->currentFrame == 3)
+            throwing = false;
         else if (animations[ani]->currentFrame == 5)
         {
             SetState(ALADDIN_STATE_CROUCH);
@@ -104,6 +94,16 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
                 animations[ALADDIN_ANI_CROUCH_LEFT]->currentFrame = 3;
         }
             
+    }
+    else if (state == ALADDIN_STATE_JUMP_THROW)
+    {
+        if (animations[ani]->currentFrame == 2)
+        {
+            AddThrowApple();
+        }
+        else if (animations[ani]->currentFrame == 3)
+            throwing = false;
+
     }
     else if (state == ALADDIN_STATE_IDLE1)
     {
@@ -231,7 +231,8 @@ void Aladdin::ProcessKeyboard()
             //sit throw
             else if (game->IsKeyPress(DIK_V))
             {
-                SetState(ALADDIN_STATE_SIT_THROW);
+                if(!throwing)
+                    SetState(ALADDIN_STATE_SIT_THROW);
             }
         }
         else
@@ -258,7 +259,8 @@ void Aladdin::ProcessKeyboard()
                 //run throw
                 else if (game->IsKeyPress(DIK_V))
                 {
-                    SetState(ALADDIN_STATE_RUN_THROW);
+                    if (!throwing)
+                        SetState(ALADDIN_STATE_RUN_THROW);
                 }
             }
             else if (direction < 0)
@@ -282,7 +284,8 @@ void Aladdin::ProcessKeyboard()
                 //run throw
                 else if (game->IsKeyPress(DIK_V))
                 {
-                    SetState(ALADDIN_STATE_RUN_THROW);
+                    if (!throwing)
+                        SetState(ALADDIN_STATE_RUN_THROW);
                 }
             }
             else
@@ -300,7 +303,8 @@ void Aladdin::ProcessKeyboard()
             //stand throw
             else if (game->IsKeyPress(DIK_V))
             {
-                if (vx == 0) SetState(ALADDIN_STATE_THROW_APPLE);
+                if (!throwing)
+                    if (vx == 0) SetState(ALADDIN_STATE_THROW_APPLE);
             }
         }
         if (game->IsKeyPress(DIK_SPACE)|| game->IsKeyPress(DIK_X))
@@ -316,6 +320,10 @@ void Aladdin::ProcessKeyboard()
             SetState(ALADDIN_STATE_IDLE);
             nx = 1;
             vx = 0;
+            jumping = false;
+            climbing = false;
+            throwing = false;
+            pushing = 0;
         }
         //Dead
         else if (game->IsKeyPress(DIK_P))
@@ -394,7 +402,8 @@ void Aladdin::ProcessKeyboard()
         }
         else if (game->IsKeyPress(DIK_V))
         {
-            SetState(ALADDIN_STATE_JUMP_THROW);
+            if (!throwing)
+                SetState(ALADDIN_STATE_JUMP_THROW);
         }
 		if (game->IsKeyPress(DIK_SPACE) || game->IsKeyPress(DIK_X))
 		{
@@ -1140,6 +1149,32 @@ void Aladdin::CheckAttackCollision(vector<LPGAMEOBJECT> atkCol_object)
                 DebugOut(L"Enemy overlap \n");
             }
         }
+    }
+}
+
+void Aladdin::AddThrowApple()
+{
+    if (!throwing)
+    {
+        //nem tao
+        ThrowApple* throwApple = new ThrowApple();
+        throwApple->name = "throw_apple";
+        throwApple->AddAnimation(ANI_APPLE_FLYING);
+        throwApple->AddAnimation(ANI_APPLE_DESTROY);
+        throwApple->nx = nx;
+        float temp_x;
+        if (nx >= 0)
+        {
+            temp_x = x + width - 12;
+        }
+        else
+        {
+            temp_x = x + 12;
+        }
+        throwApple->SetPosition(temp_x, y - 5);
+        throwApple->SetState(THROW_APPLE_STATE_FLYING);
+        ((SultansDungeon_Scene*)scene)->vector_apple.push_back(throwApple);
+        throwing = true;
     }
 }
 
