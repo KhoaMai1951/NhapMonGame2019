@@ -58,6 +58,12 @@ void SultansDungeon_Scene::Initialize()
     aladdin->AddAnimation(-119);
     aladdin->AddAnimation(120); //run throw
     aladdin->AddAnimation(-120);
+	aladdin->AddAnimation(118); //climb jump
+	aladdin->AddAnimation(117); //climb attack left 
+	aladdin->AddAnimation(-117); //climb attack right
+	aladdin->AddAnimation(116); //climb throw left 
+	aladdin->AddAnimation(-116); //climb throw right
+
 
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);
