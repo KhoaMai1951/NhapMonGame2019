@@ -7,6 +7,8 @@ SultansDungeon_Scene::SultansDungeon_Scene()
 
 void SultansDungeon_Scene::Initialize()
 {
+	Sound::getInstance()->play("SCENE_SULTAN_SOUND", true, 0);
+
     ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
 
     //----------Load Map từ file text và Tile Set
@@ -71,6 +73,12 @@ void SultansDungeon_Scene::Initialize()
 #pragma endregion Initalize Aladdin vector_environment
 
     ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects, 1);
+	//Truyền scene vào skeleton
+	for (int i = 1; i < objects.size(); i++)
+	{
+		if (dynamic_cast<Skeleton*>(objects[i]))
+			dynamic_cast<Skeleton*>(objects[i])->SetScene(this);
+	}
     ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Environment_Dungeon.txt", vector_environment, objects.size());
     
     for (int i = 0; i < objects.size(); i++)
@@ -81,7 +89,7 @@ void SultansDungeon_Scene::Initialize()
         All_collide_objects.push_back(vector_environment[i]);
     }
         
-
+	
     SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
     //Grid
@@ -125,6 +133,10 @@ void SultansDungeon_Scene::Update(DWORD dt)
     {
         vector_environment[i]->Update(dt, NULL);
     }
+	for (int i = 0; i < vector_bone.size(); i++)
+	{
+		vector_bone[i]->Update(dt, NULL);
+	}
 
 #pragma region
     //Camera follow player (use distance bettween player and camera right-side)
@@ -184,6 +196,15 @@ void SultansDungeon_Scene::Update(DWORD dt)
             vector_apple.erase(vector_apple.begin() + i);  
         }
     }
+	//delete bone
+	for (int i = 0; i < vector_bone.size(); i++)
+	{
+		if (vector_bone[i]->isDead == true)
+		{
+			delete vector_bone[i];
+			vector_bone.erase(vector_bone.begin() + i);
+		}
+	}
 
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;
@@ -214,10 +235,12 @@ void SultansDungeon_Scene::Render()
             }
 
         }
+		//step, spike, ball
         for (int i = 0; i < vector_environment.size(); i++)
         {
             vector_environment[i]->Render();
         }
+		//enemy, items, chain
         for (int i = 1; i < objects.size(); i++)
         {
             if (camera->isContain(objects[i]->x, objects[i]->y,
@@ -226,11 +249,21 @@ void SultansDungeon_Scene::Render()
                 objects[i]->Render();
             }
         }
+		//bone
+		for (int i = 0; i < vector_bone.size(); i++)
+		{
+			vector_bone[i]->Render();
+		}
+
+		//aladdin
         objects[0]->Render();
+
+		//vector apple
         for (int i = 0; i < vector_apple.size(); i++)
         {
             vector_apple[i]->Render();
         }
+
 
         for (int i = 0; i < front_objects.size(); i++)
         {

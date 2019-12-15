@@ -22,13 +22,13 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FECCD678-E09E-4294-B8EE-B026D8926F11}</ProjectGuid>
     <RootNamespace>My04Collision</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -125,6 +125,7 @@
     <ClInclude Include="Aladdin.h" />
     <ClInclude Include="Apple.h" />
     <ClInclude Include="Bat.h" />
+    <ClInclude Include="Bone.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Chains.h" />
     <ClInclude Include="debug.h" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Ruby.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="SpatialGrid.h" />
     <ClInclude Include="SpikeTrap.h" />
     <ClInclude Include="Sprites.h" />
@@ -160,6 +162,7 @@
     <ClCompile Include="Aladdin.cpp" />
     <ClCompile Include="Apple.cpp" />
     <ClCompile Include="Bat.cpp" />
+    <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Chains.cpp" />
     <ClCompile Include="debug.cpp" />
@@ -179,6 +182,7 @@
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="Ruby.cpp" />
     <ClCompile Include="Skeleton.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="SpatialGrid.cpp" />
     <ClCompile Include="SpikeTrap.cpp" />
     <ClCompile Include="Sprites.cpp" />

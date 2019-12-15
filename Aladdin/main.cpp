@@ -169,6 +169,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 	SetWindowPos(hWnd, 0, 0, 0, SCREEN_WIDTH*1.8, SCREEN_HEIGHT*1.8, SWP_NOMOVE | SWP_NOOWNERZORDER | SWP_NOZORDER);
 
     ResourceLoader::CreateAnimation();
+	ResourceLoader::LoadMusic();
     scene = new SultansDungeon_Scene();
     scene->Initialize();
 

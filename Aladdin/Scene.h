@@ -13,6 +13,8 @@
 #include "SpatialGrid.h"
 #include "ResourceLoader.h"
 #include "Aladdin.h"
+#include "Skeleton.h"
+#include "Sound.h"
 
 using namespace std;
 
@@ -24,6 +26,7 @@ enum LEVEL
     SCENE_COMPLETE
 };
 class Aladdin;
+class Skeleton;
 class Scene
 {
 protected:

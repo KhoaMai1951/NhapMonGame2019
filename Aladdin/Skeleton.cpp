@@ -1,4 +1,7 @@
-#include "Skeleton.h"
+﻿#include "Skeleton.h"
+#include "SultansDungeon_Scene.h"
+#include "Bone.h"
+
 void Skeleton::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
     width = lastFrameWidth;
@@ -73,6 +76,7 @@ void Skeleton::SetState(int state)
         //repostion object for explode, skeleton sprite(95,91), explode sprite (90,57)
         x = x + (95 - 90) / 2;
         y = y + (91 - 57) / 2;
+		AddFlyingBone();
         animations[SKELETON_ANI_DEAD]->ResetAnimation();
         break;
     }
@@ -104,4 +108,50 @@ void Skeleton::Render()
     animations[ani]->Render(x, y, width, lastFrameWidth, lastFrameHeight, alpha, restart_frame, nx);
 
     //RenderBoundingBox();
+}
+
+void Skeleton::AddFlyingBone()
+{
+	//bay phải
+	for (int i = 0; i < 4; i++)
+	{
+		Bone* bone = new Bone();
+		bone->AddAnimation(BONE_FLYING);
+		bone->nx = 1;
+		bone->x = x + (width / 2);
+		bone->y = y - (height / 2) - i * 5; // giảm 5 pixel mỗi xương
+		bone->vy = i - 1;
+		bone->SetState(BONE_STATE_FLYING);
+		((SultansDungeon_Scene*)scene)->vector_bone.push_back(bone);
+	}
+	//bay trái
+	for (int i = 0; i < 4; i++)
+	{
+		Bone* bone = new Bone();
+		bone->AddAnimation(BONE_FLYING);
+		bone->nx = -1;
+		bone->x = x + (width / 2);
+		bone->y = y - (height / 2) - i * 5; // giảm 5 pixel mỗi xương
+		bone->vy = i - 1;
+		bone->SetState(BONE_STATE_FLYING);
+		((SultansDungeon_Scene*)scene)->vector_bone.push_back(bone);
+		//DebugOut(L"Bone added to vector \n");
+	}
+
+	//bay lên
+	for (int i = -2; i < 2; i++)
+	{
+		if (i == 0) continue; //skip 0
+		Bone* bone = new Bone();
+		bone->AddAnimation(BONE_FLYING);
+		if (i < 0)
+			bone->nx = -1;
+		else if (i > 0)
+			bone->nx = 1;
+		bone->x = x + (width / 2) + i * 3;
+		bone->y = y - (height / 2);
+		bone->vy = 3;
+		bone->SetState(BONE_STATE_FLYING);
+		((SultansDungeon_Scene*)scene)->vector_bone.push_back(bone);
+	}
 }

@@ -752,11 +752,11 @@ void Aladdin::SetState(int state)
 
 		if (nx > 0)
 		{
-			//x = climbingChains->x - 15;
+			x = climbingChains->x - 15;
 		}
 		else
 		{
-			x = climbingChains->x - 15;
+			//x = climbingChains->x - 50;
 		}
 
 		break;

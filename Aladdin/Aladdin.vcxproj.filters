@@ -144,6 +144,12 @@
     <ClInclude Include="Peddler.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Bone.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -241,6 +247,12 @@
     </ClCompile>
     <ClCompile Include="Peddler.cpp">
       <Filter>Source Files\Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="Bone.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

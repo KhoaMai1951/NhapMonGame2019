@@ -40,6 +40,7 @@ public:
     static void LoadSprite();
 	static void CreateAnimation();
     void ChangeYtoDecart(float& y);
+	static void LoadMusic();
 
 	vector<int> read_map(string file_path);
 	void load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, vector<LPGAMEOBJECT>& map_vector);

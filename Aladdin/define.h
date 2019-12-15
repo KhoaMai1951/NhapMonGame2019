@@ -67,6 +67,8 @@ enum EnemyAnimation
     SKELETON_EXPLODE = 2202,
 	BAT_IDLE = 2301,
 	BAT_FLYING = 2302,
+
+	BONE_FLYING = 2203,
 };
 
 enum DungeonAnimation
@@ -131,6 +133,7 @@ enum TEX_ID
     TEX_GENIE_EXPLODE,
     TEX_EXIT_GATE,
     TEX_PEDDLER,
+	TEX_BONE,
 };
 
 #endif

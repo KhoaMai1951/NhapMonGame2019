@@ -577,6 +577,14 @@ animations->Add(2000, ani);
 		ani->Add((explode_skeleton_sprite_id + i));
 	}
 	animations->Add(2202, ani);
+
+	//bone
+	ani = new CAnimation(200);
+	for (int i = 20; i <= 23; i++)
+	{
+		ani->Add((explode_skeleton_sprite_id + i));
+	}
+	animations->Add(2203, ani);
 #pragma endregion Explode Skeleton
 
 #pragma region
@@ -845,6 +853,7 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_GENIE_EXPLODE, L"textures\\Genie_Explode.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_EXIT_GATE, L"textures\\exit_gate.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_PEDDLER, L"textures\\Peddler.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_BONE, L"textures\\Bone.png", D3DCOLOR_XRGB(255, 0, 255));
 
 
     CSprites* sprites = CSprites::GetInstance();
@@ -1406,6 +1415,12 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(22018, 1710, 0, 1805, 91, texExplodeSkeleton);
 	sprites->Add(22019, 1805, 0, 1900, 91, texExplodeSkeleton);
 
+	LPDIRECT3DTEXTURE9 texBone = textures->Get(TEX_BONE);
+	sprites->Add(22020, 0, 0, 16, 16, texBone);
+	sprites->Add(22021, 16, 0, 32, 16, texBone);
+	sprites->Add(22022, 32, 0, 48, 16, texBone);
+	sprites->Add(22023, 48, 0, 64, 16, texBone);
+
 #pragma endregion Explode Skeleton
 
 #pragma region
@@ -1666,6 +1681,8 @@ void ResourceLoader::LoadSprite()
 
 
 #pragma endregion Scenes
+
+
     //Ground
     LPDIRECT3DTEXTURE9 texGround = textures->Get(TEX_GROUND);  
     sprites->Add(30001, 10, 10, 100, 100, texGround);
@@ -2104,4 +2121,10 @@ void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path
 void ResourceLoader::ChangeYtoDecart(float& y)
 {
 	y = MAP_HEIGHT + 30 - y; //38 la do lech pixel o duoi man hinh
+}
+
+void ResourceLoader::LoadMusic()
+{
+	Sound* sound = Sound::getInstance();
+	sound->loadSound("audio/Arabian nights.wav", "SCENE_SULTAN_SOUND");
 }

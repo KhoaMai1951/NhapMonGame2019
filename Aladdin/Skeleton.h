@@ -1,6 +1,7 @@
 #ifndef SKELETON_H
 #define SKELETON_H
 #include "Enemy.h"
+#include "Scene.h"
 
 #define BBOX_WIDTH 51
 #define BBOX_HEIGHT 88
@@ -18,13 +19,14 @@ enum SKELETON_ANI
     SKELETON_ANI_EXPLODE,
     SKELETON_ANI_DEAD,
 };
-
+class Scene;
 class Skeleton : public Enemy
 {
     virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
     virtual void Render();
 
+	Scene* scene;
 public:
     DWORD idle_start;
     Skeleton() : Enemy()
@@ -40,5 +42,8 @@ public:
     }
 
     virtual void SetState(int state);
+
+	void AddFlyingBone();
+	void SetScene(Scene* s) { scene = s; }
 };
 #endif

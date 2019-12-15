@@ -53,6 +53,7 @@ public:
 	//void InitKeyboard(LPKEYEVENTHANDLER handler);
     void InitKeyboard();
 	void Init(HWND hWnd);
+	HWND getCurrentHWND() { return hWnd; }
 	void Draw(float x, float y, LPDIRECT3DTEXTURE9 texture, int left, int top, int right, int bottom, D3DXVECTOR3 *center, int alpha = 255);
 
 	int IsKeyDown(int KeyCode);
@@ -79,6 +80,8 @@ public:
 	LPD3DXSPRITE GetSpriteHandler() { return this->spriteHandler; }
 
 	static CGame * GetInstance();
+
+
 
 	~CGame();
 };
