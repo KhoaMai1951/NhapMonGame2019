@@ -8,9 +8,9 @@
 #include "debug.h"
 
 
-#define BONE_GRAVITY 0.001f
-#define BONE_SPEED 0.003f
-#define AUTO_DESTROY_TIME 3000
+#define BONE_GRAVITY 0.0015f
+#define BONE_SPEED 0.0025f
+#define AUTO_DESTROY_TIME 2000
 
 enum BoneState {
 	BONE_STATE_FLYING = 0,

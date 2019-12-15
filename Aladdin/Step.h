@@ -4,7 +4,8 @@
 #include "debug.h"
 
 #define BBOX_WIDTH 40
-#define BBOX_HEIGHT 24
+//#define BBOX_HEIGHT 24
+#define BBOX_HEIGHT 3
 
 enum STEP_STATE
 {

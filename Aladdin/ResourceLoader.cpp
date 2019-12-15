@@ -564,19 +564,12 @@ animations->Add(2000, ani);
 
 	//skeleton create
 	ani = new CAnimation(200);
-	for (int i = 0; i <= 6; i++)
+	for (int i = 0; i <= 19; i++)
 	{
 		ani->Add((explode_skeleton_sprite_id + i));
 	}
+    ani->Add(22019);
 	animations->Add(2201, ani);
-
-	//skeleton exploding
-	ani = new CAnimation(200);
-	for (int i = 7; i <= 19; i++)
-	{
-		ani->Add((explode_skeleton_sprite_id + i));
-	}
-	animations->Add(2202, ani);
 
 	//bone
 	ani = new CAnimation(200);
@@ -1816,15 +1809,13 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
         else if (name == "skeleton")
         {
             Skeleton* skeleton = new Skeleton();
-            skeleton->AddAnimation(SKELETON_CREATE);
-            skeleton->AddAnimation(SKELETON_EXPLODE);
+            skeleton->AddAnimation(SKELETON_ANI);
             skeleton->AddAnimation(ENEMY_EXPLODE);
 
             skeleton->SetPosition(x, y);
             skeleton->SetName(name);
             skeleton->width = w;
             skeleton->height = h;
-            skeleton->SetState(SKELETON_STATE_CREATE);
             skeleton->id = object_index;
             objects.push_back(skeleton);
         }
@@ -2126,5 +2117,44 @@ void ResourceLoader::ChangeYtoDecart(float& y)
 void ResourceLoader::LoadMusic()
 {
 	Sound* sound = Sound::getInstance();
+    //scene
 	sound->loadSound("audio/Arabian nights.wav", "SCENE_SULTAN_SOUND");
+    sound->loadSound("audio/Boss Tune.wav", "SCENE_BOSS");
+    //aladdin
+    sound->loadSound("audio/Aladdin Hurt.wav", "ALADDIN_HURT");
+    sound->loadSound("audio/Aladdin Push.wav", "ALADDIN_PUSH");
+    sound->loadSound("audio/High Sword.wav", "ALADDIN_ATTACK");
+    sound->loadSound("audio/Low Sword.wav", "ALADDIN_SIT_ATTACK");
+    sound->loadSound("audio/Object Throw.wav", "ALADDIN_THROW");
+    sound->loadSound("audio/Outta Apples.wav", "OUTTA_APPLE");
+    //item
+    sound->loadSound("audio/Apple Collect.wav", "APPLE_COLLECT");
+    sound->loadSound("audio/Extra Health.wav", "LIFEHEAL_COLLECT");
+    sound->loadSound("audio/Gem Collect.wav", "RUBY_COLLECT");
+    sound->loadSound("audio/Genie Fumes.wav", "GENIE_COLLECT");
+    //projectile
+    sound->loadSound("audio/Bones Tinkle.wav", "BONE_DROP");
+    sound->loadSound("audio/Apple Splat.wav", "APPLE_DESTROY"); 
+    //enemy
+    //guard
+    sound->loadSound("audio/Guard Beckon.wav", "GUARD_TAUNT");
+    sound->loadSound("audio/Guard Hit 1.wav", "GUARD1_BE_HIT");
+    sound->loadSound("audio/Guard_s Pants.wav", "GUARD0_BE_HIT");
+    sound->loadSound("audio/Skeleton.wav", "SKELETON_EXPLODE");
+    sound->loadSound("audio/Cloud Poof.wav", "ENEMY_DEAD");
+
+    //environment
+    sound->loadSound("audio/Peddler Shop.wav", "PEDDLER");
+    sound->loadSound("audio/Stone Rumble.wav", "STEP_OUT");
+    sound->loadSound("audio/Wall Spikes.wav", "SPIKE_OUT");
+
+    ////BOSS
+    //sound->loadSound("audio/Jafar Laugh.wav", "JAFAR_LAUGH");
+    //sound->loadSound("audio/Jafar Snake.wav", "JAFAR_SNAKE");
+    //sound->loadSound("audio/Jafar Tractor.wav", "JAFAR_TRACTOR");
+
+    //Menu
+    sound->loadSound("audio/Menu Change.wav", "MENU_CHANGE");
+    sound->loadSound("audio/Menu Select.wav", "MENU_SELECT");
+
 }

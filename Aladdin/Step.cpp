@@ -42,6 +42,7 @@ void Step::SetState(int state)
     switch (state)
     {
     case STATE_STANDABLE:
+        //Sound::getInstance()->play("STEP_OUT", false, 1);
         standable = true;
         break;
     case STATE_NOT_STANDABLE:

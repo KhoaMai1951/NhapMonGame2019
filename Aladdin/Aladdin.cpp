@@ -291,7 +291,7 @@ void Aladdin::ProcessKeyboard()
                     SetState(ALADDIN_STATE_RUN);
                     vx = ALADDIN_RUNNING_SPEED;
                 }
-                else if (pushing == 0)
+                else if (pushing != 0)
                 {
                     SetState(ALADDIN_STATE_PUSH);
                 }
@@ -317,7 +317,7 @@ void Aladdin::ProcessKeyboard()
                     SetState(ALADDIN_STATE_RUN);
                     vx = -ALADDIN_RUNNING_SPEED;
                 }
-                else if (pushing == 0)
+                else if (pushing != 0)
                 {
                     SetState(ALADDIN_STATE_PUSH);
                 }
@@ -594,7 +594,7 @@ void Aladdin::SetState(int state)
 		vector<CGameObject*> vector_object(objects.begin(), objects.end());
 
 		CheckAttackCollision(vector_object);
-
+        Sound::getInstance()->play("ALADDIN_ATTACK", false, 1);
 		break;
 	}
 	case ALADDIN_STATE_RUN_ATTACK:
@@ -618,7 +618,7 @@ void Aladdin::SetState(int state)
 		vector<CGameObject*> vector_object(objects.begin(), objects.end());
 
 		CheckAttackCollision(vector_object);
-
+        Sound::getInstance()->play("ALADDIN_ATTACK", false, 1);
 		break;
 	}
 	case ALADDIN_STATE_JUMP_ATTACK:
@@ -642,6 +642,7 @@ void Aladdin::SetState(int state)
 		vector<CGameObject*> vector_object(objects.begin(), objects.end());
 
 		CheckAttackCollision(vector_object);
+        Sound::getInstance()->play("ALADDIN_ATTACK", false, 1);
 		break;
 	}
 	case ALADDIN_STATE_SIT_ATTACK:
@@ -665,7 +666,7 @@ void Aladdin::SetState(int state)
 		vector<CGameObject*> vector_object(objects.begin(), objects.end());
 
 		CheckAttackCollision(vector_object);
-
+        Sound::getInstance()->play("ALADDIN_SIT_ATTACK", false, 1);
 		break;
 	}
 	case ALADDIN_STATE_THROW_APPLE:
@@ -694,6 +695,7 @@ void Aladdin::SetState(int state)
 		idle_start = 0;
 		animations[ALADDIN_ANI_JUMP_THROW_LEFT]->ResetAnimation();
 		animations[ALADDIN_ANI_JUMP_THROW_RIGHT]->ResetAnimation();
+        Sound::getInstance()->play("ALADDIN_THROW", false, 1);   
 		break;
 	}
 	case ALADDIN_STATE_PUSH:
@@ -702,7 +704,7 @@ void Aladdin::SetState(int state)
 		animations[ALADDIN_ANI_PUSHING_RIGHT]->ResetAnimation();
 		width = ALADDIN_PUSH_WIDTH;
 		if (nx > 0)
-			x -= ALADDIN_PUSH_WIDTH - ALADDIN_IDLE_WIDTH;
+			x -= ALADDIN_PUSH_WIDTH - ALADDIN_IDLE_WIDTH;           
 		break;
     case ALADDIN_STATE_HURT:
         idle_start = 0;
@@ -710,6 +712,7 @@ void Aladdin::SetState(int state)
         vy = 0;
         animations[ALADDIN_ANI_HURT_LEFT]->ResetAnimation();
         animations[ALADDIN_ANI_HURT_RIGHT]->ResetAnimation();
+        Sound::getInstance()->play("ALADDIN_HURT", false, 1);
         break;
 	case ALADDIN_STATE_DEAD:
         idle_start = 0; vx = 0; vy = 0; untouchable = 0;
@@ -758,7 +761,7 @@ void Aladdin::SetState(int state)
 		{
 			//x = climbingChains->x - 50;
 		}
-
+        Sound::getInstance()->play("ALADDIN_ATTACK", false, 1);
 		break;
 	}
 	case ALADDIN_STATE_CLIMB_THROW:
@@ -917,11 +920,19 @@ void Aladdin::Render()
         }
 		case ALADDIN_STATE_PUSH:
 		{
+            if (pushingTime == 0)
+            {
+                Sound::getInstance()->play("ALADDIN_PUSH", false, 1);
+                pushingTime = GetTickCount();
+            }
+            else if (GetTickCount() - pushingTime > 800)
+                pushingTime = 0;
 			restart_frame = 2;
 			if (nx > 0)
 				ani = ALADDIN_ANI_PUSHING_RIGHT;
 			else
-				ani = ALADDIN_ANI_PUSHING_LEFT; break;
+				ani = ALADDIN_ANI_PUSHING_LEFT; 
+            break;
 		}
 		case ALADDIN_STATE_CLIMB:
 		{
@@ -1411,31 +1422,37 @@ void Aladdin::CheckAttackCollision(vector<LPGAMEOBJECT> atkCol_object)
 
 void Aladdin::AddThrowApple()
 {
-    if (!throwing && numApple > 0)
+    if (!throwing)
     {
-        //nem tao
-        ThrowApple* throwApple = new ThrowApple();
-        throwApple->name = "throw_apple";
-        throwApple->AddAnimation(ANI_APPLE_FLYING);
-        throwApple->AddAnimation(ANI_APPLE_DESTROY);
-        throwApple->nx = nx;
-        float temp_x, temp_y = y - 5;
-        if (nx >= 0)
+        if (numApple > 0)
         {
-            temp_x = x + width - 12;
+            //nem tao
+            ThrowApple* throwApple = new ThrowApple();
+            throwApple->name = "throw_apple";
+            throwApple->AddAnimation(ANI_APPLE_FLYING);
+            throwApple->AddAnimation(ANI_APPLE_DESTROY);
+            throwApple->nx = nx;
+            float temp_x, temp_y = y - 5;
+            if (nx >= 0)
+            {
+                temp_x = x + width - 12;
+            }
+            else
+            {
+                temp_x = x + 12;
+            }
+            if (state == ALADDIN_STATE_CLIMB_THROW)
+                temp_y = y - (height / 3);
+
+            throwApple->SetPosition(temp_x, temp_y);
+            throwApple->SetState(THROW_APPLE_STATE_FLYING);
+            ((SultansDungeon_Scene*)scene)->vector_apple.push_back(throwApple);
+            throwing = true;
+            numApple--;
+            Sound::getInstance()->play("ALADDIN_THROW", false, 1);
         }
         else
-        {
-            temp_x = x + 12;
-        }
-        if (state == ALADDIN_STATE_CLIMB_THROW)
-            temp_y = y - (height / 3);
-            
-        throwApple->SetPosition(temp_x, temp_y);
-        throwApple->SetState(THROW_APPLE_STATE_FLYING);
-        ((SultansDungeon_Scene*)scene)->vector_apple.push_back(throwApple);
-        throwing = true;
-        numApple--;
+            Sound::getInstance()->play("OUTTA_APPLE", false, 1);
     }
 }
 

@@ -123,44 +123,6 @@ void Guard0::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
             isDead = true;
         return;
     }
-        
-    //if (state == GUARD0_STATE_IDLE)
-    //{
-    //    if (idle_start != 0 && GetTickCount() - idle_start > 1000)
-    //    {
-    //        SetState(GUARD0_STATE_WALK);
-    //    }
-    //}
-    //else if (state == GUARD0_STATE_WALK)
-    //{
-    //    if(idle_start != 0 && GetTickCount() - idle_start > 3000)
-    //    {
-    //        SetState(GUARD0_STATE_ATTACK);
-    //    }
-    //}
-    //else if (state == GUARD0_STATE_ATTACK)
-    //{
-    //    if (idle_start != 0 && GetTickCount() - idle_start > 5000)
-    //    {
-    //        SetState(GUARD0_STATE_HURT);
-    //    }
-    //}
-    //else if (state == GUARD0_STATE_HURT)
-    //{
-    //    if (idle_start != 0 && GetTickCount() - idle_start > 7000)
-    //    {
-    //        SetState(GUARD0_STATE_DEAD);
-    //    }
-    //}
-    //else if (state == GUARD0_STATE_DEAD)
-    //{
-    //    if (idle_start != 0 && GetTickCount() - idle_start > 8000)
-    //    {
-    //        SetState(GUARD0_STATE_IDLE);
-    //        nx = -nx;
-    //    }
-    //}
-
 }
 
 void Guard0::SetState(int state)
@@ -177,16 +139,19 @@ void Guard0::SetState(int state)
 			animations[GUARD0_ANI_WALK_RIGHT]->ResetAnimation();
 			break;
 		case GUARD0_STATE_ATTACK:
+            Sound::getInstance()->play("ALADDIN_ATTACK", false, 1);
             attack_size = GUARD0_ATTACK_SIZE;
 			animations[GUARD0_ANI_ATTACK_LEFT]->ResetAnimation();
 			animations[GUARD0_ANI_ATTACK_RIGHT]->ResetAnimation();
 			break;
 		case GUARD0_STATE_HURT:
+            Sound::getInstance()->play("GUARD0_BE_HIT", false, 1);
             attack_size = 0;
 			animations[GUARD0_ANI_HURT_LEFT]->ResetAnimation();
 			animations[GUARD0_ANI_HURT_RIGHT]->ResetAnimation();
 			break;
 		case GUARD0_STATE_DEAD:
+            Sound::getInstance()->play("ENEMY_DEAD", false, 1);
             //repostion object for explode, explode sprite (90,57)
             if(nx > 0)
                 x = x + (BBOX_WIDTH - 90) / 2;

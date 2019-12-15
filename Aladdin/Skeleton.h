@@ -6,17 +6,19 @@
 #define BBOX_WIDTH 51
 #define BBOX_HEIGHT 88
 
+#define SKELETON_START_RANGE_HORIZONTAL 200
+#define SKELETON_START_RANGE_VERTICAL 10
+
 enum SKELETON_STATE
 {
+    SKELETON_STATE_NOT_CREATE,
     SKELETON_STATE_CREATE = 101,
-    SKELETON_STATE_EXPLODE = 102,
     SKELETON_STATE_DEAD = 5,
 };
 
 enum SKELETON_ANI
 {
     SKELETON_ANI_CREATE,
-    SKELETON_ANI_EXPLODE,
     SKELETON_ANI_DEAD,
 };
 class Scene;
@@ -27,6 +29,7 @@ class Skeleton : public Enemy
     virtual void Render();
 
 	Scene* scene;
+    bool exploded = false;
 public:
     DWORD idle_start;
     Skeleton() : Enemy()
@@ -43,7 +46,7 @@ public:
 
     virtual void SetState(int state);
 
-	void AddFlyingBone();
+	void Explode();
 	void SetScene(Scene* s) { scene = s; }
 };
 #endif

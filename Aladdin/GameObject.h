@@ -6,6 +6,7 @@
 #include <vector>
 
 #include "Sprites.h"
+#include "Sound.h"
 
 
 using namespace std;

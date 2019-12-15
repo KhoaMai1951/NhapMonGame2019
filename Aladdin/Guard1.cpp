@@ -8,16 +8,6 @@ void Guard1::GetBoundingBox(float& left, float& top, float& right, float& bottom
     top = y;
     right = left + width;
     bottom = top - height;
-    /*switch (state)
-    {
-    case STATE_IDLE:
-        right = x + BBOX_WIDTH;
-        bottom = y - BBOX_HEIGHT;
-        break;
-    default:
-        right = x + BBOX_WIDTH;
-        bottom = y - BBOX_HEIGHT;
-    }*/
 }
 
 void Guard1::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
@@ -235,27 +225,32 @@ void Guard1::SetState(int state)
         animations[GUARD1_ANI_WALK_RIGHT]->ResetAnimation();
         break;
     case GUARD1_STATE_TAUNT:
+        Sound::getInstance()->play("GUARD_TAUNT", false, 1);
         idle_start = 0;
         animations[GUARD1_ANI_TAUNT_LEFT]->ResetAnimation();
         animations[GUARD1_ANI_TAUNT_RIGHT]->ResetAnimation();
         break;
     case GUARD1_STATE_ATTACK1:
+        Sound::getInstance()->play("ALADDIN_SIT_ATTACK", false, 1);
         idle_start = 0;
         attack_size = GUARD1_ATTACK1_SIZE;
         animations[GUARD1_ANI_ATTACK1_LEFT]->ResetAnimation();
         animations[GUARD1_ANI_ATTACK1_RIGHT]->ResetAnimation();
         break;
     case GUARD1_STATE_ATTACK2:
+        Sound::getInstance()->play("ALADDIN_ATTACK", false, 1);
         attack_size = GUARD1_ATTACK2_SIZE;
         animations[GUARD1_ANI_ATTACK2_LEFT]->ResetAnimation();
         animations[GUARD1_ANI_ATTACK2_RIGHT]->ResetAnimation();
         break;
     case GUARD1_STATE_HURT:
+        Sound::getInstance()->play("GUARD1_BE_HIT", false, 1);
         attack_size = 0;
         animations[GUARD1_ANI_HURT_LEFT]->ResetAnimation();
         animations[GUARD1_ANI_HURT_RIGHT]->ResetAnimation();
         break;
     case GUARD1_STATE_DEAD:
+        Sound::getInstance()->play("ENEMY_DEAD", false, 1);
         //repostion object for explode, explode sprite (90,57)
         if (nx > 0)
             x = x + (BBOX_WIDTH - 90) / 2;

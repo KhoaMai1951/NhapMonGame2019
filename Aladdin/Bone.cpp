@@ -67,7 +67,7 @@ void Bone::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 				// block 
 				x += min_tx * dx + nx * 0.1f;
 				y += min_ty * dy + ny * 0.1f;
-
+                Sound::getInstance()->play("BONE_DROP", false, 1);
 			}
 		}
 		x += vx;

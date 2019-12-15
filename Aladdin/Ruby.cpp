@@ -25,6 +25,7 @@ void Ruby::SetState(int state)
     case RUBY_STATE_IDLE:
         break;
     case RUBY_STATE_EATEN:
+        Sound::getInstance()->play("RUBY_COLLECT", false, 1);
         break;
     }
 }

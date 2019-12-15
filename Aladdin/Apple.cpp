@@ -6,21 +6,6 @@ void Apple::GetBoundingBox(float &left, float &top, float &right, float &bottom)
     top = y;
     right = x + width;
     bottom = y - height;
-
-    //int lastFrame = animations[ani]->lastFrame;
-    ////if (lastFrame < 0) lastFrame = 0;
-    ///*   width = animations[ani]->frames[lastFrame]->GetSprite()->width;
-    //   height = animations[ani]->frames[lastFrame]->GetSprite()->height;*/
-    //width = lastFrameWidth;
-    //height = lastFrameHeight;
-
-    ////x += (width - lastFrameWidth) / 2;
-    ////y += (height - lastFrameHeight) / 2;
-
-    //left = x;
-    //top = y;
-    //right = x + width;
-    //bottom = y - height;
 }
 
 void Apple::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -39,6 +24,7 @@ void Apple::SetState(int state)
     switch (state)
     {
     case APPLE_STATE_DESTROY:
+        Sound::getInstance()->play("APPLE_COLLECT", false, 1);
         y -= APPLE_IDLE_WIDTH - APPLE_DESTROY_WIDTH + 1;
         break;
     case APPLE_STATE_IDLE:

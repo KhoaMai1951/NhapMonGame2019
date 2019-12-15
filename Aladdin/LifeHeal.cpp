@@ -25,6 +25,7 @@ void LifeHeal::SetState(int state)
     case LIFEHEAL_STATE_IDLE:
         break;
     case LIFEHEAL_STATE_EATEN:
+        Sound::getInstance()->play("LIFEHEAL_COLLECT", false, 1);
         break;
     }
 }

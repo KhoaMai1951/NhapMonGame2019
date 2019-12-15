@@ -21,6 +21,7 @@ void Vase::SetState(int state)
     case VASE_STATE_IDLE:
         break;
     case VASE_STATE_EATEN:
+        Sound::getInstance()->play("RUBY_COLLECT", false, 1);
         animations[VASE_ANI_EATEN]->ResetAnimation();
         break;
     }

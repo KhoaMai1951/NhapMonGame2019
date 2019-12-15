@@ -42,6 +42,7 @@ void Peddler::SetState(int state)
     case PEDDLER_STATE_IDLE:
         break;
     case PEDDLER_STATE_OPEN_SHOP:
+        Sound::getInstance()->play("PEDDLER", false, 1);
         break;
     }
 }

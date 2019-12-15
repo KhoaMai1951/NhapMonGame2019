@@ -42,6 +42,7 @@ void SpikeTrap::SetState(int state)
     switch (state)
     {
     case STATE_DO_DAMAGE:
+        //Sound::getInstance()->play("SPIKE_OUT", false, 1);
         do_damage = true;
         break;
     case STATE_NOT_DO_DAMAGE:

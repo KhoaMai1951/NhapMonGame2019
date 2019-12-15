@@ -196,7 +196,7 @@ class Aladdin : public CGameObject
 
     int prevState, prevFrame;
 
-    DWORD untouchable_start, idle_start;
+    DWORD untouchable_start, idle_start, pushingTime = 0;
     Scene *scene;
 
     int CheckGround0Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);

@@ -57,6 +57,7 @@ void Genie::SetState(int state)
         animations[GENIE_ANI_IDLE2]->ResetAnimation();
         break;
     case GENIE_STATE_DEAD:
+        Sound::getInstance()->play("GENIE_COLLECT", false, 1);
         animations[GENIE_ANI_EXPLODE]->ResetAnimation();
         break;
     }

@@ -8,16 +8,6 @@ void Bat::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 	top = y;
 	right = left + width;
 	bottom = top - height;
-	/*switch (state)
-	{
-	case STATE_IDLE:
-		right = x + BBOX_WIDTH;
-		bottom = y - BBOX_HEIGHT;
-		break;
-	default:
-		right = x + BBOX_WIDTH;
-		bottom = y - BBOX_HEIGHT;
-	}*/
 }
 
 void Bat::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
@@ -28,94 +18,6 @@ void Bat::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
     if (state == BAT_STATE_IDLE)
     {
-        //Chuyển hướng
-        //if (player_x <= x)
-        //{
-        //    nx = -1;
-        //    if (player_y <= y && y - player_y <= UNDER_ABOVE_ATTACK_RANGE)   //player dưới khoảng 
-        //    {
-        //        SetState(BAT_STATE_FLYING);
-
-        //        if (x - (player_x + 40) <= GUARD0_ATTACK_SIZE)
-        //        {
-        //            if (start_attack)
-        //            {
-        //                if (GetTickCount() - attack_start > GUARD1_ATTACK_DELAY_TIME)
-        //                {
-        //                    SetState(GUARD0_STATE_ATTACK);
-        //                    start_attack = false;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                start_attack = true;
-        //                attack_start = GetTickCount();
-        //            }
-        //        }
-        //    }
-        //    else if (player_y - 48 >= y && player_y - 48 - y <= UNDER_ABOVE_ATTACK_RANGE)  //player trên khoảng
-        //    {
-        //        if (x - (player_x + 40) <= GUARD0_ATTACK_SIZE)   //40 is aladdin idle width
-        //        {
-        //            if (start_attack)
-        //            {
-        //                if (GetTickCount() - attack_start > GUARD1_ATTACK_DELAY_TIME)
-        //                {
-        //                    SetState(GUARD0_STATE_ATTACK);
-        //                    start_attack = false;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                start_attack = true;
-        //                attack_start = GetTickCount();
-        //            }
-        //        }
-        //    }
-        //}
-        //else if (player_x >= x)
-        //{
-        //    nx = 1;
-        //    if (player_y <= y && y - player_y <= UNDER_ABOVE_ATTACK_RANGE)   //player dưới khoảng 
-        //    {
-        //        if (player_x - (x + width) <= GUARD0_ATTACK_SIZE)
-        //        {
-        //            if (start_attack)
-        //            {
-        //                if (GetTickCount() - attack_start > GUARD1_ATTACK_DELAY_TIME)
-        //                {
-        //                    SetState(GUARD0_STATE_ATTACK);
-        //                    start_attack = false;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                start_attack = true;
-        //                attack_start = GetTickCount();
-        //            }
-        //        }
-        //    }
-        //    else if (player_y >= y && player_y - y <= UNDER_ABOVE_ATTACK_RANGE)  //player trên khoảng
-        //    {
-        //        if (player_x - (x + width) <= GUARD0_ATTACK_SIZE)
-        //        {
-        //            if (start_attack)
-        //            {
-        //                if (GetTickCount() - attack_start > GUARD1_ATTACK_DELAY_TIME)
-        //                {
-        //                    SetState(GUARD0_STATE_ATTACK);
-        //                    start_attack = false;
-        //                }
-        //            }
-        //            else
-        //            {
-        //                start_attack = true;
-        //                attack_start = GetTickCount();
-        //            }
-        //        }
-        //    }
-        //}
-        //40 is aladdin idle width, 48 is aladdin height
         //IF player in bat's attack range
         if ((player_x + 40 >= x - START_ATTACK_RANGE) && (player_x <= x + width + START_ATTACK_RANGE))
         {
@@ -220,6 +122,7 @@ void Bat::SetState(int state)
 		animations[BAT_ANI_FLYING]->ResetAnimation();
 		break;
     case BAT_STATE_DEAD:
+        Sound::getInstance()->play("ENEMY_DEAD", false, 1);
         nx = 1;
         vx = 0, vy = 0;
         //repostion object for explode, bat sprite(34,25), explode sprite (90,57)

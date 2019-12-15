@@ -123,7 +123,7 @@ void ThrowApple::SetState(int state)
         break;
 
     case THROW_APPLE_STATE_DESTROYED:
-
+        Sound::getInstance()->play("APPLE_DESTROY", false, 1);
         break;
     }
 }
