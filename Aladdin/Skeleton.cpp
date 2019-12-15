@@ -24,7 +24,15 @@ void Skeleton::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
     CGameObject::Update(dt, coObjects);
 
-    if (state == SKELETON_STATE_CREATE)
+    if(state != SKELETON_STATE_DEAD && hitpoint <= 0)
+        SetState(SKELETON_STATE_DEAD);
+    else if (state == SKELETON_STATE_DEAD)
+    {
+        if(animations[ani]->currentFrame == 9)
+            isDead = true;
+        return;
+    } 
+    /*if (state == SKELETON_STATE_CREATE)
     {
         if (animations[ani]->currentFrame == 6)
         {
@@ -45,7 +53,7 @@ void Skeleton::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
             SetState(SKELETON_STATE_CREATE);
             nx = -nx;
         }
-    }
+    }*/
 
 }
 
@@ -62,6 +70,9 @@ void Skeleton::SetState(int state)
         animations[SKELETON_ANI_EXPLODE]->ResetAnimation();
         break;
     case SKELETON_STATE_DEAD:
+        //repostion object for explode, skeleton sprite(95,91), explode sprite (90,57)
+        x = x + (95 - 90) / 2;
+        y = y + (91 - 57) / 2;
         animations[SKELETON_ANI_DEAD]->ResetAnimation();
         break;
     }
@@ -92,5 +103,5 @@ void Skeleton::Render()
     //animations[ani]->Render(x, y, alpha, restart_frame);
     animations[ani]->Render(x, y, width, lastFrameWidth, lastFrameHeight, alpha, restart_frame, nx);
 
-    RenderBoundingBox();
+    //RenderBoundingBox();
 }

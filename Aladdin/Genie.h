@@ -11,12 +11,14 @@ enum GENIE_STATE
 {
     GENIE_STATE_IDLE,
     GENIE_STATE_IDLE2,
+    GENIE_STATE_DEAD = 5,
 };
 
 enum GENIE_ANI
 {
     GENIE_ANI_IDLE,
     GENIE_ANI_IDLE2,
+    GENIE_ANI_EXPLODE,
 };
 
 class Genie : public CGameObject

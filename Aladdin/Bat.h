@@ -5,12 +5,16 @@
 
 #define BBOX_WIDTH 20   //when flying
 #define BBOX_HEIGHT 16
+#define START_ATTACK_RANGE 100
+#define MOVE_SPEED 0.006f
+#define IDLE_TIME 3000
+#define ATTACK_TIME 5000
 
 enum BAT_STATE
 {
 	BAT_STATE_IDLE = 101,
 	BAT_STATE_FLYING = 102,
-	BAT_STATE_DEAD = 103,
+	BAT_STATE_DEAD = 5,
 };
 
 enum BAT_ANI
@@ -23,15 +27,17 @@ enum BAT_ANI
 class Bat : public Enemy
 {
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+    void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	virtual void Render();
-
+    float idle_x, idle_y;
 public:
-	DWORD idle_start;
+    DWORD idle_start, flying_start;
+    bool is_hit = false;
 	Bat() : Enemy()
 	{
+        flying_start = 0;
 		idle_start = 0;
-		hitpoint = 2;
+		hitpoint = 1;
 		score = 200;
 		width = BBOX_WIDTH;
 		height = BBOX_HEIGHT;
@@ -39,7 +45,7 @@ public:
 		lastFrameHeight = BBOX_HEIGHT;
 		nx = 1;
 	}
-
+    void SetIdlePositon(float _x, float _y) { idle_x = _x; idle_y = _y; }
 	virtual void SetState(int state);
 };
 #endif 

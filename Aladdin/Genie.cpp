@@ -33,6 +33,14 @@ void Genie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
             SetState(GENIE_STATE_IDLE);
         }
     }
+    else if (state == GENIE_STATE_DEAD)
+    {
+        if (animations[ani]->currentFrame == 15)
+        {
+            isDead = true;
+            return;
+        }
+    }
 
     y += vy;
 }
@@ -48,6 +56,9 @@ void Genie::SetState(int state)
     case GENIE_STATE_IDLE2:
         animations[GENIE_ANI_IDLE2]->ResetAnimation();
         break;
+    case GENIE_STATE_DEAD:
+        animations[GENIE_ANI_EXPLODE]->ResetAnimation();
+        break;
     }
 }
 
@@ -57,6 +68,8 @@ void Genie::Render()
     if (state == GENIE_STATE_IDLE2) {
         ani = GENIE_ANI_IDLE2;
     }
+    else if (state == GENIE_STATE_DEAD)
+        ani = GENIE_ANI_EXPLODE;
 
     animations[ani]->Render(x, y);
 

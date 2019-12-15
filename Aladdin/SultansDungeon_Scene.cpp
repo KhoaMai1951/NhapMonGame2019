@@ -2,12 +2,11 @@
 
 SultansDungeon_Scene::SultansDungeon_Scene()
 {
-    
+
 };
 
 void SultansDungeon_Scene::Initialize()
 {
-    //ResourceLoader::GetInstance()->LoadMapFromFile("Map_Background.txt", CTextures::GetInstance()->Get(TEX_MAP_DUNGEON), map_vector);
     ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
 
     //----------Load Map từ file text và Tile Set
@@ -63,13 +62,25 @@ void SultansDungeon_Scene::Initialize()
 	aladdin->AddAnimation(-117); //climb attack right
 	aladdin->AddAnimation(116); //climb throw left 
 	aladdin->AddAnimation(-116); //climb throw right
+    aladdin->AddAnimation(-121); //hurt right
+    aladdin->AddAnimation(121); 
 
 
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);
-#pragma endregion Initalize Aladdin
+#pragma endregion Initalize Aladdin vector_environment
 
-    ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects);
+    ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects, 1);
+    ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Environment_Dungeon.txt", vector_environment, objects.size());
+    
+    for (int i = 0; i < objects.size(); i++)
+        All_collide_objects.push_back(objects[i]);
+
+    for (int i = 0; i < vector_environment.size(); i++)
+    {
+        All_collide_objects.push_back(vector_environment[i]);
+    }
+        
 
     SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
@@ -78,20 +89,11 @@ void SultansDungeon_Scene::Initialize()
     grid->Clear();
     //for (unsigned i = 1; i < objects.size(); i++)
         //grid->Insert(objects[i]);
-    grid->AddGridFromFile(objects, "dungeon_grid.txt");
+    grid->AddGridFromFile(All_collide_objects, "dungeon_grid.txt");
 }
 
 void SultansDungeon_Scene::Update(DWORD dt)
-{
-    // We know that Mario is the first object in the list hence we won't add him into the colliable object list
-
-    /*for (int i = 1; i < objects.size(); i++)
-    {
-        coObjects.push_back(objects[i]);
-    }*/ 
-
-
-    
+{   
     RECT cam_rect = camera->getBounding();
 	//fix thuật toán add vào grid
 	RECT temp = camera->InvertY(cam_rect.left, cam_rect.top, cam_rect.right, 
@@ -106,15 +108,22 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	SpatialGrid* grid = SpatialGrid::GetInstance();
     //Update objets
     objects[0]->Update(dt, &coObjects); //player
-
     for (int i = 0; i < vector_apple.size(); i++)
     {
         vector_apple[i]->Update(dt, &coObjects);
     }
-
     for (int i = 0; i < coObjects.size(); i++)
     {
+        if (!coObjects[i]->isItem)
+        {
+            coObjects[i]->player_x = aladdin->x;
+            coObjects[i]->player_y = aladdin->y;
+        }
         coObjects[i]->Update(dt, &coObjects);
+    }
+    for (int i = 0; i < vector_environment.size(); i++)
+    {
+        vector_environment[i]->Update(dt, NULL);
     }
 
 #pragma region
@@ -164,6 +173,7 @@ void SultansDungeon_Scene::Update(DWORD dt)
 			//delete in objects
 			delete objects[i];
 			objects.erase(objects.begin() + i);
+            All_collide_objects.erase(All_collide_objects.begin() + i);
         }
     //delete apple throw
     for (int i = 0; i < vector_apple.size(); i++)
@@ -204,16 +214,19 @@ void SultansDungeon_Scene::Render()
             }
 
         }
-
-        for (int i = 0; i < objects.size(); i++)
+        for (int i = 0; i < vector_environment.size(); i++)
+        {
+            vector_environment[i]->Render();
+        }
+        for (int i = 1; i < objects.size(); i++)
         {
             if (camera->isContain(objects[i]->x, objects[i]->y,
                 objects[i]->x + objects[i]->width, objects[i]->y - objects[i]->height))
             {
                 objects[i]->Render();
             }
-            //objects[i]->Render();
         }
+        objects[0]->Render();
         for (int i = 0; i < vector_apple.size(); i++)
         {
             vector_apple[i]->Render();

@@ -14,8 +14,6 @@
 #include "ResourceLoader.h"
 #include "Aladdin.h"
 
-//class Aladdin;
-
 using namespace std;
 
 enum LEVEL

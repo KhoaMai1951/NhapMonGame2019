@@ -13,7 +13,8 @@ CGameObject::CGameObject()
 	x = y = 0;
     width = height = 0;
 	vx = vy = 0;
-	nx = 1;	
+	nx = 1;
+    ny = 1;
 }
 
 void CGameObject::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
@@ -142,6 +143,19 @@ void CGameObject::AddAnimation(int aniId)
 {
 	LPANIMATION ani = CAnimations::GetInstance()->Get(aniId);
 	animations.push_back(ani);
+}
+
+bool CGameObject::checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2)
+{
+    //Check horizontal aspect
+    if (l1 > r2 || l2 > r1)
+        return false;
+
+    //Check vertical aspect
+    if (t1 < b2 || t2 < b1)
+        return false;
+
+    return true;
 }
 
 

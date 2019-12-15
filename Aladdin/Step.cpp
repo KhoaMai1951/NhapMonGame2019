@@ -9,15 +9,30 @@ void Step::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 
 void Step::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
-    CGameObject::Update(dt, coObjects);
-    if (animations[ani]->currentFrame ==3)
-    {
-        SetState(STATE_STANDABLE);
-    }
-    else if(animations[ani]->currentFrame == 6)
-    {
-        SetState(STATE_NOT_STANDABLE);
-    }
+   CGameObject::Update(dt, coObjects);
+   if (name == "step0")
+   {
+       if (animations[ani]->currentFrame == 3)
+       {
+           SetState(STATE_STANDABLE);
+       }
+       else if (animations[ani]->currentFrame == 6)
+       {
+           SetState(STATE_NOT_STANDABLE);
+       }
+   }
+   else if (name == "step1")
+   {
+       if (animations[ani]->currentFrame == 3)
+       {
+           SetState(STATE_NOT_STANDABLE);
+       }
+       else if (animations[ani]->currentFrame == 6)
+       {
+           SetState(STATE_STANDABLE);
+       }
+   }
+    
 
 }
 

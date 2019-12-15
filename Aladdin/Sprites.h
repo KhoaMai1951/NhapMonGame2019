@@ -61,14 +61,15 @@ typedef CAnimationFrame *LPANIMATION_FRAME;
 
 class CAnimation
 {
-	DWORD lastFrameTime;
 	int defaultTime;
 public:
+    DWORD lastFrameTime;
     vector<LPANIMATION_FRAME> frames;
     int currentFrame, lastFrame = 0;
 	CAnimation(int defaultTime) { this->defaultTime = defaultTime; lastFrameTime = -1; currentFrame = -1; }
 	void Add(int spriteId, DWORD time = 0);
     void Render(float x, float y, int alpha = 255, int restart = 0);
+    void RenderStep(float x, float y, int currenFrame, int alpha = 255);
     void Render(float &x, float &y, float bbWidth, long &lastFrameHeight, int alpha = 255, int restart = 0, float nx = 1);
     void Render(float &x, float &y, float bbWidth, long &lastFrameWidth, long &lastFrameHeight, int alpha = 255, int restart = 0, float nx = 1);
     void ResetAnimation() { currentFrame = -1; }

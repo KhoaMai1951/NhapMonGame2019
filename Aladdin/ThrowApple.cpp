@@ -1,4 +1,6 @@
 #include "ThrowApple.h"
+#include "Guard0.h"
+#include "Guard1.h"
 
 void ThrowApple::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -68,7 +70,28 @@ void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
         {
             LPCOLLISIONEVENT e = coEventsResult[i];
 
-            if (dynamic_cast<Enemy*>(e->obj) || dynamic_cast<Ground*>(e->obj))
+            if (dynamic_cast<Enemy*>(e->obj))
+            {
+                Enemy* enemy = dynamic_cast<Enemy*>(e->obj);
+                if (enemy->state != 5) // != Dead
+                {
+                    enemy->hitpoint--;
+                    if (dynamic_cast<Guard0*>(enemy) || dynamic_cast<Guard1*>(enemy))
+                    {
+                        enemy->SetState(4); //4 is hurt
+                    }
+                }
+
+                SetState(THROW_APPLE_STATE_DESTROYED);
+                // block 
+                x += min_tx * dx + nx * 0.1f;
+                y += min_ty * dy + ny * 0.1f;
+
+                if (nx != 0) vx = 0;
+                if (ny != 0) vy = 0;
+                collided = true;
+            }
+            else if (dynamic_cast<Ground*>(e->obj))
             {
                 SetState(THROW_APPLE_STATE_DESTROYED);
                 // block 

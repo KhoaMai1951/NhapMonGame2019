@@ -10,13 +10,27 @@ void WreckingBall::GetBoundingBox(float& left, float& top, float& right, float& 
 void WreckingBall::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
     CGameObject::Update(dt, coObjects);
-    if (animations[ani]->currentFrame == 12)
+    if (name == "ball")
     {
-        SetState(BALL_STATE_DO_DAMAGE);
+        if (animations[ani]->currentFrame == 12)
+        {
+            SetState(BALL_STATE_DO_DAMAGE);
+        }
+        else if (animations[ani]->currentFrame == 17)
+        {
+            SetState(BALL_STATE_NOT_DO_DAMAGE);
+        }
     }
-    else if (animations[ani]->currentFrame == 17)
+    else if (name == "ball1")
     {
-        SetState(BALL_STATE_NOT_DO_DAMAGE);
+        if (animations[ani]->currentFrame == 2)
+        {
+            SetState(BALL_STATE_NOT_DO_DAMAGE);
+        }
+        else if (animations[ani]->currentFrame == 25)
+        {
+            SetState(BALL_STATE_DO_DAMAGE);
+        }
     }
 
 }

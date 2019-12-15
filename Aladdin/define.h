@@ -71,9 +71,14 @@ enum EnemyAnimation
 
 enum DungeonAnimation
 {
-    ANI_STEP = 3101,
+    ANI_STEP0 = 3101,
+    ANI_STEP1 = 3102,
     ANI_SPIKE = 3201,
+    ANI_SPIKE1 = 3202,
     ANI_WRECKING_BALL = 3301,
+    ANI_WRECKING_BALL1 = 3302,
+    ANI_PEDDLER_IDLE = 3501,
+    ANI_PEDDLER_OPEN_SHOP = 3502,
 };
 
 enum ItemAnimation
@@ -84,6 +89,7 @@ enum ItemAnimation
     ANI_APPLE_DESTROY = 4002,
     ANI_GENIE_IDLE = 4101,
     ANI_GENIE_IDLE2 = 4102,
+    ANI_GENIE_EXPLODE = 4103,
     ANI_RUBY = 4201,
     ANI_SAVE_IDLE = 4301,
     ANI_SAVE_EATEN = 4302,
@@ -122,6 +128,9 @@ enum TEX_ID
 	TEX_ABU = 90,
     TEX_ENEMY_EXPLODE = 100,
 	TEX_BAT,
+    TEX_GENIE_EXPLODE,
+    TEX_EXIT_GATE,
+    TEX_PEDDLER,
 };
 
 #endif

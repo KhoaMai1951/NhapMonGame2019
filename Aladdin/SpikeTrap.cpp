@@ -10,13 +10,28 @@ void SpikeTrap::GetBoundingBox(float& left, float& top, float& right, float& bot
 void SpikeTrap::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
     CGameObject::Update(dt, coObjects);
-    if (animations[ani]->currentFrame == 4)
+    
+    if (name == "spike")
     {
-        SetState(STATE_DO_DAMAGE);
+        if (animations[ani]->currentFrame == 4)
+        {
+            SetState(STATE_DO_DAMAGE);
+        }
+        else if (animations[ani]->currentFrame == 5)
+        {
+            SetState(STATE_NOT_DO_DAMAGE);
+        }
     }
-    else if (animations[ani]->currentFrame == 7)
+    else if (name == "spike1")
     {
-        SetState(STATE_NOT_DO_DAMAGE);
+        if (animations[ani]->currentFrame == 9)
+        {
+            SetState(STATE_NOT_DO_DAMAGE);
+        }
+        else if (animations[ani]->currentFrame == 1)
+        {
+            SetState(STATE_DO_DAMAGE);
+        }
     }
 
 }

@@ -141,6 +141,9 @@
     <ClInclude Include="Bat.h">
       <Filter>Header Files\Objects\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Peddler.h">
+      <Filter>Header Files\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -235,6 +238,9 @@
     </ClCompile>
     <ClCompile Include="Bat.cpp">
       <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Peddler.cpp">
+      <Filter>Source Files\Objects</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

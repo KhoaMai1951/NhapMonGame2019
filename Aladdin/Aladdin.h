@@ -18,12 +18,15 @@
 
 #include "Ground.h"
 #include "Enemy.h"
+#include "SpikeTrap.h"
+#include "WreckingBall.h"
 
 #define ALADDIN_RUNNING_SPEED		0.15f 
 #define ALADDIN_JUMP_SPEED_Y		0.3f
 #define ALADDIN_GRAVITY			0.0005f
 #define ALADDIN_CLIMB_SPEED 0.1f
-#define ALADDIN_UNTOUCHABLE_TIME 5000
+#define ALADDIN_UNTOUCHABLE_TIME 3000
+#define MAX_HEALTH 1000
 
 enum ALADDIN_STATE
 {
@@ -50,6 +53,7 @@ enum ALADDIN_STATE
 	ALADDIN_STATE_CLIMB_JUMP = 121,
 	ALADDIN_STATE_CLIMB_ATTACK = 122,
 	ALADDIN_STATE_CLIMB_THROW = 123,
+    ALADDIN_STATE_HURT = 124,
 };
 
 enum ALADDIN_ANI
@@ -114,6 +118,9 @@ enum ALADDIN_ANI
 
 	ALADDIN_ANI_CLIMB_THROW_LEFT,
 	ALADDIN_ANI_CLIMB_THROW_RIGHT,
+
+    ALADDIN_ANI_HURT_LEFT,
+    ALADDIN_ANI_HURT_RIGHT,
 };
 
 enum ALADDIN_BOX
@@ -177,7 +184,8 @@ class Scene;
 
 class Aladdin : public CGameObject
 {
-    int health;
+    int health, numApple;
+    long score;
     int untouchable;
     bool jumping = false;
     int pushing = 0; // >0 - pushing right, <0 pushing left
@@ -186,6 +194,8 @@ class Aladdin : public CGameObject
 
 	Chains* climbingChains;
 
+    int prevState, prevFrame;
+
     DWORD untouchable_start, idle_start;
     Scene *scene;
 
@@ -193,15 +203,17 @@ class Aladdin : public CGameObject
     bool CheckGround1Collision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
     bool CheckItemCollision(vector<LPGAMEOBJECT> *coObjects, DWORD dt);
 	bool CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
-	
-    bool checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
+    bool CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects);
+    bool CheckStepCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
+
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
     void AddThrowApple();
 public:
     
     Aladdin() : CGameObject()
     {
-        health = 10;
+        numApple = 10;
+        health = MAX_HEALTH;
         untouchable = 0;
         idle_start = 0;
         width = ALADDIN_IDLE_WIDTH;

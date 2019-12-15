@@ -1,5 +1,6 @@
 ﻿#include "ResourceLoader.h"
 #include "debug.h"
+#include "Peddler.h"
 
 ResourceLoader* ResourceLoader::_instance = NULL;
 ResourceLoader::ResourceLoader(void)
@@ -435,6 +436,7 @@ animations->Add(2000, ani);
 	{
 		ani->Add((enemy_staff_sprite_id + i));
 	}
+    ani->Add(20013);
 	animations->Add(2003, ani);
 
 	//staff attack left
@@ -443,6 +445,7 @@ animations->Add(2000, ani);
 	{
 		ani->Add(-(enemy_staff_sprite_id + i));
 	}
+    ani->Add(-20013);
 	animations->Add(-2003, ani);
 
 	//staff hurt right
@@ -610,7 +613,7 @@ animations->Add(2000, ani);
         ani->Add(40000 + i);
     animations->Add(4001, ani);
     //destroy
-    ani = new CAnimation(50);
+    ani = new CAnimation(100);
     for (int i = 5; i <= 9; i++)
         ani->Add(40000 + i);
     animations->Add(4002, ani);
@@ -626,6 +629,12 @@ animations->Add(2000, ani);
     ani->Add(41004);
     ani->Add(41004);
 	animations->Add(4102, ani);
+
+    //genie explode
+    ani = new CAnimation(120);
+    for (int i = 1; i <= 16; i++)
+        ani->Add(-(41000 + i));
+    animations->Add(4103, ani);
 
 	//ruby
 	ani = new CAnimation(100);
@@ -713,27 +722,56 @@ animations->Add(2000, ani);
 	ani->Add(-30005);   //front_chains
 	animations->Add(-305, ani);
 
-    //Step
+    //Step0
     ani = new CAnimation(200);
-    ani->Add(31001, 1000);
     ani->Add(31002);
     ani->Add(31003);
     ani->Add(31004);
-    ani->Add(31005, 1000);
+    ani->Add(31005, 2000);
     ani->Add(31006);
     ani->Add(31007);
     ani->Add(31008);
+    ani->Add(31001, 2000);
     animations->Add(3101, ani);
 
-    //Spike
+    //step1
     ani = new CAnimation(200);
-    ani->Add(32001, 1000);
-    for (int i = 2; i <= 5; i++)
-        ani->Add(32000 + i);
-    ani->Add(32006, 1000);
-    for (int i = 7; i <= 10; i++)
-        ani->Add(32000 + i);
+    ani->Add(31006);
+    ani->Add(31007);
+    ani->Add(31008);
+    ani->Add(31001, 2000);
+    ani->Add(31002);
+    ani->Add(31003);
+    ani->Add(31004);
+    ani->Add(31005, 2000);
+    animations->Add(3102, ani);
+
+    //Spike
+    ani = new CAnimation(300);
+    ani->Add(32002);
+    ani->Add(32003);
+    ani->Add(32004);
+    ani->Add(32005);
+    ani->Add(32006, 2000);
+    ani->Add(32007);
+    ani->Add(32008);
+    ani->Add(32009);
+    ani->Add(32010);
+    ani->Add(32001, 2000);
     animations->Add(3201, ani);
+    //Spike1
+    ani = new CAnimation(300);
+    ani->Add(32007);
+    ani->Add(32008);
+    ani->Add(32009);
+    ani->Add(32010);
+    ani->Add(32001, 2000);
+    ani->Add(32002);
+    ani->Add(32003);
+    ani->Add(32004);
+    ani->Add(32005);
+    ani->Add(32006, 2000);
+    animations->Add(3202, ani);
 
     //Wrecking Ball
     ani = new CAnimation(100);
@@ -742,6 +780,31 @@ animations->Add(2000, ani);
     for (int i = 14; i >= 2; i--)
         ani->Add(33000 + i);
     animations->Add(3301, ani);
+
+    //Wrecking Ball 1
+    ani = new CAnimation(100);
+    for (int i = 14; i >= 2; i--)
+        ani->Add(33000 + i);
+    for (int i = 1; i <= 15; i++)
+        ani->Add(33000 + i);
+    animations->Add(3302, ani);
+
+    //Exit gate
+    ani = new CAnimation(100);
+    ani->Add(34001);
+    animations->Add(3401, ani);
+
+    //Peddler idle
+    ani = new CAnimation(100);
+    for (int i = 1; i <= 7; i++)
+        ani->Add(35000 + i);
+    animations->Add(3501, ani);
+
+    //Peddler open shop
+    ani = new CAnimation(75);
+    for (int i = 8; i <= 43; i++)
+        ani->Add(35000 + i);
+    animations->Add(3502, ani);
 
 
 #pragma endregion Dungeon environment
@@ -778,7 +841,10 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_MAIN_MENU, L"textures\\Menu.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\LevelComplete.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ABU, L"textures\\Abu.png", D3DCOLOR_XRGB(255, 255, 255));
-	textures->Add(TEX_ENEMY_EXPLODE, L"textures\\Enemy_exlode.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_ENEMY_EXPLODE, L"textures\\Enemy_exlode.png", D3DCOLOR_XRGB(255, 0, 255));   
+    textures->Add(TEX_GENIE_EXPLODE, L"textures\\Genie_Explode.png", D3DCOLOR_XRGB(255, 255, 255));
+    textures->Add(TEX_EXIT_GATE, L"textures\\exit_gate.png", D3DCOLOR_XRGB(255, 255, 255));
+    textures->Add(TEX_PEDDLER, L"textures\\Peddler.png", D3DCOLOR_XRGB(255, 0, 255));
 
 
     CSprites* sprites = CSprites::GetInstance();
@@ -1422,7 +1488,53 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(33014, 569, 628, 602, 681, texDungeonObjects);
 	sprites->Add(33015, 607, 628, 640, 680, texDungeonObjects);
 
+    LPDIRECT3DTEXTURE9 texExit = textures->Get(TEX_EXIT_GATE);
+    sprites->Add(34001, 0, 0, 78, 208, texExit);
 
+    LPDIRECT3DTEXTURE9 texPeddler = textures->Get(TEX_PEDDLER);
+    sprites->Add(35001, 0, 0, 143, 88, texPeddler);
+    sprites->Add(35002, 143, 0, 286, 88, texPeddler);
+    sprites->Add(35003, 286, 0, 429, 88, texPeddler);
+    sprites->Add(35004, 429, 0, 572, 88, texPeddler);
+    sprites->Add(35005, 572, 0, 715, 88, texPeddler);
+    sprites->Add(35006, 715, 0, 858, 88, texPeddler);
+    sprites->Add(35007, 858, 0, 1001, 88, texPeddler);
+    sprites->Add(35008, 1001, 0, 1144, 88, texPeddler);
+    sprites->Add(35009, 1144, 0, 1287, 88, texPeddler);
+    sprites->Add(35010, 1287, 0, 1430, 88, texPeddler);
+    sprites->Add(35011, 1430, 0, 1573, 88, texPeddler);
+    sprites->Add(35012, 0, 88, 143, 176, texPeddler);
+    sprites->Add(35013, 143, 88, 286, 176, texPeddler);
+    sprites->Add(35014, 286, 88, 429, 176, texPeddler);
+    sprites->Add(35015, 429, 88, 572, 176, texPeddler);
+    sprites->Add(35016, 572, 88, 715, 176, texPeddler);
+    sprites->Add(35017, 715, 88, 858, 176, texPeddler);
+    sprites->Add(35018, 858, 88, 1001, 176, texPeddler);
+    sprites->Add(35019, 1001, 88, 1144, 176, texPeddler);
+    sprites->Add(35020, 1144, 88, 1287, 176, texPeddler);
+    sprites->Add(35021, 1287, 88, 1430, 176, texPeddler);
+    sprites->Add(35022, 1430, 88, 1573, 176, texPeddler);
+    sprites->Add(35023, 0, 176, 143, 264, texPeddler);
+    sprites->Add(35024, 143, 176, 286, 264, texPeddler);
+    sprites->Add(35025, 286, 176, 429, 264, texPeddler);
+    sprites->Add(35026, 429, 176, 572, 264, texPeddler);
+    sprites->Add(35027, 572, 176, 715, 264, texPeddler);
+    sprites->Add(35028, 715, 176, 858, 264, texPeddler);
+    sprites->Add(35029, 858, 176, 1001, 264, texPeddler);
+    sprites->Add(35030, 1001, 176, 1144, 264, texPeddler);
+    sprites->Add(35031, 1144, 176, 1287, 264, texPeddler);
+    sprites->Add(35032, 1287, 176, 1430, 264, texPeddler);
+    sprites->Add(35033, 1430, 176, 1573, 264, texPeddler);
+    sprites->Add(35034, 0, 264, 143, 352, texPeddler);
+    sprites->Add(35035, 143, 264, 286, 352, texPeddler);
+    sprites->Add(35036, 286, 264, 429, 352, texPeddler);
+    sprites->Add(35037, 429, 264, 572, 352, texPeddler);
+    sprites->Add(35038, 572, 264, 715, 352, texPeddler);
+    sprites->Add(35039, 715, 264, 858, 352, texPeddler);
+    sprites->Add(35040, 858, 264, 1001, 352, texPeddler);
+    sprites->Add(35041, 1001, 264, 1144, 352, texPeddler);
+    sprites->Add(35042, 1144, 264, 1287, 352, texPeddler);
+    sprites->Add(35043, 1287, 264, 1430, 352, texPeddler);
 #pragma endregion Dungeon_Objects
 
 #pragma region
@@ -1453,6 +1565,25 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(-40009, 176, 00, 198, 22, texItemDestroy);
 	sprites->Add(-40010, 198, 00, 220, 22, texItemDestroy);
 	sprites->Add(-40011, 220, 00, 242, 22, texItemDestroy);
+
+    LPDIRECT3DTEXTURE9 texGenieExplode = textures->Get(TEX_GENIE_EXPLODE);
+
+    sprites->Add(-41001, 0, 0, 43, 43, texGenieExplode);
+    sprites->Add(-41002, 43, 0, 86, 43, texGenieExplode);
+    sprites->Add(-41003, 86, 0, 129, 43, texGenieExplode);
+    sprites->Add(-41004, 129, 0, 172, 43, texGenieExplode);
+    sprites->Add(-41005, 172, 0, 215, 43, texGenieExplode);
+    sprites->Add(-41006, 215, 0, 258, 43, texGenieExplode);
+    sprites->Add(-41007, 258, 0, 301, 43, texGenieExplode);
+    sprites->Add(-41008, 301, 0, 344, 43, texGenieExplode);
+    sprites->Add(-41009, 344, 0, 387, 43, texGenieExplode);
+    sprites->Add(-41010, 387, 0, 430, 43, texGenieExplode);
+    sprites->Add(-41011, 430, 0, 473, 43, texGenieExplode);
+    sprites->Add(-41012, 473, 0, 516, 43, texGenieExplode);
+    sprites->Add(-41013, 516, 0, 559, 43, texGenieExplode);
+    sprites->Add(-41014, 559, 0, 602, 43, texGenieExplode);
+    sprites->Add(-41015, 602, 0, 645, 43, texGenieExplode);
+    sprites->Add(-41016, 645, 0, 688, 43, texGenieExplode);
 #pragma endregion Item Destroy
 
 #pragma region
@@ -1540,9 +1671,9 @@ void ResourceLoader::LoadSprite()
     sprites->Add(30001, 10, 10, 100, 100, texGround);
 }
 
-void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects)
+void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects, int first_index)
 {
-	int object_index = 1;
+	int object_index = first_index;
 
 	std::ifstream infile(FileName);
 	string name;
@@ -1606,6 +1737,17 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ground0->width = w;
             ground0->height = h;
 			ground0->id = object_index;
+            objects.push_back(ground0);
+        }
+        else if (name == "exit_gate")
+        {
+            Ground* ground0 = new Ground();
+            ground0->AddAnimation(3401);
+            ground0->SetPosition(x, y);
+            ground0->SetName(name);
+            ground0->width = w;
+            ground0->height = h;
+            ground0->id = object_index;
             objects.push_back(ground0);
         }
 		else if (name == "guard0")
@@ -1675,22 +1817,32 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 		bat->AddAnimation(BAT_IDLE);
 		bat->AddAnimation(BAT_FLYING);
 		bat->AddAnimation(ENEMY_EXPLODE);
-		bat->SetState(BAT_STATE_IDLE);
 		bat->SetPosition(x, y);
+        bat->SetState(BAT_STATE_IDLE);
+        bat->SetIdlePositon(x, y);
 		bat->SetName(name);
 		bat->id = object_index;
 		objects.push_back(bat);
 		}
-        else if (name == "step0" || name == "step1")
+        else if (name == "step0")
+        {
+            Step* step0 = new Step();
+            step0->AddAnimation(ANI_STEP0);
+            step0->SetPosition(x, y);
+            step0->SetName(name);
+            step0->width = w;
+            step0->height = h;
+            step0->id = object_index;
+            objects.push_back(step0);
+        }
+        else if (name == "step1")
         {
             Step* step = new Step();
-            step->AddAnimation(ANI_STEP);
-
+            step->AddAnimation(ANI_STEP1);
             step->SetPosition(x, y);
             step->SetName(name);
             step->width = w;
             step->height = h;
-            step->SetState(STATE_NOT_STANDABLE);
             step->id = object_index;
             objects.push_back(step);
         }
@@ -1703,7 +1855,18 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             spike->SetName(name);
             spike->width = w;
             spike->height = h;
-            spike->SetState(SPIKETRAP_STATE::STATE_NOT_DO_DAMAGE);
+            spike->id = object_index;
+            objects.push_back(spike);
+        }
+        else if (name == "spike1")
+        {
+            SpikeTrap* spike = new SpikeTrap();
+            spike->AddAnimation(ANI_SPIKE1);
+
+            spike->SetPosition(x, y);
+            spike->SetName(name);
+            spike->width = w;
+            spike->height = h;
             spike->id = object_index;
             objects.push_back(spike);
         }
@@ -1716,7 +1879,18 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ball->SetName(name);
             ball->width = w;
             ball->height = h;
-            ball->SetState(WRECKINGBALL_STATE::BALL_STATE_NOT_DO_DAMAGE);
+            ball->id = object_index;
+            objects.push_back(ball);
+        }
+        else if (name == "ball1")
+        {
+            WreckingBall* ball = new WreckingBall();
+            ball->AddAnimation(ANI_WRECKING_BALL1);
+
+            ball->SetPosition(x, y);
+            ball->SetName(name);
+            ball->width = w;
+            ball->height = h;
             ball->id = object_index;
             objects.push_back(ball);
         }
@@ -1737,7 +1911,8 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
         {
             Genie* genie = new Genie();
             genie->AddAnimation(ANI_GENIE_IDLE);
-            genie->AddAnimation(ANI_GENIE_IDLE2);
+            genie->AddAnimation(ANI_GENIE_IDLE2); 
+            genie->AddAnimation(ANI_GENIE_EXPLODE);
             genie->SetPosition(x, y);
             genie->SetState(GENIE_STATE_IDLE);
             genie->SetName(name);
@@ -1784,6 +1959,16 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 			chains->bot = y - h;
             chains->id = object_index;
             objects.push_back(chains);
+        }
+        else if (name == "peddler")
+        {
+            Peddler* ped = new Peddler();
+            ped->AddAnimation(ANI_PEDDLER_IDLE);
+            ped->AddAnimation(ANI_PEDDLER_OPEN_SHOP);
+            ped->SetPosition(x, y);
+            ped->SetName(name);
+            ped->id = object_index;
+            objects.push_back(ped);
         }
 
 		object_index++;

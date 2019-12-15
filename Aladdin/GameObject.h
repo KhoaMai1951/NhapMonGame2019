@@ -40,6 +40,8 @@ public:
     bool isDead;
     bool isItem = false;
 
+    float player_x, player_y;
+
 	float x; 
 	float y;
     float width;
@@ -51,7 +53,7 @@ public:
 	float vx;
 	float vy;
 
-	int nx;	 
+    int nx, ny;
 
     int state, ani; //current State and Animation
 
@@ -66,6 +68,7 @@ public:
 	void SetSpeed(float vx, float vy) { this->vx = vx, this->vy = vy; }
 	void GetPosition(float &x, float &y) { x = this->x; y = this->y; }
 	void GetSpeed(float &vx, float &vy) { vx = this->vx; vy = this->vy; }
+    bool checkOverlap(float l1, float t1, float r1, float b1, float l2, float t2, float r2, float b2);
 
 	int GetState() { return this->state; }
 

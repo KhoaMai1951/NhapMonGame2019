@@ -34,7 +34,7 @@ public:
 	ResourceLoader();
 
 	static ResourceLoader* GetInstance();
-	void LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT> &objects);
+	void LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT> &objects, int first_index = 0);
 	void LoadMapFromFile(string FileName, LPDIRECT3DTEXTURE9 texMap, vector<LPGAMEOBJECT>& map_vector);
 
     static void LoadSprite();

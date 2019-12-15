@@ -6,14 +6,17 @@
 
 #define BBOX_WIDTH 44
 #define BBOX_HEIGHT 58
+#define GUARD0_ATTACK_SIZE 50
+#define GUARD1_ATTACK_DELAY_TIME 2000
+#define UNDER_ABOVE_ATTACK_RANGE 50
 
 enum GUARD0_STATE
 {
     GUARD0_STATE_IDLE = 101,
     GUARD0_STATE_WALK = 102,
     GUARD0_STATE_ATTACK = 103,
-    GUARD0_STATE_HURT = 104,
-    GUARD0_STATE_DEAD = 105,
+    GUARD0_STATE_HURT = 4,
+    GUARD0_STATE_DEAD = 5,
 };
 
 enum GUARD0_ANI
@@ -36,7 +39,7 @@ enum GUARD0_ANI
 class Guard0 : public Enemy
 {
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
+	void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	virtual void Render();
 
 public:
