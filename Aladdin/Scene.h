@@ -4,6 +4,11 @@
 #include <vector>
 #include <fstream>
 #include <sstream>
+#include <string>
+
+#include "Health.h"
+#include "Characters.h"
+#include "HUD.h"
 
 #include "Map.h"
 #include "Game.h"
@@ -15,6 +20,7 @@
 #include "Aladdin.h"
 #include "Skeleton.h"
 #include "Sound.h"
+#include "define.h"
 
 using namespace std;
 
@@ -35,6 +41,9 @@ protected:
     vector<LPGAMEOBJECT> front_objects;
     vector<LPGAMEOBJECT> objects; //All collision object and aladdin
     ViewPort * camera = ViewPort::getInstance();
+	Health* healthHUD;
+	Characters* characterHUD;
+	HUD *lifeHUD,*rubyHUD, *appleHUD;
 
 public:
     int next_scene;
@@ -43,6 +52,32 @@ public:
     {
         next_scene = -1;
         //tile_count = 0;
+
+#pragma region
+		healthHUD = new Health();
+		healthHUD->AddAnimation(ANI_HEALTH_1);
+		healthHUD->AddAnimation(ANI_HEALTH_2);
+		healthHUD->AddAnimation(ANI_HEALTH_3);
+		healthHUD->AddAnimation(ANI_HEALTH_4);
+		healthHUD->AddAnimation(ANI_HEALTH_5);
+		healthHUD->AddAnimation(ANI_HEALTH_6);
+		healthHUD->AddAnimation(ANI_HEALTH_7);
+		healthHUD->AddAnimation(ANI_HEALTH_8);
+		healthHUD->AddAnimation(ANI_HEALTH_9);
+		
+		lifeHUD = new HUD();
+		lifeHUD->AddAnimation(ANI_FACE_HUD);
+		appleHUD = new HUD();
+		appleHUD->AddAnimation(ANI_APPLE_HUD);
+		rubyHUD = new HUD();
+		rubyHUD->AddAnimation(ANI_RUBY_HUD);
+
+		characterHUD = new Characters();
+		for (int i = 0; i <= 36; i++)
+		{
+			characterHUD->AddAnimation(5100 + i);
+		}
+#pragma endregion Load animation to HUDs
     };
     virtual void Update(DWORD) {};
     virtual void Render() {};
@@ -63,6 +98,36 @@ public:
 
     virtual void Initialize() {};
     void SetSaveLocation(float _x, float _y) { save_x = _x; save_y = _y; }
+
+	void DrawTextHUD(string text, float x, float y)
+	{
+		for (int i = 0; i < text.size(); i++)
+		{
+			int asciiCode = (int)text[i];	//get ascii code of the number
+			int charAni;
+			if (asciiCode >= 48 && asciiCode <= 57)
+			{
+				charAni = asciiCode - 48;	//switch ascii code to animation index
+			}
+			else if (asciiCode >= 97 && asciiCode <= 122)
+			{
+				charAni = asciiCode - 87;
+			}
+			else if (asciiCode == 32)
+			{
+				charAni = asciiCode + 4;
+			}
+
+
+			Characters* temp_char = this->characterHUD;
+			temp_char->ani = charAni;
+
+			temp_char->x = x + i * 16;
+			temp_char->y = y;
+			temp_char->Render();
+		}
+	}
+
 };
 #endif // !scene_h
 

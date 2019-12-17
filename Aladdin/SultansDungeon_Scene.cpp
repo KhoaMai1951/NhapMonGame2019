@@ -216,6 +216,8 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	//	}
 	//}
 
+	healthHUD->HealthRatio = (float)aladdin->health / (float)MAX_HEALTH;
+
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;
     else if (mario->HP == 0)
@@ -285,6 +287,30 @@ void SultansDungeon_Scene::Render()
             }
 
         }
+
+		//Update value and position of HUD
+		D3DXVECTOR2 camPos = camera->getPositionWorld();
+		healthHUD->SetPosition(camPos.x + 5, camPos.y - 5);
+		lifeHUD->SetPosition(camPos.x + 20, camPos.y - SCREEN_ACTUAL_HEIGHT + 20);
+		rubyHUD->SetPosition(camPos.x + 240, camPos.y - SCREEN_ACTUAL_HEIGHT + 15);
+		appleHUD->SetPosition(camPos.x + 300, camPos.y - SCREEN_ACTUAL_HEIGHT + 15);
+
+		//HUD render
+		healthHUD->Render();
+		lifeHUD->Render();
+		appleHUD->Render();
+		rubyHUD->Render();
+
+		string txt;
+		txt = to_string(aladdin->score);
+		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15);
+		txt = to_string(aladdin->life);
+		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 5);
+		txt = to_string(aladdin->numRuby);
+		DrawTextHUD(txt, rubyHUD->x + 20, rubyHUD->y);
+		txt = to_string(aladdin->numApple);
+		DrawTextHUD(txt, appleHUD->x + 20, appleHUD->y);
+
 
         spriteHandler->End();
         d3ddv->EndScene();

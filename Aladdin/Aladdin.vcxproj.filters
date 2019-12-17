@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Scene">
       <UniqueIdentifier>{2848f09b-7e17-42ee-8de8-3932f5f9a0ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\HUD">
+      <UniqueIdentifier>{e8f57c5f-99c7-41b5-bd58-51b0d47fa62b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\HUD">
+      <UniqueIdentifier>{99a0ace9-3cbc-4f3c-924c-f41c6aeee453}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -141,6 +147,15 @@
     <ClInclude Include="WreckingBall.h">
       <Filter>Header Files\Objects</Filter>
     </ClInclude>
+    <ClInclude Include="Characters.h">
+      <Filter>Header Files\Objects\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Health.h">
+      <Filter>Header Files\Objects\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files\Objects\HUD</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -235,6 +250,15 @@
     </ClCompile>
     <ClCompile Include="Sound.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Characters.cpp">
+      <Filter>Source Files\Objects\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="Health.cpp">
+      <Filter>Source Files\Objects\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\Objects\HUD</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

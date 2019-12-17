@@ -823,8 +823,87 @@ animations->Add(2000, ani);
 #pragma endregion Dungeon environment
 
 #pragma region 
+	//Animation Health, from full to empty
+	int sprite_health_id = 50000;
 
-#pragma endregion Score
+	ani = new CAnimation(75);				//health 9	
+	for (int i = 1; i <= 4; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5009, ani);
+
+	ani = new CAnimation(75);					//health 8
+	for (int i = 5; i <= 8; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5008, ani);
+
+	ani = new CAnimation(75);					//health 7
+	for (int i = 9; i <= 12; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5007, ani);
+
+	ani = new CAnimation(75);					//health 6
+	for (int i = 13; i <= 16; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5006, ani);
+
+	ani = new CAnimation(75);					//health 5
+	for (int i = 17; i <= 20; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5005, ani);
+
+	ani = new CAnimation(75);					//health 4
+	for (int i = 21; i <= 24; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5004, ani);
+
+	ani = new CAnimation(75);					//health 3
+	for (int i = 25; i <= 28; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5003, ani);
+
+	ani = new CAnimation(75);					//health 2
+	for (int i = 29; i <= 32; i++)
+	{
+		ani->Add(sprite_health_id + i);
+	}
+	animations->Add(5002, ani);
+
+	ani = new CAnimation(75);					//health 1
+	ani->Add(sprite_health_id + 33);
+	animations->Add(5001, ani);
+
+	//Characters
+	for (int i = 0; i <= 36; i++)
+	{
+		ani = new CAnimation(75);
+		ani->Add(51000 + i);
+		animations->Add(5100 + i, ani);
+	}
+
+	ani = new CAnimation(75);					//apple hud
+	ani->Add(52001);
+	animations->Add(5201, ani);
+	ani = new CAnimation(75);					//ruby hud
+	ani->Add(53001);
+	animations->Add(5301, ani);
+	ani = new CAnimation(75);					//face hud
+	ani->Add(54001);
+	animations->Add(5401, ani);
+#pragma endregion HUD
 
 	//Animation ground
 	ani = new CAnimation(100);
@@ -859,6 +938,7 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_EXIT_GATE, L"textures\\exit_gate.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_PEDDLER, L"textures\\Peddler.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(TEX_BONE, L"textures\\Bone.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_CHARACTER, L"textures\\Characters.png", D3DCOLOR_XRGB(255, 255, 255));
 
 
     CSprites* sprites = CSprites::GetInstance();
@@ -1661,9 +1741,98 @@ void ResourceLoader::LoadSprite()
 #pragma endregion Items
 
 #pragma region
+	//Apple HUD
+	sprites->Add(52001, 341, 17, 352, 29, texItem);
+	//Ruby HUD
+	sprites->Add(53001, 340, 111, 357, 127, texItem);
     //face
-    sprites->Add(50001, 340, 140, 362, 164, texItem);
-#pragma endregion Score
+    sprites->Add(54001, 340, 140, 362, 164, texItem);
+
+	//health (sprite from full to empty)
+	sprites->Add(50001, 17, 3007, 137, 3039, texAladdin2);				
+	sprites->Add(50002, 147, 3007, 267, 3039, texAladdin2);
+	sprites->Add(50003, 277, 3007, 396, 3039, texAladdin2);
+	sprites->Add(50004, 406, 3007, 525, 3039, texAladdin2);
+
+	sprites->Add(50005, 17, 3054, 129, 3086, texAladdin2);				
+	sprites->Add(50006, 139, 3054, 251, 3086, texAladdin2);
+	sprites->Add(50007, 261, 3054, 372, 3086, texAladdin2);
+	sprites->Add(50008, 382, 3054, 493, 3086, texAladdin2);
+
+	sprites->Add(50009, 17, 3101, 121, 3133, texAladdin2);				
+	sprites->Add(50010, 131, 3101, 235, 3133, texAladdin2);
+	sprites->Add(50011, 245, 3101, 348, 3133, texAladdin2);
+	sprites->Add(50012, 358, 3101, 461, 3133, texAladdin2);
+
+	sprites->Add(50013, 17, 3148, 113, 3180, texAladdin2);				
+	sprites->Add(50014, 123, 3148, 219, 3180, texAladdin2);
+	sprites->Add(50015, 229, 3148, 324, 3180, texAladdin2);
+	sprites->Add(50016, 334, 3148, 429, 3180, texAladdin2);
+
+	sprites->Add(50017, 17, 3195, 105, 3227, texAladdin2);				
+	sprites->Add(50018, 116, 3195, 204, 3227, texAladdin2);
+	sprites->Add(50019, 214, 3195, 301, 3227, texAladdin2);
+	sprites->Add(50020, 311, 3195, 398, 3227, texAladdin2);
+
+	sprites->Add(50021, 17, 3242, 97, 3274, texAladdin2);				
+	sprites->Add(50022, 107, 3242, 187, 3274, texAladdin2);
+	sprites->Add(50023, 197, 3242, 276, 3274, texAladdin2);
+	sprites->Add(50024, 286, 3242, 365, 3274, texAladdin2);
+
+	sprites->Add(50025, 17, 3289, 88, 3321, texAladdin2);				
+	sprites->Add(50026, 98, 3289, 169, 3321, texAladdin2);
+	sprites->Add(50027, 179, 3289, 251, 3321, texAladdin2);
+	sprites->Add(50028, 261, 3289, 333, 3321, texAladdin2);
+
+	sprites->Add(50029, 17, 3336, 80, 3365, texAladdin2);				
+	sprites->Add(50030, 90, 3336, 153, 3365, texAladdin2);
+	sprites->Add(50031, 163, 3336, 227, 3365, texAladdin2);
+	sprites->Add(50032, 237, 3336, 301, 3365, texAladdin2);
+
+	sprites->Add(50033, 17, 3380, 65, 3404, texAladdin2);			
+
+	LPDIRECT3DTEXTURE9 texChar = textures->Get(TEX_CHARACTER);
+	//Numberl characters, from 0 -> 9
+	sprites->Add(51000, 39, 175, 55, 191, texChar);		//0
+	sprites->Add(51001, 59, 175, 71, 191, texChar);
+	sprites->Add(51002, 75, 175, 91, 191, texChar);
+	sprites->Add(51003, 93, 175, 112, 190, texChar);
+	sprites->Add(51004, 112, 175, 127, 190, texChar);
+	sprites->Add(51005, 129, 175, 145, 191, texChar);
+	sprites->Add(51006, 147, 175, 163, 191, texChar);
+	sprites->Add(51007, 165, 175, 181, 191, texChar);
+	sprites->Add(51008, 183, 175, 199, 191, texChar);
+	sprites->Add(51009, 201, 175, 217, 191, texChar);	//9
+
+	//Alphabet
+	sprites->Add(51010, 219, 214, 233, 228, texChar);	//A
+	sprites->Add(51011, 237, 214, 251, 228, texChar);
+	sprites->Add(51012, 255, 214, 269, 228, texChar);
+	sprites->Add(51013, 273, 214, 287, 228, texChar);
+	sprites->Add(51014, 291, 214, 305, 228, texChar);
+	sprites->Add(51015, 309, 214, 323, 230, texChar);
+	sprites->Add(51016, 327, 214, 341, 228, texChar);
+	sprites->Add(51017, 345, 214, 359, 228, texChar);
+	sprites->Add(51018, 365, 214, 371, 230, texChar);
+	sprites->Add(51019, 381, 214, 389, 230, texChar);
+	sprites->Add(51020, 399, 214, 413, 230, texChar);
+	sprites->Add(51021, 417, 214, 431, 228, texChar);
+	sprites->Add(51022, 435, 214, 449, 228, texChar);
+	sprites->Add(51023, 453, 214, 467, 228, texChar);
+	sprites->Add(51024, 471, 214, 485, 228, texChar);
+	sprites->Add(51025, 489, 214, 503, 228, texChar);
+	sprites->Add(51026, 507, 214, 521, 230, texChar);
+	sprites->Add(51027, 525, 214, 539, 230, texChar);
+	sprites->Add(51028, 543, 214, 555, 230, texChar);
+	sprites->Add(51029, 563, 214, 575, 228, texChar);
+	sprites->Add(51030, 579, 214, 593, 230, texChar);
+	sprites->Add(51031, 597, 214, 611, 228, texChar);
+	sprites->Add(51032, 615, 214, 629, 228, texChar);
+	sprites->Add(51033, 633, 214, 647, 228, texChar);
+	sprites->Add(51034, 651, 214, 665, 228, texChar);
+	sprites->Add(51035, 669, 214, 681, 228, texChar);	//Z
+	sprites->Add(51036, 308, 186, 400, 206, texChar);	//Space
+#pragma endregion HUD
 
 #pragma region
 	LPDIRECT3DTEXTURE9 texMenu = textures->Get(TEX_MAIN_MENU);

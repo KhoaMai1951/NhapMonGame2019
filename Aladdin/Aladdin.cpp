@@ -13,10 +13,15 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     }
     else if (state == ALADDIN_STATE_DEAD)
     {
+		if (life <= 0)
+		{
+			scene->save_x = 100;
+			scene->save_y = 150;
+		}
         if (animations[ani]->currentFrame == 32)
         {
             x = scene->save_x;
-            y = scene->save_y + 10;
+            y = scene->save_y + 30;
             SetState(ALADDIN_STATE_IDLE);
             StartUntouchable();
             health = MAX_HEALTH;
@@ -390,6 +395,23 @@ void Aladdin::ProcessKeyboard()
             vy = 0;
             vx = 0;
         }
+		else if (game->IsKeyPress(DIK_M))
+		{
+			health += 3;
+			if (health > MAX_HEALTH)
+				health = MAX_HEALTH;
+			numApple += 10;
+		}
+		else if (game->IsKeyPress(DIK_N))
+		{
+			health--;
+		}
+		else if (game->IsKeyPress(DIK_L))
+		{
+			life--;
+			if (life < 0)
+				life = 0;
+		}
         return;
     }
     case ALADDIN_STATE_PUSH:
@@ -464,7 +486,7 @@ void Aladdin::ProcessKeyboard()
             if (!throwing)
                 SetState(ALADDIN_STATE_JUMP_THROW);
         }
-		if (game->IsKeyPress(DIK_SPACE) || game->IsKeyPress(DIK_X))
+		if (game->IsKeyPress(DIK_SPACE))
 		{
 			if (vx == 0)
 				SetState(ALADDIN_STATE_JUMP);

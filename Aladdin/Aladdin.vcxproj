@@ -22,13 +22,13 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{FECCD678-E09E-4294-B8EE-B026D8926F11}</ProjectGuid>
     <RootNamespace>My04Collision</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -127,6 +127,7 @@
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bone.h" />
     <ClInclude Include="Chains.h" />
+    <ClInclude Include="Characters.h" />
     <ClInclude Include="debug.h" />
     <ClInclude Include="define.h" />
     <ClInclude Include="Enemy.h" />
@@ -136,6 +137,8 @@
     <ClInclude Include="Ground.h" />
     <ClInclude Include="Guard0.h" />
     <ClInclude Include="Guard1.h" />
+    <ClInclude Include="Health.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="LifeHeal.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Peddler.h" />
@@ -161,6 +164,7 @@
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Chains.cpp" />
+    <ClCompile Include="Characters.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -169,6 +173,8 @@
     <ClCompile Include="Ground.cpp" />
     <ClCompile Include="Guard0.cpp" />
     <ClCompile Include="Guard1.cpp" />
+    <ClCompile Include="Health.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="LifeHeal.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />

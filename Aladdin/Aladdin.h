@@ -26,7 +26,7 @@
 #define ALADDIN_GRAVITY			0.0005f
 #define ALADDIN_CLIMB_SPEED 0.1f
 #define ALADDIN_UNTOUCHABLE_TIME 3000
-#define MAX_HEALTH 1000
+#define MAX_HEALTH 18
 
 enum ALADDIN_STATE
 {
@@ -184,8 +184,7 @@ class Scene;
 
 class Aladdin : public CGameObject
 {
-    int health, numApple, life, numRuby;
-    long score = 0;
+   
     int untouchable;
     bool jumping = false;
     int pushing = 0; // >0 - pushing right, <0 pushing left
@@ -209,7 +208,8 @@ class Aladdin : public CGameObject
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
     void AddThrowApple();
 public:
-    
+	int health, numApple, life, numRuby;
+	long score = 0;
     Aladdin() : CGameObject()
     {
         numApple = 50;
