@@ -184,8 +184,8 @@ class Scene;
 
 class Aladdin : public CGameObject
 {
-    int health, numApple;
-    long score;
+    int health, numApple, life, numRuby;
+    long score = 0;
     int untouchable;
     bool jumping = false;
     int pushing = 0; // >0 - pushing right, <0 pushing left
@@ -212,7 +212,9 @@ public:
     
     Aladdin() : CGameObject()
     {
-        numApple = 10;
+        numApple = 50;
+        numRuby = 5;
+        life = 3;
         health = MAX_HEALTH;
         untouchable = 0;
         idle_start = 0;

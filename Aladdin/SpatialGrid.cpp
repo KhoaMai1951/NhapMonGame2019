@@ -63,6 +63,21 @@ void SpatialGrid::Insert(CGameObject* object, string FileName)
 			
 }
 
+void SpatialGrid::Insert(CGameObject* object)
+{
+    float x1, y1, x2, y2;
+    float i, j;
+    Index(object, x1, y1, x2, y2);
+    stringstream ss;
+    for (i = x1; i < x2; ++i)
+        for (j = y1; j < y2; ++j)
+        {
+            //add object to grid
+            Grid[IndexMakeKey(ss, i, j)].push_back(object);
+        }
+
+}
+
 /* lấy danh sách các vật thể thuộc tọa độ của lưới
 ( dùng cho nhân vật chính của game, để lấy danh sách các vật thể còn lại thuộc
 các Cell có chứa nhân vật chính, để xét va chạm của lưới */

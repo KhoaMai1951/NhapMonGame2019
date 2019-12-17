@@ -10,6 +10,7 @@ void Apple::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 
 void Apple::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+    if (isDead) return;
     CGameObject::Update(dt, coObjects);
 
     if (state == APPLE_STATE_DESTROY)
@@ -34,6 +35,7 @@ void Apple::SetState(int state)
 
 void Apple::Render()
 {
+    if (isDead) return;
     ani = APPLE_ANI_IDLE;
     if (state == APPLE_STATE_DESTROY) {
         ani = APPLE_ANI_DESTROY;

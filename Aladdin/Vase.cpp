@@ -10,6 +10,7 @@ void Vase::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 
 void Vase::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+    if (isDead) return;
     CGameObject::Update(dt, coObjects);
 }
 
@@ -29,6 +30,7 @@ void Vase::SetState(int state)
 
 void Vase::Render()
 {
+    if (isDead) return;
     int alpha = 255, restart = 0;
     ani = VASE_ANI_IDLE;
     if (state == VASE_STATE_EATEN) {

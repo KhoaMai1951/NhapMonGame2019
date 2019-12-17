@@ -48,7 +48,7 @@ public:
 	{
         idle_start = 0;
 		hitpoint = 2;
-		score = 200;
+		scoreGain = 100;
 		width = BBOX_WIDTH;
 		height = BBOX_HEIGHT;
 		lastFrameWidth = BBOX_WIDTH;

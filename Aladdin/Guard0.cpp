@@ -12,6 +12,7 @@ void Guard0::GetBoundingBox(float& left, float& top, float& right, float& bottom
 
 void Guard0::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+    if (isDead) return;
 	CGameObject::Update(dt, coObjects);
 	x += dx;
 	y += dy;
@@ -165,6 +166,7 @@ void Guard0::SetState(int state)
 
 void Guard0::Render()
 {
+    if (isDead) return;
 	int restart_frame = 0;
 	switch (state)
 	{

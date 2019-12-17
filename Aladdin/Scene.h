@@ -38,7 +38,7 @@ protected:
 
 public:
     int next_scene;
-
+    float save_x, save_y;
     Scene()
     {
         next_scene = -1;
@@ -62,6 +62,7 @@ public:
     };
 
     virtual void Initialize() {};
+    void SetSaveLocation(float _x, float _y) { save_x = _x; save_y = _y; }
 };
 #endif // !scene_h
 

@@ -7,25 +7,23 @@
 #include "Enemy.h"
 #include "Ground.h"
 
-#define THROW_APPLE_GRAVITY 0.003f;
-#define THROW_APPLE_SPEED 0.28f;
+#define THROW_APPLE_GRAVITY 0.003f
+#define THROW_APPLE_SPEED 0.28f
+
+#define THROW_APPLE_BBOX_SIZE 9
+
 
 enum THROW_APPLE_STATE
 {
-    THROW_APPLE_STATE_FLYING = 1,
-    THROW_APPLE_STATE_DESTROYED = 2,
+    THROW_APPLE_STATE_FLYING,
+    THROW_APPLE_STATE_DESTROYED,
 };
 
 enum THROW_APPLE_ANI
 {
-    THROW_APPLE_ANI_FLYING,
+    THROW_APPLE_ANI_FLYING_RIGHT,
+    THROW_APPLE_ANI_FLYING_LEFT,
     THROW_APPLE_ANI_DESTROYED,
-};
-
-enum THROW_APPLE_BOX
-{
-    THROW_APPLE_WIDTH = 11,
-    THROW_APPLE_HEIGHT = 12,
 };
 
 
@@ -40,8 +38,8 @@ public:
     {
         vx = 0;
         vy = 0;
-        width = THROW_APPLE_WIDTH;
-        height = THROW_APPLE_HEIGHT;
+        width = THROW_APPLE_BBOX_SIZE;
+        height = THROW_APPLE_BBOX_SIZE;
     }
     virtual void SetState(int state);
 };

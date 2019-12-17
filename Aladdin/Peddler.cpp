@@ -31,6 +31,10 @@ void Peddler::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
             }
         }
     }
+    else if (!shop_opened && animations[ani]->currentFrame == 35)
+    {
+        shop_opened = true;
+    }
 
 }
 

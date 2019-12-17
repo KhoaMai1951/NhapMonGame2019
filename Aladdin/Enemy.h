@@ -9,7 +9,6 @@ public:
     bool start_attack = false;
     DWORD attack_start = 0;
     int hitpoint;
-    int score;
 
     Enemy();
     ~Enemy();

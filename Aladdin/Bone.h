@@ -13,12 +13,14 @@
 #define AUTO_DESTROY_TIME 2000
 
 enum BoneState {
-	BONE_STATE_FLYING = 0,
+    BONE_STATE_FLYING = 0,
+    BONE_STATE_DEAD = 5,
 };
 
 enum BoneAni
 {
 	BONE_ANI_FLYING,
+    BONE_ANI_DEAD,
 };
 
 enum BoneBoxSize {
@@ -43,8 +45,10 @@ public:
 		hitpoint = 1;
 		width = BONE_WIDTH;
 		height = BONE_HEIGHT;
+        scoreGain = 150;
 	}
 	virtual void SetState(int state);
+    void InsertToGrid() { SpatialGrid::GetInstance()->Insert(this); }
 };
 
 #endif // ! BONE_H

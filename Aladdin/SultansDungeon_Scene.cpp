@@ -70,6 +70,7 @@ void SultansDungeon_Scene::Initialize()
 
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);
+    SetSaveLocation(aladdin->x, aladdin->y);
 #pragma endregion Initalize Aladdin vector_environment
 
     ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects, 1);
@@ -88,7 +89,8 @@ void SultansDungeon_Scene::Initialize()
     {
         All_collide_objects.push_back(vector_environment[i]);
     }
-        
+
+    grid_id = All_collide_objects.size();
 	
     SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
@@ -106,6 +108,7 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	//fix thuật toán add vào grid
 	RECT temp = camera->InvertY(cam_rect.left, cam_rect.top, cam_rect.right, 
 		cam_rect.bottom, SCREEN_WIDTH, SCREEN_HEIGHT);
+
 	set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(temp.left, 
 		temp.top, temp.right, temp.bottom);
 
@@ -116,42 +119,45 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	SpatialGrid* grid = SpatialGrid::GetInstance();
     //Update objets
     objects[0]->Update(dt, &coObjects); //player
+    for (int i = 0; i < coObjects.size(); i++)
+    {
+        if (coObjects[i] != NULL)
+        {
+            if (!coObjects[i]->isItem)
+            {
+                coObjects[i]->player_x = aladdin->x;
+                coObjects[i]->player_y = aladdin->y;
+            }
+            coObjects[i]->Update(dt, &coObjects);
+        }
+    }
     for (int i = 0; i < vector_apple.size(); i++)
     {
         vector_apple[i]->Update(dt, &coObjects);
     }
-    for (int i = 0; i < coObjects.size(); i++)
+    for (int i = 0; i < vector_bone.size(); i++)
     {
-        if (!coObjects[i]->isItem)
-        {
-            coObjects[i]->player_x = aladdin->x;
-            coObjects[i]->player_y = aladdin->y;
-        }
-        coObjects[i]->Update(dt, &coObjects);
+        vector_bone[i]->Update(dt, NULL);
     }
     for (int i = 0; i < vector_environment.size(); i++)
     {
         vector_environment[i]->Update(dt, NULL);
     }
-	for (int i = 0; i < vector_bone.size(); i++)
-	{
-		vector_bone[i]->Update(dt, NULL);
-	}
 
 #pragma region
     //Camera follow player (use distance bettween player and camera right-side)
     //Horizontally
-    if (aladdin->x - camera->getPositionWorld().x > SCREEN_ACTUAL_WIDTH / 2)
+    if (aladdin->x - camera->getPositionWorld().x > SCREEN_ACTUAL_WIDTH / 2 + 5)
     {
-    	camera->setPositionWorld(D3DXVECTOR2((int)(aladdin->x - SCREEN_ACTUAL_WIDTH / 2),  camera->getPositionWorld().y));
+    	camera->setPositionWorld(D3DXVECTOR2((int)(aladdin->x - SCREEN_ACTUAL_WIDTH / 2 - 5),  camera->getPositionWorld().y));
 
         //Check right-most of the map
         if (camera->getPositionWorld().x > MAP_WIDTH - SCREEN_ACTUAL_WIDTH)
             camera->setPositionWorld(D3DXVECTOR2(MAP_WIDTH - SCREEN_ACTUAL_WIDTH, camera->getPositionWorld().y));
     }
-    else if (aladdin->x - camera->getPositionWorld().x < 50) //50 is min distance between player and left side of camera
+    else if (aladdin->x - camera->getPositionWorld().x < SCREEN_ACTUAL_WIDTH / 2 - 5) //50 is min distance between player and left side of camera
     {
-    	camera->setPositionWorld(D3DXVECTOR2((int)(aladdin->x - 50),
+    	camera->setPositionWorld(D3DXVECTOR2((int)(aladdin->x - SCREEN_ACTUAL_WIDTH / 2 + 5),
             camera->getPositionWorld().y));
 
         //Check left-most of the map
@@ -176,17 +182,19 @@ void SultansDungeon_Scene::Update(DWORD dt)
     }
 #pragma endregion Camera
 
-    for (int i = 1; i < objects.size(); i++)
-        if (objects[i]->isDead)
-        {
-			//delete in grid
-			SpatialGrid::GetInstance()->DeleteFromGrid(objects[i]->id);
+   // for (int i = 0; i < objects.size(); i++)
+   //     if (objects[i]->isDead)
+   //     {
+			////delete in grid
+			//SpatialGrid::GetInstance()->DeleteFromGrid(objects[i]->id);
 
-			//delete in objects
-			delete objects[i];
-			objects.erase(objects.begin() + i);
-            All_collide_objects.erase(All_collide_objects.begin() + i);
-        }
+			////delete in objects
+   //         
+			//delete objects[i];
+   //         objects[i] = NULL;
+			//objects.erase(objects.begin() + i);
+   //         All_collide_objects.erase(All_collide_objects.begin() + i);
+   //     }
     //delete apple throw
     for (int i = 0; i < vector_apple.size(); i++)
     {
@@ -197,14 +205,16 @@ void SultansDungeon_Scene::Update(DWORD dt)
         }
     }
 	//delete bone
-	for (int i = 0; i < vector_bone.size(); i++)
-	{
-		if (vector_bone[i]->isDead == true)
-		{
-			delete vector_bone[i];
-			vector_bone.erase(vector_bone.begin() + i);
-		}
-	}
+	//for (int i = vector_bone.size() - 1; i >= 0 ; --i)
+	//{
+	//	if (vector_bone[i]->isDead == true)
+	//	{
+ //           SpatialGrid::GetInstance()->DeleteFromGrid(vector_bone[i]->id);
+	//		delete vector_bone[i];
+ //           vector_bone[i] = NULL;
+	//		vector_bone.erase(vector_bone.begin() + i);
+	//	}
+	//}
 
  /*   if (mario->x > MAP_WIDTH)
         next_scene = SCENE_COMPLETE;

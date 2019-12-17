@@ -40,7 +40,7 @@ public:
 	int id;
     bool isDead;
     bool isItem = false;
-
+    long scoreGain = 0;
     float player_x, player_y;
 
 	float x; 

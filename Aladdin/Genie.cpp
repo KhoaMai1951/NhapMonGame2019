@@ -10,6 +10,7 @@ void Genie::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 
 void Genie::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+    if (isDead) return;
     CGameObject::Update(dt, coObjects);
     vy = going_up * MOVE_SPEED;
 
@@ -65,6 +66,7 @@ void Genie::SetState(int state)
 
 void Genie::Render()
 {
+    if (isDead) return;
     ani = GENIE_ANI_IDLE;
     if (state == GENIE_STATE_IDLE2) {
         ani = GENIE_ANI_IDLE2;

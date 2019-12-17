@@ -27,6 +27,7 @@ class Peddler : public CGameObject
     virtual void Render();
 public:
     DWORD idle_start;
+    bool shop_opened = false;
     Peddler() : CGameObject()
     {
         idle_start = 0;

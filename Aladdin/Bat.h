@@ -38,7 +38,7 @@ public:
         flying_start = 0;
 		idle_start = 0;
 		hitpoint = 1;
-		score = 200;
+		scoreGain = 100;
 		width = BBOX_WIDTH;
 		height = BBOX_HEIGHT;
 		lastFrameWidth = BBOX_WIDTH;

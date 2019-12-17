@@ -10,6 +10,7 @@ void Ruby::GetBoundingBox(float &left, float &top, float &right, float &bottom)
 
 void Ruby::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+    if (isDead) return;
     CGameObject::Update(dt, coObjects);
 
     if (state == RUBY_STATE_EATEN)
@@ -32,6 +33,7 @@ void Ruby::SetState(int state)
 
 void Ruby::Render()
 {
+    if (isDead) return;
     ani = RUBY_ANI_IDLE;
     if (state == RUBY_STATE_EATEN) {
         ani = RUBY_ANI_EATEN;

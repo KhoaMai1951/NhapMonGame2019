@@ -10,16 +10,30 @@ void Bone::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 
 void Bone::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+    if (isDead) return;
+    ViewPort* cam = ViewPort::getInstance();
+    RECT cam_rect = cam->getBounding();
+    if (!checkOverlap(x, y, x + width, y - height, cam_rect.left, cam_rect.top, cam_rect.right, cam_rect.bottom))
+    {
+        isDead = true;
+        return;
+    }
 	if (GetTickCount() - create_start > AUTO_DESTROY_TIME)
 	{
 		isDead = true;
 		return;
 	}
-	if (hitpoint <= 0)
+	if (hitpoint <= 0 && state != BONE_STATE_DEAD)
 	{
-		isDead = true;
-		return;
+        SetState(BONE_STATE_DEAD);
+        return;
 	}
+    else if (state == BONE_STATE_DEAD)
+    {
+        if (animations[ani]->currentFrame == 9)
+            isDead = true;
+        return;
+    }
 
 	CGameObject::Update(dt);
 
@@ -86,13 +100,18 @@ void Bone::SetState(int state)
 	switch (state)
 	{
 	case BONE_STATE_FLYING:
-		ani = BONE_ANI_FLYING;
+        ani = BONE_ANI_FLYING; break;
+    case BONE_STATE_DEAD:
+        vx = 0; vy = 0;
 		break;
 	}
 }
 
 void Bone::Render()
 {
-	animations[ani]->Render(x, y);
+    if (state == BONE_STATE_DEAD)
+        ani = BONE_ANI_DEAD;
+	if(!isDead)
+        animations[ani]->Render(x, y);
 	//DebugOut(L"Rendering bones \n");
 }

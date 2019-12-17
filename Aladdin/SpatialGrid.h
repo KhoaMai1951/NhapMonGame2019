@@ -21,6 +21,7 @@ public:
 	void Clear();
 	void SetCell(int);
 	void Insert(CGameObject*, string FileName);
+    void Insert(CGameObject*);
 	void Index(CGameObject*, float&, float&, float&, float&);
 	set<CGameObject*> Get(float, float, float, float);
     set<CGameObject*> GetGridForCollision(float, float, float, float);

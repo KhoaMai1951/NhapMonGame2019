@@ -12,6 +12,7 @@ void Bat::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 
 void Bat::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+    if (isDead) return;
 	CGameObject::Update(dt, coObjects);
     x += dx;
     y += dy;
@@ -135,6 +136,7 @@ void Bat::SetState(int state)
 
 void Bat::Render()
 {
+    if (isDead) return;
 	int restart_frame = 0;
 	switch (state)
 	{

@@ -29,6 +29,7 @@ public:
         //lastFrameWidth = APPLE_IDLE_WIDTH;
         //lastFrameHeight = APPLE_IDLE_HEIGHT;
         isItem = true;
+        scoreGain = 150;
         width = BBOX_WIDTH;
         height = BBOX_HEIGHT;
     }

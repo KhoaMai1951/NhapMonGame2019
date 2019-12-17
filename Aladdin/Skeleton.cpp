@@ -15,6 +15,7 @@ void Skeleton::GetBoundingBox(float& left, float& top, float& right, float& bott
 
 void Skeleton::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 {
+    if (isDead) return;
     CGameObject::Update(dt, coObjects);
 
     //IF player in bat's attack range
@@ -87,14 +88,14 @@ void Skeleton::Render()
 
     int alpha = 255;
     //animations[ani]->Render(x, y, alpha, restart_frame);
-    animations[ani]->Render(x, y, width, lastFrameWidth, lastFrameHeight, alpha, restart_frame, nx);
+    if(!isDead)
+        animations[ani]->Render(x, y, width, lastFrameWidth, lastFrameHeight, alpha, restart_frame, nx);
 
     //RenderBoundingBox();
 }
 
 void Skeleton::Explode()
 {
-    Sound::getInstance()->play("SKELETON_EXPLODE", false, 1);
     SetState(SKELETON_STATE_DEAD);
     exploded = true;
 	//bay phải
@@ -102,11 +103,14 @@ void Skeleton::Explode()
 	{
 		Bone* bone = new Bone();
 		bone->AddAnimation(BONE_FLYING);
+        bone->AddAnimation(ENEMY_EXPLODE);
 		bone->nx = 1;
 		bone->x = x + (width / 2);
 		bone->y = y - (height / 2) - i * 5; // giảm 5 pixel mỗi xương
 		bone->vy = i - 1;
 		bone->SetState(BONE_STATE_FLYING);
+        bone->id = ((SultansDungeon_Scene*)scene)->grid_id++;
+        bone->InsertToGrid();
 		((SultansDungeon_Scene*)scene)->vector_bone.push_back(bone);
 	}
 	//bay trái
@@ -114,13 +118,15 @@ void Skeleton::Explode()
 	{
 		Bone* bone = new Bone();
 		bone->AddAnimation(BONE_FLYING);
+        bone->AddAnimation(ENEMY_EXPLODE);
 		bone->nx = -1;
 		bone->x = x + (width / 2);
 		bone->y = y - (height / 2) - i * 5; // giảm 5 pixel mỗi xương
 		bone->vy = i - 1;
 		bone->SetState(BONE_STATE_FLYING);
+        bone->id = ((SultansDungeon_Scene*)scene)->grid_id++;
+        bone->InsertToGrid();
 		((SultansDungeon_Scene*)scene)->vector_bone.push_back(bone);
-		//DebugOut(L"Bone added to vector \n");
 	}
 
 	//bay lên
@@ -129,6 +135,7 @@ void Skeleton::Explode()
 		if (i == 0) continue; //skip 0
 		Bone* bone = new Bone();
 		bone->AddAnimation(BONE_FLYING);
+        bone->AddAnimation(ENEMY_EXPLODE);
 		if (i < 0)
 			bone->nx = -1;
 		else if (i > 0)
@@ -137,6 +144,8 @@ void Skeleton::Explode()
 		bone->y = y - (height / 2);
 		bone->vy = 3;
 		bone->SetState(BONE_STATE_FLYING);
+        bone->id = ((SultansDungeon_Scene*)scene)->grid_id++;
+        bone->InsertToGrid();
 		((SultansDungeon_Scene*)scene)->vector_bone.push_back(bone);
 	}
 }

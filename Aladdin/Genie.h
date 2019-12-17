@@ -36,6 +36,7 @@ public:
         idle_start = 0;
         //lastFrameWidth = APPLE_IDLE_WIDTH;
         //lastFrameHeight = APPLE_IDLE_HEIGHT;
+        scoreGain = 200;
         isItem = true;
         width = BBOX_WIDTH;
         height = BBOX_HEIGHT;

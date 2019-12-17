@@ -1,6 +1,7 @@
 ﻿#include "Aladdin.h"
 #include "SultansDungeon_Scene.h"
 #include "Bat.h"
+#include "Peddler.h"
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -12,6 +13,15 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     }
     else if (state == ALADDIN_STATE_DEAD)
     {
+        if (animations[ani]->currentFrame == 32)
+        {
+            x = scene->save_x;
+            y = scene->save_y + 10;
+            SetState(ALADDIN_STATE_IDLE);
+            StartUntouchable();
+            health = MAX_HEALTH;
+            life--;
+        }
         if (CGame::GetInstance()->IsKeyPress(DIK_Q))
         {
             SetState(ALADDIN_STATE_IDLE);
@@ -163,7 +173,8 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         if (animations[ani]->currentFrame == 5)
 		{
-			SetState(prevState);
+            if(prevState != ALADDIN_STATE_JUMP || prevState != ALADDIN_STATE_RUN_JUMP || prevState != ALADDIN_STATE_CLIMB_JUMP)
+			    SetState(prevState);
 		}
     }
 	
@@ -1010,19 +1021,22 @@ int Aladdin::CheckGround0Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        try
+        if (coObjects->at(i) != NULL)
         {
-            if (dynamic_cast<Ground *>(coObjects->at(i)))
+            try
             {
-                if (dynamic_cast<Ground *>(coObjects->at(i))->type == 0)
-                    ground0_objects.push_back(coObjects->at(i));
+                if (dynamic_cast<Ground *>(coObjects->at(i)))
+                {
+                    if (dynamic_cast<Ground *>(coObjects->at(i))->type == 0)
+                        ground0_objects.push_back(coObjects->at(i));
+                }
+            }
+            catch (exception e)
+            {
+                DebugOut(L"Caused exception\n");
+                continue;
             }
         }
-        catch (exception e)
-        {
-            DebugOut(L"Caused exception\n");
-            continue;
-        }    
     }
 
     CalcPotentialCollisions(ground0_objects, coEvents);
@@ -1099,15 +1113,18 @@ bool Aladdin::CheckGround1Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        try
+        if (coObjects->at(i) != NULL)
         {
-            if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 1)
-                ground1_objects.push_back(coObjects->at(i));
-        }
-        catch (exception e)
-        {
-            DebugOut(L"Caused exception\n");
-            continue;
+            try
+            {
+                if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 1)
+                    ground1_objects.push_back(coObjects->at(i));
+            }
+            catch (exception e)
+            {
+                DebugOut(L"Caused exception\n");
+                continue;
+            }
         }
     }
 
@@ -1150,16 +1167,20 @@ bool Aladdin::CheckStepCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        try
+        if (coObjects->at(i) != NULL)
         {
-            if (dynamic_cast<Step *>(coObjects->at(i)) && dynamic_cast<Step *>(coObjects->at(i))->standable)
-                Steps.push_back(coObjects->at(i));
+            try
+            {
+                if (dynamic_cast<Step *>(coObjects->at(i)) && dynamic_cast<Step *>(coObjects->at(i))->standable)
+                    Steps.push_back(coObjects->at(i));
+            }
+            catch (exception e)
+            {
+                DebugOut(L"Caused exception\n");
+                continue;
+            }
         }
-        catch (exception e)
-        {
-            DebugOut(L"Caused exception\n");
-            continue;
-        }
+        
     }
 
     CalcPotentialCollisions(Steps, coEvents);
@@ -1194,66 +1215,86 @@ bool Aladdin::CheckItemCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 {
     for (UINT i = 0; i < coObjects->size(); i++)
     {
-        if (coObjects->at(i)->isItem == true)
+        if (coObjects->at(i) != NULL)
         {
-            float t1, l1, r1, b1;
-            l1 = coObjects->at(i)->x;
-            t1 = coObjects->at(i)->y;
-            r1 = coObjects->at(i)->x + coObjects->at(i)->width;
-            b1 = coObjects->at(i)->y - coObjects->at(i)->height;
-            if (checkOverlap(l1, t1, r1, b1, x, y, x + width, y - height))
+            if (coObjects->at(i)->isItem == true)
             {
-                if (dynamic_cast<Apple *>(coObjects->at(i))) // if e->obj is Apple 
+                float t1, l1, r1, b1;
+                l1 = coObjects->at(i)->x;
+                t1 = coObjects->at(i)->y;
+                r1 = coObjects->at(i)->x + coObjects->at(i)->width;
+                b1 = coObjects->at(i)->y - coObjects->at(i)->height;
+                if (checkOverlap(l1, t1, r1, b1, x, y, x + width, y - height))
                 {
-                    Apple *apple = dynamic_cast<Apple *>(coObjects->at(i));
-
-                    if (apple->GetState() != APPLE_STATE_DESTROY)
+                    if (dynamic_cast<Apple *>(coObjects->at(i))) // if e->obj is Apple 
                     {
-                        apple->SetState(APPLE_STATE_DESTROY);
-                        numApple++;
+                        Apple *apple = dynamic_cast<Apple *>(coObjects->at(i));
+
+                        if (apple->GetState() != APPLE_STATE_DESTROY)
+                        {
+                            apple->SetState(APPLE_STATE_DESTROY);
+                            numApple++;
+                            score += apple->scoreGain;
+                        }
+                    }
+                    else if (dynamic_cast<Ruby *>(coObjects->at(i)))
+                    {
+                        Ruby *ruby = dynamic_cast<Ruby *>(coObjects->at(i));
+
+                        if (ruby->GetState() != RUBY_STATE_EATEN)
+                        {
+                            ruby->SetState(RUBY_STATE_EATEN);
+                            numRuby++;
+                            score += ruby->scoreGain;
+                        }
+                    }
+                    else if (dynamic_cast<Genie *>(coObjects->at(i)))
+                    {
+                        Genie *genie = dynamic_cast<Genie *>(coObjects->at(i));
+
+                        if (genie->GetState() != GENIE_STATE_DEAD)
+                        {
+                            genie->SetState(GENIE_STATE_DEAD);
+                            score += genie->scoreGain;
+                        }
+                    }
+                    else if (dynamic_cast<Vase *>(coObjects->at(i)))
+                    {
+                        Vase *vase = dynamic_cast<Vase *>(coObjects->at(i));
+
+                        if (vase->GetState() != VASE_STATE_EATEN)
+                        {
+                            vase->SetState(VASE_STATE_EATEN);
+                            scene->SetSaveLocation(x, y);
+                        }
+                    }
+                    else if (dynamic_cast<LifeHeal *>(coObjects->at(i)))
+                    {
+                        LifeHeal *life = dynamic_cast<LifeHeal *>(coObjects->at(i));
+
+                        if (life->GetState() != LIFEHEAL_STATE_EATEN)
+                        {
+                            life->SetState(LIFEHEAL_STATE_EATEN);
+                            health += 3;
+                            if (health > MAX_HEALTH)
+                                health = MAX_HEALTH;
+                            score += life->scoreGain;
+                        }
                     }
                 }
-                else if (dynamic_cast<Ruby *>(coObjects->at(i)))
-                {
-                    Ruby *ruby = dynamic_cast<Ruby *>(coObjects->at(i));
 
-                    if (ruby->GetState() != RUBY_STATE_EATEN)
-                    {
-                        ruby->SetState(RUBY_STATE_EATEN);
-                    }
-                }
-                else if (dynamic_cast<Genie *>(coObjects->at(i)))
+            }
+            else if (dynamic_cast<Peddler *>(coObjects->at(i)) && dynamic_cast<Peddler *>(coObjects->at(i))->shop_opened)
+            {
+                if (CGame::GetInstance()->IsKeyPress(DIK_UP))
                 {
-                    Genie *genie = dynamic_cast<Genie *>(coObjects->at(i));
-
-                    if (genie->GetState() != GENIE_STATE_DEAD)
-                    {
-                        genie->SetState(GENIE_STATE_DEAD);
-                    }
-                }
-                else if (dynamic_cast<Vase *>(coObjects->at(i)))
-                {
-                    Vase *vase = dynamic_cast<Vase *>(coObjects->at(i));
-
-                    if (vase->GetState() != VASE_STATE_EATEN)
-                    {
-                        vase->SetState(VASE_STATE_EATEN);
-                    }
-                }
-                else if (dynamic_cast<LifeHeal *>(coObjects->at(i)))
-                {
-                    LifeHeal *life = dynamic_cast<LifeHeal *>(coObjects->at(i));
-
-                    if (life->GetState() != LIFEHEAL_STATE_EATEN)
-                    {
-                        life->SetState(LIFEHEAL_STATE_EATEN);
-                        health += 3;
-                        if (health > MAX_HEALTH)
-                            health = MAX_HEALTH;
-                    }
+                    int lifeUp = numRuby / 5;
+                    numRuby %= 5;
+                    life += lifeUp;
+                    if(lifeUp > 0)
+                        Sound::getInstance()->play("LIFEHEAL_COLLECT", false, 1);
                 }
             }
-
         }
     }
 #pragma region
@@ -1366,54 +1407,59 @@ void Aladdin::CheckAttackCollision(vector<LPGAMEOBJECT> atkCol_object)
 
     for (UINT i = 0; i < atkCol_object.size(); i++)
     {
-        int attack_size = 0;
-        if (dynamic_cast<Enemy*>(atkCol_object.at(i)))
+        if (atkCol_object.at(i) != NULL)
         {
-            Enemy* enemy = dynamic_cast<Enemy*>(atkCol_object.at(i));
-
-            //Lấy rect enemy
-            float l1 = enemy->x;
-            float t1 = enemy->y;
-            float r1 = l1 + enemy->width;
-            float b1 = t1 - enemy->height;
-
-            //Lấy bbox của attack animation
-            float l2, t2, r2, b2;
-            switch (state)
+            int attack_size = 0;
+            if (dynamic_cast<Enemy*>(atkCol_object.at(i)))
             {
-            case ALADDIN_STATE_ATTACK: 
-                attack_size = ATTACK_SIZE; break;
-            case ALADDIN_STATE_SIT_ATTACK:
-                attack_size = SIT_ATTACK_SIZE; break;
-            case ALADDIN_STATE_JUMP_ATTACK:
-                attack_size = JUMP_ATTACK_SIZE; break;
-            case ALADDIN_STATE_RUN_ATTACK:
-                attack_size = RUN_ATTACK_SIZE; break;
-			case ALADDIN_STATE_CLIMB_ATTACK:
-				attack_size = CLIMB_ATTACK_SIZE; break;
-            }
-            if (nx >= 1)
-            {
-                l2 = x;
-                t2 = y;
-                r2 = l2 + width + attack_size;
-                b2 = t2 - height;
-            }
-            if (nx <= -1)
-            {
-                l2 = x - attack_size;
-                t2 = y;
-                r2 = l2 + width;
-                b2 = t2 - height;
-            }
+                Enemy* enemy = dynamic_cast<Enemy*>(atkCol_object.at(i));
 
+                //Lấy rect enemy
+                float l1 = enemy->x;
+                float t1 = enemy->y;
+                float r1 = l1 + enemy->width;
+                float b1 = t1 - enemy->height;
 
-            if (checkOverlap(l1, t1, r1, b1, l2, t2, r2, b2))
-            {
-                enemy->hitpoint--;
-                if (dynamic_cast<Guard0*>(enemy) || dynamic_cast<Guard1*>(enemy))
+                //Lấy bbox của attack animation
+                float l2, t2, r2, b2;
+                switch (state)
                 {
-                    enemy->SetState(4); //4 is hurt
+                case ALADDIN_STATE_ATTACK:
+                    attack_size = ATTACK_SIZE; break;
+                case ALADDIN_STATE_SIT_ATTACK:
+                    attack_size = SIT_ATTACK_SIZE; break;
+                case ALADDIN_STATE_JUMP_ATTACK:
+                    attack_size = JUMP_ATTACK_SIZE; break;
+                case ALADDIN_STATE_RUN_ATTACK:
+                    attack_size = RUN_ATTACK_SIZE; break;
+                case ALADDIN_STATE_CLIMB_ATTACK:
+                    attack_size = CLIMB_ATTACK_SIZE; break;
+                }
+                if (nx >= 1)
+                {
+                    l2 = x;
+                    t2 = y;
+                    r2 = l2 + width + attack_size;
+                    b2 = t2 - height;
+                }
+                if (nx <= -1)
+                {
+                    l2 = x - attack_size;
+                    t2 = y;
+                    r2 = l2 + width;
+                    b2 = t2 - height;
+                }
+
+
+                if (checkOverlap(l1, t1, r1, b1, l2, t2, r2, b2))
+                {
+                    enemy->hitpoint--;
+                    if (enemy->hitpoint <= 0)
+                        score += enemy->scoreGain;
+                    if (dynamic_cast<Guard0*>(enemy) || dynamic_cast<Guard1*>(enemy))
+                    {
+                        enemy->SetState(4); //4 is hurt
+                    }
                 }
             }
         }
@@ -1429,8 +1475,9 @@ void Aladdin::AddThrowApple()
             //nem tao
             ThrowApple* throwApple = new ThrowApple();
             throwApple->name = "throw_apple";
-            throwApple->AddAnimation(ANI_APPLE_FLYING);
-            throwApple->AddAnimation(ANI_APPLE_DESTROY);
+            throwApple->AddAnimation(ANI_APPLE_FLYING_RIGHT);
+            throwApple->AddAnimation(ANI_APPLE_FLYING_LEFT);
+            throwApple->AddAnimation(ANI_THROW_APPLE_DESTROY);
             throwApple->nx = nx;
             float temp_x, temp_y = y - 5;
             if (nx >= 0)
@@ -1525,7 +1572,7 @@ bool Aladdin::CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects)
         if (dynamic_cast<Enemy*>(coObjects.at(i)))
         {
             Enemy* enemy = dynamic_cast<Enemy*>(coObjects.at(i));
-            if (enemy->state == 5) continue;//DEAD 
+            if (enemy->isDead) continue;//DEAD 
 
             //Lấy rect enemy
             float l1 = enemy->x;

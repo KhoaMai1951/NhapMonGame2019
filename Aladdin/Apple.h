@@ -28,6 +28,7 @@ public:
     Apple() : CGameObject()
     {
         isItem = true;
+        scoreGain = 20;
         lastFrameWidth = APPLE_IDLE_WIDTH;
         lastFrameHeight = APPLE_IDLE_HEIGHT;
     }

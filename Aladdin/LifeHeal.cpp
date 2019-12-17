@@ -10,6 +10,7 @@ void LifeHeal::GetBoundingBox(float &left, float &top, float &right, float &bott
 
 void LifeHeal::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
+    if (isDead) return;
     CGameObject::Update(dt, coObjects);
 
     if (state == LIFEHEAL_STATE_EATEN)
@@ -32,6 +33,7 @@ void LifeHeal::SetState(int state)
 
 void LifeHeal::Render()
 {
+    if (isDead) return;
     ani = LIFEHEAL_ANI_IDLE;
     if (state == LIFEHEAL_STATE_EATEN) {
         ani = LIFEHEAL_ANI_EATEN;
