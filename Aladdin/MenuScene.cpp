@@ -28,7 +28,7 @@ void MenuScene::Update(DWORD dt)
         if (choosing == 0)
             next_scene = SCENE_SULTAN;
         else
-            next_scene = SCENE_COMPLETE;
+            next_scene = SCENE_BOSS;
         Sound::getInstance()->stop("SCENE_MENU");
     }
 

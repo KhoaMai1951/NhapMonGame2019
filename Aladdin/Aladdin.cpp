@@ -2,6 +2,7 @@
 #include "SultansDungeon_Scene.h"
 #include "Bat.h"
 #include "Peddler.h"
+#include "Boss_Scene.h"
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -220,18 +221,20 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
         untouchable_start = 0;
         untouchable = 0;
     }
-    int Ground0Collided = CheckGround0Collision(&vector_gameobject, dt),
-        Ground1Collided = CheckGround1Collision(&vector_gameobject, dt),
-        StepCollided = CheckStepCollision(&((SultansDungeon_Scene*)scene)->vector_environment, dt);
-
-    //0 - no collision, 1 - collide from all direction, -1 - collide from left-right , -2 -collide from top-bot 
-    if (Ground0Collided == 0 && !(Ground1Collided || StepCollided))
-        y += dy;
-    else if (Ground0Collided == -1 && !(Ground1Collided || StepCollided))
-    {
-        y += dy;
-        //vy *= 0.9; // jump slower
-    }
+	int Ground0Collided = CheckGround0Collision(&vector_gameobject, dt),
+		Ground1Collided = CheckGround1Collision(&vector_gameobject, dt), StepCollided;
+	if (dynamic_cast<SultansDungeon_Scene*>(scene))
+		StepCollided = CheckStepCollision(&((SultansDungeon_Scene*)scene)->vector_environment, dt);
+	else
+		StepCollided = 0;
+	//0 - no collision, 1 - collide from all direction, -1 - collide from left-right , -2 -collide from top-bot 
+	if (Ground0Collided == 0 && !(Ground1Collided || StepCollided))
+		y += dy;
+	else if (Ground0Collided == -1 && !(Ground1Collided || StepCollided))
+	{
+		y += dy;
+		//vy *= 0.9; // jump slower
+	}
     
 
     //Bug when pushing wall and release
@@ -1515,7 +1518,10 @@ void Aladdin::AddThrowApple()
 
             throwApple->SetPosition(temp_x, temp_y);
             throwApple->SetState(THROW_APPLE_STATE_FLYING);
-            ((SultansDungeon_Scene*)scene)->vector_apple.push_back(throwApple);
+			if (dynamic_cast<SultansDungeon_Scene*>(scene))
+				((SultansDungeon_Scene*)scene)->vector_apple.push_back(throwApple);
+			else
+				((Boss_Scene*)scene)->vector_apple.push_back(throwApple);
             throwing = true;
             numApple--;
             Sound::getInstance()->play("ALADDIN_THROW", false, 1);

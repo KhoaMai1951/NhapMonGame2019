@@ -11,6 +11,8 @@
 #define SCREEN_ACTUAL_HEIGHT 242.4    //(240 - 38)*1.2
 #define MAP_WIDTH 2271
 #define MAP_HEIGHT 1138
+#define BOSS_MAP_WIDTH 1503
+#define BOSS_MAP_HEIGHT 691
 
 #define CELL_SIZE 240
 
@@ -104,6 +106,7 @@ enum SceneAnimation
     ANI_LEVEL_COMPLETE = 6002,
     ANI_ALADDIN_LEVEL_COMPLETE = 6003,
     ANI_ABU_LEVEL_COMPLETE = 6004,
+	ANI_BOSS_MAP = 6005,
 };
 
 enum HUDAnimation
@@ -153,7 +156,7 @@ enum TEX_ID
     TEX_PEDDLER,
 	TEX_BONE,
 	TEX_CHARACTER,
-    TEX_Extra_HUD
+    TEX_Extra_HUD,
 };
 
 #endif

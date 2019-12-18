@@ -7,6 +7,7 @@
 
 #include "SultansDungeon_Scene.h"
 #include "CompleteScene.h"
+#include "Boss_Scene.h"
 #include "MenuScene.h"
 #include "ResourceLoader.h"
 
@@ -168,6 +169,12 @@ int Run()
                 scene->Initialize();
                 scene->next_scene = -1;
                 break;
+			case SCENE_BOSS:
+				delete scene;
+				scene = new Boss_Scene();
+				scene->Initialize();
+				scene->next_scene = -1;
+				break;
             }
 
 			scene->Update(dt);

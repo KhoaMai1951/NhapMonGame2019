@@ -2306,7 +2306,7 @@ void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path
 
 void ResourceLoader::ChangeYtoDecart(float& y)
 {
-	y = MAP_HEIGHT + 30 - y; //38 la do lech pixel o duoi man hinh
+	y = BOSS_MAP_HEIGHT + 30 - y; //38 la do lech pixel o duoi man hinh
 }
 
 void ResourceLoader::LoadMusic()
