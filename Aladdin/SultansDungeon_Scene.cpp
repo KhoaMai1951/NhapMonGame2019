@@ -7,6 +7,7 @@ SultansDungeon_Scene::SultansDungeon_Scene()
 
 void SultansDungeon_Scene::Initialize()
 {
+    ViewPort::getInstance()->setPositionWorld(D3DXVECTOR2(0, SCREEN_HEIGHT));
 	Sound::getInstance()->play("SCENE_SULTAN_SOUND", true, 0);
 
     ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
@@ -217,11 +218,16 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	//}
 
 	healthHUD->HealthRatio = (float)aladdin->health / (float)MAX_HEALTH;
-
- /*   if (mario->x > MAP_WIDTH)
+    if (aladdin->x > MAP_WIDTH)
+    {
         next_scene = SCENE_COMPLETE;
-    else if (mario->HP == 0)
-        next_scene = SCENE_SULTAN;*/
+        Sound::getInstance()->stop("SCENE_SULTAN_SOUND");
+    }    
+    else if (aladdin->life < 0)
+    {
+        next_scene = SCENE_MENU;
+        Sound::getInstance()->stop("SCENE_SULTAN_SOUND");
+    }    
 }
 
 void SultansDungeon_Scene::Render()

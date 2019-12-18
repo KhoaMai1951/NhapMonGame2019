@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Objects\HUD">
       <UniqueIdentifier>{99a0ace9-3cbc-4f3c-924c-f41c6aeee453}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Objects\SceneObjects">
+      <UniqueIdentifier>{6428b7dd-ce5d-4cc6-8d14-d766f62dfdcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\Scene">
+      <UniqueIdentifier>{70466668-3b25-4883-ac7d-5a126ae9248a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="debug.h">
@@ -156,6 +162,15 @@
     <ClInclude Include="HUD.h">
       <Filter>Header Files\Objects\HUD</Filter>
     </ClInclude>
+    <ClInclude Include="CompleteScene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="MovingObject.h">
+      <Filter>Header Files\Objects\SceneObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Header Files\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -259,6 +274,15 @@
     </ClCompile>
     <ClCompile Include="HUD.cpp">
       <Filter>Source Files\Objects\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="CompleteScene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MovingObject.cpp">
+      <Filter>Source Files\Objects\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

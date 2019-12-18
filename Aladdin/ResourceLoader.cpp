@@ -903,6 +903,9 @@ animations->Add(2000, ani);
 	ani = new CAnimation(75);					//face hud
 	ani->Add(54001);
 	animations->Add(5401, ani);
+    ani = new CAnimation(75);					//blade pointer hud
+    ani->Add(55001);
+    animations->Add(5501, ani);
 #pragma endregion HUD
 
 	//Animation ground
@@ -930,16 +933,16 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_ALADDIN_2_LEFT, L"textures\\Aladdin2_left.png", D3DCOLOR_XRGB(106, 149, 190));
 	textures->Add(TEX_EXPLODE_SKELETON, L"textures\\Skeleton.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_BAT, L"textures\\Bat.png", D3DCOLOR_XRGB(255, 255, 255));
-	textures->Add(TEX_MAIN_MENU, L"textures\\Menu.png", D3DCOLOR_XRGB(255, 255, 255));
-	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\LevelComplete.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_MAIN_MENU, L"textures\\MainMenu.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_LEVEL_COMPLETE, L"textures\\Complete.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ABU, L"textures\\Abu.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_ENEMY_EXPLODE, L"textures\\Enemy_exlode.png", D3DCOLOR_XRGB(255, 0, 255));   
     textures->Add(TEX_GENIE_EXPLODE, L"textures\\Genie_Explode.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_EXIT_GATE, L"textures\\exit_gate.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_PEDDLER, L"textures\\Peddler.png", D3DCOLOR_XRGB(255, 0, 255));
-	textures->Add(TEX_BONE, L"textures\\Bone.png", D3DCOLOR_XRGB(255, 0, 255));
+	textures->Add(TEX_BONE, L"textures\\Bone.png", D3DCOLOR_XRGB(255, 0, 255));          
 	textures->Add(TEX_CHARACTER, L"textures\\Characters.png", D3DCOLOR_XRGB(255, 255, 255));
-
+    textures->Add(TEX_Extra_HUD, L"textures\\Extra_HUD.png", D3DCOLOR_XRGB(255, 255, 255));
 
     CSprites* sprites = CSprites::GetInstance();
 
@@ -1740,13 +1743,16 @@ void ResourceLoader::LoadSprite()
 
 #pragma endregion Items
 
-#pragma region
+#pragma region     
+    LPDIRECT3DTEXTURE9 texExtraHUD = textures->Get(TEX_Extra_HUD);
 	//Apple HUD
-	sprites->Add(52001, 341, 17, 352, 29, texItem);
+	sprites->Add(52001, 86, 0, 102, 16, texExtraHUD);
 	//Ruby HUD
-	sprites->Add(53001, 340, 111, 357, 127, texItem);
+	sprites->Add(53001, 67, 0, 84, 16, texExtraHUD);
     //face
     sprites->Add(54001, 340, 140, 362, 164, texItem);
+    //blade pointer at menu
+    sprites->Add(55001, 0, 0, 36, 13, texExtraHUD);
 
 	//health (sprite from full to empty)
 	sprites->Add(50001, 17, 3007, 137, 3039, texAladdin2);				
@@ -1839,9 +1845,9 @@ void ResourceLoader::LoadSprite()
 	LPDIRECT3DTEXTURE9 texLevelComplete = textures->Get(TEX_LEVEL_COMPLETE);
 	LPDIRECT3DTEXTURE9 texAbu = textures->Get(TEX_ABU);
 
-	sprites->Add(60001, 0, 0, 421, 256, texMenu);	//main menu
+	sprites->Add(60001, 0, 0, 384, 255, texMenu);	//main menu
 
-	sprites->Add(60002, 0, 0, 636, 445, texLevelComplete); //level complete
+	sprites->Add(60002, 0, 0, 384, 288, texLevelComplete); //level complete
 		
 	sprites->Add(60003, 3,	2565,	47,	2627, texAladdin); //aladdin level complete
 	sprites->Add(60004, 60,	2566,	109,	2625, texAladdin);
@@ -2308,7 +2314,9 @@ void ResourceLoader::LoadMusic()
 	Sound* sound = Sound::getInstance();
     //scene
 	sound->loadSound("audio/Arabian nights.wav", "SCENE_SULTAN_SOUND");
-    sound->loadSound("audio/Boss Tune.wav", "SCENE_BOSS");
+    sound->loadSound("audio/Boss Tune.wav", "SCENE_BOSS");  
+    sound->loadSound("audio/Level Complete.wav", "LEVEL_COMPLETE");
+    sound->loadSound("audio/A Whole New World.wav", "SCENE_MENU");
     //aladdin
     sound->loadSound("audio/Aladdin Hurt.wav", "ALADDIN_HURT");
     sound->loadSound("audio/Aladdin Push.wav", "ALADDIN_PUSH");

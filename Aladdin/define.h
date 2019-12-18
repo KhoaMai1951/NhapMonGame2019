@@ -106,7 +106,7 @@ enum SceneAnimation
     ANI_ABU_LEVEL_COMPLETE = 6004,
 };
 
-enum CharacterAnimation
+enum HUDAnimation
 {
 	ANI_HEALTH_9 = 5009,
 	ANI_HEALTH_8 = 5008,
@@ -121,6 +121,7 @@ enum CharacterAnimation
 	ANI_APPLE_HUD = 5201,
 	ANI_RUBY_HUD = 5301,
 	ANI_FACE_HUD = 5401,
+    ANI_BLADE_POINTER_HUD = 5501,
 };
 
 //Texture ID
@@ -152,6 +153,7 @@ enum TEX_ID
     TEX_PEDDLER,
 	TEX_BONE,
 	TEX_CHARACTER,
+    TEX_Extra_HUD
 };
 
 #endif

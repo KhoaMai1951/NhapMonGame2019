@@ -6,6 +6,8 @@
 #include "Game.h"
 
 #include "SultansDungeon_Scene.h"
+#include "CompleteScene.h"
+#include "MenuScene.h"
 #include "ResourceLoader.h"
 
 CGame *game;
@@ -145,6 +147,29 @@ int Run()
 
 			game->ProcessKeyboard();
 			
+            switch (scene->next_scene)
+            {
+            case SCENE_MENU:
+                delete scene;
+                scene = new MenuScene();
+                scene->Initialize();
+                scene->next_scene = -1;
+                break;
+            case SCENE_SULTAN:
+                delete scene;
+                scene = new SultansDungeon_Scene();
+                scene->Initialize();
+                scene->next_scene = -1;
+                break;
+
+            case SCENE_COMPLETE:
+                delete scene;
+                scene = new CompleteScene();
+                scene->Initialize();
+                scene->next_scene = -1;
+                break;
+            }
+
 			scene->Update(dt);
 			scene->Render();
 		}
@@ -170,8 +195,8 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
     ResourceLoader::CreateAnimation();
 	ResourceLoader::LoadMusic();
-    scene = new SultansDungeon_Scene();
-    scene->Initialize();
+
+    scene = new Scene();
 
 	Run();
 

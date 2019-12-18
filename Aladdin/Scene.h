@@ -28,7 +28,7 @@ enum LEVEL
 {
     SCENE_SULTAN,
     SCENE_BOSS,
-    SCENE_INTRO,
+    SCENE_MENU,
     SCENE_COMPLETE
 };
 class Aladdin;
@@ -46,11 +46,11 @@ protected:
 	HUD *lifeHUD,*rubyHUD, *appleHUD;
 
 public:
-    int next_scene;
+    int next_scene = SCENE_MENU;
     float save_x, save_y;
     Scene()
     {
-        next_scene = -1;
+        //next_scene = SCENE_SULTAN;
         //tile_count = 0;
 
 #pragma region
