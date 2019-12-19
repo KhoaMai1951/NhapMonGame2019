@@ -928,7 +928,7 @@ animations->Add(2000, ani);
 	}
 	animations->Add(-9000, ani);
 
-	ani = new CAnimation(100);		// boss 2
+	ani = new CAnimation(110);		// boss 2
 	for (int i = 8; i <= 18; i++)
 	{
 		ani->Add(70000 + i);
@@ -936,7 +936,7 @@ animations->Add(2000, ani);
 	ani->Add(70018);
 	animations->Add(9001, ani);
 
-	ani = new CAnimation(100);		// boss 2 left
+	ani = new CAnimation(110);		// boss 2 left
 	for (int i = 8; i <= 18; i++)
 	{
 		ani->Add(-1 * (70000 + i));
@@ -959,11 +959,18 @@ animations->Add(2000, ani);
 	animations->Add(-9002, ani);
 
 	ani = new CAnimation(100);		// boss spell
-	for (int i = 27; i <= 33; i++)
+	for (int i = 27; i <= 29; i++)
 	{
 		ani->Add(70000 + i);
 	}
 	animations->Add(9003, ani);
+
+    ani = new CAnimation(100);		// boss explode
+    for (int i = 30; i <= 33; i++)
+    {
+        ani->Add(70000 + i);
+    }
+    animations->Add(-9003, ani);
 
 	ani = new CAnimation(150);		// flame strip damage
 	for (int i = 36; i <= 44; i++)// start from 34

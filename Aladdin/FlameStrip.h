@@ -4,7 +4,7 @@
 #include "debug.h"
 #include "SpatialGrid.h"
 
-#define FIRESTRIP_WAITING_TIME 1000
+#define FIRESTRIP_WAITING_TIME 600
 
 enum FLAMESTRIP_STATE
 {

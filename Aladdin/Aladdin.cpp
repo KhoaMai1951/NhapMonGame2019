@@ -3,6 +3,7 @@
 #include "Bat.h"
 #include "Peddler.h"
 #include "Boss_Scene.h"
+#include "BossSpell.h"
 
 void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
 {
@@ -247,8 +248,9 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     if (!untouchable)
         CheckEnemyOverlap(vector_gameobject);
 
-
     ProcessKeyboard();
+    if ((Boss_Scene*)(scene))
+        CheckSpellBossOverlap(vector_gameobject);
 }
 
 void Aladdin::ProcessKeyboard()
@@ -836,9 +838,9 @@ void Aladdin::Render()
 		case ALADDIN_STATE_RUN:
 		{
 			restart_frame = 3;
-			if (vx > 0)
+			if (nx > 0)
 				ani = ALADDIN_ANI_RUNNING_RIGHT;
-			else if (vx < 0)
+			else if (nx < 0)
 				ani = ALADDIN_ANI_RUNNING_LEFT;
 			break;
 		}
@@ -1746,4 +1748,42 @@ bool Aladdin::CheckFlameStripCollision(vector<LPGAMEOBJECT> *coObjects)
     // clean up collision events
     for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
     return true;
+}
+
+bool Aladdin::CheckSpellBossOverlap(vector<LPGAMEOBJECT> coObjects)
+{
+    for (UINT i = 0; i < coObjects.size(); i++)
+    {
+        if (dynamic_cast<BossSpell*>(coObjects.at(i)))
+        {
+            BossSpell* spell = dynamic_cast<BossSpell*>(coObjects.at(i));
+            if (spell->isDead || spell->state == BOSS_SPELL_STATE_DEAD) continue;//DEAD 
+
+            float l1 = spell->x;
+            float t1 = spell->y;
+            float r1 = l1 + spell->width;
+            float b1 = t1 - spell->height;;
+
+            if (checkOverlap(l1, t1, r1, b1, x, y, x + width, y - height))
+            {
+                spell->SetState(BOSS_SPELL_STATE_DEAD);//430, 202 (boss position) 
+                //if (!untouchable)
+                {
+                    float cap_speed = 0.4;
+                    if (x < 420) //player left
+                    {
+                        vx += 0.01*dt;
+                    }
+                    else if (x > 420)
+                        vx -= 0.01*dt;
+                    if (vx > cap_speed)
+                        vx = cap_speed;
+                    else if (vx < -cap_speed)
+                        vx = -cap_speed;
+                }
+                return true;
+            }
+        }
+    }
+    return false;
 }

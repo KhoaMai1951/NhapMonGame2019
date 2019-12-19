@@ -1,87 +1,68 @@
-//#include "BossSpell.h"
-//
-//void BossSpell::GetBoundingBox(float& left, float& top, float& right, float& bottom)
-//{
-//	if (nx == -1)
-//		left = x + 10;
-//	else
-//		left = x;
-//	top = y - 18;
-//	right = left + width;
-//	bottom = top - height;
-//}
-//
-//void BossSpell::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
-//{
-//	if (isDead) return;
-//	ViewPort* cam = ViewPort::getInstance();
-//	RECT cam_rect = cam->getBounding();
-//
-//	CGameObject::Update(dt);
-//
-//	vy = 0;
-//
-//	vx = BOSS_SPELL_SPEED * dt * nx;
-//
-//#pragma region
-//	vector<LPCOLLISIONEVENT> coEvents;
-//	vector<LPCOLLISIONEVENT> coEventsResult;
-//
-//	float l, t, r, b;
-//	GetBoundingBox(l, t, r, b);
-//	set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->GetGridForCollision(l, t, r, b);
-//	vector<CGameObject*> vector_gameobject(set_gameobject.begin(), set_gameobject.end());
-//
-//	coEvents.clear();
-//
-//	//void CGameObject::CalcPotentialCollisions(vector<LPGAMEOBJECT>* coObjects, vector<LPCOLLISIONEVENT>& coEvents)
-//	CalcPotentialCollisions(vector_gameobject, coEvents);
-//
-//	// No collision occured, proceed normally
-//	if (coEvents.size() == 0)
-//	{
-//		x += vx;
-//		y += vy;
-//	}
-//	else
-//	{
-//		float min_tx, min_ty, nx = 0, ny;
-//
-//		FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
-//
-//		for (UINT i = 0; i < coEventsResult.size(); i++)
-//		{
-//			LPCOLLISIONEVENT e = coEventsResult[i];
-//
-//
-//		}
-//		x += vx;
-//		y += vy;
-//	}
-//
-//	// clean up collision events
-//	for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
-//#pragma endregion collision
-//
-//}
-//
-//void BossSpell::SetState(int state)
-//{
-//	BossSpell::SetState(state);
-//	switch (state)
-//	{
-//
-//	}
-//}
-//
-//void BossSpell::Render()
-//{
-//	/*if (nx > 0)
-//	{
-//		ani = BOSS_FLAME_ANI_RUNNING_RIGHT;
-//	}
-//	else ani = BOSS_FLAME_ANI_RUNNING_LEFT;
-//*/
-//	animations[ani]->Render(x, y);
-//	RenderBoundingBox();
-//}
+#include "BossSpell.h"
+
+void BossSpell::GetBoundingBox(float& left, float& top, float& right, float& bottom)
+{
+    left = x;
+    top = y;
+	right = left + width;
+	bottom = top - height;
+}
+
+void BossSpell::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
+{
+	if (isDead) return;
+    if (x < 80 || x > BOSS_MAP_WIDTH - 80)
+        isDead = true;
+    if (player_x <= x)  //player left
+        nx = -1;
+    else if (player_x + 40 >= x + width)   //player right
+        nx = 1;
+    else nx = 0;
+
+    if (player_y - 48 <= y - height)  //player under
+        ny = -1;
+    else if (player_y >= y)   //player above
+        ny = 1;
+    else ny = 0;
+
+    vy = BOSS_SPELL_SPEED * dt*ny;
+	vx = BOSS_SPELL_SPEED * dt * nx;
+
+    CGameObject::Update(dt);
+
+    if (leftSide && x > BOSS_MAP_WIDTH / 2)
+        isDead = true;
+    else if(!leftSide && x < BOSS_MAP_WIDTH / 2)
+        isDead = true;
+
+    if (state == BOSS_SPELL_STATE_DEAD && animations[ani]->currentFrame == 3)
+        isDead = true;
+
+    x += vx;
+    y += vy;
+
+}
+
+void BossSpell::SetState(int state)
+{
+    CGameObject::SetState(state);
+	switch (state)
+	{
+    case BOSS_SPELL_STATE_FLYING:
+        break;
+    case BOSS_SPELL_STATE_DEAD:
+        vx = 0;
+        vy = 0;
+        break;
+	}
+}
+
+void BossSpell::Render()
+{
+    if (state == BOSS_SPELL_STATE_FLYING)
+        ani = BOSS_SPELL_ANI_FLYING;
+    else
+        ani = BOSS_SPELL_ANI_DEAD;
+	animations[ani]->Render(x, y);
+	//RenderBoundingBox();
+}

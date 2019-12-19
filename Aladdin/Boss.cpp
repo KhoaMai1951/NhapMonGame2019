@@ -26,6 +26,9 @@ void Boss::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		idle_start = GetTickCount();
 	}
 
+    if (isHumanForm && hitpoint < BOSS_MAX_HITPOINT / 2)
+        isHumanForm = false;
+
 	if (!isHumanForm && (animations[ani]->currentFrame == 10) && !attacking)
 	{
 		Sound::getInstance()->play("JAFAR_SNAKE", false, 1);
@@ -33,15 +36,27 @@ void Boss::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		boss_flame->AddAnimation(BOSS_FLAME_RIGHT);
 		boss_flame->AddAnimation(BOSS_FLAME_LEFT);
 		boss_flame->nx = nx;
-		boss_flame->x = x + (width / 2);
-		boss_flame->y = y - (height / 2);
+        if (nx == 1)
+        {
+            boss_flame->x = x + (width / 2);
+            boss_flame->y = y - (height / 2);
+        }
+        else if (nx == -1)
+        {
+            boss_flame->x = x - BOSS_FLAME_WIDTH + +(width / 2);
+            boss_flame->y = y - (height / 2);
+        }
 		boss_flame->id = ((Boss_Scene*)scene)->grid_id++;
 		boss_flame->InsertToGrid();
-		((Boss_Scene*)scene)->vector_bosss_flame.push_back(boss_flame);
+		((Boss_Scene*)scene)->vector_boss_flame.push_back(boss_flame);
 		attacking = true;
 	}
 	else if (!isHumanForm && (animations[ani]->currentFrame == 11))
 		attacking = false;
+    else
+    {
+        AddBossSpell();
+    }
 
 	if (player_x < x)
 	{
@@ -110,4 +125,32 @@ void Boss::Render()
 	animations[ani]->Render(x, y, width, lastFrameWidth, lastFrameHeight, 255, restart_frame, nx);
 
 	RenderBoundingBox();
+}
+
+void Boss::AddBossSpell()
+{
+    if (isHumanForm && (animations[ani]->currentFrame != lastFrame))
+    {
+        Sound::getInstance()->play("JAFAR_TRACTOR", false, 1);
+        BossSpell* spell = new BossSpell();
+        spell->AddAnimation(BOSS_SPELL);
+        spell->AddAnimation(BOSS_SPELL_EXPLODE);
+        spell->nx = nx;
+        if (nx == 1)
+        {
+            spell->x = x + width;
+            spell->leftSide = false;
+        }  
+        else if (nx == -1)
+        {
+            spell->x = x - 30;
+            spell->leftSide = true;
+        }
+        spell->y = y - 10;
+        spell->id = ((Boss_Scene*)scene)->grid_id++;
+        spell->InsertToGrid();
+        spell->SetState(BOSS_SPELL_STATE_FLYING);
+        ((Boss_Scene*)scene)->vector_boss_spell.push_back(spell);
+        lastFrame = animations[ani]->currentFrame;
+    }
 }

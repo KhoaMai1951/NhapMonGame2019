@@ -156,12 +156,6 @@ void Boss_Scene::Update(DWORD dt)
 	{
 		vector_apple[i]->Update(dt, &coObjects);
 	}
-	
-	for (int i = 0; i < vector_bosss_flame.size(); i++)
-	{
-		vector_bosss_flame[i]->Update(dt, NULL);
-	}
-	
 
 	//boss
 	boss->player_x = aladdin->x;
@@ -174,10 +168,28 @@ void Boss_Scene::Update(DWORD dt)
             if(!boss->isHumanForm)
                 coObjects[i]->Update(dt, &coObjects);
         }
+        else if (dynamic_cast<BossSpell*>(coObjects[i]))
+        {
+            coObjects[i]->Update(dt, &coObjects);
+            dynamic_cast<BossSpell*>(coObjects[i])->setPlayerPosition(aladdin->x, aladdin->y);
+        }
         else
 		    coObjects[i]->Update(dt, &coObjects);
     }
 
+    /*for (int i = 0; i < coObjects.size(); i++)
+    {
+        if (dynamic_cast<BossSpell*>(coObjects[i]))
+        {
+            if (coObjects[i]->isDead)
+            {
+                SpatialGrid::GetInstance()->DeleteFromGrid(coObjects[i]->id);
+                delete coObjects[i];
+                coObjects[i] = NULL;
+                coObjects.erase(coObjects.begin() + i);
+            }
+        }
+    }*/
 #pragma region
 	//Camera follow player (use distance bettween player and camera right-side)
 	//Horizontally
@@ -277,11 +289,20 @@ void Boss_Scene::Render()
         {
             objects[i]->Render();
         }
-
-		//boss flame
-		for (int i = 0; i < vector_bosss_flame.size(); i++)
+        //boss spell
+        for (int i = 0; i < vector_boss_spell.size(); i++)
+        {
+            if (!vector_boss_spell[i]->isDead)
+            {
+                vector_boss_spell[i]->Render();
+            }
+                
+        }
+		//boss spell
+		for (int i = 0; i < vector_boss_flame.size(); i++)
 		{
-			vector_bosss_flame[i]->Render();
+            if(!vector_boss_flame[i]->isDead)
+                vector_boss_flame[i]->Render();
 		}
 		
 
@@ -305,7 +326,7 @@ void Boss_Scene::Render()
 
 		string txt;
 		txt = to_string(aladdin->score);
-		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15, true);
+		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 75, camPos.y - 15, true);
 		txt = to_string(aladdin->life);
 		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 13);
 		txt = to_string(aladdin->numRuby);

@@ -9,8 +9,8 @@ public:
 	vector<CGameObject*> vector_apple;
     CMap *map, *back;
 	Boss* boss;
-	vector<CGameObject*> vector_bosss_flame;
-	vector<CGameObject*> vector_flame_strip;
+	vector<CGameObject*> vector_boss_flame;
+    vector<CGameObject*> vector_boss_spell;
     float last_player_x, last_player_y;
 	int grid_id;
 	Boss_Scene();

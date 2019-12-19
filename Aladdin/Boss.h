@@ -28,7 +28,7 @@ class Scene;
 class Boss : public Enemy
 {
 	virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
-
+    int lastFrame = -1;
 public:
 	Scene* scene;
 	DWORD idle_start;
@@ -54,5 +54,6 @@ public:
 		else
 			isHumanForm = true;
 	}
+    void AddBossSpell();
 };
 #endif

@@ -325,7 +325,7 @@ void SultansDungeon_Scene::Render()
 
 		string txt;
 		txt = to_string(aladdin->score);
-		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15, true);
+		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 75, camPos.y - 15, true);
 		txt = to_string(aladdin->life);
 		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 13);
 		txt = to_string(aladdin->numRuby);

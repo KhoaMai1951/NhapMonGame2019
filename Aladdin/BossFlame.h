@@ -7,8 +7,9 @@
 #include "Ground.h"
 #include "debug.h"
 
-
-#define BOSS_FLAME_SPEED 0.10f
+#define BBOX_WIDTH 85
+#define BBOX_HEIGHT 28
+#define BOSS_FLAME_SPEED 0.15f
 
 
 enum BossFlameState {

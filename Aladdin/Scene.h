@@ -22,6 +22,7 @@
 #include "Boss.h"
 #include "BossFlame.h"
 #include "FlameStrip.h"
+#include "BossSpell.h"
 #include "Sound.h"
 #include "define.h"
 
@@ -39,6 +40,7 @@ class Skeleton;
 class Boss;
 class BossFlame;
 class FlameStrip;
+class BossSpell;
 class Scene
 {
 protected:

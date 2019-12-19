@@ -184,7 +184,6 @@ class Scene;
 
 class Aladdin : public CGameObject
 {
-   
     int untouchable;
     bool jumping = false;
     int pushing = 0; // >0 - pushing right, <0 pushing left
@@ -205,6 +204,7 @@ class Aladdin : public CGameObject
     bool CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects);
     bool CheckStepCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
     bool CheckFlameStripCollision(vector<LPGAMEOBJECT>* coObjects);
+    bool CheckSpellBossOverlap(vector<LPGAMEOBJECT> coObjects);
 
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
     void AddThrowApple();
