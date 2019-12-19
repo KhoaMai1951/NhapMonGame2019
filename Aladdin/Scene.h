@@ -19,6 +19,7 @@
 #include "ResourceLoader.h"
 #include "Aladdin.h"
 #include "Skeleton.h"
+#include "Boss.h"
 #include "Sound.h"
 #include "define.h"
 
@@ -33,6 +34,7 @@ enum LEVEL
 };
 class Aladdin;
 class Skeleton;
+class Boss;
 class Scene
 {
 protected:

@@ -912,6 +912,58 @@ animations->Add(2000, ani);
 	ani = new CAnimation(100);
 	ani->Add(30001);
 	animations->Add(301, ani);
+
+#pragma region
+	ani = new CAnimation(100);		// boss 1
+	for (int i = 0; i <= 7; i++)
+	{
+		ani->Add(70000 + i);
+	}
+	animations->Add(9000, ani);
+
+	ani = new CAnimation(100);		// boss 1 left
+	for (int i = 0; i <= 7; i++)
+	{
+		ani->Add(-1 * (70000 + i));
+	}
+	animations->Add(-9000, ani);
+
+	ani = new CAnimation(100);		// boss 2
+	for (int i = 8; i <= 18; i++)
+	{
+		ani->Add(70000 + i);
+	}
+	animations->Add(9001, ani);
+
+	ani = new CAnimation(100);		// boss 2 left
+	for (int i = 8; i <= 18; i++)
+	{
+		ani->Add(-1 * (70000 + i));
+	}
+	animations->Add(-9001, ani);
+
+	ani = new CAnimation(100);		// boss flame
+	for (int i = 19; i <= 26; i++)
+	{
+		ani->Add(70000 + i);
+	}
+	animations->Add(9002, ani);
+
+	ani = new CAnimation(100);		// boss flame left
+	for (int i = 19; i <= 26; i++)
+	{
+		ani->Add(-1 * (70000 + i));
+	}
+	animations->Add(-9002, ani);
+
+	ani = new CAnimation(100);		// boss spell
+	for (int i = 27; i <= 33; i++)
+	{
+		ani->Add(70000 + i);
+	}
+	animations->Add(9003, ani);
+
+#pragma endregion Boss
 }
 
 void ResourceLoader::LoadSprite()
@@ -944,6 +996,13 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_NUMBER1, L"textures\\Number1.png", D3DCOLOR_XRGB(255, 0, 255));
     textures->Add(TEX_NUMBER2, L"textures\\Number2.png", D3DCOLOR_XRGB(255, 0, 255));
     textures->Add(TEX_Extra_HUD, L"textures\\Extra_HUD.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_1, L"textures\\boss_1.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_1_LEFT, L"textures\\boss_1_left.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_2, L"textures\\boss_2.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_2_LEFT, L"textures\\boss_2_left.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_FLAME, L"textures\\boss_flame.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_FLAME_LEFT, L"textures\\boss_flame_left.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_SPELL, L"textures\\boss_spell.png", D3DCOLOR_XRGB(255, 255, 255));
 
     CSprites* sprites = CSprites::GetInstance();
 
@@ -1898,6 +1957,83 @@ void ResourceLoader::LoadSprite()
 
 #pragma endregion Scenes
 
+#pragma region
+	LPDIRECT3DTEXTURE9 texBoss1 = textures->Get(TEX_BOSS_1);	//boss 1
+	sprites->Add(70000, 0, 0, 87, 73, texBoss1);
+	sprites->Add(70001, 87, 0, 174, 73, texBoss1);
+	sprites->Add(70002, 174, 0, 261, 73, texBoss1);
+	sprites->Add(70003, 261, 0, 348, 73, texBoss1);
+	sprites->Add(70004, 348, 0, 435, 73, texBoss1);
+	sprites->Add(70005, 435, 0, 522, 73, texBoss1);
+	sprites->Add(70006, 522, 0, 609, 73, texBoss1);
+	sprites->Add(70007, 609, 0, 696, 73, texBoss1);
+
+	LPDIRECT3DTEXTURE9 texBoss1_left = textures->Get(TEX_BOSS_1_LEFT);	//boss 1 LEFT
+	sprites->Add(-70007, 0, 0, 87, 73, texBoss1_left);
+	sprites->Add(-70006, 87, 0, 174, 73, texBoss1_left);
+	sprites->Add(-70005, 174, 0, 261, 73, texBoss1_left);
+	sprites->Add(-70004, 261, 0, 348, 73, texBoss1_left);
+	sprites->Add(-70003, 348, 0, 435, 73, texBoss1_left);
+	sprites->Add(-70002, 435, 0, 522, 73, texBoss1_left);
+	sprites->Add(-70001, 522, 0, 609, 73, texBoss1_left);
+	sprites->Add(-70000, 609, 0, 696, 73, texBoss1_left);
+
+	LPDIRECT3DTEXTURE9 texBoss2 = textures->Get(TEX_BOSS_2);	//boss 2
+	sprites->Add(70008, 0, 0, 111, 86, texBoss2);
+	sprites->Add(70009, 111, 0, 222, 86, texBoss2);
+	sprites->Add(70010, 222, 0, 333, 86, texBoss2);
+	sprites->Add(70011, 333, 0, 444, 86, texBoss2);
+	sprites->Add(70012, 444, 0, 555, 86, texBoss2);
+	sprites->Add(70013, 555, 0, 666, 86, texBoss2);
+	sprites->Add(70014, 666, 0, 777, 86, texBoss2);
+	sprites->Add(70015, 777, 0, 888, 86, texBoss2);
+	sprites->Add(70016, 888, 0, 999, 86, texBoss2);
+	sprites->Add(70017, 999, 0, 1110, 86, texBoss2);
+	sprites->Add(70018, 1110, 0, 1221, 86, texBoss2);
+
+	LPDIRECT3DTEXTURE9 texBoss2_left = textures->Get(TEX_BOSS_2_LEFT);	//boss 2 LEFT
+	sprites->Add(-70018, 0, 0, 111, 86, texBoss2_left);
+	sprites->Add(-70017, 111, 0, 222, 86, texBoss2_left);
+	sprites->Add(-70016, 222, 0, 333, 86, texBoss2_left);
+	sprites->Add(-70015, 333, 0, 444, 86, texBoss2_left);
+	sprites->Add(-70014, 444, 0, 555, 86, texBoss2_left);
+	sprites->Add(-70013, 555, 0, 666, 86, texBoss2_left);
+	sprites->Add(-70012, 666, 0, 777, 86, texBoss2_left);
+	sprites->Add(-70011, 777, 0, 888, 86, texBoss2_left);
+	sprites->Add(-70010, 888, 0, 999, 86, texBoss2_left);
+	sprites->Add(-70009, 999, 0, 1110, 86, texBoss2_left);
+	sprites->Add(-70008, 1110, 0, 1221, 86, texBoss2_left);
+
+	LPDIRECT3DTEXTURE9 texBossFlame = textures->Get(TEX_BOSS_FLAME);	//boss flame
+	sprites->Add(70019, 0, 0, 101, 53, texBossFlame);
+	sprites->Add(70020, 101, 0, 202, 53, texBossFlame);
+	sprites->Add(70021, 202, 0, 303, 53, texBossFlame);
+	sprites->Add(70022, 303, 0, 404, 53, texBossFlame);
+	sprites->Add(70023, 404, 0, 505, 53, texBossFlame);
+	sprites->Add(70024, 505, 0, 606, 53, texBossFlame);
+	sprites->Add(70025, 606, 0, 707, 53, texBossFlame);
+	sprites->Add(70026, 707, 0, 808, 53, texBossFlame);
+
+	LPDIRECT3DTEXTURE9 texBossFlame_left = textures->Get(TEX_BOSS_FLAME_LEFT);	//boss flame LEFT
+	sprites->Add(-70026, 0, 0, 101, 53, texBossFlame_left);
+	sprites->Add(-70025, 101, 0, 202, 53, texBossFlame_left);
+	sprites->Add(-70024, 202, 0, 303, 53, texBossFlame_left);
+	sprites->Add(-70023, 303, 0, 404, 53, texBossFlame_left);
+	sprites->Add(-70022, 404, 0, 505, 53, texBossFlame_left);
+	sprites->Add(-70021, 505, 0, 606, 53, texBossFlame_left);
+	sprites->Add(-70020, 606, 0, 707, 53, texBossFlame_left);
+	sprites->Add(-70019, 707, 0, 808, 53, texBossFlame_left);
+
+	LPDIRECT3DTEXTURE9 texBossSpell = textures->Get(TEX_BOSS_SPELL);	//boss spell
+	sprites->Add(70027, 0, 0, 30, 23, texBossSpell);
+	sprites->Add(70028, 30, 0, 60, 23, texBossSpell);
+	sprites->Add(70029, 60, 0, 90, 23, texBossSpell);
+	sprites->Add(70030, 90, 0, 120, 23, texBossSpell);
+	sprites->Add(70031, 120, 0, 150, 23, texBossSpell);
+	sprites->Add(70032, 150, 0, 180, 23, texBossSpell);
+	sprites->Add(70033, 180, 0, 210, 23, texBossSpell);
+
+#pragma endregion Boss
 
     //Ground
     LPDIRECT3DTEXTURE9 texGround = textures->Get(TEX_GROUND);  

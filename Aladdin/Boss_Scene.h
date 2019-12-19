@@ -8,6 +8,7 @@ private:
 public:
 	vector<CGameObject*> vector_apple;
     CMap *map, *back;
+	Boss* boss;
     float last_player_x, last_player_y;
 
 	int grid_id;

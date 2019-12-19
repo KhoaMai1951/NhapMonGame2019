@@ -104,7 +104,18 @@ void Boss_Scene::Initialize()
     last_player_y = aladdin->y;
 #pragma endregion Initalize Aladdin
 
-    ResourceLoader::GetInstance()->LoadObjectFromFile("objects_BossScene.txt", objects, 1,SCENE_BOSS);
+	//Initialize Boss
+	boss = new Boss();
+	boss->AddAnimation(BOSS_ATTACK_RIGHT);
+	boss->AddAnimation(BOSS_ATTACK_LEFT);
+	boss->AddAnimation(BOSS_2_ATTACK_RIGHT);
+	boss->AddAnimation(BOSS_2_ATTACK_LEFT);
+	boss->SetPosition(360.0f, 165.0f);
+	boss->SetScene(this);
+	boss->id = 1;
+	objects.push_back(boss);
+
+    ResourceLoader::GetInstance()->LoadObjectFromFile("objects_BossScene.txt", objects, 2,SCENE_BOSS);
 
     //Grid
     SpatialGrid* grid = SpatialGrid::GetInstance();
@@ -112,7 +123,7 @@ void Boss_Scene::Initialize()
     grid->Clear();
     grid->AddGridFromFile(objects, "boss_scene_grid.txt");
 
-
+	grid->Insert(boss);
 }
 
 void Boss_Scene::Update(DWORD dt)
@@ -145,9 +156,13 @@ void Boss_Scene::Update(DWORD dt)
 		vector_apple[i]->Update(dt, &coObjects);
 	}
 	
+	//boss
+	boss->player_x = aladdin->x;
+	boss->player_y = aladdin->y;
+
     for (int i = 0; i < coObjects.size(); i++)
     {
-        objects[i]->Update(dt, &coObjects);
+		coObjects[i]->Update(dt, &coObjects);
     }
 
 #pragma region
@@ -234,19 +249,18 @@ void Boss_Scene::Render()
 		//	}
 		//}
 
-		//aladdin
-		objects[0]->Render();
-
 		//vector apple
 		for (int i = 0; i < vector_apple.size(); i++)
 		{
 			vector_apple[i]->Render();
 		}
 
-        for (int i = 0; i < objects.size(); i++)
+        for (int i = 1; i < objects.size(); i++)
         {
             objects[i]->Render();
         }
+		//aladdin
+		objects[0]->Render();
 
 		//Update value and position of HUD
 		D3DXVECTOR2 camPos = camera->getPositionWorld();
