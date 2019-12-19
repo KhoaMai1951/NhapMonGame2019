@@ -8,6 +8,7 @@
 #define BBOX_WIDTH 60	//87
 #define BBOX_HEIGHT 73
 #define BBOX_WIDTH2 81	//11
+#define BOSS_MAX_HITPOINT 12
 
 enum BOSS_STATE
 {
@@ -35,7 +36,7 @@ public:
 	Boss() : Enemy()
 	{
 		idle_start = GetTickCount();
-		hitpoint = 12;
+		hitpoint = BOSS_MAX_HITPOINT;
 		scoreGain = 100;
 		width = BBOX_WIDTH;
 		height = BBOX_HEIGHT;

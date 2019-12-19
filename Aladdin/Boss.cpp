@@ -19,14 +19,14 @@ void Boss::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (isDead) return;
 	CGameObject::Update(dt, coObjects);
 
-	if (GetTickCount() - idle_start > 3000 && isHumanForm)
+	if (GetTickCount() - idle_start > 5000 && isHumanForm)
 	{
 		//laugh
 		Sound::getInstance()->play("JAFAR_LAUGH", false, 1);
 		idle_start = GetTickCount();
 	}
 
-	if (!isHumanForm && (animations[ani]->currentFrame == 4 || animations[ani]->currentFrame == 10) && !attacking)
+	if (!isHumanForm && (animations[ani]->currentFrame == 10) && !attacking)
 	{
 		Sound::getInstance()->play("JAFAR_SNAKE", false, 1);
 		BossFlame* boss_flame = new BossFlame();
@@ -40,7 +40,7 @@ void Boss::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 		((Boss_Scene*)scene)->vector_bosss_flame.push_back(boss_flame);
 		attacking = true;
 	}
-	else if (!isHumanForm && (animations[ani]->currentFrame == 11 || animations[ani]->currentFrame == 5))
+	else if (!isHumanForm && (animations[ani]->currentFrame == 11))
 		attacking = false;
 
 	if (player_x < x)
