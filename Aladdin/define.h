@@ -78,6 +78,8 @@ enum EnemyAnimation
 	BOSS_FLAME_RIGHT = 9002,
 	BOSS_FLAME_LEFT = -9002,
 	BOSS_SPELL = 9003,
+	FLAME_STRIP = 9004,
+	FLAME_STRIP_NULL = 9005,
 };
 
 enum DungeonAnimation
@@ -175,6 +177,7 @@ enum TEX_ID
 	TEX_BOSS_1_LEFT,
 	TEX_BOSS_2_LEFT,
 	TEX_BOSS_FLAME_LEFT,
+	TEX_FLAME_STRIP,
 };
 
 #endif

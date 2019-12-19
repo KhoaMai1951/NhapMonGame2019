@@ -180,6 +180,9 @@
     <ClInclude Include="BossFlame.h">
       <Filter>Header Files\Objects\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="FlameStrip.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -300,6 +303,9 @@
       <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="BossFlame.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="FlameStrip.cpp">
       <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

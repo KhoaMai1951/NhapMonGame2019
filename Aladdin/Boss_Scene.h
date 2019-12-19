@@ -10,6 +10,7 @@ public:
     CMap *map, *back;
 	Boss* boss;
 	vector<CGameObject*> vector_bosss_flame;
+	vector<CGameObject*> vector_flame_strip;
     float last_player_x, last_player_y;
 	int grid_id;
 	Boss_Scene();

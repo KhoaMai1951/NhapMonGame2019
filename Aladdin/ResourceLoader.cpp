@@ -964,6 +964,17 @@ animations->Add(2000, ani);
 	}
 	animations->Add(9003, ani);
 
+	ani = new CAnimation(100);		// flame strip damage
+	for (int i = 36; i <= 44; i++)// start from 34
+	{
+		ani->Add(70000 + i);
+	}
+	animations->Add(9004, ani);
+
+	ani = new CAnimation(100);		// flame strip NULL
+	ani->Add(70045);
+	animations->Add(9005, ani);
+
 #pragma endregion Boss
 }
 
@@ -1004,6 +1015,7 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_BOSS_FLAME, L"textures\\boss_flame.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_BOSS_FLAME_LEFT, L"textures\\boss_flame_left.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_BOSS_SPELL, L"textures\\boss_spell.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_FLAME_STRIP, L"textures\\flame_strip.png", D3DCOLOR_XRGB(255, 255, 255));
 
     CSprites* sprites = CSprites::GetInstance();
 
@@ -2034,6 +2046,25 @@ void ResourceLoader::LoadSprite()
 	sprites->Add(70032, 150, 0, 180, 23, texBossSpell);
 	sprites->Add(70033, 180, 0, 210, 23, texBossSpell);
 
+	LPDIRECT3DTEXTURE9 texFlameStrip = textures->Get(TEX_FLAME_STRIP);	//flame strip
+	LPDIRECT3DTEXTURE9 texFlameStripNull = textures->Get(TEX_GROUND);
+
+	sprites->Add(70034, 0, 0, 56, 1, texFlameStripNull);
+	sprites->Add(70035, 0, 0, 56, 1, texFlameStripNull);
+	sprites->Add(70036, 0, 0, 31, 56, texFlameStrip);
+	sprites->Add(70037, 31, 0, 62, 56, texFlameStrip);
+	sprites->Add(70038, 62, 0, 93, 56, texFlameStrip);
+	sprites->Add(70039, 93, 0, 124, 56, texFlameStrip);
+	sprites->Add(70040, 124, 0, 155, 56, texFlameStrip);
+	sprites->Add(70041, 155, 0, 186, 56, texFlameStrip);
+	sprites->Add(70042, 186, 0, 217, 56, texFlameStrip);
+	sprites->Add(70043, 217, 0, 248, 56, texFlameStrip);
+	sprites->Add(70044, 248, 0, 279, 56, texFlameStrip);
+
+	
+	sprites->Add(70045, 0, 0, 56, 1, texFlameStripNull);			 //frame strip NULL
+
+
 #pragma endregion Boss
 
     //Ground
@@ -2338,6 +2369,19 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
             ped->id = object_index;
             objects.push_back(ped);
         }
+		else if (name == "fire_step")
+		{
+		FlameStrip* flame = new FlameStrip();
+		flame->AddAnimation(FLAME_STRIP);
+		flame->AddAnimation(FLAME_STRIP_NULL);
+		flame->SetPosition(x, y);
+		flame->width = w;
+		flame->height = h;
+		flame->SetName(name);
+		flame->SetState(FLAMESTRIP_STATE_NOT_DO_DAMAGE);
+		flame->id = object_index;
+		objects.push_back(flame);
+		}
 
 		object_index++;
 	}

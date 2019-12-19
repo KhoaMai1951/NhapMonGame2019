@@ -12,8 +12,6 @@ void Boss_Scene::Initialize()
 
 	Sound::getInstance()->play("SCENE_BOSS", true, 0);
 
-
-
 	//----------Load Map từ file text và Tile Set
 	CSprites* sprites = CSprites::GetInstance();
 
@@ -163,6 +161,12 @@ void Boss_Scene::Update(DWORD dt)
 		vector_bosss_flame[i]->Update(dt, NULL);
 	}
 
+	for (int i = 0; i < vector_flame_strip.size(); i++)
+	{
+		vector_flame_strip[i]->Update(dt, NULL);
+	}
+	
+
 	//boss
 	boss->player_x = aladdin->x;
 	boss->player_y = aladdin->y;
@@ -277,6 +281,13 @@ void Boss_Scene::Render()
 		{
 			vector_bosss_flame[i]->Render();
 		}
+
+		//flame strip
+		for (int i = 0; i < vector_flame_strip.size(); i++)
+		{
+			vector_flame_strip[i]->Render();
+		}
+		
 
 		//aladdin
 		objects[0]->Render();

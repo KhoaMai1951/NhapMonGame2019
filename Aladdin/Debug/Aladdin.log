@@ -1,5 +1,5 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (04-Collision.vcxproj).  This can lead to incorrect clean and rebuild behavior.
-  Boss.cpp
+  Aladdin.cpp
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
@@ -52,13 +52,46 @@ C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(6,1): warning C4005: 
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
-C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Scene.h(108,21): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
-C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.cpp(9,11): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
-C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.cpp(110,92): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\FlameStrip.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\FlameStrip.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Scene.h(110,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Peddler.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\FlameStrip.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Peddler.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\FlameStrip.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(197,35): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(197,23): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(197,13): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(196,92): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(630,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(630,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(630,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(629,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(654,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(654,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(654,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(653,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(678,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(678,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(678,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(677,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(702,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(702,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(702,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(701,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(788,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(788,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(788,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(787,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(1013,81): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(1021,14): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(1021,14): warning C4244: C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Aladdin.cpp(1130) : warning C4715: 'Aladdin::CheckGround0Collision': not all control paths return a value
   Aladdin.vcxproj -> C:\Users\Khoa\Desktop\NM_Game_Ver23\Debug\Aladdin.exe

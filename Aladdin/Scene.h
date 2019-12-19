@@ -21,6 +21,7 @@
 #include "Skeleton.h"
 #include "Boss.h"
 #include "BossFlame.h"
+#include "FlameStrip.h"
 #include "Sound.h"
 #include "define.h"
 
@@ -37,6 +38,7 @@ class Aladdin;
 class Skeleton;
 class Boss;
 class BossFlame;
+class FlameStrip;
 class Scene
 {
 protected:

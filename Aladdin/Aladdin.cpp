@@ -174,8 +174,9 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         if (animations[ani]->currentFrame == 5)
 		{
-            if(prevState != ALADDIN_STATE_JUMP || prevState != ALADDIN_STATE_RUN_JUMP || prevState != ALADDIN_STATE_CLIMB_JUMP)
-			    SetState(prevState);
+			if (prevState != ALADDIN_STATE_JUMP || prevState != ALADDIN_STATE_RUN_JUMP || prevState != ALADDIN_STATE_CLIMB_JUMP)
+				SetState(prevState);
+			else SetState(ALADDIN_STATE_IDLE);
 		}
     }
 	
@@ -1663,6 +1664,26 @@ bool Aladdin::CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects)
                 return true;
             }
         }
+		else if (dynamic_cast<FlameStrip*>(coObjects.at(i)))
+		{
+			FlameStrip* flame = dynamic_cast<FlameStrip*>(coObjects.at(i));
+
+			float l1 = flame->x, t1 = flame->y, r1 = flame->x + flame->width, b1 = flame->y - flame->height;
+			if (checkOverlap(l1, t1, r1, b1, x, y, x + width, y - height))
+			{
+				if (flame->state != FLAMESTRIP_STATE_DO_DAMAGE)
+					flame->SetState(FLAMESTRIP_STATE_DO_DAMAGE);
+				if(flame->do_damage)
+				{
+					health--;
+					prevState = state;
+					prevFrame = animations[ani]->currentFrame;
+					SetState(ALADDIN_STATE_HURT);
+					StartUntouchable();
+				}
+
+			}
+		}
     }
     return false;
 }

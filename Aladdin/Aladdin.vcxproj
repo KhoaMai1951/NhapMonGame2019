@@ -131,6 +131,7 @@
     <ClInclude Include="Boss_Scene.h" />
     <ClInclude Include="Chains.h" />
     <ClInclude Include="Characters.h" />
+    <ClInclude Include="FlameStrip.h" />
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="MovingObject.h" />
     <ClInclude Include="CompleteScene.h" />
@@ -177,6 +178,7 @@
     <ClCompile Include="CompleteScene.cpp" />
     <ClCompile Include="debug.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="FlameStrip.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="Genie.cpp" />
