@@ -73,7 +73,7 @@ public:
 		rubyHUD->AddAnimation(ANI_RUBY_HUD);
 
 		characterHUD = new Characters();
-		for (int i = 0; i <= 36; i++)
+		for (int i = 0; i <= 19; i++)
 		{
 			characterHUD->AddAnimation(5100 + i);
 		}
@@ -99,7 +99,7 @@ public:
     virtual void Initialize() {};
     void SetSaveLocation(float _x, float _y) { save_x = _x; save_y = _y; }
 
-	void DrawTextHUD(string text, float x, float y)
+    void DrawTextHUD(string text, float x, float y, bool isBigSize = false)
 	{
 		for (int i = 0; i < text.size(); i++)
 		{
@@ -109,20 +109,25 @@ public:
 			{
 				charAni = asciiCode - 48;	//switch ascii code to animation index
 			}
-			else if (asciiCode >= 97 && asciiCode <= 122)
+			/*else if (asciiCode >= 97 && asciiCode <= 122)
 			{
 				charAni = asciiCode - 87;
 			}
 			else if (asciiCode == 32)
 			{
 				charAni = asciiCode + 4;
-			}
+			}*/
 
 
 			Characters* temp_char = this->characterHUD;
-			temp_char->ani = charAni;
+            if (isBigSize)
+            {
+                if (charAni >= 0 && charAni <= 9)
+                    charAni += 10;  //not include alphabet
+            }
+            temp_char->ani = charAni;
 
-			temp_char->x = x + i * 16;
+			temp_char->x = x + i * 14;
 			temp_char->y = y;
 			temp_char->Render();
 		}

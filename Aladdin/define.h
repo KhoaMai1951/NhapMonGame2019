@@ -11,12 +11,12 @@
 #define SCREEN_ACTUAL_HEIGHT 242.4    //(240 - 38)*1.2
 #define MAP_WIDTH 2271
 #define MAP_HEIGHT 1138
-#define BOSS_MAP_WIDTH 1503
-#define BOSS_MAP_HEIGHT 691
+#define BOSS_MAP_WIDTH 830
+#define BOSS_MAP_HEIGHT 450
 
 #define CELL_SIZE 240
 
-#define MAX_FRAME_RATE 240
+#define MAX_FRAME_RATE 120
 
 //Object ID from text
 #define GROUND0_ID "Ground0"
@@ -107,6 +107,7 @@ enum SceneAnimation
     ANI_ALADDIN_LEVEL_COMPLETE = 6003,
     ANI_ABU_LEVEL_COMPLETE = 6004,
 	ANI_BOSS_MAP = 6005,
+    ANI_BOSS_MAP_BACK = 6006,
 };
 
 enum HUDAnimation
@@ -139,6 +140,7 @@ enum TEX_ID
     TEX_MAP_DUNGEON = 10,
     TEX_DUNGEON_ENVIRONMENT = 11,
     TEX_MAP_BOSS = 20,
+    TEX_MAP_BOSS_BACK = 21,
     TEX_APPLE = 30,
     TEX_GUARD = 40,
     TEX_GUARD_LEFT = 41,
@@ -156,6 +158,7 @@ enum TEX_ID
     TEX_PEDDLER,
 	TEX_BONE,
 	TEX_CHARACTER,
+    TEX_NUMBER1, TEX_NUMBER2,
     TEX_Extra_HUD,
 };
 

@@ -23,24 +23,30 @@ void Boss_Scene::Initialize()
 	CAnimations* animations = CAnimations::GetInstance();
 
 	textures->Add(TEX_MAP_BOSS, L"textures\\palace.png", D3DCOLOR_XRGB(255, 255, 255));
-	//textures->Add(TEX_TILESET_BOSS, L"textures\\TileSet_BossSene.png", D3DCOLOR_XRGB(255, 255, 255));
+    textures->Add(TEX_MAP_BOSS_BACK, L"textures\\SceneBoss_Back.png", D3DCOLOR_XRGB(255, 255, 255));
 
-	//LPDIRECT3DTEXTURE9 texBossTileSet = textures->Get(TEX_TILESET_BOSS);
-	LPDIRECT3DTEXTURE9 texBossMap = textures->Get(TEX_MAP_BOSS);
-
-	sprites->Add(99999, 0, 0, 1503, 691, texBossMap);
+	sprites->Add(99999, 0, 0, 830, 450, textures->Get(TEX_MAP_BOSS));
 	ani = new CAnimation(100);
 	ani->Add(99999);
 	animations->Add(ANI_BOSS_MAP, ani);
+    sprites->Add(99998, 0, 0, 896, 360, textures->Get(TEX_MAP_BOSS_BACK));
+    ani = new CAnimation(100);
+    ani->Add(99998);
+    animations->Add(ANI_BOSS_MAP_BACK, ani);
 
 	//ResourceLoader::GetInstance()->load_tile_map(texBossTileSet, "Map_Matrix_Boss_Scene.txt", map_vector);
 
-	CMap* map0 = new CMap();
-	map0->AddAnimation(ANI_BOSS_MAP);
-	map0->SetPosition(0, 691);
-	map0->width = 1503;
-	map0->height = 691;
-	map = map0;
+    map = new CMap();
+    map->AddAnimation(ANI_BOSS_MAP);
+    map->SetPosition(0, BOSS_MAP_HEIGHT);
+    map->width = BOSS_MAP_WIDTH;
+    map->height = BOSS_MAP_HEIGHT;
+
+    back = new CMap();
+    back->AddAnimation(ANI_BOSS_MAP_BACK);
+    back->SetPosition(0, BOSS_MAP_HEIGHT);
+    back->width = 896;
+    back->height = 360;
 
 	//----------------------------------------------
 #pragma region 
@@ -94,31 +100,55 @@ void Boss_Scene::Initialize()
 	aladdin->SetPosition(100.0f, 150.f);
 	objects.push_back(aladdin);
 	SetSaveLocation(aladdin->x, aladdin->y);
+    last_player_x = aladdin->x;
+    last_player_y = aladdin->y;
 #pragma endregion Initalize Aladdin
+
+    ResourceLoader::GetInstance()->LoadObjectFromFile("objects_BossScene.txt", objects, 1,SCENE_BOSS);
+
+    //Grid
+    SpatialGrid* grid = SpatialGrid::GetInstance();
+    grid->SetCell(500);
+    grid->Clear();
+    grid->AddGridFromFile(objects, "boss_scene_grid.txt");
 
 
 }
 
 void Boss_Scene::Update(DWORD dt)
 {
-	RECT cam_rect = camera->getBounding();
-	//fix thuật toán add vào grid
+    RECT cam_rect = camera->getBounding();
+    //fix thuật toán add vào grid
+    RECT temp = camera->InvertY(cam_rect.left, cam_rect.top, cam_rect.right,
+        cam_rect.bottom, SCREEN_WIDTH, SCREEN_HEIGHT);
 
-	vector<LPGAMEOBJECT> coObjects;
-	Step* step = new Step();
-	step->name = "step1";
-	step->id = 2;
-	step->width = 5;
-	step->height = 5;
-	coObjects.push_back(step);
+    set<CGameObject*> set_gameobject = SpatialGrid::GetInstance()->Get(temp.left,
+        temp.top, temp.right, temp.bottom);
+
+    //Truyền set các obj thuộc các lưới va chạm với camera
+    vector<LPGAMEOBJECT> coObjects(set_gameobject.begin(),
+        set_gameobject.end());
 	//Update objets
 	objects[0]->Update(dt, &coObjects); //player
-	//
-	//for (int i = 0; i < vector_apple.size(); i++)
-	//{
-	//	vector_apple[i]->Update(dt, &coObjects);
-	//}
-	//
+
+#pragma region
+    if(aladdin->x != last_player_x)
+        back->x -= aladdin->vx*dt*0.15;
+    if(aladdin->y != last_player_y)
+        back->y -= aladdin->vy*dt*0.08;
+    last_player_x = aladdin->x;
+    last_player_y = aladdin->y;
+#pragma endregion Move background
+
+	for (int i = 0; i < vector_apple.size(); i++)
+	{
+		vector_apple[i]->Update(dt, &coObjects);
+	}
+	
+    for (int i = 0; i < coObjects.size(); i++)
+    {
+        objects[i]->Update(dt, &coObjects);
+    }
 
 #pragma region
 	//Camera follow player (use distance bettween player and camera right-side)
@@ -171,10 +201,11 @@ void Boss_Scene::Update(DWORD dt)
 
 	healthHUD->HealthRatio = (float)aladdin->health / (float)MAX_HEALTH;
 
-	/*   if (mario->x > MAP_WIDTH)
-		   next_scene = SCENE_COMPLETE;
-	   else if (mario->HP == 0)
-		   next_scene = SCENE_SULTAN;*/
+    if (aladdin->life <= 0)
+    {
+        next_scene = SCENE_MENU;
+        Sound::getInstance()->stop("SCENE_BOSS");
+    }
 }
 
 void Boss_Scene::Render()
@@ -190,6 +221,7 @@ void Boss_Scene::Render()
 
 		spriteHandler->Begin(D3DXSPRITE_ALPHABLEND);
 
+        back->Render();
 		map->Render();
 
 		//enemy, items, chain
@@ -206,10 +238,15 @@ void Boss_Scene::Render()
 		objects[0]->Render();
 
 		//vector apple
-		/*for (int i = 0; i < vector_apple.size(); i++)
+		for (int i = 0; i < vector_apple.size(); i++)
 		{
 			vector_apple[i]->Render();
-		}*/
+		}
+
+        for (int i = 0; i < objects.size(); i++)
+        {
+            objects[i]->Render();
+        }
 
 		//Update value and position of HUD
 		D3DXVECTOR2 camPos = camera->getPositionWorld();
@@ -226,13 +263,13 @@ void Boss_Scene::Render()
 
 		string txt;
 		txt = to_string(aladdin->score);
-		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15);
+		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15, true);
 		txt = to_string(aladdin->life);
-		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 5);
+		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 13);
 		txt = to_string(aladdin->numRuby);
-		DrawTextHUD(txt, rubyHUD->x + 20, rubyHUD->y);
+		DrawTextHUD(txt, rubyHUD->x + 20, rubyHUD->y -5);
 		txt = to_string(aladdin->numApple);
-		DrawTextHUD(txt, appleHUD->x + 20, appleHUD->y);
+		DrawTextHUD(txt, appleHUD->x + 20, appleHUD->y -5);
 
 
 		spriteHandler->End();

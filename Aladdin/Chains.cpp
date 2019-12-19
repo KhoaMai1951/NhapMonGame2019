@@ -27,5 +27,5 @@ void Chains::Render()
     int alpha = 255;
     animations[ani]->Render(x, y);
 
-    RenderBoundingBox();
+    //RenderBoundingBox();
 }

@@ -14,11 +14,6 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     }
     else if (state == ALADDIN_STATE_DEAD)
     {
-		if (life <= 0)
-		{
-			scene->save_x = 100;
-			scene->save_y = 150;
-		}
         if (animations[ani]->currentFrame == 32)
         {
             x = scene->save_x;
@@ -415,6 +410,12 @@ void Aladdin::ProcessKeyboard()
 			if (life < 0)
 				life = 0;
 		}
+        else if (game->IsKeyPress(0x01))
+        {
+            scene->next_scene = SCENE_MENU;
+            Sound::getInstance()->stop("SCENE_SULTAN_SOUND");
+            Sound::getInstance()->stop("SCENE_BOSS");
+        }
         return;
     }
     case ALADDIN_STATE_PUSH:

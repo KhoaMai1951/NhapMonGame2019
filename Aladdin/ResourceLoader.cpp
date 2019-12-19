@@ -887,7 +887,7 @@ animations->Add(2000, ani);
 	animations->Add(5001, ani);
 
 	//Characters
-	for (int i = 0; i <= 36; i++)
+	for (int i = 0; i <= 19; i++)
 	{
 		ani = new CAnimation(75);
 		ani->Add(51000 + i);
@@ -941,7 +941,8 @@ void ResourceLoader::LoadSprite()
     textures->Add(TEX_EXIT_GATE, L"textures\\exit_gate.png", D3DCOLOR_XRGB(255, 255, 255));
     textures->Add(TEX_PEDDLER, L"textures\\Peddler.png", D3DCOLOR_XRGB(255, 0, 255));
 	textures->Add(TEX_BONE, L"textures\\Bone.png", D3DCOLOR_XRGB(255, 0, 255));          
-	textures->Add(TEX_CHARACTER, L"textures\\Characters.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_NUMBER1, L"textures\\Number1.png", D3DCOLOR_XRGB(255, 0, 255));
+    textures->Add(TEX_NUMBER2, L"textures\\Number2.png", D3DCOLOR_XRGB(255, 0, 255));
     textures->Add(TEX_Extra_HUD, L"textures\\Extra_HUD.png", D3DCOLOR_XRGB(255, 255, 255));
 
     CSprites* sprites = CSprites::GetInstance();
@@ -1797,47 +1798,74 @@ void ResourceLoader::LoadSprite()
 
 	sprites->Add(50033, 17, 3380, 65, 3404, texAladdin2);			
 
-	LPDIRECT3DTEXTURE9 texChar = textures->Get(TEX_CHARACTER);
-	//Numberl characters, from 0 -> 9
-	sprites->Add(51000, 39, 175, 55, 191, texChar);		//0
-	sprites->Add(51001, 59, 175, 71, 191, texChar);
-	sprites->Add(51002, 75, 175, 91, 191, texChar);
-	sprites->Add(51003, 93, 175, 112, 190, texChar);
-	sprites->Add(51004, 112, 175, 127, 190, texChar);
-	sprites->Add(51005, 129, 175, 145, 191, texChar);
-	sprites->Add(51006, 147, 175, 163, 191, texChar);
-	sprites->Add(51007, 165, 175, 181, 191, texChar);
-	sprites->Add(51008, 183, 175, 199, 191, texChar);
-	sprites->Add(51009, 201, 175, 217, 191, texChar);	//9
+    LPDIRECT3DTEXTURE9 texNum1 = textures->Get(TEX_NUMBER1);
+    LPDIRECT3DTEXTURE9 texNum2 = textures->Get(TEX_NUMBER2);
 
-	//Alphabet
-	sprites->Add(51010, 219, 214, 233, 228, texChar);	//A
-	sprites->Add(51011, 237, 214, 251, 228, texChar);
-	sprites->Add(51012, 255, 214, 269, 228, texChar);
-	sprites->Add(51013, 273, 214, 287, 228, texChar);
-	sprites->Add(51014, 291, 214, 305, 228, texChar);
-	sprites->Add(51015, 309, 214, 323, 230, texChar);
-	sprites->Add(51016, 327, 214, 341, 228, texChar);
-	sprites->Add(51017, 345, 214, 359, 228, texChar);
-	sprites->Add(51018, 365, 214, 371, 230, texChar);
-	sprites->Add(51019, 381, 214, 389, 230, texChar);
-	sprites->Add(51020, 399, 214, 413, 230, texChar);
-	sprites->Add(51021, 417, 214, 431, 228, texChar);
-	sprites->Add(51022, 435, 214, 449, 228, texChar);
-	sprites->Add(51023, 453, 214, 467, 228, texChar);
-	sprites->Add(51024, 471, 214, 485, 228, texChar);
-	sprites->Add(51025, 489, 214, 503, 228, texChar);
-	sprites->Add(51026, 507, 214, 521, 230, texChar);
-	sprites->Add(51027, 525, 214, 539, 230, texChar);
-	sprites->Add(51028, 543, 214, 555, 230, texChar);
-	sprites->Add(51029, 563, 214, 575, 228, texChar);
-	sprites->Add(51030, 579, 214, 593, 230, texChar);
-	sprites->Add(51031, 597, 214, 611, 228, texChar);
-	sprites->Add(51032, 615, 214, 629, 228, texChar);
-	sprites->Add(51033, 633, 214, 647, 228, texChar);
-	sprites->Add(51034, 651, 214, 665, 228, texChar);
-	sprites->Add(51035, 669, 214, 681, 228, texChar);	//Z
-	sprites->Add(51036, 308, 186, 400, 206, texChar);	//Space
+    //Numberl characters, from 0 -> 9
+    sprites->Add(51000, 0, 0, 10, 10, texNum1);		//0
+    sprites->Add(51001, 10, 0, 20, 10, texNum1);
+    sprites->Add(51002, 20, 0, 30, 10, texNum1);
+    sprites->Add(51003, 30, 0, 40, 10, texNum1);
+    sprites->Add(51004, 40, 0, 50, 10, texNum1);
+    sprites->Add(51005, 50, 0, 60, 10, texNum1);
+    sprites->Add(51006, 60, 0, 70, 10, texNum1);
+    sprites->Add(51007, 70, 0, 80, 10, texNum1);
+    sprites->Add(51008, 80, 0, 90, 10, texNum1);
+    sprites->Add(51009, 90, 0, 100, 10, texNum1);	//9
+
+    //Number2 characters, from 0 -> 9 (Big)
+    sprites->Add(51010, 0, 0, 16, 18, texNum2);		//0
+    sprites->Add(51011, 16, 0, 32, 18, texNum2);
+    sprites->Add(51012, 32, 0, 48, 18, texNum2);
+    sprites->Add(51013, 48, 0, 64, 18, texNum2);
+    sprites->Add(51014, 64, 0, 80, 18, texNum2);
+    sprites->Add(51015, 80, 0, 96, 18, texNum2);
+    sprites->Add(51016, 96, 0, 112, 18, texNum2);
+    sprites->Add(51017, 112, 0, 128, 18, texNum2);
+    sprites->Add(51018, 128, 0, 144, 18, texNum2);
+    sprites->Add(51019, 144, 0, 160, 18, texNum2);	//9
+
+	//LPDIRECT3DTEXTURE9 texChar = textures->Get(TEX_CHARACTER);
+	////Numberl characters, from 0 -> 9
+	//sprites->Add(51000, 39, 175, 55, 191, texChar);		//0
+	//sprites->Add(51001, 59, 175, 71, 191, texChar);
+	//sprites->Add(51002, 75, 175, 91, 191, texChar);
+	//sprites->Add(51003, 93, 175, 112, 190, texChar);
+	//sprites->Add(51004, 112, 175, 127, 190, texChar);
+	//sprites->Add(51005, 129, 175, 145, 191, texChar);
+	//sprites->Add(51006, 147, 175, 163, 191, texChar);
+	//sprites->Add(51007, 165, 175, 181, 191, texChar);
+	//sprites->Add(51008, 183, 175, 199, 191, texChar);
+	//sprites->Add(51009, 201, 175, 217, 191, texChar);	//9
+
+	////Alphabet
+	//sprites->Add(51010, 219, 214, 233, 228, texChar);	//A
+	//sprites->Add(51011, 237, 214, 251, 228, texChar);
+	//sprites->Add(51012, 255, 214, 269, 228, texChar);
+	//sprites->Add(51013, 273, 214, 287, 228, texChar);
+	//sprites->Add(51014, 291, 214, 305, 228, texChar);
+	//sprites->Add(51015, 309, 214, 323, 230, texChar);
+	//sprites->Add(51016, 327, 214, 341, 228, texChar);
+	//sprites->Add(51017, 345, 214, 359, 228, texChar);
+	//sprites->Add(51018, 365, 214, 371, 230, texChar);
+	//sprites->Add(51019, 381, 214, 389, 230, texChar);
+	//sprites->Add(51020, 399, 214, 413, 230, texChar);
+	//sprites->Add(51021, 417, 214, 431, 228, texChar);
+	//sprites->Add(51022, 435, 214, 449, 228, texChar);
+	//sprites->Add(51023, 453, 214, 467, 228, texChar);
+	//sprites->Add(51024, 471, 214, 485, 228, texChar);
+	//sprites->Add(51025, 489, 214, 503, 228, texChar);
+	//sprites->Add(51026, 507, 214, 521, 230, texChar);
+	//sprites->Add(51027, 525, 214, 539, 230, texChar);
+	//sprites->Add(51028, 543, 214, 555, 230, texChar);
+	//sprites->Add(51029, 563, 214, 575, 228, texChar);
+	//sprites->Add(51030, 579, 214, 593, 230, texChar);
+	//sprites->Add(51031, 597, 214, 611, 228, texChar);
+	//sprites->Add(51032, 615, 214, 629, 228, texChar);
+	//sprites->Add(51033, 633, 214, 647, 228, texChar);
+	//sprites->Add(51034, 651, 214, 665, 228, texChar);
+	//sprites->Add(51035, 669, 214, 681, 228, texChar);	//Z
+	//sprites->Add(51036, 308, 186, 400, 206, texChar);	//Space
 #pragma endregion HUD
 
 #pragma region
@@ -1876,7 +1904,7 @@ void ResourceLoader::LoadSprite()
     sprites->Add(30001, 10, 10, 100, 100, texGround);
 }
 
-void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects, int first_index)
+void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& objects, int first_index, int scene)
 {
 	int object_index = first_index;
 
@@ -1886,7 +1914,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 	while (infile >> name >> x >> y >> w >> h)
 	{
 		//Chuyen toa do y theo goc toa do cua file txt thanh toa do decart
-		ChangeYtoDecart(y);
+		ChangeYtoDecart(y, scene);
 
         if (name == GROUND0_ID)
         {
@@ -2178,7 +2206,7 @@ void ResourceLoader::LoadObjectFromFile(string FileName, vector<LPGAMEOBJECT>& o
 	}
 }
 
-void ResourceLoader::LoadMapFromFile(string FileName, LPDIRECT3DTEXTURE9 texMap, vector<LPGAMEOBJECT>& map_vector)
+void ResourceLoader::LoadMapFromFile(string FileName, LPDIRECT3DTEXTURE9 texMap, vector<LPGAMEOBJECT>& map_vector, int scene)
 {
 	std::ifstream infile(FileName);
 	string name;
@@ -2195,7 +2223,7 @@ void ResourceLoader::LoadMapFromFile(string FileName, LPDIRECT3DTEXTURE9 texMap,
 		CAnimations* animations = CAnimations::GetInstance();
 		animations->Add(801, ani);
 
-		ChangeYtoDecart(y);
+		ChangeYtoDecart(y, scene);
 		//khởi tạo cell map
 		CMap* map1 = new CMap();
 
@@ -2228,7 +2256,7 @@ vector<int> ResourceLoader::read_map(string file_path)
 };
 
 // Load map từ file ma trận
-void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, vector<LPGAMEOBJECT>& map_vector)
+void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, vector<LPGAMEOBJECT>& map_vector, int scene)
 {
 	CSprites* sprites = CSprites::GetInstance();
 	vector<int> arr = ResourceLoader::read_map(file_path);
@@ -2267,7 +2295,7 @@ void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path
 		CAnimations* animations = CAnimations::GetInstance();
 		animations->Add(2222, ani);
 
-		ChangeYtoDecart(t);
+		ChangeYtoDecart(t, scene);
 		l += 64;	//fix position, map bị lệch 1 tile
 		//khởi tạo cell map
 		CMap* map1 = new CMap();
@@ -2292,7 +2320,7 @@ void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path
 		CAnimations* animations = CAnimations::GetInstance();
 		animations->Add(22222, ani);
 
-		ChangeYtoDecart(t);
+		ChangeYtoDecart(t, scene);
 		//khởi tạo cell map
 		CMap* map1 = new CMap();
 
@@ -2304,9 +2332,12 @@ void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path
 	}
 };
 
-void ResourceLoader::ChangeYtoDecart(float& y)
+void ResourceLoader::ChangeYtoDecart(float&y, int scene)
 {
-	y = BOSS_MAP_HEIGHT + 30 - y; //38 la do lech pixel o duoi man hinh
+    if(scene == SCENE_SULTAN)
+        y = MAP_HEIGHT + 30 - y; //38 la do lech pixel o duoi man hinh
+    else if (scene == SCENE_BOSS)
+	    y = BOSS_MAP_HEIGHT - y; //38 la do lech pixel o duoi man hinh
 }
 
 void ResourceLoader::LoadMusic()

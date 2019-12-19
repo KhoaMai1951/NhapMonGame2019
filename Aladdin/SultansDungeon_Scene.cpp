@@ -9,8 +9,9 @@ void SultansDungeon_Scene::Initialize()
 {
     ViewPort::getInstance()->setPositionWorld(D3DXVECTOR2(0, SCREEN_HEIGHT));
 	Sound::getInstance()->play("SCENE_SULTAN_SOUND", true, 0);
-
-    ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects);
+    
+    ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Front_Dungeon.txt", front_objects, 0, SCENE_SULTAN);
+    ResourceLoader::GetInstance()->LoadObjectFromFile("objects_pillars_dungeon.txt", pillars, 0, SCENE_SULTAN);
 
     //----------Load Map từ file text và Tile Set
     CTextures* textures = CTextures::GetInstance();
@@ -19,7 +20,7 @@ void SultansDungeon_Scene::Initialize()
 
     LPDIRECT3DTEXTURE9 texDungeonTileSet = textures->Get(TEX_TILESET_DUNGEON);
 
-    ResourceLoader::GetInstance()->load_tile_map(texDungeonTileSet, "Map_Matrix_Dungeon.txt", map_vector);
+    ResourceLoader::GetInstance()->load_tile_map(texDungeonTileSet, "Map_Matrix_Dungeon.txt", map_vector, SCENE_SULTAN);
     //----------------------------------------------
 #pragma region 
     aladdin = new Aladdin();
@@ -72,16 +73,18 @@ void SultansDungeon_Scene::Initialize()
     aladdin->SetPosition(100.0f, 150.f);
     objects.push_back(aladdin);
     SetSaveLocation(aladdin->x, aladdin->y);
+    last_player_x = aladdin->x;
+    last_player_y = aladdin->y;
 #pragma endregion Initalize Aladdin vector_environment
 
-    ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects, 1);
+    ResourceLoader::GetInstance()->LoadObjectFromFile("test2.txt", objects, 1, SCENE_SULTAN);
 	//Truyền scene vào skeleton
 	for (int i = 1; i < objects.size(); i++)
 	{
 		if (dynamic_cast<Skeleton*>(objects[i]))
 			dynamic_cast<Skeleton*>(objects[i])->SetScene(this);
 	}
-    ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Environment_Dungeon.txt", vector_environment, objects.size());
+    ResourceLoader::GetInstance()->LoadObjectFromFile("Map_Environment_Dungeon.txt", vector_environment, objects.size(), SCENE_SULTAN);
     
     for (int i = 0; i < objects.size(); i++)
         All_collide_objects.push_back(objects[i]);
@@ -92,11 +95,10 @@ void SultansDungeon_Scene::Initialize()
     }
 
     grid_id = All_collide_objects.size();
-	
-    SpatialGrid::GetInstance()->SetCell(CELL_SIZE);
 
     //Grid
     SpatialGrid* grid = SpatialGrid::GetInstance();
+    grid->SetCell(CELL_SIZE);
     grid->Clear();
     //for (unsigned i = 1; i < objects.size(); i++)
         //grid->Insert(objects[i]);
@@ -120,6 +122,18 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	SpatialGrid* grid = SpatialGrid::GetInstance();
     //Update objets
     objects[0]->Update(dt, &coObjects); //player
+
+#pragma region
+    if (aladdin->x != last_player_x)
+    {
+        for (int i = 0; i < front_objects.size(); i++)
+        {
+            front_objects[i]->x -= aladdin->vx*dt*0.15;
+        }
+    }
+    last_player_x = aladdin->x;
+#pragma endregion Move background
+
     for (int i = 0; i < coObjects.size(); i++)
     {
         if (coObjects[i] != NULL)
@@ -223,7 +237,7 @@ void SultansDungeon_Scene::Update(DWORD dt)
         next_scene = SCENE_COMPLETE;
         Sound::getInstance()->stop("SCENE_SULTAN_SOUND");
     }    
-    else if (aladdin->life < 0)
+    else if (aladdin->life <= 0)
     {
         next_scene = SCENE_MENU;
         Sound::getInstance()->stop("SCENE_SULTAN_SOUND");
@@ -282,6 +296,8 @@ void SultansDungeon_Scene::Render()
             vector_apple[i]->Render();
         }
 
+        for (int i = 0; i < pillars.size(); i++)
+            pillars[i]->Render();
 
         for (int i = 0; i < front_objects.size(); i++)
         {
@@ -309,13 +325,13 @@ void SultansDungeon_Scene::Render()
 
 		string txt;
 		txt = to_string(aladdin->score);
-		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15);
+		DrawTextHUD(txt, camPos.x + SCREEN_ACTUAL_WIDTH - 100, camPos.y - 15, true);
 		txt = to_string(aladdin->life);
-		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 5);
+		DrawTextHUD(txt, lifeHUD->x + 25, lifeHUD->y - 13);
 		txt = to_string(aladdin->numRuby);
-		DrawTextHUD(txt, rubyHUD->x + 20, rubyHUD->y);
+		DrawTextHUD(txt, rubyHUD->x + 20, rubyHUD->y - 5);
 		txt = to_string(aladdin->numApple);
-		DrawTextHUD(txt, appleHUD->x + 20, appleHUD->y);
+		DrawTextHUD(txt, appleHUD->x + 20, appleHUD->y - 5);
 
 
         spriteHandler->End();

@@ -4,9 +4,11 @@
 class SultansDungeon_Scene : public Scene
 {
 private:
+    float last_player_x, last_player_y;
 
 public:
     vector<CGameObject*> vector_apple;
+    vector<CGameObject*> pillars;
     vector<CGameObject*> vector_environment;
     vector<CGameObject*> All_collide_objects;
 	vector<CGameObject*> vector_bone;
