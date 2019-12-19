@@ -204,6 +204,7 @@ class Aladdin : public CGameObject
 	bool CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
     bool CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects);
     bool CheckStepCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt);
+    bool CheckFlameStripCollision(vector<LPGAMEOBJECT>* coObjects);
 
     void CheckAttackCollision(vector<LPGAMEOBJECT> vector_gameobject);
     void AddThrowApple();

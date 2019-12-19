@@ -160,11 +160,6 @@ void Boss_Scene::Update(DWORD dt)
 	{
 		vector_bosss_flame[i]->Update(dt, NULL);
 	}
-
-	for (int i = 0; i < vector_flame_strip.size(); i++)
-	{
-		vector_flame_strip[i]->Update(dt, NULL);
-	}
 	
 
 	//boss
@@ -173,7 +168,13 @@ void Boss_Scene::Update(DWORD dt)
 
     for (int i = 0; i < coObjects.size(); i++)
     {
-		coObjects[i]->Update(dt, &coObjects);
+        if (dynamic_cast<FlameStrip*>(coObjects[i]))
+        {
+            if(!boss->isHumanForm)
+                coObjects[i]->Update(dt, &coObjects);
+        }
+        else
+		    coObjects[i]->Update(dt, &coObjects);
     }
 
 #pragma region
@@ -280,12 +281,6 @@ void Boss_Scene::Render()
 		for (int i = 0; i < vector_bosss_flame.size(); i++)
 		{
 			vector_bosss_flame[i]->Render();
-		}
-
-		//flame strip
-		for (int i = 0; i < vector_flame_strip.size(); i++)
-		{
-			vector_flame_strip[i]->Render();
 		}
 		
 

@@ -4,8 +4,6 @@
 #include "debug.h"
 #include "SpatialGrid.h"
 
-#define BBOX_WIDTH 31
-#define BBOX_HEIGHT 56
 #define FIRESTRIP_WAITING_TIME 1000
 
 enum FLAMESTRIP_STATE
@@ -14,10 +12,16 @@ enum FLAMESTRIP_STATE
 	FLAMESTRIP_STATE_NOT_DO_DAMAGE,
 };
 
-enum FLAMSTRIP_ANI
+enum FLAMESTRIP_ANI
 {
 	FLAMESTRIP_ANI_DO_DAMAGE,
 	FLAMESTRIP_ANI_NOT_DO_DAMAGE,
+};
+
+enum FLAMESTRIP_SIZE
+{
+    FLAMESTRIP_WIDTH = 31,
+    FLAMESTRIP_HEIGHT = 56,
 };
 
 class FlameStrip : public CGameObject
@@ -26,15 +30,15 @@ class FlameStrip : public CGameObject
 	virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
 	virtual void Render();
 
-	DWORD start_time;
+    DWORD start_time, burn_time = 0;
 public:
 	bool do_damage;
 	FlameStrip() : CGameObject()
 	{
 		start_time = 0;
 		//ani = 0;
-		width = BBOX_WIDTH;
-		height = BBOX_HEIGHT;
+		//width = FLAMESTRIP_WIDTH;
+		//height = FLAMESTRIP_HEIGHT;
 	}
 
 	virtual void SetState(int state);

@@ -174,7 +174,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     {
         if (animations[ani]->currentFrame == 5)
 		{
-			if (prevState != ALADDIN_STATE_JUMP || prevState != ALADDIN_STATE_RUN_JUMP || prevState != ALADDIN_STATE_CLIMB_JUMP)
+			if (prevState != ALADDIN_STATE_JUMP && prevState != ALADDIN_STATE_RUN_JUMP && prevState != ALADDIN_STATE_CLIMB_JUMP && prevState != ALADDIN_STATE_HURT)
 				SetState(prevState);
 			else SetState(ALADDIN_STATE_IDLE);
 		}
@@ -217,6 +217,7 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
         untouchable_start = 0;
         untouchable = 0;
     }
+    CheckFlameStripCollision(&vector_gameobject);
 	int Ground0Collided = CheckGround0Collision(&vector_gameobject, dt),
 		Ground1Collided = CheckGround1Collision(&vector_gameobject, dt), StepCollided;
 	if (dynamic_cast<SultansDungeon_Scene*>(scene))
@@ -1664,26 +1665,85 @@ bool Aladdin::CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects)
                 return true;
             }
         }
-		else if (dynamic_cast<FlameStrip*>(coObjects.at(i)))
+		else if (dynamic_cast<FlameStrip*>(coObjects.at(i)) && dynamic_cast<FlameStrip*>(coObjects.at(i))->do_damage)
 		{
 			FlameStrip* flame = dynamic_cast<FlameStrip*>(coObjects.at(i));
 
-			float l1 = flame->x, t1 = flame->y, r1 = flame->x + flame->width, b1 = flame->y - flame->height;
+            float l1 = flame->x, t1 = flame->y + FLAMESTRIP_HEIGHT, r1 = flame->x + flame->width, b1 = flame->y;
 			if (checkOverlap(l1, t1, r1, b1, x, y, x + width, y - height))
 			{
-				if (flame->state != FLAMESTRIP_STATE_DO_DAMAGE)
-					flame->SetState(FLAMESTRIP_STATE_DO_DAMAGE);
-				if(flame->do_damage)
-				{
-					health--;
-					prevState = state;
-					prevFrame = animations[ani]->currentFrame;
-					SetState(ALADDIN_STATE_HURT);
-					StartUntouchable();
-				}
-
+                if (!untouchable)
+                {
+                    health--;
+                    prevState = state;
+                    prevFrame = animations[ani]->currentFrame;
+                    SetState(ALADDIN_STATE_HURT);
+                    StartUntouchable();
+                }
 			}
 		}
     }
     return false;
+}
+
+bool Aladdin::CheckFlameStripCollision(vector<LPGAMEOBJECT> *coObjects)
+{
+    vector<LPCOLLISIONEVENT> coEvents;
+    vector<LPCOLLISIONEVENT> coEventsResult;
+    coEvents.clear();
+
+    vector<LPGAMEOBJECT> Steps;
+    Steps.clear();
+
+    for (UINT i = 0; i < coObjects->size(); i++)
+    {
+        if (coObjects->at(i) != NULL)
+        {
+            try
+            {
+                if (dynamic_cast<FlameStrip *>(coObjects->at(i)) && dynamic_cast<FlameStrip *>(coObjects->at(i))->state == FLAMESTRIP_STATE_NOT_DO_DAMAGE)
+                    Steps.push_back(coObjects->at(i));
+            }
+            catch (exception e)
+            {
+                DebugOut(L"Caused exception\n");
+                continue;
+            }
+        }
+
+    }
+
+    CalcPotentialCollisions(Steps, coEvents);
+
+    // No collision occured, proceed normally
+    if (coEvents.size() == 0)
+    {
+        // clean up collision events
+        for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+        return false;
+    }
+    else
+    {
+        float min_tx, min_ty, nx = 0, ny;
+        FilterCollision(coEvents, coEventsResult, min_tx, min_ty, nx, ny);
+
+        if (ny > 0)
+        {
+            for (UINT i = 0; i < coEventsResult.size(); i++)
+            {
+                LPCOLLISIONEVENT e = coEventsResult[i];
+
+                if (dynamic_cast<FlameStrip*>(e->obj))
+                {
+                    FlameStrip* flame = dynamic_cast<FlameStrip*>(e->obj);
+                    if (flame->state != FLAMESTRIP_STATE_DO_DAMAGE)
+                        flame->SetState(FLAMESTRIP_STATE_DO_DAMAGE);
+                }
+            }
+        }
+    }
+
+    // clean up collision events
+    for (UINT i = 0; i < coEvents.size(); i++) delete coEvents[i];
+    return true;
 }

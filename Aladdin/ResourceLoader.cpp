@@ -941,6 +941,7 @@ animations->Add(2000, ani);
 	{
 		ani->Add(-1 * (70000 + i));
 	}
+    ani->Add(-70018);
 	animations->Add(-9001, ani);
 
 	ani = new CAnimation(100);		// boss flame
@@ -964,7 +965,7 @@ animations->Add(2000, ani);
 	}
 	animations->Add(9003, ani);
 
-	ani = new CAnimation(100);		// flame strip damage
+	ani = new CAnimation(150);		// flame strip damage
 	for (int i = 36; i <= 44; i++)// start from 34
 	{
 		ani->Add(70000 + i);
