@@ -124,6 +124,8 @@ void Boss_Scene::Initialize()
     grid->AddGridFromFile(objects, "boss_scene_grid.txt");
 
 	grid->Insert(boss);
+
+	grid_id = objects.size();
 }
 
 void Boss_Scene::Update(DWORD dt)
@@ -156,6 +158,11 @@ void Boss_Scene::Update(DWORD dt)
 		vector_apple[i]->Update(dt, &coObjects);
 	}
 	
+	for (int i = 0; i < vector_bosss_flame.size(); i++)
+	{
+		vector_bosss_flame[i]->Update(dt, NULL);
+	}
+
 	//boss
 	boss->player_x = aladdin->x;
 	boss->player_y = aladdin->y;
@@ -221,6 +228,11 @@ void Boss_Scene::Update(DWORD dt)
         next_scene = SCENE_MENU;
         Sound::getInstance()->stop("SCENE_BOSS");
     }
+	else if (boss->hitpoint <= 0)
+	{
+		next_scene = SCENE_COMPLETE;
+		Sound::getInstance()->stop("SCENE_BOSS");
+	}
 }
 
 void Boss_Scene::Render()
@@ -259,8 +271,17 @@ void Boss_Scene::Render()
         {
             objects[i]->Render();
         }
+
+		//boss flame
+		for (int i = 0; i < vector_bosss_flame.size(); i++)
+		{
+			vector_bosss_flame[i]->Render();
+		}
+
 		//aladdin
 		objects[0]->Render();
+
+
 
 		//Update value and position of HUD
 		D3DXVECTOR2 camPos = camera->getPositionWorld();

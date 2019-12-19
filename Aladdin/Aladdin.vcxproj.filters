@@ -177,6 +177,9 @@
     <ClInclude Include="Boss.h">
       <Filter>Header Files\Objects\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="BossFlame.h">
+      <Filter>Header Files\Objects\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="debug.cpp">
@@ -294,6 +297,9 @@
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Boss.cpp">
+      <Filter>Source Files\Objects\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="BossFlame.cpp">
       <Filter>Source Files\Objects\Enemies</Filter>
     </ClCompile>
   </ItemGroup>

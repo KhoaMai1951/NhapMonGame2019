@@ -933,6 +933,7 @@ animations->Add(2000, ani);
 	{
 		ani->Add(70000 + i);
 	}
+	ani->Add(70018);
 	animations->Add(9001, ani);
 
 	ani = new CAnimation(100);		// boss 2 left
@@ -2512,10 +2513,10 @@ void ResourceLoader::LoadMusic()
     sound->loadSound("audio/Stone Rumble.wav", "STEP_OUT");
     sound->loadSound("audio/Wall Spikes.wav", "SPIKE_OUT");
 
-    ////BOSS
-    //sound->loadSound("audio/Jafar Laugh.wav", "JAFAR_LAUGH");
-    //sound->loadSound("audio/Jafar Snake.wav", "JAFAR_SNAKE");
-    //sound->loadSound("audio/Jafar Tractor.wav", "JAFAR_TRACTOR");
+    //BOSS
+    sound->loadSound("audio/Jafar Laugh.wav", "JAFAR_LAUGH");
+    sound->loadSound("audio/Jafar Snake.wav", "JAFAR_SNAKE");
+    sound->loadSound("audio/Jafar Tractor.wav", "JAFAR_TRACTOR");
 
     //Menu
     sound->loadSound("audio/Menu Change.wav", "MENU_CHANGE");

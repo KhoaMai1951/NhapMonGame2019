@@ -1,4 +1,4 @@
-#include "Boss.h"
+﻿#include "Boss.h"
 #include "Boss_Scene.h"
 void Boss::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -19,6 +19,30 @@ void Boss::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 	if (isDead) return;
 	CGameObject::Update(dt, coObjects);
 
+	if (GetTickCount() - idle_start > 3000 && isHumanForm)
+	{
+		//laugh
+		Sound::getInstance()->play("JAFAR_LAUGH", false, 1);
+		idle_start = GetTickCount();
+	}
+
+	if (!isHumanForm && (animations[ani]->currentFrame == 4 || animations[ani]->currentFrame == 10) && !attacking)
+	{
+		Sound::getInstance()->play("JAFAR_SNAKE", false, 1);
+		BossFlame* boss_flame = new BossFlame();
+		boss_flame->AddAnimation(BOSS_FLAME_RIGHT);
+		boss_flame->AddAnimation(BOSS_FLAME_LEFT);
+		boss_flame->nx = nx;
+		boss_flame->x = x + (width / 2);
+		boss_flame->y = y - (height / 2);
+		boss_flame->id = ((Boss_Scene*)scene)->grid_id++;
+		boss_flame->InsertToGrid();
+		((Boss_Scene*)scene)->vector_bosss_flame.push_back(boss_flame);
+		attacking = true;
+	}
+	else if (!isHumanForm && (animations[ani]->currentFrame == 11 || animations[ani]->currentFrame == 5))
+		attacking = false;
+
 	if (player_x < x)
 	{
 		nx = -1;
@@ -30,6 +54,11 @@ void Boss::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
 	if (CGame::GetInstance()->IsKeyPress(DIK_G))
 		ChangeForm();
+
+	//if state == !isHumanForm -> if(animations[ani]->currentFrame == frame cuoi) -> create boss flame
+	//if(nx > 0) setposition .... else
+
+	
 }
 
 void Boss::SetState(int state)

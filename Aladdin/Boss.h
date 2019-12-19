@@ -31,11 +31,11 @@ class Boss : public Enemy
 public:
 	Scene* scene;
 	DWORD idle_start;
-	bool isHumanForm = true;
+	bool isHumanForm = true, attacking = false;
 	Boss() : Enemy()
 	{
-		idle_start = 0;
-		hitpoint = 2;
+		idle_start = GetTickCount();
+		hitpoint = 12;
 		scoreGain = 100;
 		width = BBOX_WIDTH;
 		height = BBOX_HEIGHT;

@@ -52,7 +52,7 @@ C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(6,1): warning C4005: 
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
-C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Scene.h(106,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Scene.h(108,21): warning C4018:  '<': signed/unsigned mismatch
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
@@ -60,5 +60,5 @@ C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(6): message :  see pr
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
 C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.cpp(9,11): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
-C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.cpp(81,92): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver23\Aladdin\Boss.cpp(110,92): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
   Aladdin.vcxproj -> C:\Users\Khoa\Desktop\NM_Game_Ver23\Debug\Aladdin.exe

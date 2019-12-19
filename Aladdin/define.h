@@ -1,7 +1,7 @@
 #ifndef DEFINE_H
 #define DEFINE_H
-#define WINDOW_CLASS_NAME L"SampleWindow"
-#define MAIN_WINDOW_TITLE L"04 - Collision"
+#define WINDOW_CLASS_NAME L"AladdinGameWindow"
+#define MAIN_WINDOW_TITLE L"Aladdin"
 
 #define BACKGROUND_COLOR D3DCOLOR_XRGB(255, 255, 200)
 

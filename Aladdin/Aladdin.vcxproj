@@ -127,6 +127,7 @@
     <ClInclude Include="Bat.h" />
     <ClInclude Include="Bone.h" />
     <ClInclude Include="Boss.h" />
+    <ClInclude Include="BossFlame.h" />
     <ClInclude Include="Boss_Scene.h" />
     <ClInclude Include="Chains.h" />
     <ClInclude Include="Characters.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="Bat.cpp" />
     <ClCompile Include="Bone.cpp" />
     <ClCompile Include="Boss.cpp" />
+    <ClCompile Include="BossFlame.cpp" />
     <ClCompile Include="Boss_Scene.cpp" />
     <ClCompile Include="Chains.cpp" />
     <ClCompile Include="Characters.cpp" />
