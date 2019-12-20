@@ -17,6 +17,7 @@ void MenuScene::Initialize()
     blade_pointer = new MovingObject();
     blade_pointer->AddAnimation(ANI_BLADE_POINTER_HUD);
     blade_pointer->SetPosition(90, 164);
+	blade_pointer->vx = 0.08;
 }
 
 void MenuScene::Update(DWORD dt)
@@ -51,6 +52,17 @@ void MenuScene::Update(DWORD dt)
         }
     }
         
+	if (blade_pointer->x + 36 > 135)
+	{
+		blade_pointer->x = 135 - 36;
+		blade_pointer->vx = -0.08;
+	}
+	if (blade_pointer->x < 85)
+	{
+		blade_pointer->x = 85;
+		blade_pointer->vx = 0.08;
+	}
+	blade_pointer->x += blade_pointer->vx * dt;
 }
 
 void MenuScene::Render()

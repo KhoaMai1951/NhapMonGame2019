@@ -983,6 +983,13 @@ animations->Add(2000, ani);
 	ani->Add(70045);
 	animations->Add(9005, ani);
 
+	ani = new CAnimation(150);		// boss be attacked
+	for (int i = 46; i <= 71; i++)
+	{
+		ani->Add(70000 + i);
+	}
+	animations->Add(9006, ani);
+
 #pragma endregion Boss
 }
 
@@ -1024,6 +1031,7 @@ void ResourceLoader::LoadSprite()
 	textures->Add(TEX_BOSS_FLAME_LEFT, L"textures\\boss_flame_left.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_BOSS_SPELL, L"textures\\boss_spell.png", D3DCOLOR_XRGB(255, 255, 255));
 	textures->Add(TEX_FLAME_STRIP, L"textures\\flame_strip.png", D3DCOLOR_XRGB(255, 255, 255));
+	textures->Add(TEX_BOSS_BE_ATTACKED, L"textures\\Boss_be_attacked.png", D3DCOLOR_XRGB(255, 255, 255));
 
     CSprites* sprites = CSprites::GetInstance();
 
@@ -2072,6 +2080,33 @@ void ResourceLoader::LoadSprite()
 	
 	sprites->Add(70045, 0, 0, 56, 1, texFlameStripNull);			 //frame strip NULL
 
+	LPDIRECT3DTEXTURE9 texBossBeAttacked = textures->Get(TEX_BOSS_BE_ATTACKED);		//boss be attacked
+	sprites->Add(70046, 0, 0, 47, 52, texBossBeAttacked);
+	sprites->Add(70047, 47, 0, 94, 52, texBossBeAttacked);
+	sprites->Add(70048, 94, 0, 141, 52, texBossBeAttacked);
+	sprites->Add(70049, 141, 0, 188, 52, texBossBeAttacked);
+	sprites->Add(70050, 188, 0, 235, 52, texBossBeAttacked);
+	sprites->Add(70051, 235, 0, 282, 52, texBossBeAttacked);
+	sprites->Add(70052, 282, 0, 329, 52, texBossBeAttacked);
+	sprites->Add(70053, 329, 0, 376, 52, texBossBeAttacked);
+	sprites->Add(70054, 376, 0, 423, 52, texBossBeAttacked);
+	sprites->Add(70055, 423, 0, 470, 52, texBossBeAttacked);
+	sprites->Add(70056, 470, 0, 517, 52, texBossBeAttacked);
+	sprites->Add(70057, 517, 0, 564, 52, texBossBeAttacked);
+	sprites->Add(70058, 564, 0, 611, 52, texBossBeAttacked);
+	sprites->Add(70059, 611, 0, 658, 52, texBossBeAttacked);
+	sprites->Add(70060, 658, 0, 705, 52, texBossBeAttacked);
+	sprites->Add(70061, 705, 0, 752, 52, texBossBeAttacked);
+	sprites->Add(70062, 752, 0, 799, 52, texBossBeAttacked);
+	sprites->Add(70063, 799, 0, 846, 52, texBossBeAttacked);
+	sprites->Add(70064, 846, 0, 893, 52, texBossBeAttacked);
+	sprites->Add(70065, 893, 0, 940, 52, texBossBeAttacked);
+	sprites->Add(70066, 940, 0, 987, 52, texBossBeAttacked);
+	sprites->Add(70067, 987, 0, 1034, 52, texBossBeAttacked);
+	sprites->Add(70068, 1034, 0, 1081, 52, texBossBeAttacked);
+	sprites->Add(70069, 1081, 0, 1128, 52, texBossBeAttacked);
+	sprites->Add(70070, 1128, 0, 1175, 52, texBossBeAttacked);
+	sprites->Add(70071, 1175, 0, 1222, 52, texBossBeAttacked);
 
 #pragma endregion Boss
 

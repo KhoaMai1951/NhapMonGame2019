@@ -1,163 +1,801 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets(391,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (04-Collision.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(452,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (04-Collision.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   Aladdin.cpp
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\health.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\health.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\ruby.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\ruby.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(7): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(8): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(5): warning C4005: 'WALKING_SPEED': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(5): note: see previous definition of 'WALKING_SPEED'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(7): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(7): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(8): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(8): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(14): warning C4005: 'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(11): note: see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(7): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(8): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(9): warning C4005: 'MOVE_SPEED': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(8): note: see previous definition of 'MOVE_SPEED'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(8): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(8): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(6): warning C4005: 'WALKING_SPEED': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(5): note: see previous definition of 'WALKING_SPEED'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(8): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(9): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(10): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(8): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(11): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(9): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(12): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(10): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(13): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(11): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\scene.h(112): warning C4018: '<': signed/unsigned mismatch
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\peddler.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(12): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\peddler.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(13): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(198): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(197): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(633): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(632): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(657): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(656): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(681): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(680): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(705): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(704): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(791): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(790): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(1016): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(1024): warning C4244: '=': conversion from 'long' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(1772): warning C4305: 'initializing': truncation from 'double' to 'float'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(1775): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(1778): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Peddler.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Peddler.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(198,35): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(198,23): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(198,13): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(197,92): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(633,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(633,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(633,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(632,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(657,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(657,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(657,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(656,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(681,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(681,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(681,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(680,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(705,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(705,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(705,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(704,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(791,30): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(791,18): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(791,8): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(790,83): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(1016,81): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(1024,14): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(1772,42): warning C4305:  'initializing': truncation from 'double' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(1775,38): warning C4244:  '+=': conversion from 'double' to 'float', possible loss of data
+  Apple.cpp
+  Bone.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(1778,38): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bone.cpp(16,105): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bone.cpp(16,89): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bone.cpp(16,75): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
   Boss.cpp
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\health.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\health.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\ruby.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\ruby.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\characters.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(5): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(6): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\vase.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(7): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(5): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(8): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\lifeheal.h(6): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(5): warning C4005: 'WALKING_SPEED': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(5): note: see previous definition of 'WALKING_SPEED'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(7): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(7): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(8): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(8): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(14): warning C4005: 'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard0.h(11): note: see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(7): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(8): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\skeleton.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(9): warning C4005: 'MOVE_SPEED': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\genie.h(8): note: see previous definition of 'MOVE_SPEED'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(8): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bat.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\step.h(8): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(6): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(7): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\spiketrap.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(10): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(6): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(11): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\wreckingball.h(7): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(12): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(10): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(13): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossflame.h(11): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\scene.h(112): warning C4018: '<': signed/unsigned mismatch
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(6): warning C4005: 'WALKING_SPEED': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\guard1.h(5): note: see previous definition of 'WALKING_SPEED'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(8): warning C4005: 'BBOX_WIDTH': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(12): note: see previous definition of 'BBOX_WIDTH'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.h(9): warning C4005: 'BBOX_HEIGHT': macro redefinition
-  c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\bossspell.h(13): note: see previous definition of 'BBOX_HEIGHT'
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.cpp(9): warning C4244: '=': conversion from 'long' to 'float', possible loss of data
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\boss.cpp(125): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bone.cpp(16,60): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.cpp(9,11): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
+  BossFlame.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.cpp(125,92): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+  BossSpell.cpp
+  Boss_Scene.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.cpp(70,2): warning C4060:  switch statement contains no 'case' or 'default' labels
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(134,17): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(133,70): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(133,56): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(133,41): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(137,35): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(137,23): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(137,13): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(136,76): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(148,39): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(150,39): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(155,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(164,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(198,83): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(202,107): warning C4305:  'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(206,83): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(216,81): warning C4244:  'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(224,111): warning C4244:  'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(224,72): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(233,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(283,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(288,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(293,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(302,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(317,71): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(318,72): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(319,73): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+  CompleteScene.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss_Scene.cpp(329,51): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\CompleteScene.cpp(20,31): warning C4305:  '=': truncation from 'double' to 'float'
+  FlameStrip.cpp
+  Game.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\CompleteScene.cpp(25,27): warning C4305:  '=': truncation from 'double' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Game.cpp(275,26): warning C4305:  '=': truncation from '__int64' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Game.cpp(276,24): warning C4305:  '=': truncation from '__int64' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Game.cpp(286,26): warning C4305:  '=': truncation from '__int64' to 'float'
+  GameObject.cpp
+  Map.cpp
+  MenuScene.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Game.cpp(287,24): warning C4305:  '=': truncation from '__int64' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\MenuScene.cpp(20,26): warning C4305:  '=': truncation from 'double' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\MenuScene.cpp(58,28): warning C4305:  '=': truncation from 'double' to 'float'
+  ResourceLoader.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\MenuScene.cpp(63,27): warning C4305:  '=': truncation from 'double' to 'float'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Peddler.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Peddler.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2442,38): warning C4244:  'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2442,31): warning C4244:  'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2442,26): warning C4244:  'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2442,23): warning C4244:  'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2511,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2528,17): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2529,18): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2552,17): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+  Skeleton.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ResourceLoader.cpp(2553,18): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.cpp(7,13): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.cpp(8,14): warning C4244:  '=': conversion from 'long' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.cpp(92,101): warning C4244:  'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.cpp(110,16): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+  Sound.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.cpp(125,16): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sound.cpp(177,18): warning C4244:  'initializing': conversion from 'float' to 'long', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sound.cpp(233,16): warning C4244:  'initializing': conversion from 'float' to 'long', possible loss of data
+  SpatialGrid.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sound.cpp(245,16): warning C4244:  'initializing': conversion from 'float' to 'long', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpatialGrid.cpp(26,13): warning C4244:  '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpatialGrid.cpp(167,20): warning C4018:  '<': signed/unsigned mismatch
+  Sprites.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpatialGrid.cpp(170,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sprites.cpp(36,56): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sprites.cpp(36,44): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sprites.cpp(122,55): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sprites.cpp(127,55): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sprites.cpp(162,55): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+  SultansDungeon_Scene.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Sprites.cpp(167,55): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(82,20): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(89,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(92,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(113,11): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(112,67): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(112,53): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(112,38): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(116,29): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(116,17): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(116,7): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(115,73): warning C4244:  'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(129,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(131,55): warning C4244:  '-=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(137,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(149,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(153,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(157,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(167,86): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(171,111): warning C4305:  'argument': truncation from 'double' to 'FLOAT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(175,86): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(185,88): warning C4244:  'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(193,117): warning C4244:  'argument': conversion from 'double' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(193,78): warning C4244:  'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(214,23): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(260,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(271,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(276,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(285,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(294,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(299,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(302,27): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(316,71): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(317,72): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(318,73): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+  Textures.cpp
   Generating Code...
-c:\users\viktor\desktop\nm game\source\nm_game_ver2\aladdin\aladdin.cpp(1133): warning C4715: 'Aladdin::CheckGround0Collision': not all control paths return a value
-  Aladdin.vcxproj -> C:\Users\Viktor\Desktop\NM Game\Source\NM_Game_Ver2\Debug\Aladdin.exe
+  Compiling...
+  ThrowApple.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(328,51): warning C4244:  'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SultansDungeon_Scene.cpp(328,51): warning C4244: C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Aladdin.cpp(1133) : warning C4715: 'Aladdin::CheckGround0Collision': not all control paths return a value
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+  ViewPort.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(88,32): warning C4244:  '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(89,31): warning C4244:  '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(90,36): warning C4244:  '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(91,37): warning C4244:  '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(93,21): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(94,20): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(95,22): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(96,23): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(105,28): warning C4244:  '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(106,27): warning C4244:  '=': conversion from 'FLOAT' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(107,25): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(108,25): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(130,16): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(131,19): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(132,17): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+  main.cpp
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\ViewPort.cpp(133,25): warning C4244:  '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Health.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Ruby.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Characters.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Vase.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(5): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\LifeHeal.h(6): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(14,1): warning C4005:  'UNDER_ABOVE_ATTACK_RANGE': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard0.h(11): message :  see previous definition of 'UNDER_ABOVE_ATTACK_RANGE'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(7): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Skeleton.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(9,1): warning C4005:  'MOVE_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Genie.h(8): message :  see previous definition of 'MOVE_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Bat.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Step.h(8): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\SpikeTrap.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(6,1): warning C4005:  'WALKING_SPEED': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Guard1.h(5): message :  see previous definition of 'WALKING_SPEED'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(6): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\WreckingBall.h(7): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(8): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Boss.h(9): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(12,1): warning C4005:  'BBOX_WIDTH': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(10): message :  see previous definition of 'BBOX_WIDTH'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossSpell.h(13,1): warning C4005:  'BBOX_HEIGHT': macro redefinition
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\BossFlame.h(11): message :  see previous definition of 'BBOX_HEIGHT'
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\Scene.h(112,21): warning C4018:  '<': signed/unsigned mismatch
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\main.cpp(201,61): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+  Generating Code...
+C:\Users\Khoa\Desktop\NM_Game_Ver25\Aladdin\main.cpp(201,42): warning C4244:  'argument': conversion from 'double' to 'int', possible loss of data
+  Aladdin.vcxproj -> C:\Users\Khoa\Desktop\NM_Game_Ver25\Debug\Aladdin.exe
