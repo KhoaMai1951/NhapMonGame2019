@@ -1,6 +1,7 @@
 #include "ThrowApple.h"
 #include "Guard0.h"
 #include "Guard1.h"
+#include "Boss.h"
 
 void ThrowApple::GetBoundingBox(float& left, float& top, float& right, float& bottom)
 {
@@ -20,8 +21,16 @@ void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
 
     if (state == THROW_APPLE_STATE_DESTROYED)
     {
-        if (animations[ani]->currentFrame == 4)
-            this->isDead = true;
+        if (hitBoss)
+        {
+            if (animations[ani]->currentFrame == 25)
+                this->isDead = true;
+        }
+        else
+        {
+            if (animations[ani]->currentFrame == 4)
+                this->isDead = true;
+        }
         return;
     }
 
@@ -45,6 +54,9 @@ void ThrowApple::Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects)
                         enemy->SetState(4); //4 is hurt
                     }
                 }
+
+                if (dynamic_cast<Boss*>(coObjects->at(i)))
+                    hitBoss = true;
 
                 SetState(THROW_APPLE_STATE_DESTROYED);
                 vx = 0; vy = 0;
@@ -143,7 +155,16 @@ void ThrowApple::SetState(int state)
         break;
 
     case THROW_APPLE_STATE_DESTROYED:
-        Sound::getInstance()->play("APPLE_DESTROY", false, 1);
+        if (hitBoss)
+        {
+            Sound::getInstance()->play("GENIE_COLLECT", false, 1);
+            if (nx = 1)
+                x -= 21;
+            y += 26;
+            //animations[THROW_APPLE_ANI_BOSS_BE_ATTACKED]->ResetAnimation();
+        }
+        else
+            Sound::getInstance()->play("APPLE_DESTROY", false, 1);
         break;
     }
 }
@@ -157,8 +178,12 @@ void ThrowApple::Render()
         else
             ani = THROW_APPLE_ANI_FLYING_LEFT;
     }
-    else if (state == THROW_APPLE_STATE_DESTROYED) {
-        ani = THROW_APPLE_ANI_DESTROYED;
+    else if (state == THROW_APPLE_STATE_DESTROYED)
+    {
+        if (hitBoss)
+            ani = THROW_APPLE_ANI_BOSS_BE_ATTACKED;
+        else
+            ani = THROW_APPLE_ANI_DESTROYED;
     }
 
     animations[ani]->Render(x, y);

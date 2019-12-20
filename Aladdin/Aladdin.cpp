@@ -1508,6 +1508,7 @@ void Aladdin::AddThrowApple()
             throwApple->AddAnimation(ANI_APPLE_FLYING_RIGHT);
             throwApple->AddAnimation(ANI_APPLE_FLYING_LEFT);
             throwApple->AddAnimation(ANI_THROW_APPLE_DESTROY);
+            throwApple->AddAnimation(BOSS_BE_ATTACKED);
             throwApple->nx = nx;
             float temp_x, temp_y = y - 5;
             if (nx >= 0)

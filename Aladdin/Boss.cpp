@@ -124,7 +124,7 @@ void Boss::Render()
 	//animations[ani]->Render(x, y, alpha, restart_frame);
 	animations[ani]->Render(x, y, width, lastFrameWidth, lastFrameHeight, 255, restart_frame, nx);
 
-	RenderBoundingBox();
+	//RenderBoundingBox();
 }
 
 void Boss::AddBossSpell()

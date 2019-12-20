@@ -983,7 +983,7 @@ animations->Add(2000, ani);
 	ani->Add(70045);
 	animations->Add(9005, ani);
 
-	ani = new CAnimation(150);		// boss be attacked
+	ani = new CAnimation(40);		// boss be attacked
 	for (int i = 46; i <= 71; i++)
 	{
 		ani->Add(70000 + i);

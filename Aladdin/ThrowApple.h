@@ -24,6 +24,7 @@ enum THROW_APPLE_ANI
     THROW_APPLE_ANI_FLYING_RIGHT,
     THROW_APPLE_ANI_FLYING_LEFT,
     THROW_APPLE_ANI_DESTROYED,
+    THROW_APPLE_ANI_BOSS_BE_ATTACKED,
 };
 
 
@@ -32,7 +33,7 @@ class ThrowApple : public CGameObject
     virtual void GetBoundingBox(float& left, float& top, float& right, float& bottom);
     virtual void Update(DWORD dt, vector<LPGAMEOBJECT>* coObjects);
     virtual void Render();
-
+    bool hitBoss = false;
 public:
     ThrowApple() : CGameObject()
     {
