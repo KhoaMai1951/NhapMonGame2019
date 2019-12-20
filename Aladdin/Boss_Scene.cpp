@@ -141,8 +141,12 @@ void Boss_Scene::Update(DWORD dt)
         set_gameobject.end());
 	//Update objets
 	objects[0]->Update(dt, &coObjects); //player
-	if (aladdin->health <= 0)
-		boss->hitpoint = BOSS_MAX_HITPOINT;
+    if (aladdin->health <= 0)
+    {
+        boss->hitpoint = BOSS_MAX_HITPOINT;
+        boss->isHumanForm = true;
+    }
+		
 #pragma region
     if(aladdin->x != last_player_x)
         back->x -= aladdin->vx*dt*0.15;
