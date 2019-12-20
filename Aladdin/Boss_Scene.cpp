@@ -177,6 +177,54 @@ void Boss_Scene::Update(DWORD dt)
 		    coObjects[i]->Update(dt, &coObjects);
     }
 
+    for (int i = 0; i < vector_generate_apple.size(); i++)
+        vector_generate_apple[i]->Update(dt, NULL);
+
+    if (!boss->isHumanForm && vector_generate_apple.size() <= 0)
+    {
+        if (aladdin->x > 430 && (GetTickCount() - generate_start > 5000)) 
+        {
+            for (int i = 0; i <= 3; i++)
+            {
+                Apple *apple = new Apple();
+                apple->SetName("apple");
+                apple->AddAnimation(401); //apple idle
+                apple->AddAnimation(ITEM_DESTROY);
+                apple->SetPosition(apple_location[i].x, BOSS_MAP_HEIGHT - apple_location[i].y);
+                apple->id = grid_id++;
+                SpatialGrid::GetInstance()->Insert(apple);
+                vector_generate_apple.push_back(apple);
+            }
+            generate_start = GetTickCount();
+        }
+        else if (aladdin->x < 430 && (GetTickCount() - generate_start > 5000))
+        {
+            for (int i = 4; i <= 7; i++) 
+            {
+                Apple *apple = new Apple();
+                apple->SetName("apple");
+                apple->AddAnimation(401); //apple idle
+                apple->AddAnimation(ITEM_DESTROY);
+                apple->SetPosition(apple_location[i].x, BOSS_MAP_HEIGHT - apple_location[i].y);
+                apple->id = grid_id++;
+                SpatialGrid::GetInstance()->Insert(apple);
+                vector_generate_apple.push_back(apple);
+            }
+            generate_start = GetTickCount();
+        }
+    }
+
+    for (int i = 0; i < vector_generate_apple.size(); i++)
+    {
+        if (vector_generate_apple[i]->isDead)
+        {
+            SpatialGrid::GetInstance()->DeleteFromGrid(vector_generate_apple[i]->id);
+            delete vector_generate_apple[i];
+            //vector_generate_apple[i] = NULL;
+            vector_generate_apple.erase(vector_generate_apple.begin() + i);
+        }
+    }
+
     /*for (int i = 0; i < coObjects.size(); i++)
     {
         if (dynamic_cast<BossSpell*>(coObjects[i]))
@@ -289,6 +337,10 @@ void Boss_Scene::Render()
         {
             objects[i]->Render();
         }
+
+        for (int i = 0; i < vector_generate_apple.size(); i++)
+            vector_generate_apple[i]->Render();
+
         //boss spell
         for (int i = 0; i < vector_boss_spell.size(); i++)
         {
