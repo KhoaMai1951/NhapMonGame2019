@@ -115,6 +115,10 @@ void Aladdin::Update(DWORD dt, vector<LPGAMEOBJECT> *coObjects)
     }
     else if (state == ALADDIN_STATE_JUMP_THROW)
     {
+        if(nx > 0)
+            animations[24]->currentFrame = animations[23]->currentFrame;
+        else if (nx < 0)
+            animations[23]->currentFrame = animations[24]->currentFrame;
         if (animations[ani]->currentFrame == 2)
         {
             AddThrowApple();
@@ -1603,10 +1607,11 @@ bool Aladdin::CheckEnemyOverlap(vector<LPGAMEOBJECT> coObjects)
     }
     for (UINT i = 0; i < coObjects.size(); i++)
     {
-        if (dynamic_cast<Enemy*>(coObjects.at(i)))
+        if (dynamic_cast<Enemy*>(coObjects.at(i)) )
         {
             Enemy* enemy = dynamic_cast<Enemy*>(coObjects.at(i));
-            if (enemy->isDead) continue;//DEAD 
+            if (enemy->isDead) continue;//DEAD
+            if (enemy->state == 5) continue;
 
             //Lấy rect enemy
             float l1 = enemy->x;
