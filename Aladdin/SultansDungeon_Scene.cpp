@@ -104,7 +104,32 @@ void SultansDungeon_Scene::Initialize()
         //grid->Insert(objects[i]);
     grid->AddGridFromFile(All_collide_objects, "dungeon_grid.txt");
 }
+void SultansDungeon_Scene::FixCollideBug()
+{
+	float x = aladdin->x, y = aladdin->y;
+	//case 1
+	float map_fix_y1 = MAP_HEIGHT + 30 - 454;
+	if ((x >= 944 && x <= 1111.5) && (y - aladdin->height < map_fix_y1 - 3 && y - aladdin->height >= map_fix_y1 - 8))
+	{
+		aladdin->SetState(ALADDIN_STATE_IDLE);
+		aladdin->y = map_fix_y1 + aladdin->height +1;	//chuyển vị trí y về đúng
+	}
 
+	//case 2
+	float map_fix_y2 = MAP_HEIGHT + 30 - 211.92;
+	if ((x >= 1383.42 && x <= 1551) && (y - aladdin->height < map_fix_y2 - 3 && y - aladdin->height >= map_fix_y2 - 8))
+	{
+		aladdin->SetState(ALADDIN_STATE_IDLE);
+		aladdin->y = map_fix_y2 + aladdin->height + 1;	//chuyển vị trí y về đúng
+	}
+	//case 3
+	float map_fix_y3 = MAP_HEIGHT + 30 - 935;
+	if ((x >= 1406.83 && x <= 1487.83) && (y - aladdin->height < map_fix_y3 - 3 && y - aladdin->height >= map_fix_y3 - 8))
+	{
+		aladdin->SetState(ALADDIN_STATE_IDLE);
+		aladdin->y = map_fix_y3 + aladdin->height + 1;	//chuyển vị trí y về đúng
+	}
+}
 void SultansDungeon_Scene::Update(DWORD dt)
 {   
     RECT cam_rect = camera->getBounding();
@@ -122,7 +147,7 @@ void SultansDungeon_Scene::Update(DWORD dt)
 	SpatialGrid* grid = SpatialGrid::GetInstance();
     //Update objets
     objects[0]->Update(dt, &coObjects); //player
-
+	FixCollideBug();
 #pragma region
     if (aladdin->x != last_player_x)
     {

@@ -5,7 +5,7 @@ class SultansDungeon_Scene : public Scene
 {
 private:
     float last_player_x, last_player_y;
-
+	void FixCollideBug();
 public:
     vector<CGameObject*> vector_apple;
     vector<CGameObject*> pillars;

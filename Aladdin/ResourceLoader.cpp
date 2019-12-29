@@ -2480,7 +2480,8 @@ vector<int> ResourceLoader::read_map(string file_path)
 };
 
 // Load map từ file ma trận
-void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, vector<LPGAMEOBJECT>& map_vector, int scene)
+void ResourceLoader::load_tile_map(LPDIRECT3DTEXTURE9 tile_set, string file_path, 
+	vector<LPGAMEOBJECT>& map_vector, int scene)
 {
 	CSprites* sprites = CSprites::GetInstance();
 	vector<int> arr = ResourceLoader::read_map(file_path);

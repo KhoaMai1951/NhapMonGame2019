@@ -1151,8 +1151,12 @@ bool Aladdin::CheckGround1Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
         {
             try
             {
-                if (dynamic_cast<Ground *>(coObjects->at(i)) && dynamic_cast<Ground *>(coObjects->at(i))->type == 1)
-                    ground1_objects.push_back(coObjects->at(i));
+				if (dynamic_cast<Ground*>(coObjects->at(i)) && dynamic_cast<Ground*>(coObjects->at(i))->type == 1)
+
+				{
+					ground1_objects.push_back(coObjects->at(i));
+					DebugOut(L"l: %f t: %f r: %f b: %f \n", coObjects->at(i)->x, coObjects->at(i)->y, coObjects->at(i)->x + coObjects->at(i)->width, coObjects->at(i)->y - coObjects->at(i)->height);
+				}
             }
             catch (exception e)
             {
@@ -1181,6 +1185,7 @@ bool Aladdin::CheckGround1Collision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
             vy = 0;
             jumping = false;
 			climbing = false;
+			
             //y += min_ty * dy + ny * 0.2f;
         }
     }
@@ -1583,7 +1588,7 @@ bool Aladdin::CheckChainCollision(vector<LPGAMEOBJECT>* coObjects, DWORD dt)
 					this->x = chain->x - 15;
 					SetState(ALADDIN_STATE_CLIMB);
 					climbingChains = chain;
-					y += 6;
+					y += 3;
 				}
 				return true;
 			}
